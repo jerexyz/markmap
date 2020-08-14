@@ -30,6 +30,7 @@ import 'core-js/modules/es.symbol.to-string-tag';
 import 'core-js/modules/es.array.reverse';
 import 'core-js/modules/es.json.to-string-tag';
 import 'core-js/modules/es.math.to-string-tag';
+import 'core-js/modules/es.object.define-property';
 import 'core-js/modules/es.object.get-prototype-of';
 import 'core-js/modules/es.object.set-prototype-of';
 import 'core-js/modules/es.array.concat';
@@ -377,16 +378,18 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-function unwrapExports (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+function createCommonjsModule(fn, basedir, module) {
+	return module = {
+	  path: basedir,
+	  exports: {},
+	  require: function (path, base) {
+      return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+    }
+	}, fn(module, module.exports), module.exports;
 }
 
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
-
-function getCjsExportFromNamespace (n) {
-	return n && n['default'] || n;
+function commonjsRequire () {
+	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
 }
 
 var runtime_1 = createCommonjsModule(function (module) {
@@ -406,6 +409,25 @@ var runtime_1 = createCommonjsModule(function (module) {
     var iteratorSymbol = $Symbol.iterator || "@@iterator";
     var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
     var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+    function define(obj, key, value) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+      return obj[key];
+    }
+
+    try {
+      // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+      define({}, "");
+    } catch (err) {
+      define = function define(obj, key, value) {
+        return obj[key] = value;
+      };
+    }
 
     function wrap(innerFn, outerFn, self, tryLocsList) {
       // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
@@ -480,14 +502,14 @@ var runtime_1 = createCommonjsModule(function (module) {
     var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
     GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
     GeneratorFunctionPrototype.constructor = GeneratorFunction;
-    GeneratorFunctionPrototype[toStringTagSymbol] = GeneratorFunction.displayName = "GeneratorFunction"; // Helper for defining the .next, .throw, and .return methods of the
+    GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"); // Helper for defining the .next, .throw, and .return methods of the
     // Iterator interface in terms of a single ._invoke method.
 
     function defineIteratorMethods(prototype) {
       ["next", "throw", "return"].forEach(function (method) {
-        prototype[method] = function (arg) {
+        define(prototype, method, function (arg) {
           return this._invoke(method, arg);
-        };
+        });
       });
     }
 
@@ -503,10 +525,7 @@ var runtime_1 = createCommonjsModule(function (module) {
         Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
       } else {
         genFun.__proto__ = GeneratorFunctionPrototype;
-
-        if (!(toStringTagSymbol in genFun)) {
-          genFun[toStringTagSymbol] = "GeneratorFunction";
-        }
+        define(genFun, toStringTagSymbol, "GeneratorFunction");
       }
 
       genFun.prototype = Object.create(Gp);
@@ -762,7 +781,7 @@ var runtime_1 = createCommonjsModule(function (module) {
 
 
     defineIteratorMethods(Gp);
-    Gp[toStringTagSymbol] = "Generator"; // A Generator should always return itself as the iterator object when the
+    define(Gp, toStringTagSymbol, "Generator"); // A Generator should always return itself as the iterator object when the
     // @@iterator function is called on it. Some browsers' implementations of the
     // iterator prototype chain incorrectly implement this, causing the Generator
     // object to not be returned from this call. This ensures that doesn't happen.
@@ -1137,6 +1156,10 @@ function is_function(thing) {
 
 function safe_not_equal(a, b) {
   return a != a ? b == b : a !== b || a && _typeof(a) === 'object' || typeof a === 'function';
+}
+
+function is_empty(obj) {
+  return Object.keys(obj).length === 0;
 }
 
 function validate_store(store, name) {
@@ -1607,14 +1630,15 @@ function init(component, options, instance, create_fragment, not_equal, props) {
     context: new Map(parent_component ? parent_component.$$.context : []),
     // everything else
     callbacks: blank_object(),
-    dirty: dirty
+    dirty: dirty,
+    skip_bound: false
   };
   var ready = false;
   $$.ctx = instance ? instance(component, prop_values, function (i, ret) {
     var value = (arguments.length <= 2 ? 0 : arguments.length - 2) ? arguments.length <= 2 ? undefined : arguments[2] : ret;
 
     if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
-      if ($$.bound[i]) $$.bound[i](value);
+      if (!$$.skip_bound && $$.bound[i]) $$.bound[i](value);
       if (ready) make_dirty(component, i);
     }
 
@@ -1668,7 +1692,12 @@ var SvelteComponent = /*#__PURE__*/function () {
     }
   }, {
     key: "$set",
-    value: function $set() {// overridden by instance, if it has props
+    value: function $set($$props) {
+      if (this.$$set && !is_empty($$props)) {
+        this.$$.skip_bound = true;
+        this.$$set($$props);
+        this.$$.skip_bound = false;
+      }
     }
   }]);
 
@@ -1677,7 +1706,7 @@ var SvelteComponent = /*#__PURE__*/function () {
 
 function dispatch_dev(type, detail) {
   document.dispatchEvent(custom_event(type, Object.assign({
-    version: '3.23.2'
+    version: '3.24.1'
   }, detail)));
 }
 
@@ -1741,7 +1770,7 @@ function attr_dev(node, attribute, value) {
 
 function set_data_dev(text, data) {
   data = '' + data;
-  if (text.data === data) return;
+  if (text.wholeText === data) return;
   dispatch_dev("SvelteDOMSetData", {
     node: text,
     data: data
@@ -1868,11 +1897,8 @@ function writable(value) {
 }
 
 var CONTEXT_KEY = {};
-var preload = function preload() {
-  return {};
-};
 
-/* src/components/Nav.svelte generated by Svelte v3.23.2 */
+/* src/components/Nav.svelte generated by Svelte v3.24.1 */
 
 const file = "src/components/Nav.svelte";
 
@@ -2082,7 +2108,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { $$slots = {}, $$scope } = $$props;
 	validate_slots("Nav", $$slots, []);
 
-	$$self.$set = $$props => {
+	$$self.$$set = $$props => {
 		if ("segment" in $$props) $$invalidate(0, segment = $$props.segment);
 	};
 
@@ -2128,7 +2154,7 @@ class Nav extends SvelteComponentDev {
 	}
 }
 
-/* src/components/ga.svelte generated by Svelte v3.23.2 */
+/* src/components/ga.svelte generated by Svelte v3.24.1 */
 const file$1 = "src/components/ga.svelte";
 
 function create_fragment$1(ctx) {
@@ -2208,7 +2234,7 @@ function instance$1($$self, $$props, $$invalidate) {
 	let { $$slots = {}, $$scope } = $$props;
 	validate_slots("Ga", $$slots, []);
 
-	$$self.$set = $$props => {
+	$$self.$$set = $$props => {
 		if ("id" in $$props) $$invalidate(0, id = $$props.id);
 	};
 
@@ -2264,7 +2290,7 @@ class Ga extends SvelteComponentDev {
 	}
 }
 
-/* src/routes/_layout.svelte generated by Svelte v3.23.2 */
+/* src/routes/_layout.svelte generated by Svelte v3.24.1 */
 const file$2 = "src/routes/_layout.svelte";
 
 function create_fragment$2(ctx) {
@@ -2408,7 +2434,7 @@ function instance$2($$self, $$props, $$invalidate) {
 	let { $$slots = {}, $$scope } = $$props;
 	validate_slots("Layout", $$slots, ['default']);
 
-	$$self.$set = $$props => {
+	$$self.$$set = $$props => {
 		if ("segment" in $$props) $$invalidate(0, segment = $$props.segment);
 		if ("$$scope" in $$props) $$invalidate(1, $$scope = $$props.$$scope);
 	};
@@ -2455,7 +2481,12 @@ class Layout extends SvelteComponentDev {
 	}
 }
 
-/* src/routes/_error.svelte generated by Svelte v3.23.2 */
+var root_comp = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': Layout
+});
+
+/* src/routes/_error.svelte generated by Svelte v3.24.1 */
 
 const { Error: Error_1 } = globals;
 const file$3 = "src/routes/_error.svelte";
@@ -2625,7 +2656,7 @@ function instance$3($$self, $$props, $$invalidate) {
 	let { $$slots = {}, $$scope } = $$props;
 	validate_slots("Error", $$slots, []);
 
-	$$self.$set = $$props => {
+	$$self.$$set = $$props => {
 		if ("status" in $$props) $$invalidate(0, status = $$props.status);
 		if ("error" in $$props) $$invalidate(1, error = $$props.error);
 	};
@@ -2685,7 +2716,7 @@ class Error$1 extends SvelteComponentDev {
 	}
 }
 
-/* src/node_modules/@sapper/internal/App.svelte generated by Svelte v3.23.2 */
+/* src/node_modules/@sapper/internal/App.svelte generated by Svelte v3.24.1 */
 
 const { Error: Error_1$1 } = globals;
 
@@ -3008,7 +3039,7 @@ function instance$4($$self, $$props, $$invalidate) {
 	let { $$slots = {}, $$scope } = $$props;
 	validate_slots("App", $$slots, []);
 
-	$$self.$set = $$props => {
+	$$self.$$set = $$props => {
 		if ("stores" in $$props) $$invalidate(5, stores = $$props.stores);
 		if ("error" in $$props) $$invalidate(0, error = $$props.error);
 		if ("status" in $$props) $$invalidate(1, status = $$props.status);
@@ -3159,24 +3190,24 @@ class App extends SvelteComponentDev {
 var ignore = [];
 var components = [{
   js: function js() {
-    return import('./index.606e2ca2.js');
+    return import('./index.339b8a55.js');
   },
-  css: []
+  css: ["legacy/client.0177d6c2.css"]
 }, {
   js: function js() {
-    return import('./about.5f983e19.js');
+    return import('./about.3dfb8c8e.js');
   },
-  css: []
+  css: ["legacy/client.0177d6c2.css"]
 }, {
   js: function js() {
-    return import('./usage.cf29a4cf.js');
+    return import('./usage.29ac1937.js');
   },
-  css: []
+  css: ["legacy/client.0177d6c2.css"]
 }, {
   js: function js() {
-    return import('./repl.d9d1adbf.js');
+    return import('./repl.60f93776.js');
   },
-  css: []
+  css: ["legacy/repl.60f93776.css","legacy/client.0177d6c2.css"]
 }];
 var routes = [{
   // index.svelte
@@ -3206,6 +3237,7 @@ var routes = [{
 
 function _goto(href) {
   var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    noscroll: false,
     replaceState: false
   };
   var target = select_target(new URL(href, document.baseURI));
@@ -3215,7 +3247,7 @@ function _goto(href) {
       id: cid
     }, '', href);
 
-    return navigate(target, null).then(function () {});
+    return navigate(target, null, opts.noscroll).then(function () {});
   }
 
   location.href = href;
@@ -3550,8 +3582,6 @@ function render(_x6, _x7, _x8, _x9) {
 
 function _render() {
   _render = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(redirect, branch, props, page) {
-    var _start, end;
-
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
@@ -3575,7 +3605,7 @@ function _render() {
             }
 
             root_component.$set(props);
-            _context3.next = 18;
+            _context3.next = 15;
             break;
 
           case 8:
@@ -3596,33 +3626,20 @@ function _render() {
             props.level0 = {
               props: _context3.t0
             };
-            props.notify = stores.page.notify; // first load — remove SSR'd <head> contents
-
-            _start = document.querySelector('#sapper-head-start');
-            end = document.querySelector('#sapper-head-end');
-
-            if (_start && end) {
-              while (_start.nextSibling !== end) {
-                detach$1(_start.nextSibling);
-              }
-
-              detach$1(_start);
-              detach$1(end);
-            }
-
+            props.notify = stores.page.notify;
             root_component = new App({
               target: target,
               props: props,
               hydrate: true
             });
 
-          case 18:
+          case 15:
             current_branch = branch;
             current_query = JSON.stringify(page.query);
             ready = true;
             session_dirty = false;
 
-          case 22:
+          case 19:
           case "end":
             return _context3.stop();
         }
@@ -3654,7 +3671,7 @@ function hydrate_target(_x10) {
 
 function _hydrate_target() {
   _hydrate_target = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(target) {
-    var route, page, segments, _redirect, props, preload_context, branch, l, stringified_query, match, segment_dirty;
+    var route, page, segments, _redirect, props, preload_context, root_preload, branch, l, stringified_query, match, segment_dirty;
 
     return regeneratorRuntime.wrap(function _callee5$(_context5) {
       while (1) {
@@ -3699,7 +3716,9 @@ function _hydrate_target() {
             };
 
             if (!root_preloaded) {
-              root_preloaded = initial_data.preloaded[0] || preload.call(preload_context, {
+              root_preload = undefined || function () {};
+
+              root_preloaded = initial_data.preloaded[0] || root_preload.call(preload_context, {
                 host: page.host,
                 path: page.path,
                 query: page.query,
@@ -3866,10 +3885,6 @@ function load_component(component) {
   });
 }
 
-function detach$1(node) {
-  node.parentNode.removeChild(node);
-}
-
 function prefetch(href) {
   var target = select_target(new URL(href, document.baseURI));
 
@@ -3966,7 +3981,7 @@ function handle_click(event) {
   var target = select_target(url);
 
   if (target) {
-    var noscroll = a.hasAttribute('sapper-noscroll');
+    var noscroll = a.hasAttribute('sapper:noscroll');
     navigate(target, null, noscroll, url.hash);
     event.preventDefault();
 
@@ -4028,4 +4043,4 @@ start({
   target: document.querySelector('#sapper')
 });
 
-export { _inherits as A, _createSuper as B, _classCallCheck as C, _createClass as D, _assertThisInitialized as E, _slicedToArray as F, _toConsumableArray as G, _asyncToGenerator as H, _createForOfIteratorHelper as I, getCjsExportFromNamespace as J, commonjsGlobal as K, _defineProperty as L, globals as M, onMount as N, onDestroy as O, svg_element as P, binding_callbacks as Q, set_style as R, SvelteComponentDev as S, listen_dev as T, empty as U, prevent_default as V, run_all as W, bind as X, is_function as Y, add_flush_callback as Z, _typeof as _, space as a, detach_dev as b, create_component as c, dispatch_dev as d, element as e, claim_space as f, claim_element as g, children as h, init as i, claim_text as j, claim_component as k, add_location as l, attr_dev as m, insert_dev as n, append_dev as o, mount_component as p, query_selector_all as q, noop as r, safe_not_equal as s, text as t, transition_in as u, validate_slots as v, transition_out as w, destroy_component as x, createCommonjsModule as y, unwrapExports as z };
+export { _createSuper as A, _classCallCheck as B, _createClass as C, _assertThisInitialized as D, _slicedToArray as E, _toConsumableArray as F, _asyncToGenerator as G, _createForOfIteratorHelper as H, commonjsGlobal as I, _defineProperty as J, globals as K, onMount as L, onDestroy as M, svg_element as N, binding_callbacks as O, set_style as P, listen_dev as Q, empty as R, SvelteComponentDev as S, prevent_default as T, run_all as U, bind as V, is_function as W, add_flush_callback as X, _typeof as _, space as a, detach_dev as b, create_component as c, dispatch_dev as d, element as e, claim_space as f, claim_element as g, children as h, init as i, claim_text as j, claim_component as k, add_location as l, attr_dev as m, insert_dev as n, append_dev as o, mount_component as p, query_selector_all as q, noop as r, safe_not_equal as s, text as t, transition_in as u, validate_slots as v, transition_out as w, destroy_component as x, createCommonjsModule as y, _inherits as z };

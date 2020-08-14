@@ -1,58 +1,15 @@
 import 'core-js/modules/es.regexp.exec';
 import 'core-js/modules/es.string.replace';
-import 'core-js/modules/es.string.search';
-import 'core-js/modules/es.array.filter';
-import 'core-js/modules/es.array.for-each';
-import 'core-js/modules/es.array.iterator';
-import 'core-js/modules/es.array.map';
-import 'core-js/modules/es.array.reduce';
 import 'core-js/modules/es.array.slice';
-import 'core-js/modules/es.array.some';
-import 'core-js/modules/es.date.to-string';
 import 'core-js/modules/es.function.name';
-import 'core-js/modules/es.object.create';
-import 'core-js/modules/es.object.to-string';
-import 'core-js/modules/es.promise';
 import 'core-js/modules/es.regexp.to-string';
-import 'core-js/modules/es.string.iterator';
 import 'core-js/modules/es.string.match';
-import 'core-js/modules/es.string.split';
-import 'core-js/modules/es.string.starts-with';
-import 'core-js/modules/web.dom-collections.for-each';
-import 'core-js/modules/web.dom-collections.iterator';
-import 'core-js/modules/web.timers';
-import 'core-js/modules/web.url';
-import { y as createCommonjsModule } from './client.4c748dbb.js';
-import 'core-js/modules/es.symbol';
-import 'core-js/modules/es.symbol.description';
-import 'core-js/modules/es.symbol.async-iterator';
-import 'core-js/modules/es.symbol.iterator';
-import 'core-js/modules/es.symbol.to-string-tag';
+import { y as createCommonjsModule } from './client.0177d6c2.js';
 import 'core-js/modules/es.array.reverse';
-import 'core-js/modules/es.json.to-string-tag';
-import 'core-js/modules/es.math.to-string-tag';
-import 'core-js/modules/es.object.get-prototype-of';
-import 'core-js/modules/es.object.set-prototype-of';
-import 'core-js/modules/es.array.concat';
-import 'core-js/modules/es.array.fill';
-import 'core-js/modules/es.array.from';
 import 'core-js/modules/es.array.index-of';
 import 'core-js/modules/es.array.join';
-import 'core-js/modules/es.array.splice';
-import 'core-js/modules/es.date.now';
-import 'core-js/modules/es.map';
-import 'core-js/modules/es.object.assign';
-import 'core-js/modules/es.object.get-own-property-descriptors';
-import 'core-js/modules/es.object.keys';
-import 'core-js/modules/es.parse-int';
-import 'core-js/modules/es.set';
-import 'core-js/modules/es.string.anchor';
-import 'core-js/modules/es.array.is-array';
-import 'core-js/modules/es.array.find';
-import 'core-js/modules/es.array.sort';
 import 'core-js/modules/es.regexp.constructor';
-import 'core-js/modules/es.number.constructor';
-import codemirror from './codemirror.8800c6ef.js';
+import { a as codemirror } from './codemirror.9b3e5720.js';
 import 'core-js/modules/es.array.last-index-of';
 
 var xml = createCommonjsModule(function (module, exports) {
@@ -2356,5 +2313,8 @@ var markdown = createCommonjsModule(function (module, exports) {
   });
 });
 
-export default markdown;
-export { markdown as __moduleExports };
+var markdown$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.assign(/*#__PURE__*/Object.create(null), markdown, {
+  'default': markdown
+}));
+
+export { markdown$1 as m };

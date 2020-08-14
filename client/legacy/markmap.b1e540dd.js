@@ -18,11 +18,12 @@ import 'core-js/modules/es.string.split';
 import 'core-js/modules/web.dom-collections.for-each';
 import 'core-js/modules/web.dom-collections.iterator';
 import 'core-js/modules/web.timers';
-import { y as createCommonjsModule, z as unwrapExports, _ as _typeof, A as _inherits, B as _createSuper, C as _classCallCheck, D as _createClass, E as _assertThisInitialized, F as _slicedToArray, G as _toConsumableArray, H as _asyncToGenerator, I as _createForOfIteratorHelper, J as getCjsExportFromNamespace, K as commonjsGlobal, L as _defineProperty, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, M as globals, N as onMount, O as onDestroy, v as validate_slots, P as svg_element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, Q as binding_callbacks } from './client.4c748dbb.js';
+import { y as createCommonjsModule, _ as _typeof, z as _inherits, A as _createSuper, B as _classCallCheck, C as _createClass, D as _assertThisInitialized, E as _slicedToArray, F as _toConsumableArray, G as _asyncToGenerator, H as _createForOfIteratorHelper, I as commonjsGlobal, J as _defineProperty, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, K as globals, L as onMount, M as onDestroy, v as validate_slots, N as svg_element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, O as binding_callbacks } from './client.0177d6c2.js';
 import 'core-js/modules/es.symbol';
 import 'core-js/modules/es.symbol.description';
 import 'core-js/modules/es.symbol.iterator';
 import 'core-js/modules/es.array.reverse';
+import 'core-js/modules/es.object.define-property';
 import 'core-js/modules/es.array.concat';
 import 'core-js/modules/es.array.fill';
 import 'core-js/modules/es.array.from';
@@ -35,7 +36,6 @@ import 'core-js/modules/es.parse-int';
 import 'core-js/modules/es.array.is-array';
 import 'core-js/modules/es.array.find';
 import 'core-js/modules/es.function.bind';
-import 'core-js/modules/es.object.define-property';
 import 'core-js/modules/es.object.get-own-property-descriptor';
 import 'core-js/modules/es.weak-map';
 import 'core-js/modules/es.array.sort';
@@ -161,7 +161,6 @@ var interopRequireWildcard = createCommonjsModule(function (module) {
 
   module.exports = _interopRequireWildcard;
 });
-unwrapExports(interopRequireWildcard);
 
 var version = "5.16.0";
 
@@ -4787,14 +4786,16 @@ function brush$1(dim) {
   }
 
   function emitter(that, args, clean) {
-    return !clean && that.__brush.emitter || new Emitter(that, args);
+    var emit = that.__brush.emitter;
+    return emit && (!clean || !emit.clean) ? emit : new Emitter(that, args, clean);
   }
 
-  function Emitter(that, args) {
+  function Emitter(that, args, clean) {
     this.that = that;
     this.args = args;
     this.state = that.__brush;
     this.active = 0;
+    this.clean = clean;
   }
 
   Emitter.prototype = {
@@ -19761,14 +19762,6 @@ var base = createCommonjsModule(function (module, exports) {
     };
   }
 });
-unwrapExports(base);
-var base_1 = base.getId;
-var base_2 = base.noop;
-var base_3 = base.walkTree;
-var base_4 = base.arrayFrom;
-var base_5 = base.flatMap;
-var base_6 = base.addClass;
-var base_7 = base.childSelector;
 
 var html$1 = createCommonjsModule(function (module, exports) {
 
@@ -19825,13 +19818,6 @@ var html$1 = createCommonjsModule(function (module, exports) {
     return text;
   }
 });
-unwrapExports(html$1);
-var html_1 = html$1.escapeHtml;
-var html_2 = html$1.escapeScript;
-var html_3 = html$1.htmlOpen;
-var html_4 = html$1.htmlClose;
-var html_5 = html$1.wrapHtml;
-var html_6 = html$1.wrapStyle;
 
 var loader = createCommonjsModule(function (module, exports) {
 
@@ -20085,14 +20071,6 @@ var loader = createCommonjsModule(function (module, exports) {
     });
   }
 });
-unwrapExports(loader);
-var loader_1 = loader.buildCode;
-var loader_2 = loader.memoize;
-var loader_3 = loader.loadJS;
-var loader_4 = loader.loadCSS;
-var loader_5 = loader.initializePlugins;
-var loader_6 = loader.persistJS;
-var loader_7 = loader.persistCSS;
 
 var util = createCommonjsModule(function (module, exports) {
 
@@ -20110,7 +20088,6 @@ var util = createCommonjsModule(function (module, exports) {
     exports[key] = loader[key];
   });
 });
-unwrapExports(util);
 
 var mathjax = createCommonjsModule(function (module, exports) {
 
@@ -20157,8 +20134,6 @@ var mathjax = createCommonjsModule(function (module, exports) {
   };
   exports.plugin = plugin;
 });
-unwrapExports(mathjax);
-var mathjax_1 = mathjax.plugin;
 
 var prism = createCommonjsModule(function (module, exports) {
 
@@ -20269,8 +20244,6 @@ var prism = createCommonjsModule(function (module, exports) {
   };
   exports.plugin = plugin;
 });
-unwrapExports(prism);
-var prism_1 = prism.plugin;
 
 var plugins = createCommonjsModule(function (module, exports) {
 
@@ -20279,9 +20252,6 @@ var plugins = createCommonjsModule(function (module, exports) {
   exports.mathJax = mathjax.plugin;
   exports.prism = prism.plugin;
 });
-unwrapExports(plugins);
-var plugins_1 = plugins.prism;
-var plugins_2 = plugins.mathJax;
 
 var hook = createCommonjsModule(function (module, exports) {
 
@@ -20324,12 +20294,6 @@ var hook = createCommonjsModule(function (module, exports) {
 
   exports.Hook = Hook;
 });
-unwrapExports(hook);
-var hook_1 = hook.Hook;
-
-var require$$0 = getCjsExportFromNamespace(d3);
-
-var _d3Flextree = getCjsExportFromNamespace(d3Flextree);
 
 var view = createCommonjsModule(function (module, exports) {
 
@@ -20338,7 +20302,7 @@ var view = createCommonjsModule(function (module, exports) {
   exports.loadPlugins = loadPlugins;
   exports.plugins = exports.Markmap = void 0;
 
-  var d3 = interopRequireWildcard(require$$0);
+  var d3$1 = interopRequireWildcard(d3);
 
   var plugins$1 = interopRequireWildcard(plugins);
 
@@ -20372,9 +20336,9 @@ var view = createCommonjsModule(function (module, exports) {
       ['handleZoom', 'handleClick'].forEach(function (key) {
         _this[key] = _this[key].bind(_this);
       });
-      this.svg = svg.datum ? svg : d3.select(svg);
+      this.svg = svg.datum ? svg : d3$1.select(svg);
       this.styleNode = this.svg.append('style');
-      this.zoom = d3.zoom().on('zoom', this.handleZoom);
+      this.zoom = d3$1.zoom().on('zoom', this.handleZoom);
       this.options = Object.assign({
         duration: 500,
         nodeFont: '300 16px/20px sans-serif',
@@ -20387,7 +20351,7 @@ var view = createCommonjsModule(function (module, exports) {
           return function (node) {
             return colorFn(node.p.i);
           };
-        }(d3.scaleOrdinal(d3.schemeCategory10)),
+        }(d3$1.scaleOrdinal(d3$1.schemeCategory10)),
         paddingX: 8
       }, opts);
       this.state = {
@@ -20406,7 +20370,7 @@ var view = createCommonjsModule(function (module, exports) {
             nodeFont = _this$options.nodeFont;
         var id = this.state.id;
         var extraStyle = typeof style === 'function' ? style(id) : '';
-        var styleText = ".".concat(id, " a { color: #0097e6; }\n.").concat(id, " a:hover { color: #00a8ff; }\n.").concat(id, "-g > path { fill: none; }\n.").concat(id, "-fo > div { font: ").concat(nodeFont, "; white-space: nowrap; }\n.").concat(id, "-fo code { padding: .2em .4em; font-size: calc(1em - 2px); color: #555; background-color: #f0f0f0; border-radius: 2px; }\n.").concat(id, "-fo del { text-decoration: line-through; }\n.").concat(id, "-fo em { font-style: italic; }\n.").concat(id, "-fo strong { font-weight: 600; }\n.").concat(id, "-fo pre { margin: 0; }\n.").concat(id, "-fo pre[class*=language-] { padding: 0; }\n.").concat(id, "-g > g { cursor: pointer; }\n").concat(extraStyle, "\n");
+        var styleText = ".".concat(id, " a { color: #0097e6; }\n.").concat(id, " a:hover { color: #00a8ff; }\n.").concat(id, "-g > path { fill: none; }\n.").concat(id, "-fo > div { font: ").concat(nodeFont, "; white-space: nowrap; }\n.").concat(id, "-fo code { padding: .2em .4em; font-size: calc(1em - 2px); color: #555; background-color: #f0f0f0; border-radius: 2px; }\n.").concat(id, "-fo del { text-decoration: line-through; }\n.").concat(id, "-fo em { font-style: italic; }\n.").concat(id, "-fo strong { font-weight: bolder; }\n.").concat(id, "-fo pre { margin: 0; }\n.").concat(id, "-fo pre[class*=language-] { padding: 0; }\n.").concat(id, "-g > g { cursor: pointer; }\n").concat(extraStyle, "\n");
         return styleText;
       }
     }, {
@@ -20418,7 +20382,7 @@ var view = createCommonjsModule(function (module, exports) {
     }, {
       key: "handleZoom",
       value: function handleZoom() {
-        var transform = d3.event.transform;
+        var transform = d3$1.event.transform;
         this.g.attr('transform', transform);
       }
     }, {
@@ -20511,7 +20475,7 @@ var view = createCommonjsModule(function (module, exports) {
             autoFit = _this$options3.autoFit,
             color = _this$options3.color;
         var id = this.state.id;
-        var layout = (0, _d3Flextree.flextree)().children(function (d) {
+        var layout = (0, d3Flextree.flextree)().children(function (d) {
           var _d$p;
 
           return !((_d$p = d.p) == null ? void 0 : _d$p.f) && d.c;
@@ -20529,17 +20493,17 @@ var view = createCommonjsModule(function (module, exports) {
         adjustSpacing(tree, spacingHorizontal);
         var descendants = tree.descendants().reverse();
         var links = tree.links();
-        var linkShape = d3.linkHorizontal();
-        var minX = d3.min(descendants, function (d) {
+        var linkShape = d3$1.linkHorizontal();
+        var minX = d3$1.min(descendants, function (d) {
           return d.x - d.xSize / 2;
         });
-        var maxX = d3.max(descendants, function (d) {
+        var maxX = d3$1.max(descendants, function (d) {
           return d.x + d.xSize / 2;
         });
-        var minY = d3.min(descendants, function (d) {
+        var minY = d3$1.min(descendants, function (d) {
           return d.y;
         });
-        var maxY = d3.max(descendants, function (d) {
+        var maxY = d3$1.max(descendants, function (d) {
           return d.y + d.ySizeInner;
         });
         Object.assign(this.state, {
@@ -20696,7 +20660,7 @@ var view = createCommonjsModule(function (module, exports) {
         var naturalWidth = maxY - minY;
         var naturalHeight = maxX - minX;
         var scale = Math.min(offsetWidth / naturalWidth * fitRatio, offsetHeight / naturalHeight * fitRatio, 2);
-        var initialZoom = d3.zoomIdentity.translate((offsetWidth - naturalWidth * scale) / 2 - minY * scale, (offsetHeight - naturalHeight * scale) / 2 - minX * scale).scale(scale);
+        var initialZoom = d3$1.zoomIdentity.translate((offsetWidth - naturalWidth * scale) / 2 - minY * scale, (offsetHeight - naturalHeight * scale) / 2 - minX * scale).scale(scale);
         return this.transition(this.svg).call(this.zoom.transform, initialZoom).end()["catch"](util.noop);
       }
     }, {
@@ -20710,7 +20674,7 @@ var view = createCommonjsModule(function (module, exports) {
 
         var halfWidth = offsetWidth / 2;
         var halfHeight = offsetHeight / 2;
-        var transform = d3.zoomTransform(svgNode);
+        var transform = d3$1.zoomTransform(svgNode);
         var newTransform = transform.translate((halfWidth - transform.x) * (1 - scale) / transform.k, (halfHeight - transform.y) * (1 - scale) / transform.k).scale(scale);
         return this.transition(this.svg).call(this.zoom.transform, newTransform).end()["catch"](util.noop);
       }
@@ -20772,11 +20736,6 @@ var view = createCommonjsModule(function (module, exports) {
     return _loadPlugins.apply(this, arguments);
   }
 });
-unwrapExports(view);
-var view_1 = view.markmap;
-var view_2 = view.loadPlugins;
-var view_3 = view.plugins;
-var view_4 = view.Markmap;
 
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -27153,14 +27112,12 @@ var index_browser = /*#__PURE__*/Object.freeze({
   utils: utils
 });
 
-var _remarkable = getCjsExportFromNamespace(index_browser);
-
 var transform_1 = createCommonjsModule(function (module, exports) {
 
   exports.__esModule = true;
   exports.buildTree = buildTree;
   exports.transform = transform;
-  var md = new _remarkable.Remarkable();
+  var md = new index_browser.Remarkable();
   md.block.ruler.enable(['deflist']);
 
   function extractInline(token) {
@@ -27357,11 +27314,8 @@ var transform_1 = createCommonjsModule(function (module, exports) {
     return root;
   }
 });
-unwrapExports(transform_1);
-var transform_2 = transform_1.buildTree;
-var transform_3 = transform_1.transform;
 
-/* src/components/markmap.svelte generated by Svelte v3.23.2 */
+/* src/components/markmap.svelte generated by Svelte v3.24.1 */
 
 const { console: console_1 } = globals;
 const file = "src/components/markmap.svelte";
@@ -27412,7 +27366,7 @@ function create_fragment(ctx) {
 	return block;
 }
 
-const loading =  view_2(["mathJax", "prism"]);
+const loading =  view.loadPlugins(["mathJax", "prism"]);
 
 function instance($$self, $$props, $$invalidate) {
 	let mm;
@@ -27443,7 +27397,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	function update(content, force) {
 		if (mm && (content !== cacheContent || force)) {
-			const data = transform_3(content || "");
+			const data = transform_1.transform(content || "");
 			mm.setData(data);
 			mm.fit();
 			cacheContent = content;
@@ -27452,7 +27406,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	onMount(async () => {
 		await loading;
-		$$invalidate(8, mm = view_4.create(el));
+		$$invalidate(8, mm = view.Markmap.create(el));
 		update(content);
 		window.addEventListener("resize", onResize);
 	});
@@ -27481,7 +27435,7 @@ function instance($$self, $$props, $$invalidate) {
 		});
 	}
 
-	$$self.$set = $$props => {
+	$$self.$$set = $$props => {
 		if ("el" in $$props) $$invalidate(0, el = $$props.el);
 		if ("content" in $$props) $$invalidate(2, content = $$props.content);
 		if ("style" in $$props) $$invalidate(1, style = $$props.style);
@@ -27489,13 +27443,13 @@ function instance($$self, $$props, $$invalidate) {
 	};
 
 	$$self.$capture_state = () => ({
-		loadPlugins: view_2,
+		loadPlugins: view.loadPlugins,
 		loading,
 		onMount,
 		onDestroy,
 		debounce: lodash_debounce,
-		transform: transform_3,
-		Markmap: view_4,
+		transform: transform_1.transform,
+		Markmap: view.Markmap,
 		mm,
 		el,
 		content,
@@ -27635,4 +27589,4 @@ class Markmap_1 extends SvelteComponentDev {
 	}
 }
 
-export { Markmap_1 as M, lodash_debounce as a, loading as l, transform_3 as t, util as u };
+export { Markmap_1 as M, lodash_debounce as a, loading as l, transform_1 as t, util as u };
