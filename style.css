@@ -978,6 +978,10 @@ svg {
   height: 0.75rem;
 }
 
+.text-sm {
+  font-size: 0.875rem;
+}
+
 .text-3xl {
   font-size: 1.875rem;
 }
@@ -1024,6 +1028,10 @@ svg {
   position: static;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -1048,6 +1056,20 @@ svg {
   --text-opacity: 1;
   color: #f56565;
   color: rgba(245, 101, 101, var(--text-opacity));
+}
+
+.text-orange-600 {
+  --text-opacity: 1;
+  color: #dd6b20;
+  color: rgba(221, 107, 32, var(--text-opacity));
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.z-10 {
+  z-index: 10;
 }
 
 .transform {

@@ -18,7 +18,7 @@ import 'core-js/modules/es.string.split';
 import 'core-js/modules/web.dom-collections.for-each';
 import 'core-js/modules/web.dom-collections.iterator';
 import 'core-js/modules/web.timers';
-import { y as createCommonjsModule, _ as _typeof, z as _inherits, A as _createSuper, B as _classCallCheck, C as _createClass, D as _assertThisInitialized, E as _slicedToArray, F as _toConsumableArray, G as _asyncToGenerator, H as _createForOfIteratorHelper, I as commonjsGlobal, J as _defineProperty, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, K as globals, L as onMount, M as onDestroy, v as validate_slots, N as svg_element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, O as binding_callbacks } from './client.0553b9c8.js';
+import { y as createCommonjsModule, _ as _typeof, z as _inherits, A as _createSuper, B as _classCallCheck, C as _createClass, D as _assertThisInitialized, E as _slicedToArray, F as _toConsumableArray, G as _asyncToGenerator, H as _createForOfIteratorHelper, I as commonjsGlobal, J as _defineProperty, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, K as globals, L as onMount, M as onDestroy, v as validate_slots, N as svg_element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, O as binding_callbacks } from './client.578b0126.js';
 import 'core-js/modules/es.symbol';
 import 'core-js/modules/es.symbol.description';
 import 'core-js/modules/es.symbol.iterator';
@@ -27159,11 +27159,14 @@ var transform_1 = createCommonjsModule(function (module, exports) {
   exports.__esModule = true;
   exports.buildTree = buildTree;
   exports.transform = transform;
-  var md = new index_browser.Remarkable();
+  var md = new index_browser.Remarkable({
+    html: true
+  });
   md.block.ruler.enable(['deflist']);
 
   function extractInline(token) {
     var html = [];
+    var payload = {};
     var style = {};
 
     var _iterator = _createForOfIteratorHelper(token.children),
@@ -27200,6 +27203,12 @@ var transform_1 = createCommonjsModule(function (module, exports) {
           } else {
             style = Object.assign(Object.assign({}, style), {}, _defineProperty({}, _type, false));
           }
+        } else if (child.type === 'htmltag' && /^<!--([\s\S]*?)-->$/.test(child.content)) {
+          var comment = child.content.slice(4, -3).trim(); // <!-- fold -->
+
+          if (comment === 'fold') {
+            payload.f = true;
+          }
         }
       }
     } catch (err) {
@@ -27208,7 +27217,7 @@ var transform_1 = createCommonjsModule(function (module, exports) {
       _iterator.f();
     }
 
-    return html.join('');
+    return [html.join(''), payload];
   }
 
   function cleanNode(node) {
@@ -27225,7 +27234,11 @@ var transform_1 = createCommonjsModule(function (module, exports) {
 
       node.c = node.c.filter(function (item) {
         if (['paragraph', 'fence'].includes(item.t)) {
-          if (!node.v) node.v = item.v;
+          if (!node.v) {
+            node.v = item.v;
+            node.p = Object.assign(Object.assign({}, node.p), item.p);
+          }
+
           return false;
         }
 
@@ -27262,7 +27275,6 @@ var transform_1 = createCommonjsModule(function (module, exports) {
     }
 
     node.d = depth;
-    delete node.p;
   }
 
   function buildTree(tokens) {
@@ -27326,7 +27338,13 @@ var transform_1 = createCommonjsModule(function (module, exports) {
             depth = 0;
           }
         } else if (token.type === 'inline') {
-          current.v = "".concat(current.v || '').concat(extractInline(token));
+          var _extractInline = extractInline(token),
+              _extractInline2 = _slicedToArray(_extractInline, 2),
+              text = _extractInline2[0],
+              _payload = _extractInline2[1];
+
+          current.v = "".concat(current.v || '').concat(text);
+          current.p = Object.assign(Object.assign({}, current.p), _payload);
         } else if (token.type === 'fence') {
           current.c.push({
             t: token.type,
