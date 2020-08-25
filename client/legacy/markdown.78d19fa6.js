@@ -4,12 +4,12 @@ import 'core-js/modules/es.array.slice';
 import 'core-js/modules/es.function.name';
 import 'core-js/modules/es.regexp.to-string';
 import 'core-js/modules/es.string.match';
-import { y as createCommonjsModule } from './client.0177d6c2.js';
+import { y as createCommonjsModule } from './client.6f38d2be.js';
 import 'core-js/modules/es.array.reverse';
 import 'core-js/modules/es.array.index-of';
 import 'core-js/modules/es.array.join';
 import 'core-js/modules/es.regexp.constructor';
-import { a as codemirror } from './codemirror.9b3e5720.js';
+import { a as codemirror } from './codemirror.94257b9c.js';
 import 'core-js/modules/es.array.last-index-of';
 
 var xml = createCommonjsModule(function (module, exports) {
@@ -612,7 +612,7 @@ var meta = createCommonjsModule(function (module, exports) {
       mime: "text/x-cmake",
       mode: "cmake",
       ext: ["cmake", "cmake.in"],
-      file: /^CMakeLists.txt$/
+      file: /^CMakeLists\.txt$/
     }, {
       name: "CoffeeScript",
       mimes: ["application/vnd.coffeescript", "text/coffeescript", "text/x-coffeescript"],
@@ -766,7 +766,7 @@ var meta = createCommonjsModule(function (module, exports) {
       name: "GitHub Flavored Markdown",
       mime: "text/x-gfm",
       mode: "gfm",
-      file: /^(readme|contributing|history).md$/i
+      file: /^(readme|contributing|history)\.md$/i
     }, {
       name: "Go",
       mime: "text/x-go",

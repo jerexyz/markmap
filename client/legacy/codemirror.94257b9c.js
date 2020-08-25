@@ -12,7 +12,7 @@ import 'core-js/modules/es.regexp.to-string';
 import 'core-js/modules/es.string.match';
 import 'core-js/modules/es.string.split';
 import 'core-js/modules/web.timers';
-import { y as createCommonjsModule, I as commonjsGlobal, _ as _typeof } from './client.0177d6c2.js';
+import { y as createCommonjsModule, I as commonjsGlobal, _ as _typeof } from './client.6f38d2be.js';
 import 'core-js/modules/es.array.reverse';
 import 'core-js/modules/es.array.concat';
 import 'core-js/modules/es.array.index-of';
@@ -9893,6 +9893,7 @@ var codemirror = createCommonjsModule(function (module, exports) {
       220: "\\",
       221: "]",
       222: "'",
+      224: "Mod",
       63232: "Up",
       63233: "Down",
       63234: "Left",
@@ -10169,7 +10170,7 @@ var codemirror = createCommonjsModule(function (module, exports) {
         name = "Ctrl-" + name;
       }
 
-      if ((flipCtrlCmd ? event.ctrlKey : event.metaKey) && base != "Cmd") {
+      if ((flipCtrlCmd ? event.ctrlKey : event.metaKey) && base != "Mod") {
         name = "Cmd-" + name;
       }
 
@@ -14632,7 +14633,7 @@ var codemirror = createCommonjsModule(function (module, exports) {
 
     CodeMirror.fromTextArea = fromTextArea;
     addLegacyProps(CodeMirror);
-    CodeMirror.version = "5.56.0";
+    CodeMirror.version = "5.57.0";
     return CodeMirror;
   });
 });

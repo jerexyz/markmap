@@ -22,7 +22,7 @@ import 'core-js/modules/web.dom-collections.for-each';
 import 'core-js/modules/web.dom-collections.iterator';
 import 'core-js/modules/web.timers';
 import 'core-js/modules/web.url';
-import { y as createCommonjsModule, F as _toConsumableArray, S as SvelteComponentDev, i as init, s as safe_not_equal, d as dispatch_dev, L as onMount, M as onDestroy, v as validate_slots, O as binding_callbacks, V as bind, a as space, e as element, c as create_component, N as svg_element, t as text, q as query_selector_all, b as detach_dev, f as claim_space, g as claim_element, h as children, k as claim_component, j as claim_text, m as attr_dev, l as add_location, n as insert_dev, o as append_dev, p as mount_component, Q as listen_dev, W as is_function, T as prevent_default, X as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, U as run_all, K as globals } from './client.0177d6c2.js';
+import { y as createCommonjsModule, F as _toConsumableArray, S as SvelteComponentDev, i as init, s as safe_not_equal, d as dispatch_dev, L as onMount, M as onDestroy, v as validate_slots, O as binding_callbacks, V as bind, a as space, e as element, c as create_component, N as svg_element, t as text, q as query_selector_all, b as detach_dev, f as claim_space, g as claim_element, h as children, k as claim_component, j as claim_text, m as attr_dev, l as add_location, n as insert_dev, o as append_dev, p as mount_component, Q as listen_dev, W as is_function, T as prevent_default, X as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, U as run_all, K as globals } from './client.6f38d2be.js';
 import 'core-js/modules/es.symbol';
 import 'core-js/modules/es.symbol.description';
 import 'core-js/modules/es.symbol.async-iterator';
@@ -53,7 +53,7 @@ import 'core-js/modules/es.array.find';
 import 'core-js/modules/es.function.bind';
 import 'core-js/modules/es.object.get-own-property-descriptor';
 import 'core-js/modules/es.weak-map';
-import { u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.b1e540dd.js';
+import { u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.ef77ce72.js';
 import 'core-js/modules/es.array.sort';
 import 'core-js/modules/es.string.trim';
 import 'core-js/modules/es.regexp.constructor';
@@ -428,73 +428,73 @@ function create_fragment(ctx) {
 		h: function hydrate() {
 			document_1.title = "Try Markmap";
 			attr_dev(div0, "class", "flex-1 min-w-0 border border-gray-300");
-			add_location(div0, file, 104, 2, 2289);
+			add_location(div0, file, 81, 2, 1964);
 			attr_dev(circle0, "cx", "10");
 			attr_dev(circle0, "cy", "10");
 			attr_dev(circle0, "r", "9");
 			attr_dev(circle0, "fill", "none");
 			attr_dev(circle0, "stroke-width", "0.5");
 			attr_dev(circle0, "stroke", "currentColor");
-			add_location(circle0, file, 116, 10, 2778);
+			add_location(circle0, file, 93, 10, 2453);
 			attr_dev(path0, "fill", "none");
 			attr_dev(path0, "stroke-width", "1");
 			attr_dev(path0, "stroke", "currentColor");
 			attr_dev(path0, "d", "M10 6 v8 M6 10 h8");
-			add_location(path0, file, 117, 10, 2874);
+			add_location(path0, file, 94, 10, 2549);
 			attr_dev(svg0, "width", "20");
 			attr_dev(svg0, "height", "20");
 			attr_dev(svg0, "viewBox", "0 0 20 20");
-			add_location(svg0, file, 115, 8, 2699);
+			add_location(svg0, file, 92, 8, 2374);
 			attr_dev(circle1, "cx", "10");
 			attr_dev(circle1, "cy", "10");
 			attr_dev(circle1, "r", "9");
 			attr_dev(circle1, "fill", "none");
 			attr_dev(circle1, "stroke-width", "0.5");
 			attr_dev(circle1, "stroke", "currentColor");
-			add_location(circle1, file, 125, 10, 3117);
+			add_location(circle1, file, 102, 10, 2792);
 			attr_dev(path1, "fill", "none");
 			attr_dev(path1, "stroke-width", "1");
 			attr_dev(path1, "stroke", "currentColor");
 			attr_dev(path1, "d", "M6 10 h8");
-			add_location(path1, file, 126, 10, 3213);
+			add_location(path1, file, 103, 10, 2888);
 			attr_dev(svg1, "width", "20");
 			attr_dev(svg1, "height", "20");
 			attr_dev(svg1, "viewBox", "0 0 20 20");
-			add_location(svg1, file, 124, 8, 3037);
+			add_location(svg1, file, 101, 8, 2712);
 			attr_dev(circle2, "cx", "10");
 			attr_dev(circle2, "cy", "10");
 			attr_dev(circle2, "r", "9");
 			attr_dev(circle2, "fill", "none");
 			attr_dev(circle2, "stroke-width", "0.5");
 			attr_dev(circle2, "stroke", "currentColor");
-			add_location(circle2, file, 134, 10, 3445);
+			add_location(circle2, file, 111, 10, 3120);
 			attr_dev(path2, "fill", "none");
 			attr_dev(path2, "stroke-width", "1");
 			attr_dev(path2, "stroke", "currentColor");
 			attr_dev(path2, "d", "M5 9 v-3 h3 M5 11 v3 h3 M15 9 v-3 h-3 M15 11 v3 h-3");
-			add_location(path2, file, 135, 10, 3541);
+			add_location(path2, file, 112, 10, 3216);
 			attr_dev(svg2, "width", "20");
 			attr_dev(svg2, "height", "20");
 			attr_dev(svg2, "viewBox", "0 0 20 20");
-			add_location(svg2, file, 133, 8, 3367);
+			add_location(svg2, file, 110, 8, 3042);
 			attr_dev(div1, "class", "buttons absolute right-0 bottom-0 mr-2 mb-2");
-			add_location(div1, file, 114, 6, 2633);
+			add_location(div1, file, 91, 6, 2308);
 			attr_dev(div2, "class", "markmap-wrapper flex-1");
-			add_location(div2, file, 106, 4, 2417);
-			add_location(a0, file, 146, 8, 3815);
+			add_location(div2, file, 83, 4, 2092);
+			add_location(a0, file, 123, 8, 3490);
 			attr_dev(div3, "class", "inline-block px-4 py-2");
-			add_location(div3, file, 145, 6, 3770);
-			add_location(a1, file, 149, 8, 4012);
+			add_location(div3, file, 122, 6, 3445);
+			add_location(a1, file, 126, 8, 3687);
 			attr_dev(span, "class", "text-red-500");
-			add_location(span, file, 150, 8, 4083);
+			add_location(span, file, 127, 8, 3758);
 			attr_dev(div4, "class", "inline-block px-4 py-2");
 			attr_dev(div4, "title", "SVG does not work well with PrismJS and MathJax");
-			add_location(div4, file, 148, 6, 3911);
-			add_location(div5, file, 144, 4, 3758);
+			add_location(div4, file, 125, 6, 3586);
+			add_location(div5, file, 121, 4, 3433);
 			attr_dev(div6, "class", "flex-1 min-w-0 flex flex-col");
-			add_location(div6, file, 105, 2, 2370);
+			add_location(div6, file, 82, 2, 2045);
 			attr_dev(div7, "class", "repl");
-			add_location(div7, file, 103, 0, 2268);
+			add_location(div7, file, 80, 0, 1943);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, t0, anchor);
@@ -664,19 +664,19 @@ function instance($$self, $$props, $$invalidate) {
 		download("markmap.html", "data:text/html;utf8," + encodeURIComponent(html));
 	}
 
-	async function loadData() {
-		const hq = new URLSearchParams(window.location.hash.slice(1));
-		const k = hq.get("k");
+	async function loadFromGist(key) {
+		key = key || "af76a4c245b302206b16aec503dbe07b";
 
-		if (k) {
-			window.location.hash = "";
-			const res = await fetch(`https://hs.gerald.win/mm/${k}`);
-			const { data } = await res.json();
+		const res = await fetch(`https://api.github.com/gists/${key}`, {
+			headers: { Accept: "application/vnd.github.v3+json" }
+		});
 
-			if (cm) {
-				cm.setValue(data);
-				update();
-			}
+		const data = await res.json();
+		const file = data.files["markmap.md"];
+
+		if (cm && file) {
+			cm.setValue(file.content || "");
+			update();
 		}
 	}
 
@@ -687,43 +687,19 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	onMount(async () => {
-		const { default: CodeMirror } = await import('./codemirror.9b3e5720.js').then(function (n) { return n.c; });
-		await import('./markdown.f601781c.js').then(function (n) { return n.m; });
+		const { default: CodeMirror } = await import('./codemirror.94257b9c.js').then(function (n) { return n.c; });
+		await import('./markdown.78d19fa6.js').then(function (n) { return n.m; });
 
 		cm = CodeMirror(editorEl, {
 			lineNumbers: true,
 			mode: "markdown",
-			value: `\
-# markmap-lib
-
-## Links
-
-- <https://markmap.js.org/>
-- [GitHub](https://github.com/gera2ld/markmap-lib)
-
-## Related
-
-- [coc-markmap](https://github.com/gera2ld/coc-markmap)
-- [gatsby-remark-markmap](https://github.com/gera2ld/gatsby-remark-markmap)
-
-## Features
-
-- links
-- **inline** ~~text~~ *styles*
-- multiline
-  text
-- \`inline code\`
--
-    \`\`\`js
-    console.log('code block');
-    \`\`\`
-- MathJax - \`\\(x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}\\)\`
-`
+			value: ""
 		});
 
 		cm.on("change", lodash_debounce(update, 500));
 		update();
-		loadData();
+		const hq = new URLSearchParams(window.location.hash.slice(1));
+		loadFromGist(hq.get("gist"));
 	});
 
 	onDestroy(async () => {
@@ -783,7 +759,7 @@ function instance($$self, $$props, $$invalidate) {
 		download,
 		onDownloadSVG,
 		onDownloadHTML,
-		loadData,
+		loadFromGist,
 		update
 	});
 

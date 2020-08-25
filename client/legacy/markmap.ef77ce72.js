@@ -18,7 +18,7 @@ import 'core-js/modules/es.string.split';
 import 'core-js/modules/web.dom-collections.for-each';
 import 'core-js/modules/web.dom-collections.iterator';
 import 'core-js/modules/web.timers';
-import { y as createCommonjsModule, _ as _typeof, z as _inherits, A as _createSuper, B as _classCallCheck, C as _createClass, D as _assertThisInitialized, E as _slicedToArray, F as _toConsumableArray, G as _asyncToGenerator, H as _createForOfIteratorHelper, I as commonjsGlobal, J as _defineProperty, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, K as globals, L as onMount, M as onDestroy, v as validate_slots, N as svg_element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, O as binding_callbacks } from './client.0177d6c2.js';
+import { y as createCommonjsModule, _ as _typeof, z as _inherits, A as _createSuper, B as _classCallCheck, C as _createClass, D as _assertThisInitialized, E as _slicedToArray, F as _toConsumableArray, G as _asyncToGenerator, H as _createForOfIteratorHelper, I as commonjsGlobal, J as _defineProperty, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, K as globals, L as onMount, M as onDestroy, v as validate_slots, N as svg_element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, O as binding_callbacks } from './client.6f38d2be.js';
 import 'core-js/modules/es.symbol';
 import 'core-js/modules/es.symbol.description';
 import 'core-js/modules/es.symbol.iterator';
@@ -4315,7 +4315,7 @@ var polyInOut = function custom(e) {
 var pi = Math.PI,
     halfPi = pi / 2;
 function sinIn(t) {
-  return 1 - Math.cos(t * halfPi);
+  return +t === 1 ? 1 : 1 - Math.cos(t * halfPi);
 }
 function sinOut(t) {
   return Math.sin(t * halfPi);
@@ -4324,14 +4324,19 @@ function sinInOut(t) {
   return (1 - Math.cos(pi * t)) / 2;
 }
 
+// tpmt is two power minus ten times t scaled to [0,1]
+function tpmt(x) {
+  return (Math.pow(2, -10 * x) - 0.0009765625) * 1.0009775171065494;
+}
+
 function expIn(t) {
-  return Math.pow(2, 10 * t - 10);
+  return tpmt(1 - +t);
 }
 function expOut(t) {
-  return 1 - Math.pow(2, -10 * t);
+  return 1 - tpmt(t);
 }
 function expInOut(t) {
-  return ((t *= 2) <= 1 ? Math.pow(2, 10 * t - 10) : 2 - Math.pow(2, 10 - 10 * t)) / 2;
+  return ((t *= 2) <= 1 ? tpmt(1 - t) : 2 - tpmt(t - 1)) / 2;
 }
 
 function circleIn(t) {
@@ -4369,7 +4374,7 @@ var backIn = function custom(s) {
   s = +s;
 
   function backIn(t) {
-    return t * t * ((s + 1) * t - s);
+    return (t = +t) * t * (s * (t - 1) + t);
   }
 
   backIn.overshoot = custom;
@@ -4379,7 +4384,7 @@ var backOut = function custom(s) {
   s = +s;
 
   function backOut(t) {
-    return --t * t * ((s + 1) * t + s) + 1;
+    return --t * t * ((t + 1) * s + t) + 1;
   }
 
   backOut.overshoot = custom;
@@ -4403,7 +4408,7 @@ var elasticIn = function custom(a, p) {
   var s = Math.asin(1 / (a = Math.max(1, a))) * (p /= tau);
 
   function elasticIn(t) {
-    return a * Math.pow(2, 10 * --t) * Math.sin((s - t) / p);
+    return a * tpmt(- --t) * Math.sin((s - t) / p);
   }
 
   elasticIn.amplitude = function (a) {
@@ -4420,7 +4425,7 @@ var elasticOut = function custom(a, p) {
   var s = Math.asin(1 / (a = Math.max(1, a))) * (p /= tau);
 
   function elasticOut(t) {
-    return 1 - a * Math.pow(2, -10 * (t = +t)) * Math.sin((t + s) / p);
+    return 1 - a * tpmt(t = +t) * Math.sin((t + s) / p);
   }
 
   elasticOut.amplitude = function (a) {
@@ -4437,7 +4442,7 @@ var elasticInOut = function custom(a, p) {
   var s = Math.asin(1 / (a = Math.max(1, a))) * (p /= tau);
 
   function elasticInOut(t) {
-    return ((t = t * 2 - 1) < 0 ? a * Math.pow(2, 10 * t) * Math.sin((s - t) / p) : 2 - a * Math.pow(2, -10 * t) * Math.sin((s + t) / p)) / 2;
+    return ((t = t * 2 - 1) < 0 ? a * tpmt(-t) * Math.sin((s - t) / p) : 2 - a * tpmt(t) * Math.sin((s + t) / p)) / 2;
   }
 
   elasticInOut.amplitude = function (a) {
@@ -7612,10 +7617,13 @@ function y$2 (y) {
   return force;
 }
 
-// Computes the decimal coefficient and exponent of the specified number x with
+function formatDecimal (x) {
+  return Math.abs(x = Math.round(x)) >= 1e21 ? x.toLocaleString("en").replace(/,/g, "") : x.toString(10);
+} // Computes the decimal coefficient and exponent of the specified number x with
 // significant digits p, where x is positive and p is in [1, 21] or undefined.
-// For example, formatDecimal(1.23) returns ["123", 0].
-function formatDecimal (x, p) {
+// For example, formatDecimalParts(1.23) returns ["123", 0].
+
+function formatDecimalParts(x, p) {
   if ((i = (x = p ? x.toExponential(p - 1) : x.toExponential()).indexOf("e")) < 0) return null; // NaN, ±Infinity
 
   var i,
@@ -7626,7 +7634,7 @@ function formatDecimal (x, p) {
 }
 
 function exponent$1 (x) {
-  return x = formatDecimal(Math.abs(x)), x ? x[1] : NaN;
+  return x = formatDecimalParts(Math.abs(x)), x ? x[1] : NaN;
 }
 
 function formatGroup (grouping, thousands) {
@@ -7718,17 +7726,17 @@ function formatTrim (s) {
 
 var prefixExponent;
 function formatPrefixAuto (x, p) {
-  var d = formatDecimal(x, p);
+  var d = formatDecimalParts(x, p);
   if (!d) return x + "";
   var coefficient = d[0],
       exponent = d[1],
       i = exponent - (prefixExponent = Math.max(-8, Math.min(8, Math.floor(exponent / 3))) * 3) + 1,
       n = coefficient.length;
-  return i === n ? coefficient : i > n ? coefficient + new Array(i - n + 1).join("0") : i > 0 ? coefficient.slice(0, i) + "." + coefficient.slice(i) : "0." + new Array(1 - i).join("0") + formatDecimal(x, Math.max(0, p + i - 1))[0]; // less than 1y!
+  return i === n ? coefficient : i > n ? coefficient + new Array(i - n + 1).join("0") : i > 0 ? coefficient.slice(0, i) + "." + coefficient.slice(i) : "0." + new Array(1 - i).join("0") + formatDecimalParts(x, Math.max(0, p + i - 1))[0]; // less than 1y!
 }
 
 function formatRounded (x, p) {
-  var d = formatDecimal(x, p);
+  var d = formatDecimalParts(x, p);
   if (!d) return x + "";
   var coefficient = d[0],
       exponent = d[1];
@@ -7745,9 +7753,7 @@ var formatTypes = {
   "c": function c(x) {
     return x + "";
   },
-  "d": function d(x) {
-    return Math.round(x).toString(10);
-  },
+  "d": formatDecimal,
   "e": function e(x, p) {
     return x.toExponential(p);
   },
@@ -13970,6 +13976,8 @@ function formatLocale$1(locale) {
     "d": formatDayOfMonth,
     "e": formatDayOfMonth,
     "f": formatMicroseconds,
+    "g": formatYearISO,
+    "G": formatFullYearISO,
     "H": formatHour24,
     "I": formatHour12,
     "j": formatDayOfYear,
@@ -14002,6 +14010,8 @@ function formatLocale$1(locale) {
     "d": formatUTCDayOfMonth,
     "e": formatUTCDayOfMonth,
     "f": formatUTCMicroseconds,
+    "g": formatUTCYearISO,
+    "G": formatUTCFullYearISO,
     "H": formatUTCHour24,
     "I": formatUTCHour12,
     "j": formatUTCDayOfYear,
@@ -14034,6 +14044,8 @@ function formatLocale$1(locale) {
     "d": parseDayOfMonth,
     "e": parseDayOfMonth,
     "f": parseMicroseconds,
+    "g": parseYear,
+    "G": parseFullYear,
     "H": parseHour24,
     "I": parseHour24,
     "j": parseDayOfYear,
@@ -14476,9 +14488,13 @@ function formatWeekNumberSunday(d, p) {
   return pad$1(sunday.count(year(d) - 1, d), p, 2);
 }
 
-function formatWeekNumberISO(d, p) {
+function dISO(d) {
   var day = d.getDay();
-  d = day >= 4 || day === 0 ? thursday(d) : thursday.ceil(d);
+  return day >= 4 || day === 0 ? thursday(d) : thursday.ceil(d);
+}
+
+function formatWeekNumberISO(d, p) {
+  d = dISO(d);
   return pad$1(thursday.count(year(d), d) + (year(d).getDay() === 4), p, 2);
 }
 
@@ -14494,7 +14510,18 @@ function formatYear$1(d, p) {
   return pad$1(d.getFullYear() % 100, p, 2);
 }
 
+function formatYearISO(d, p) {
+  d = dISO(d);
+  return pad$1(d.getFullYear() % 100, p, 2);
+}
+
 function formatFullYear(d, p) {
+  return pad$1(d.getFullYear() % 10000, p, 4);
+}
+
+function formatFullYearISO(d, p) {
+  var day = d.getDay();
+  d = day >= 4 || day === 0 ? thursday(d) : thursday.ceil(d);
   return pad$1(d.getFullYear() % 10000, p, 4);
 }
 
@@ -14548,9 +14575,13 @@ function formatUTCWeekNumberSunday(d, p) {
   return pad$1(utcSunday.count(utcYear(d) - 1, d), p, 2);
 }
 
-function formatUTCWeekNumberISO(d, p) {
+function UTCdISO(d) {
   var day = d.getUTCDay();
-  d = day >= 4 || day === 0 ? utcThursday(d) : utcThursday.ceil(d);
+  return day >= 4 || day === 0 ? utcThursday(d) : utcThursday.ceil(d);
+}
+
+function formatUTCWeekNumberISO(d, p) {
+  d = UTCdISO(d);
   return pad$1(utcThursday.count(utcYear(d), d) + (utcYear(d).getUTCDay() === 4), p, 2);
 }
 
@@ -14566,7 +14597,18 @@ function formatUTCYear(d, p) {
   return pad$1(d.getUTCFullYear() % 100, p, 2);
 }
 
+function formatUTCYearISO(d, p) {
+  d = UTCdISO(d);
+  return pad$1(d.getUTCFullYear() % 100, p, 2);
+}
+
 function formatUTCFullYear(d, p) {
+  return pad$1(d.getUTCFullYear() % 10000, p, 4);
+}
+
+function formatUTCFullYearISO(d, p) {
+  var day = d.getUTCDay();
+  d = day >= 4 || day === 0 ? utcThursday(d) : utcThursday.ceil(d);
   return pad$1(d.getUTCFullYear() % 10000, p, 4);
 }
 
