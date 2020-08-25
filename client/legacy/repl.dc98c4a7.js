@@ -22,7 +22,7 @@ import 'core-js/modules/web.dom-collections.for-each';
 import 'core-js/modules/web.dom-collections.iterator';
 import 'core-js/modules/web.timers';
 import 'core-js/modules/web.url';
-import { y as createCommonjsModule, F as _toConsumableArray, S as SvelteComponentDev, i as init, s as safe_not_equal, d as dispatch_dev, L as onMount, M as onDestroy, v as validate_slots, O as binding_callbacks, V as bind, a as space, e as element, t as text, c as create_component, N as svg_element, q as query_selector_all, b as detach_dev, f as claim_space, g as claim_element, h as children, j as claim_text, k as claim_component, m as attr_dev, l as add_location, P as set_style, n as insert_dev, o as append_dev, p as mount_component, Q as listen_dev, W as is_function, T as prevent_default, X as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, U as run_all, K as globals } from './client.07e1578d.js';
+import { y as createCommonjsModule, F as _toConsumableArray, S as SvelteComponentDev, i as init, s as safe_not_equal, d as dispatch_dev, L as onMount, M as onDestroy, v as validate_slots, O as binding_callbacks, V as bind, a as space, e as element, t as text, c as create_component, N as svg_element, q as query_selector_all, b as detach_dev, f as claim_space, g as claim_element, h as children, j as claim_text, k as claim_component, m as attr_dev, l as add_location, P as set_style, n as insert_dev, o as append_dev, p as mount_component, Q as listen_dev, W as is_function, T as prevent_default, X as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, U as run_all, K as globals } from './client.9da77f82.js';
 import 'core-js/modules/es.symbol';
 import 'core-js/modules/es.symbol.description';
 import 'core-js/modules/es.symbol.async-iterator';
@@ -53,7 +53,7 @@ import 'core-js/modules/es.array.find';
 import 'core-js/modules/es.function.bind';
 import 'core-js/modules/es.object.get-own-property-descriptor';
 import 'core-js/modules/es.weak-map';
-import { u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.cdfe8adf.js';
+import { u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.ed4f7228.js';
 import 'core-js/modules/es.array.sort';
 import 'core-js/modules/es.string.trim';
 import 'core-js/modules/es.regexp.constructor';
@@ -446,79 +446,79 @@ function create_fragment(ctx) {
 			document_1.title = "Try Markmap";
 			attr_dev(a0, "class", "inline-block text-sm text-orange-600 underline");
 			attr_dev(a0, "href", a0_href_value = `${/*pageUrl*/ ctx[6]}#?file=gist.md`);
-			add_location(a0, file, 100, 2, 2554);
+			add_location(a0, file, 104, 2, 2672);
 			attr_dev(div0, "class", "fixed z-10 hidden md:block");
 			set_style(div0, "top", "15px");
 			set_style(div0, "left", "50%");
-			add_location(div0, file, 99, 0, 2485);
+			add_location(div0, file, 103, 0, 2603);
 			attr_dev(div1, "class", "flex-1 min-w-0 border border-gray-300");
-			add_location(div1, file, 103, 2, 2715);
+			add_location(div1, file, 107, 2, 2862);
 			attr_dev(circle0, "cx", "10");
 			attr_dev(circle0, "cy", "10");
 			attr_dev(circle0, "r", "9");
 			attr_dev(circle0, "fill", "none");
 			attr_dev(circle0, "stroke-width", "0.5");
 			attr_dev(circle0, "stroke", "currentColor");
-			add_location(circle0, file, 115, 10, 3204);
+			add_location(circle0, file, 119, 10, 3351);
 			attr_dev(path0, "fill", "none");
 			attr_dev(path0, "stroke-width", "1");
 			attr_dev(path0, "stroke", "currentColor");
 			attr_dev(path0, "d", "M10 6 v8 M6 10 h8");
-			add_location(path0, file, 116, 10, 3300);
+			add_location(path0, file, 120, 10, 3447);
 			attr_dev(svg0, "width", "20");
 			attr_dev(svg0, "height", "20");
 			attr_dev(svg0, "viewBox", "0 0 20 20");
-			add_location(svg0, file, 114, 8, 3125);
+			add_location(svg0, file, 118, 8, 3272);
 			attr_dev(circle1, "cx", "10");
 			attr_dev(circle1, "cy", "10");
 			attr_dev(circle1, "r", "9");
 			attr_dev(circle1, "fill", "none");
 			attr_dev(circle1, "stroke-width", "0.5");
 			attr_dev(circle1, "stroke", "currentColor");
-			add_location(circle1, file, 124, 10, 3543);
+			add_location(circle1, file, 128, 10, 3690);
 			attr_dev(path1, "fill", "none");
 			attr_dev(path1, "stroke-width", "1");
 			attr_dev(path1, "stroke", "currentColor");
 			attr_dev(path1, "d", "M6 10 h8");
-			add_location(path1, file, 125, 10, 3639);
+			add_location(path1, file, 129, 10, 3786);
 			attr_dev(svg1, "width", "20");
 			attr_dev(svg1, "height", "20");
 			attr_dev(svg1, "viewBox", "0 0 20 20");
-			add_location(svg1, file, 123, 8, 3463);
+			add_location(svg1, file, 127, 8, 3610);
 			attr_dev(circle2, "cx", "10");
 			attr_dev(circle2, "cy", "10");
 			attr_dev(circle2, "r", "9");
 			attr_dev(circle2, "fill", "none");
 			attr_dev(circle2, "stroke-width", "0.5");
 			attr_dev(circle2, "stroke", "currentColor");
-			add_location(circle2, file, 133, 10, 3871);
+			add_location(circle2, file, 137, 10, 4018);
 			attr_dev(path2, "fill", "none");
 			attr_dev(path2, "stroke-width", "1");
 			attr_dev(path2, "stroke", "currentColor");
 			attr_dev(path2, "d", "M5 9 v-3 h3 M5 11 v3 h3 M15 9 v-3 h-3 M15 11 v3 h-3");
-			add_location(path2, file, 134, 10, 3967);
+			add_location(path2, file, 138, 10, 4114);
 			attr_dev(svg2, "width", "20");
 			attr_dev(svg2, "height", "20");
 			attr_dev(svg2, "viewBox", "0 0 20 20");
-			add_location(svg2, file, 132, 8, 3793);
+			add_location(svg2, file, 136, 8, 3940);
 			attr_dev(div2, "class", "buttons absolute right-0 bottom-0 mr-2 mb-2");
-			add_location(div2, file, 113, 6, 3059);
+			add_location(div2, file, 117, 6, 3206);
 			attr_dev(div3, "class", "markmap-wrapper flex-1");
-			add_location(div3, file, 105, 4, 2843);
-			add_location(a1, file, 145, 8, 4241);
+			add_location(div3, file, 109, 4, 2990);
+			add_location(a1, file, 149, 8, 4388);
 			attr_dev(div4, "class", "inline-block px-4 py-2");
-			add_location(div4, file, 144, 6, 4196);
-			add_location(a2, file, 148, 8, 4438);
+			add_location(div4, file, 148, 6, 4343);
+			add_location(a2, file, 152, 8, 4585);
 			attr_dev(span, "class", "text-red-500");
-			add_location(span, file, 149, 8, 4509);
+			add_location(span, file, 153, 8, 4656);
 			attr_dev(div5, "class", "inline-block px-4 py-2");
 			attr_dev(div5, "title", "SVG does not work well with PrismJS and MathJax");
-			add_location(div5, file, 147, 6, 4337);
-			add_location(div6, file, 143, 4, 4184);
+			add_location(div5, file, 151, 6, 4484);
+			add_location(div6, file, 147, 4, 4331);
 			attr_dev(div7, "class", "flex-1 min-w-0 flex flex-col");
-			add_location(div7, file, 104, 2, 2796);
+			add_location(div7, file, 108, 2, 2943);
 			attr_dev(div8, "class", "repl");
-			add_location(div8, file, 102, 0, 2694);
+			add_location(div8, file, 106, 0, 2841);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, t0, anchor);
@@ -562,6 +562,7 @@ function create_fragment(ctx) {
 
 			if (!mounted) {
 				dispose = [
+					listen_dev(a0, "click", onClickNewFeature, false, false, false),
 					listen_dev(
 						svg0,
 						"click",
@@ -695,6 +696,10 @@ async function loadFromGist(key, filename) {
 	return content;
 }
 
+function onClickNewFeature() {
+	if (typeof gtag === "function") gtag("event", "click", { button: "newFeature" });
+}
+
 function instance($$self, $$props, $$invalidate) {
 	let editorEl;
 	let svgEl;
@@ -742,8 +747,8 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	onMount(async () => {
-		const { default: CodeMirror } = await import('./codemirror.93a88b43.js').then(function (n) { return n.c; });
-		await import('./markdown.e4efe9cd.js').then(function (n) { return n.m; });
+		const { default: CodeMirror } = await import('./codemirror.985dad29.js').then(function (n) { return n.c; });
+		await import('./markdown.fd5c9f28.js').then(function (n) { return n.m; });
 
 		cm = CodeMirror(editorEl, {
 			lineNumbers: true,
@@ -820,7 +825,8 @@ function instance($$self, $$props, $$invalidate) {
 		loadFromGist,
 		lastSession,
 		onHashChange,
-		update
+		update,
+		onClickNewFeature
 	});
 
 	$$self.$inject_state = $$props => {
