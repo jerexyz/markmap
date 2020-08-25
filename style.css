@@ -958,6 +958,10 @@ svg {
   display: flex;
 }
 
+.hidden {
+  display: none;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -1208,6 +1212,13 @@ svg {
       max-width: 1280px;
     }
   }
+
+@media (min-width: 768px) {
+
+  .md\:block {
+    display: block;
+  }
+}
 
 @media (min-width: 1024px) {
   .lg\:container {

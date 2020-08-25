@@ -3190,24 +3190,24 @@ class App extends SvelteComponentDev {
 var ignore = [];
 var components = [{
   js: function js() {
-    return import('./index.b8215d88.js');
+    return import('./index.109af683.js');
   },
-  css: ["legacy/client.5e320a38.css"]
+  css: ["legacy/client.07e1578d.css"]
 }, {
   js: function js() {
-    return import('./about.880f0122.js');
+    return import('./about.47a163be.js');
   },
-  css: ["legacy/client.5e320a38.css"]
+  css: ["legacy/client.07e1578d.css"]
 }, {
   js: function js() {
-    return import('./usage.797d4f2b.js');
+    return import('./usage.70adcf68.js');
   },
-  css: ["legacy/client.5e320a38.css"]
+  css: ["legacy/client.07e1578d.css"]
 }, {
   js: function js() {
-    return import('./repl.f2cfb149.js');
+    return import('./repl.4624a4a1.js');
   },
-  css: ["legacy/repl.f2cfb149.css","legacy/client.5e320a38.css"]
+  css: ["legacy/repl.4624a4a1.css","legacy/client.07e1578d.css"]
 }];
 var routes = [{
   // index.svelte
