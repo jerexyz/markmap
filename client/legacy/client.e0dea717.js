@@ -1768,6 +1768,15 @@ function attr_dev(node, attribute, value) {
   });
 }
 
+function prop_dev(node, property, value) {
+  node[property] = value;
+  dispatch_dev("SvelteDOMSetProperty", {
+    node: node,
+    property: property,
+    value: value
+  });
+}
+
 function set_data_dev(text, data) {
   data = '' + data;
   if (text.wholeText === data) return;
@@ -3190,24 +3199,24 @@ class App extends SvelteComponentDev {
 var ignore = [];
 var components = [{
   js: function js() {
-    return import('./index.625ff840.js');
+    return import('./index.d934b74a.js');
   },
-  css: ["legacy/client.9da77f82.css"]
+  css: "__SAPPER_CSS_PLACEHOLDER:index.svelte__"
 }, {
   js: function js() {
-    return import('./about.f53d7980.js');
+    return import('./about.db6ad4ad.js');
   },
-  css: ["legacy/client.9da77f82.css"]
+  css: "__SAPPER_CSS_PLACEHOLDER:about.svelte__"
 }, {
   js: function js() {
-    return import('./usage.fe17c06c.js');
+    return import('./usage.a7acc6ac.js');
   },
-  css: ["legacy/client.9da77f82.css"]
+  css: "__SAPPER_CSS_PLACEHOLDER:usage.svelte__"
 }, {
   js: function js() {
-    return import('./repl.dc98c4a7.js');
+    return import('./repl.9bad57e1.js');
   },
-  css: ["legacy/repl.dc98c4a7.css","legacy/client.9da77f82.css"]
+  css: "__SAPPER_CSS_PLACEHOLDER:repl.svelte__"
 }];
 var routes = [{
   // index.svelte
@@ -3235,6 +3244,53 @@ var routes = [{
   }]
 }];
 
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+function __awaiter(thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+}
+
 function _goto(href) {
   var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
     noscroll: false,
@@ -3253,8 +3309,6 @@ function _goto(href) {
   location.href = href;
   return new Promise(function (f) {}); // never resolves
 }
-/** Callback to inform of a value updates. */
-
 
 function page_store(value) {
   var store = writable(value);
@@ -3274,9 +3328,9 @@ function page_store(value) {
 
   function subscribe(run) {
     var old_value;
-    return store.subscribe(function (value) {
-      if (old_value === undefined || ready && value !== old_value) {
-        run(old_value = value);
+    return store.subscribe(function (new_value) {
+      if (old_value === undefined || ready && new_value !== old_value) {
+        run(old_value = new_value);
       }
     });
   }
@@ -3302,9 +3356,9 @@ var stores = {
 };
 var $session;
 var session_dirty;
-stores.session.subscribe( /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(value) {
-    var target, token, _yield$hydrate_target, redirect, props, branch;
+stores.session.subscribe(function (value) {
+  return __awaiter(void 0, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    var dest, token, _yield$hydrate_target, redirect, props, branch;
 
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -3321,10 +3375,10 @@ stores.session.subscribe( /*#__PURE__*/function () {
 
           case 3:
             session_dirty = true;
-            target = select_target(new URL(location.href));
+            dest = select_target(new URL(location.href));
             token = current_token = {};
             _context.next = 8;
-            return hydrate_target(target);
+            return hydrate_target(dest);
 
           case 8:
             _yield$hydrate_target = _context.sent;
@@ -3340,21 +3394,32 @@ stores.session.subscribe( /*#__PURE__*/function () {
             return _context.abrupt("return");
 
           case 14:
-            _context.next = 16;
-            return render(redirect, branch, props, target.page);
+            if (!redirect) {
+              _context.next = 19;
+              break;
+            }
 
-          case 16:
+            _context.next = 17;
+            return _goto(redirect.location, {
+              replaceState: true
+            });
+
+          case 17:
+            _context.next = 21;
+            break;
+
+          case 19:
+            _context.next = 21;
+            return render(branch, props, dest.page);
+
+          case 21:
           case "end":
             return _context.stop();
         }
       }
     }, _callee);
   }));
-
-  return function (_x) {
-    return _ref.apply(this, arguments);
-  };
-}());
+});
 var prefetching = null;
 
 function set_prefetching(href, promise) {
@@ -3478,7 +3543,7 @@ function handle_error(url) {
     segments: preloaded
   };
   var query = extract_query(search);
-  render(null, [], props, {
+  render([], props, {
     host: host,
     path: pathname,
     query: query,
@@ -3493,14 +3558,9 @@ function scroll_state() {
   };
 }
 
-function navigate(_x2, _x3, _x4, _x5) {
-  return _navigate.apply(this, arguments);
-}
-
-function _navigate() {
-  _navigate = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(target, id, noscroll, hash) {
-    var current_scroll, loaded, token, _yield$loaded, redirect, props, branch, scroll, deep_linked;
-
+function navigate(dest, id, noscroll, hash) {
+  return __awaiter(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+    var current_scroll, loaded, token, loaded_result, redirect, props, branch, scroll, deep_linked;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -3521,31 +3581,45 @@ function _navigate() {
 
             cid = id;
             if (root_component) stores.preloading.set(true);
-            loaded = prefetching && prefetching.href === target.href ? prefetching.promise : hydrate_target(target);
+            loaded = prefetching && prefetching.href === dest.href ? prefetching.promise : hydrate_target(dest);
             prefetching = null;
             token = current_token = {};
             _context2.next = 8;
             return loaded;
 
           case 8:
-            _yield$loaded = _context2.sent;
-            redirect = _yield$loaded.redirect;
-            props = _yield$loaded.props;
-            branch = _yield$loaded.branch;
+            loaded_result = _context2.sent;
+            redirect = loaded_result.redirect;
 
             if (!(token !== current_token)) {
-              _context2.next = 14;
+              _context2.next = 12;
               break;
             }
 
             return _context2.abrupt("return");
 
-          case 14:
-            _context2.next = 16;
-            return render(redirect, branch, props, target.page);
+          case 12:
+            if (!redirect) {
+              _context2.next = 17;
+              break;
+            }
 
-          case 16:
-            if (document.activeElement) document.activeElement.blur();
+            _context2.next = 15;
+            return _goto(redirect.location, {
+              replaceState: true
+            });
+
+          case 15:
+            _context2.next = 20;
+            break;
+
+          case 17:
+            props = loaded_result.props, branch = loaded_result.branch;
+            _context2.next = 20;
+            return render(branch, props, dest.page);
+
+          case 20:
+            if (document.activeElement && document.activeElement instanceof HTMLElement) document.activeElement.blur();
 
             if (!noscroll) {
               scroll = scroll_history[id];
@@ -3563,52 +3637,40 @@ function _navigate() {
               }
 
               scroll_history[cid] = scroll;
-              if (scroll) scrollTo(scroll.x, scroll.y);
+
+              if (scroll) {
+                redirect ? scrollTo(0, 0) : scrollTo(scroll.x, scroll.y);
+              }
             }
 
-          case 18:
+          case 22:
           case "end":
             return _context2.stop();
         }
       }
     }, _callee2);
   }));
-  return _navigate.apply(this, arguments);
 }
 
-function render(_x6, _x7, _x8, _x9) {
-  return _render.apply(this, arguments);
-}
-
-function _render() {
-  _render = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(redirect, branch, props, page) {
+function render(branch, props, page) {
+  return __awaiter(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            if (!redirect) {
-              _context3.next = 2;
-              break;
-            }
-
-            return _context3.abrupt("return", _goto(redirect.location, {
-              replaceState: true
-            }));
-
-          case 2:
             stores.page.set(page);
             stores.preloading.set(false);
 
             if (!root_component) {
-              _context3.next = 8;
+              _context3.next = 6;
               break;
             }
 
             root_component.$set(props);
-            _context3.next = 15;
+            _context3.next = 13;
             break;
 
-          case 8:
+          case 6:
             props.stores = {
               page: {
                 subscribe: stores.page.subscribe
@@ -3618,10 +3680,10 @@ function _render() {
               },
               session: stores.session
             };
-            _context3.next = 11;
+            _context3.next = 9;
             return root_preloaded;
 
-          case 11:
+          case 9:
             _context3.t0 = _context3.sent;
             props.level0 = {
               props: _context3.t0
@@ -3633,20 +3695,19 @@ function _render() {
               hydrate: true
             });
 
-          case 15:
+          case 13:
             current_branch = branch;
             current_query = JSON.stringify(page.query);
             ready = true;
             session_dirty = false;
 
-          case 19:
+          case 17:
           case "end":
             return _context3.stop();
         }
       }
     }, _callee3);
   }));
-  return _render.apply(this, arguments);
 }
 
 function part_changed(i, segment, match, stringified_query) {
@@ -3665,19 +3726,17 @@ function part_changed(i, segment, match, stringified_query) {
   }
 }
 
-function hydrate_target(_x10) {
-  return _hydrate_target.apply(this, arguments);
-}
+function hydrate_target(dest) {
+  return __awaiter(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+    var _this = this;
 
-function _hydrate_target() {
-  _hydrate_target = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(target) {
     var route, page, segments, _redirect, props, preload_context, root_preload, branch, l, stringified_query, match, segment_dirty;
 
     return regeneratorRuntime.wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
-            route = target.route, page = target.page;
+            route = dest.route, page = dest.page;
             segments = page.path.split('/').filter(Boolean);
             _redirect = null;
             props = {
@@ -3687,7 +3746,7 @@ function _hydrate_target() {
             };
             preload_context = {
               fetch: function (_fetch) {
-                function fetch(_x11, _x12) {
+                function fetch(_x, _x2) {
                   return _fetch.apply(this, arguments);
                 }
 
@@ -3732,8 +3791,8 @@ function _hydrate_target() {
             match = route.pattern.exec(page.path);
             segment_dirty = false;
             _context5.next = 13;
-            return Promise.all(route.parts.map( /*#__PURE__*/function () {
-              var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(part, i) {
+            return Promise.all(route.parts.map(function (part, i) {
+              return __awaiter(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
                 var segment, j, _yield$load_component, component, preload, preloaded;
 
                 return regeneratorRuntime.wrap(function _callee4$(_context4) {
@@ -3788,7 +3847,7 @@ function _hydrate_target() {
                           host: page.host,
                           path: page.path,
                           query: page.query,
-                          params: part.params ? part.params(target.match) : {}
+                          params: part.params ? part.params(dest.match) : {}
                         }, $session);
 
                       case 18:
@@ -3823,11 +3882,7 @@ function _hydrate_target() {
                   }
                 }, _callee4);
               }));
-
-              return function (_x13, _x14) {
-                return _ref2.apply(this, arguments);
-              };
-            }()));
+            }));
 
           case 13:
             branch = _context5.sent;
@@ -3855,7 +3910,6 @@ function _hydrate_target() {
       }
     }, _callee5, null, [[7, 16]]);
   }));
-  return _hydrate_target.apply(this, arguments);
 }
 
 function load_css(chunk) {
@@ -3954,7 +4008,7 @@ function handle_click(event) {
   // Adapted from https://github.com/visionmedia/page.js
   // MIT license https://github.com/visionmedia/page.js#license
   if (which(event) !== 1) return;
-  if (event.metaKey || event.ctrlKey || event.shiftKey) return;
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   if (event.defaultPrevented) return;
   var a = find_anchor(event.target);
   if (!a) return;
@@ -4015,7 +4069,8 @@ function handle_popstate(event) {
     if (_target) {
       navigate(_target, event.state.id);
     } else {
-      location.href = location.href;
+      // eslint-disable-next-line
+      location.href = location.href; // nosonar
     }
   } else {
     // hashchange
@@ -4043,4 +4098,4 @@ start({
   target: document.querySelector('#sapper')
 });
 
-export { _createSuper as A, _classCallCheck as B, _createClass as C, _assertThisInitialized as D, _slicedToArray as E, _toConsumableArray as F, _asyncToGenerator as G, _createForOfIteratorHelper as H, commonjsGlobal as I, _defineProperty as J, globals as K, onMount as L, onDestroy as M, svg_element as N, binding_callbacks as O, set_style as P, listen_dev as Q, empty as R, SvelteComponentDev as S, prevent_default as T, run_all as U, bind as V, is_function as W, add_flush_callback as X, _typeof as _, space as a, detach_dev as b, create_component as c, dispatch_dev as d, element as e, claim_space as f, claim_element as g, children as h, init as i, claim_text as j, claim_component as k, add_location as l, attr_dev as m, insert_dev as n, append_dev as o, mount_component as p, query_selector_all as q, noop as r, safe_not_equal as s, text as t, transition_in as u, validate_slots as v, transition_out as w, destroy_component as x, createCommonjsModule as y, _inherits as z };
+export { _createSuper as A, _classCallCheck as B, _createClass as C, _assertThisInitialized as D, _slicedToArray as E, _toConsumableArray as F, _asyncToGenerator as G, _createForOfIteratorHelper as H, commonjsGlobal as I, _defineProperty as J, globals as K, onMount as L, onDestroy as M, svg_element as N, binding_callbacks as O, set_style as P, listen_dev as Q, empty as R, SvelteComponentDev as S, prevent_default as T, run_all as U, prop_dev as V, bind as W, is_function as X, add_flush_callback as Y, _typeof as _, space as a, detach_dev as b, create_component as c, dispatch_dev as d, element as e, claim_space as f, claim_element as g, children as h, init as i, claim_text as j, claim_component as k, add_location as l, attr_dev as m, insert_dev as n, append_dev as o, mount_component as p, query_selector_all as q, noop as r, safe_not_equal as s, text as t, transition_in as u, validate_slots as v, transition_out as w, destroy_component as x, createCommonjsModule as y, _inherits as z };

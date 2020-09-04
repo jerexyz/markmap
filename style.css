@@ -487,10 +487,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #a0aec0;
 }
 
-input::-ms-input-placeholder, textarea::-ms-input-placeholder {
-  color: #a0aec0;
-}
-
 input::placeholder,
 textarea::placeholder {
   color: #a0aec0;
@@ -858,8 +854,7 @@ svg {
     transition-property: all;
     transition-duration: 500ms;
     vertical-align: middle;
-    -webkit-filter: grayscale(1) opacity(.5);
-            filter: grayscale(1) opacity(.5);
+    filter: grayscale(1) opacity(.5);
   }
 
 .donate-group > img {
@@ -868,8 +863,7 @@ svg {
 
 .donate-group:hover > *,
   .donate-group.active > * {
-    -webkit-filter: grayscale(0) opacity(1);
-            filter: grayscale(0) opacity(1);
+    filter: grayscale(0) opacity(1);
   }
 
 .donate-image {
@@ -982,6 +976,10 @@ svg {
   height: 0.75rem;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .text-sm {
   font-size: 0.875rem;
 }
@@ -1016,6 +1014,10 @@ svg {
 
 .overflow-x-auto {
   overflow-x: auto;
+}
+
+.p-1 {
+  padding: 0.25rem;
 }
 
 .py-2 {
@@ -1070,6 +1072,10 @@ svg {
 
 .underline {
   text-decoration: underline;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .z-10 {

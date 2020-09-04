@@ -22,7 +22,7 @@ import 'core-js/modules/web.dom-collections.for-each';
 import 'core-js/modules/web.dom-collections.iterator';
 import 'core-js/modules/web.timers';
 import 'core-js/modules/web.url';
-import { y as createCommonjsModule, F as _toConsumableArray, S as SvelteComponentDev, i as init, s as safe_not_equal, d as dispatch_dev, L as onMount, M as onDestroy, v as validate_slots, O as binding_callbacks, V as bind, a as space, e as element, t as text, c as create_component, N as svg_element, q as query_selector_all, b as detach_dev, f as claim_space, g as claim_element, h as children, j as claim_text, k as claim_component, m as attr_dev, l as add_location, P as set_style, n as insert_dev, o as append_dev, p as mount_component, Q as listen_dev, W as is_function, T as prevent_default, X as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, U as run_all, K as globals } from './client.9da77f82.js';
+import { y as createCommonjsModule, F as _toConsumableArray, S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, L as onMount, M as onDestroy, v as validate_slots, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, Q as listen_dev, V as prop_dev, O as binding_callbacks, W as bind, a as space, t as text, c as create_component, N as svg_element, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, P as set_style, o as append_dev, p as mount_component, X as is_function, T as prevent_default, Y as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, U as run_all, K as globals } from './client.e0dea717.js';
 import 'core-js/modules/es.symbol';
 import 'core-js/modules/es.symbol.description';
 import 'core-js/modules/es.symbol.async-iterator';
@@ -53,7 +53,7 @@ import 'core-js/modules/es.array.find';
 import 'core-js/modules/es.function.bind';
 import 'core-js/modules/es.object.get-own-property-descriptor';
 import 'core-js/modules/es.weak-map';
-import { u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.ed4f7228.js';
+import { u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.1f80a089.js';
 import 'core-js/modules/es.array.sort';
 import 'core-js/modules/es.string.trim';
 import 'core-js/modules/es.regexp.constructor';
@@ -160,6 +160,58 @@ var template_1 = createCommonjsModule(function (module, exports) {
 const { document: document_1 } = globals;
 const file = "src/routes/repl.svelte";
 
+// (110:4) {#if !cm}
+function create_if_block(ctx) {
+	let textarea;
+	let mounted;
+	let dispose;
+
+	const block = {
+		c: function create() {
+			textarea = element("textarea");
+			this.h();
+		},
+		l: function claim(nodes) {
+			textarea = claim_element(nodes, "TEXTAREA", { class: true, value: true });
+			children(textarea).forEach(detach_dev);
+			this.h();
+		},
+		h: function hydrate() {
+			attr_dev(textarea, "class", "w-full h-full p-1");
+			textarea.value = /*content*/ ctx[3];
+			add_location(textarea, file, 110, 4, 2922);
+		},
+		m: function mount(target, anchor) {
+			insert_dev(target, textarea, anchor);
+
+			if (!mounted) {
+				dispose = listen_dev(textarea, "input", /*handleInput*/ ctx[10], false, false, false);
+				mounted = true;
+			}
+		},
+		p: function update(ctx, dirty) {
+			if (dirty & /*content*/ 8) {
+				prop_dev(textarea, "value", /*content*/ ctx[3]);
+			}
+		},
+		d: function destroy(detaching) {
+			if (detaching) detach_dev(textarea);
+			mounted = false;
+			dispose();
+		}
+	};
+
+	dispatch_dev("SvelteRegisterBlock", {
+		block,
+		id: create_if_block.name,
+		type: "if",
+		source: "(110:4) {#if !cm}",
+		ctx
+	});
+
+	return block;
+}
+
 function create_fragment(ctx) {
 	let t0;
 	let div0;
@@ -205,39 +257,40 @@ function create_fragment(ctx) {
 	let current;
 	let mounted;
 	let dispose;
+	let if_block = !/*cm*/ ctx[2] && create_if_block(ctx);
 
 	function markmap_el_binding(value) {
-		/*markmap_el_binding*/ ctx[10].call(null, value);
+		/*markmap_el_binding*/ ctx[12].call(null, value);
 	}
 
 	function markmap_onReset_binding(value) {
-		/*markmap_onReset_binding*/ ctx[11].call(null, value);
+		/*markmap_onReset_binding*/ ctx[13].call(null, value);
 	}
 
 	function markmap_onZoomIn_binding(value) {
-		/*markmap_onZoomIn_binding*/ ctx[12].call(null, value);
+		/*markmap_onZoomIn_binding*/ ctx[14].call(null, value);
 	}
 
 	function markmap_onZoomOut_binding(value) {
-		/*markmap_onZoomOut_binding*/ ctx[13].call(null, value);
+		/*markmap_onZoomOut_binding*/ ctx[15].call(null, value);
 	}
 
-	let markmap_props = { content: /*content*/ ctx[2] };
+	let markmap_props = { content: /*content*/ ctx[3] };
 
 	if (/*svgEl*/ ctx[1] !== void 0) {
 		markmap_props.el = /*svgEl*/ ctx[1];
 	}
 
-	if (/*onReset*/ ctx[3] !== void 0) {
-		markmap_props.onReset = /*onReset*/ ctx[3];
+	if (/*onReset*/ ctx[4] !== void 0) {
+		markmap_props.onReset = /*onReset*/ ctx[4];
 	}
 
-	if (/*onZoomIn*/ ctx[4] !== void 0) {
-		markmap_props.onZoomIn = /*onZoomIn*/ ctx[4];
+	if (/*onZoomIn*/ ctx[5] !== void 0) {
+		markmap_props.onZoomIn = /*onZoomIn*/ ctx[5];
 	}
 
-	if (/*onZoomOut*/ ctx[5] !== void 0) {
-		markmap_props.onZoomOut = /*onZoomOut*/ ctx[5];
+	if (/*onZoomOut*/ ctx[6] !== void 0) {
+		markmap_props.onZoomOut = /*onZoomOut*/ ctx[6];
 	}
 
 	markmap = new Markmap_1({ props: markmap_props, $$inline: true });
@@ -255,6 +308,7 @@ function create_fragment(ctx) {
 			t2 = space();
 			div8 = element("div");
 			div1 = element("div");
+			if (if_block) if_block.c();
 			t3 = space();
 			div7 = element("div");
 			div3 = element("div");
@@ -301,7 +355,9 @@ function create_fragment(ctx) {
 			div8 = claim_element(nodes, "DIV", { class: true });
 			var div8_nodes = children(div8);
 			div1 = claim_element(div8_nodes, "DIV", { class: true });
-			children(div1).forEach(detach_dev);
+			var div1_nodes = children(div1);
+			if (if_block) if_block.l(div1_nodes);
+			div1_nodes.forEach(detach_dev);
 			t3 = claim_space(div8_nodes);
 			div7 = claim_element(div8_nodes, "DIV", { class: true });
 			var div7_nodes = children(div7);
@@ -445,80 +501,80 @@ function create_fragment(ctx) {
 		h: function hydrate() {
 			document_1.title = "Try Markmap";
 			attr_dev(a0, "class", "inline-block text-sm text-orange-600 underline");
-			attr_dev(a0, "href", a0_href_value = `${/*pageUrl*/ ctx[6]}#?file=gist.md`);
-			add_location(a0, file, 104, 2, 2672);
+			attr_dev(a0, "href", a0_href_value = `${/*pageUrl*/ ctx[7]}#?file=gist.md`);
+			add_location(a0, file, 105, 2, 2641);
 			attr_dev(div0, "class", "fixed z-10 hidden md:block");
 			set_style(div0, "top", "15px");
 			set_style(div0, "left", "50%");
-			add_location(div0, file, 103, 0, 2603);
+			add_location(div0, file, 104, 0, 2572);
 			attr_dev(div1, "class", "flex-1 min-w-0 border border-gray-300");
-			add_location(div1, file, 107, 2, 2862);
+			add_location(div1, file, 108, 2, 2831);
 			attr_dev(circle0, "cx", "10");
 			attr_dev(circle0, "cy", "10");
 			attr_dev(circle0, "r", "9");
 			attr_dev(circle0, "fill", "none");
 			attr_dev(circle0, "stroke-width", "0.5");
 			attr_dev(circle0, "stroke", "currentColor");
-			add_location(circle0, file, 119, 10, 3351);
+			add_location(circle0, file, 124, 10, 3429);
 			attr_dev(path0, "fill", "none");
 			attr_dev(path0, "stroke-width", "1");
 			attr_dev(path0, "stroke", "currentColor");
 			attr_dev(path0, "d", "M10 6 v8 M6 10 h8");
-			add_location(path0, file, 120, 10, 3447);
+			add_location(path0, file, 125, 10, 3525);
 			attr_dev(svg0, "width", "20");
 			attr_dev(svg0, "height", "20");
 			attr_dev(svg0, "viewBox", "0 0 20 20");
-			add_location(svg0, file, 118, 8, 3272);
+			add_location(svg0, file, 123, 8, 3350);
 			attr_dev(circle1, "cx", "10");
 			attr_dev(circle1, "cy", "10");
 			attr_dev(circle1, "r", "9");
 			attr_dev(circle1, "fill", "none");
 			attr_dev(circle1, "stroke-width", "0.5");
 			attr_dev(circle1, "stroke", "currentColor");
-			add_location(circle1, file, 128, 10, 3690);
+			add_location(circle1, file, 133, 10, 3768);
 			attr_dev(path1, "fill", "none");
 			attr_dev(path1, "stroke-width", "1");
 			attr_dev(path1, "stroke", "currentColor");
 			attr_dev(path1, "d", "M6 10 h8");
-			add_location(path1, file, 129, 10, 3786);
+			add_location(path1, file, 134, 10, 3864);
 			attr_dev(svg1, "width", "20");
 			attr_dev(svg1, "height", "20");
 			attr_dev(svg1, "viewBox", "0 0 20 20");
-			add_location(svg1, file, 127, 8, 3610);
+			add_location(svg1, file, 132, 8, 3688);
 			attr_dev(circle2, "cx", "10");
 			attr_dev(circle2, "cy", "10");
 			attr_dev(circle2, "r", "9");
 			attr_dev(circle2, "fill", "none");
 			attr_dev(circle2, "stroke-width", "0.5");
 			attr_dev(circle2, "stroke", "currentColor");
-			add_location(circle2, file, 137, 10, 4018);
+			add_location(circle2, file, 142, 10, 4096);
 			attr_dev(path2, "fill", "none");
 			attr_dev(path2, "stroke-width", "1");
 			attr_dev(path2, "stroke", "currentColor");
 			attr_dev(path2, "d", "M5 9 v-3 h3 M5 11 v3 h3 M15 9 v-3 h-3 M15 11 v3 h-3");
-			add_location(path2, file, 138, 10, 4114);
+			add_location(path2, file, 143, 10, 4192);
 			attr_dev(svg2, "width", "20");
 			attr_dev(svg2, "height", "20");
 			attr_dev(svg2, "viewBox", "0 0 20 20");
-			add_location(svg2, file, 136, 8, 3940);
+			add_location(svg2, file, 141, 8, 4018);
 			attr_dev(div2, "class", "buttons absolute right-0 bottom-0 mr-2 mb-2");
-			add_location(div2, file, 117, 6, 3206);
+			add_location(div2, file, 122, 6, 3284);
 			attr_dev(div3, "class", "markmap-wrapper flex-1");
-			add_location(div3, file, 109, 4, 2990);
-			add_location(a1, file, 149, 8, 4388);
+			add_location(div3, file, 114, 4, 3068);
+			add_location(a1, file, 154, 8, 4466);
 			attr_dev(div4, "class", "inline-block px-4 py-2");
-			add_location(div4, file, 148, 6, 4343);
-			add_location(a2, file, 152, 8, 4585);
+			add_location(div4, file, 153, 6, 4421);
+			add_location(a2, file, 157, 8, 4663);
 			attr_dev(span, "class", "text-red-500");
-			add_location(span, file, 153, 8, 4656);
+			add_location(span, file, 158, 8, 4734);
 			attr_dev(div5, "class", "inline-block px-4 py-2");
 			attr_dev(div5, "title", "SVG does not work well with PrismJS and MathJax");
-			add_location(div5, file, 151, 6, 4484);
-			add_location(div6, file, 147, 4, 4331);
+			add_location(div5, file, 156, 6, 4562);
+			add_location(div6, file, 152, 4, 4409);
 			attr_dev(div7, "class", "flex-1 min-w-0 flex flex-col");
-			add_location(div7, file, 108, 2, 2943);
+			add_location(div7, file, 113, 2, 3021);
 			attr_dev(div8, "class", "repl");
-			add_location(div8, file, 106, 0, 2841);
+			add_location(div8, file, 107, 0, 2810);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, t0, anchor);
@@ -528,7 +584,8 @@ function create_fragment(ctx) {
 			insert_dev(target, t2, anchor);
 			insert_dev(target, div8, anchor);
 			append_dev(div8, div1);
-			/*div1_binding*/ ctx[9](div1);
+			if (if_block) if_block.m(div1, null);
+			/*div1_binding*/ ctx[11](div1);
 			append_dev(div8, t3);
 			append_dev(div8, div7);
 			append_dev(div7, div3);
@@ -567,7 +624,7 @@ function create_fragment(ctx) {
 						svg0,
 						"click",
 						function () {
-							if (is_function(/*onZoomIn*/ ctx[4])) /*onZoomIn*/ ctx[4].apply(this, arguments);
+							if (is_function(/*onZoomIn*/ ctx[5])) /*onZoomIn*/ ctx[5].apply(this, arguments);
 						},
 						false,
 						false,
@@ -577,7 +634,7 @@ function create_fragment(ctx) {
 						svg1,
 						"click",
 						function () {
-							if (is_function(/*onZoomOut*/ ctx[5])) /*onZoomOut*/ ctx[5].apply(this, arguments);
+							if (is_function(/*onZoomOut*/ ctx[6])) /*onZoomOut*/ ctx[6].apply(this, arguments);
 						},
 						false,
 						false,
@@ -587,14 +644,14 @@ function create_fragment(ctx) {
 						svg2,
 						"click",
 						function () {
-							if (is_function(/*onReset*/ ctx[3])) /*onReset*/ ctx[3].apply(this, arguments);
+							if (is_function(/*onReset*/ ctx[4])) /*onReset*/ ctx[4].apply(this, arguments);
 						},
 						false,
 						false,
 						false
 					),
-					listen_dev(a1, "click", prevent_default(/*onDownloadHTML*/ ctx[8]), false, true, false),
-					listen_dev(a2, "click", prevent_default(/*onDownloadSVG*/ ctx[7]), false, true, false)
+					listen_dev(a1, "click", prevent_default(/*onDownloadHTML*/ ctx[9]), false, true, false),
+					listen_dev(a2, "click", prevent_default(/*onDownloadSVG*/ ctx[8]), false, true, false)
 				];
 
 				mounted = true;
@@ -603,12 +660,25 @@ function create_fragment(ctx) {
 		p: function update(new_ctx, [dirty]) {
 			ctx = new_ctx;
 
-			if (!current || dirty & /*pageUrl*/ 64 && a0_href_value !== (a0_href_value = `${/*pageUrl*/ ctx[6]}#?file=gist.md`)) {
+			if (!current || dirty & /*pageUrl*/ 128 && a0_href_value !== (a0_href_value = `${/*pageUrl*/ ctx[7]}#?file=gist.md`)) {
 				attr_dev(a0, "href", a0_href_value);
 			}
 
+			if (!/*cm*/ ctx[2]) {
+				if (if_block) {
+					if_block.p(ctx, dirty);
+				} else {
+					if_block = create_if_block(ctx);
+					if_block.c();
+					if_block.m(div1, null);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+
 			const markmap_changes = {};
-			if (dirty & /*content*/ 4) markmap_changes.content = /*content*/ ctx[2];
+			if (dirty & /*content*/ 8) markmap_changes.content = /*content*/ ctx[3];
 
 			if (!updating_el && dirty & /*svgEl*/ 2) {
 				updating_el = true;
@@ -616,21 +686,21 @@ function create_fragment(ctx) {
 				add_flush_callback(() => updating_el = false);
 			}
 
-			if (!updating_onReset && dirty & /*onReset*/ 8) {
+			if (!updating_onReset && dirty & /*onReset*/ 16) {
 				updating_onReset = true;
-				markmap_changes.onReset = /*onReset*/ ctx[3];
+				markmap_changes.onReset = /*onReset*/ ctx[4];
 				add_flush_callback(() => updating_onReset = false);
 			}
 
-			if (!updating_onZoomIn && dirty & /*onZoomIn*/ 16) {
+			if (!updating_onZoomIn && dirty & /*onZoomIn*/ 32) {
 				updating_onZoomIn = true;
-				markmap_changes.onZoomIn = /*onZoomIn*/ ctx[4];
+				markmap_changes.onZoomIn = /*onZoomIn*/ ctx[5];
 				add_flush_callback(() => updating_onZoomIn = false);
 			}
 
-			if (!updating_onZoomOut && dirty & /*onZoomOut*/ 32) {
+			if (!updating_onZoomOut && dirty & /*onZoomOut*/ 64) {
 				updating_onZoomOut = true;
-				markmap_changes.onZoomOut = /*onZoomOut*/ ctx[5];
+				markmap_changes.onZoomOut = /*onZoomOut*/ ctx[6];
 				add_flush_callback(() => updating_onZoomOut = false);
 			}
 
@@ -650,7 +720,8 @@ function create_fragment(ctx) {
 			if (detaching) detach_dev(div0);
 			if (detaching) detach_dev(t2);
 			if (detaching) detach_dev(div8);
-			/*div1_binding*/ ctx[9](null);
+			if (if_block) if_block.d();
+			/*div1_binding*/ ctx[11](null);
 			destroy_component(markmap);
 			mounted = false;
 			run_all(dispose);
@@ -704,7 +775,7 @@ function instance($$self, $$props, $$invalidate) {
 	let editorEl;
 	let svgEl;
 	let cm;
-	let content;
+	let content = "";
 	let onReset;
 	let onZoomIn;
 	let onZoomOut;
@@ -716,7 +787,7 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	function onDownloadHTML() {
-		const root = transform_1.transform(content || "");
+		const root = transform_1.transform(content);
 
 		const html = template_1.fillTemplate(root, {
 			mathJax: !!svgEl.querySelector(".MathJax"),
@@ -732,40 +803,42 @@ function instance($$self, $$props, $$invalidate) {
 		const session = {};
 		lastSession = session;
 		const hq = new URLSearchParams(window.location.hash.slice(1));
-		const content = await loadFromGist(hq.get("gist"), hq.get("file"));
+		const text = await loadFromGist(hq.get("gist"), hq.get("file"));
 
-		if (cm && content != null && session === lastSession) {
-			cm.setValue(content);
-			update();
+		if (text != null && session === lastSession) {
+			if (cm) cm.setValue(text);
+			$$invalidate(3, content = text);
 		}
 	}
 
 	function update() {
 		if (cm) {
-			$$invalidate(2, content = cm.getValue());
+			$$invalidate(3, content = cm.getValue());
 		}
 	}
 
+	function handleInput(e) {
+		$$invalidate(3, content = e.target.value);
+	}
+
 	onMount(async () => {
-		const { default: CodeMirror } = await import('./codemirror.985dad29.js').then(function (n) { return n.c; });
-		await import('./markdown.fd5c9f28.js').then(function (n) { return n.m; });
-
-		cm = CodeMirror(editorEl, {
-			lineNumbers: true,
-			mode: "markdown",
-			value: ""
-		});
-
-		cm.on("change", lodash_debounce(update, 500));
-		update();
+		const { origin, pathname } = window.location;
+		$$invalidate(7, pageUrl = origin + pathname);
 		onHashChange();
 		window.addEventListener("hashchange", onHashChange);
-		const { origin, pathname } = window.location;
-		$$invalidate(6, pageUrl = origin + pathname);
+		const { default: CodeMirror } = await import('./codemirror.891dbb7a.js');
+
+		$$invalidate(2, cm = CodeMirror(editorEl, {
+			lineNumbers: true,
+			mode: "markdown",
+			value: content
+		}));
+
+		cm.on("change", lodash_debounce(update, 500));
 	});
 
 	onDestroy(async () => {
-		cm = null;
+		$$invalidate(2, cm = null);
 	});
 
 	const writable_props = [];
@@ -791,17 +864,17 @@ function instance($$self, $$props, $$invalidate) {
 
 	function markmap_onReset_binding(value) {
 		onReset = value;
-		$$invalidate(3, onReset);
+		$$invalidate(4, onReset);
 	}
 
 	function markmap_onZoomIn_binding(value) {
 		onZoomIn = value;
-		$$invalidate(4, onZoomIn);
+		$$invalidate(5, onZoomIn);
 	}
 
 	function markmap_onZoomOut_binding(value) {
 		onZoomOut = value;
-		$$invalidate(5, onZoomOut);
+		$$invalidate(6, onZoomOut);
 	}
 
 	$$self.$capture_state = () => ({
@@ -826,18 +899,19 @@ function instance($$self, $$props, $$invalidate) {
 		lastSession,
 		onHashChange,
 		update,
-		onClickNewFeature
+		onClickNewFeature,
+		handleInput
 	});
 
 	$$self.$inject_state = $$props => {
 		if ("editorEl" in $$props) $$invalidate(0, editorEl = $$props.editorEl);
 		if ("svgEl" in $$props) $$invalidate(1, svgEl = $$props.svgEl);
-		if ("cm" in $$props) cm = $$props.cm;
-		if ("content" in $$props) $$invalidate(2, content = $$props.content);
-		if ("onReset" in $$props) $$invalidate(3, onReset = $$props.onReset);
-		if ("onZoomIn" in $$props) $$invalidate(4, onZoomIn = $$props.onZoomIn);
-		if ("onZoomOut" in $$props) $$invalidate(5, onZoomOut = $$props.onZoomOut);
-		if ("pageUrl" in $$props) $$invalidate(6, pageUrl = $$props.pageUrl);
+		if ("cm" in $$props) $$invalidate(2, cm = $$props.cm);
+		if ("content" in $$props) $$invalidate(3, content = $$props.content);
+		if ("onReset" in $$props) $$invalidate(4, onReset = $$props.onReset);
+		if ("onZoomIn" in $$props) $$invalidate(5, onZoomIn = $$props.onZoomIn);
+		if ("onZoomOut" in $$props) $$invalidate(6, onZoomOut = $$props.onZoomOut);
+		if ("pageUrl" in $$props) $$invalidate(7, pageUrl = $$props.pageUrl);
 		if ("lastSession" in $$props) lastSession = $$props.lastSession;
 	};
 
@@ -848,6 +922,7 @@ function instance($$self, $$props, $$invalidate) {
 	return [
 		editorEl,
 		svgEl,
+		cm,
 		content,
 		onReset,
 		onZoomIn,
@@ -855,6 +930,7 @@ function instance($$self, $$props, $$invalidate) {
 		pageUrl,
 		onDownloadSVG,
 		onDownloadHTML,
+		handleInput,
 		div1_binding,
 		markmap_el_binding,
 		markmap_onReset_binding,
