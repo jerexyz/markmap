@@ -1,6 +1,9 @@
 import 'core-js/modules/es.regexp.exec';
 import 'core-js/modules/es.string.replace';
 import 'core-js/modules/es.string.search';
+import 'core-js/modules/es.symbol';
+import 'core-js/modules/es.symbol.description';
+import 'core-js/modules/es.symbol.iterator';
 import 'core-js/modules/es.array.filter';
 import 'core-js/modules/es.array.for-each';
 import 'core-js/modules/es.array.iterator';
@@ -22,17 +25,6 @@ import 'core-js/modules/web.dom-collections.for-each';
 import 'core-js/modules/web.dom-collections.iterator';
 import 'core-js/modules/web.timers';
 import 'core-js/modules/web.url';
-import 'core-js/modules/es.symbol';
-import 'core-js/modules/es.symbol.description';
-import 'core-js/modules/es.symbol.async-iterator';
-import 'core-js/modules/es.symbol.iterator';
-import 'core-js/modules/es.symbol.to-string-tag';
-import 'core-js/modules/es.array.reverse';
-import 'core-js/modules/es.json.to-string-tag';
-import 'core-js/modules/es.math.to-string-tag';
-import 'core-js/modules/es.object.define-property';
-import 'core-js/modules/es.object.get-prototype-of';
-import 'core-js/modules/es.object.set-prototype-of';
 import 'core-js/modules/es.array.concat';
 import 'core-js/modules/es.array.fill';
 import 'core-js/modules/es.array.from';
@@ -375,746 +367,6 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
     }
   };
 }
-
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-function createCommonjsModule(fn, basedir, module) {
-	return module = {
-	  path: basedir,
-	  exports: {},
-	  require: function (path, base) {
-      return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
-    }
-	}, fn(module, module.exports), module.exports;
-}
-
-function commonjsRequire () {
-	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
-}
-
-var runtime_1 = createCommonjsModule(function (module) {
-  /**
-   * Copyright (c) 2014-present, Facebook, Inc.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   */
-  var runtime = function (exports) {
-
-    var Op = Object.prototype;
-    var hasOwn = Op.hasOwnProperty;
-    var undefined$1; // More compressible than void 0.
-
-    var $Symbol = typeof Symbol === "function" ? Symbol : {};
-    var iteratorSymbol = $Symbol.iterator || "@@iterator";
-    var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
-    var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-
-    function define(obj, key, value) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-      return obj[key];
-    }
-
-    try {
-      // IE 8 has a broken Object.defineProperty that only works on DOM objects.
-      define({}, "");
-    } catch (err) {
-      define = function define(obj, key, value) {
-        return obj[key] = value;
-      };
-    }
-
-    function wrap(innerFn, outerFn, self, tryLocsList) {
-      // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
-      var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
-      var generator = Object.create(protoGenerator.prototype);
-      var context = new Context(tryLocsList || []); // The ._invoke method unifies the implementations of the .next,
-      // .throw, and .return methods.
-
-      generator._invoke = makeInvokeMethod(innerFn, self, context);
-      return generator;
-    }
-
-    exports.wrap = wrap; // Try/catch helper to minimize deoptimizations. Returns a completion
-    // record like context.tryEntries[i].completion. This interface could
-    // have been (and was previously) designed to take a closure to be
-    // invoked without arguments, but in all the cases we care about we
-    // already have an existing method we want to call, so there's no need
-    // to create a new function object. We can even get away with assuming
-    // the method takes exactly one argument, since that happens to be true
-    // in every case, so we don't have to touch the arguments object. The
-    // only additional allocation required is the completion record, which
-    // has a stable shape and so hopefully should be cheap to allocate.
-
-    function tryCatch(fn, obj, arg) {
-      try {
-        return {
-          type: "normal",
-          arg: fn.call(obj, arg)
-        };
-      } catch (err) {
-        return {
-          type: "throw",
-          arg: err
-        };
-      }
-    }
-
-    var GenStateSuspendedStart = "suspendedStart";
-    var GenStateSuspendedYield = "suspendedYield";
-    var GenStateExecuting = "executing";
-    var GenStateCompleted = "completed"; // Returning this object from the innerFn has the same effect as
-    // breaking out of the dispatch switch statement.
-
-    var ContinueSentinel = {}; // Dummy constructor functions that we use as the .constructor and
-    // .constructor.prototype properties for functions that return Generator
-    // objects. For full spec compliance, you may wish to configure your
-    // minifier not to mangle the names of these two functions.
-
-    function Generator() {}
-
-    function GeneratorFunction() {}
-
-    function GeneratorFunctionPrototype() {} // This is a polyfill for %IteratorPrototype% for environments that
-    // don't natively support it.
-
-
-    var IteratorPrototype = {};
-
-    IteratorPrototype[iteratorSymbol] = function () {
-      return this;
-    };
-
-    var getProto = Object.getPrototypeOf;
-    var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-
-    if (NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
-      // This environment has a native %IteratorPrototype%; use it instead
-      // of the polyfill.
-      IteratorPrototype = NativeIteratorPrototype;
-    }
-
-    var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
-    GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
-    GeneratorFunctionPrototype.constructor = GeneratorFunction;
-    GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"); // Helper for defining the .next, .throw, and .return methods of the
-    // Iterator interface in terms of a single ._invoke method.
-
-    function defineIteratorMethods(prototype) {
-      ["next", "throw", "return"].forEach(function (method) {
-        define(prototype, method, function (arg) {
-          return this._invoke(method, arg);
-        });
-      });
-    }
-
-    exports.isGeneratorFunction = function (genFun) {
-      var ctor = typeof genFun === "function" && genFun.constructor;
-      return ctor ? ctor === GeneratorFunction || // For the native GeneratorFunction constructor, the best we can
-      // do is to check its .name property.
-      (ctor.displayName || ctor.name) === "GeneratorFunction" : false;
-    };
-
-    exports.mark = function (genFun) {
-      if (Object.setPrototypeOf) {
-        Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
-      } else {
-        genFun.__proto__ = GeneratorFunctionPrototype;
-        define(genFun, toStringTagSymbol, "GeneratorFunction");
-      }
-
-      genFun.prototype = Object.create(Gp);
-      return genFun;
-    }; // Within the body of any async function, `await x` is transformed to
-    // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
-    // `hasOwn.call(value, "__await")` to determine if the yielded value is
-    // meant to be awaited.
-
-
-    exports.awrap = function (arg) {
-      return {
-        __await: arg
-      };
-    };
-
-    function AsyncIterator(generator, PromiseImpl) {
-      function invoke(method, arg, resolve, reject) {
-        var record = tryCatch(generator[method], generator, arg);
-
-        if (record.type === "throw") {
-          reject(record.arg);
-        } else {
-          var result = record.arg;
-          var value = result.value;
-
-          if (value && _typeof(value) === "object" && hasOwn.call(value, "__await")) {
-            return PromiseImpl.resolve(value.__await).then(function (value) {
-              invoke("next", value, resolve, reject);
-            }, function (err) {
-              invoke("throw", err, resolve, reject);
-            });
-          }
-
-          return PromiseImpl.resolve(value).then(function (unwrapped) {
-            // When a yielded Promise is resolved, its final value becomes
-            // the .value of the Promise<{value,done}> result for the
-            // current iteration.
-            result.value = unwrapped;
-            resolve(result);
-          }, function (error) {
-            // If a rejected Promise was yielded, throw the rejection back
-            // into the async generator function so it can be handled there.
-            return invoke("throw", error, resolve, reject);
-          });
-        }
-      }
-
-      var previousPromise;
-
-      function enqueue(method, arg) {
-        function callInvokeWithMethodAndArg() {
-          return new PromiseImpl(function (resolve, reject) {
-            invoke(method, arg, resolve, reject);
-          });
-        }
-
-        return previousPromise = // If enqueue has been called before, then we want to wait until
-        // all previous Promises have been resolved before calling invoke,
-        // so that results are always delivered in the correct order. If
-        // enqueue has not been called before, then it is important to
-        // call invoke immediately, without waiting on a callback to fire,
-        // so that the async generator function has the opportunity to do
-        // any necessary setup in a predictable way. This predictability
-        // is why the Promise constructor synchronously invokes its
-        // executor callback, and why async functions synchronously
-        // execute code before the first await. Since we implement simple
-        // async functions in terms of async generators, it is especially
-        // important to get this right, even though it requires care.
-        previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, // Avoid propagating failures to Promises returned by later
-        // invocations of the iterator.
-        callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
-      } // Define the unified helper method that is used to implement .next,
-      // .throw, and .return (see defineIteratorMethods).
-
-
-      this._invoke = enqueue;
-    }
-
-    defineIteratorMethods(AsyncIterator.prototype);
-
-    AsyncIterator.prototype[asyncIteratorSymbol] = function () {
-      return this;
-    };
-
-    exports.AsyncIterator = AsyncIterator; // Note that simple async functions are implemented on top of
-    // AsyncIterator objects; they just return a Promise for the value of
-    // the final result produced by the iterator.
-
-    exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
-      if (PromiseImpl === void 0) PromiseImpl = Promise;
-      var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
-      return exports.isGeneratorFunction(outerFn) ? iter // If outerFn is a generator, return the full iterator.
-      : iter.next().then(function (result) {
-        return result.done ? result.value : iter.next();
-      });
-    };
-
-    function makeInvokeMethod(innerFn, self, context) {
-      var state = GenStateSuspendedStart;
-      return function invoke(method, arg) {
-        if (state === GenStateExecuting) {
-          throw new Error("Generator is already running");
-        }
-
-        if (state === GenStateCompleted) {
-          if (method === "throw") {
-            throw arg;
-          } // Be forgiving, per 25.3.3.3.3 of the spec:
-          // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
-
-
-          return doneResult();
-        }
-
-        context.method = method;
-        context.arg = arg;
-
-        while (true) {
-          var delegate = context.delegate;
-
-          if (delegate) {
-            var delegateResult = maybeInvokeDelegate(delegate, context);
-
-            if (delegateResult) {
-              if (delegateResult === ContinueSentinel) continue;
-              return delegateResult;
-            }
-          }
-
-          if (context.method === "next") {
-            // Setting context._sent for legacy support of Babel's
-            // function.sent implementation.
-            context.sent = context._sent = context.arg;
-          } else if (context.method === "throw") {
-            if (state === GenStateSuspendedStart) {
-              state = GenStateCompleted;
-              throw context.arg;
-            }
-
-            context.dispatchException(context.arg);
-          } else if (context.method === "return") {
-            context.abrupt("return", context.arg);
-          }
-
-          state = GenStateExecuting;
-          var record = tryCatch(innerFn, self, context);
-
-          if (record.type === "normal") {
-            // If an exception is thrown from innerFn, we leave state ===
-            // GenStateExecuting and loop back for another invocation.
-            state = context.done ? GenStateCompleted : GenStateSuspendedYield;
-
-            if (record.arg === ContinueSentinel) {
-              continue;
-            }
-
-            return {
-              value: record.arg,
-              done: context.done
-            };
-          } else if (record.type === "throw") {
-            state = GenStateCompleted; // Dispatch the exception by looping back around to the
-            // context.dispatchException(context.arg) call above.
-
-            context.method = "throw";
-            context.arg = record.arg;
-          }
-        }
-      };
-    } // Call delegate.iterator[context.method](context.arg) and handle the
-    // result, either by returning a { value, done } result from the
-    // delegate iterator, or by modifying context.method and context.arg,
-    // setting context.delegate to null, and returning the ContinueSentinel.
-
-
-    function maybeInvokeDelegate(delegate, context) {
-      var method = delegate.iterator[context.method];
-
-      if (method === undefined$1) {
-        // A .throw or .return when the delegate iterator has no .throw
-        // method always terminates the yield* loop.
-        context.delegate = null;
-
-        if (context.method === "throw") {
-          // Note: ["return"] must be used for ES3 parsing compatibility.
-          if (delegate.iterator["return"]) {
-            // If the delegate iterator has a return method, give it a
-            // chance to clean up.
-            context.method = "return";
-            context.arg = undefined$1;
-            maybeInvokeDelegate(delegate, context);
-
-            if (context.method === "throw") {
-              // If maybeInvokeDelegate(context) changed context.method from
-              // "return" to "throw", let that override the TypeError below.
-              return ContinueSentinel;
-            }
-          }
-
-          context.method = "throw";
-          context.arg = new TypeError("The iterator does not provide a 'throw' method");
-        }
-
-        return ContinueSentinel;
-      }
-
-      var record = tryCatch(method, delegate.iterator, context.arg);
-
-      if (record.type === "throw") {
-        context.method = "throw";
-        context.arg = record.arg;
-        context.delegate = null;
-        return ContinueSentinel;
-      }
-
-      var info = record.arg;
-
-      if (!info) {
-        context.method = "throw";
-        context.arg = new TypeError("iterator result is not an object");
-        context.delegate = null;
-        return ContinueSentinel;
-      }
-
-      if (info.done) {
-        // Assign the result of the finished delegate to the temporary
-        // variable specified by delegate.resultName (see delegateYield).
-        context[delegate.resultName] = info.value; // Resume execution at the desired location (see delegateYield).
-
-        context.next = delegate.nextLoc; // If context.method was "throw" but the delegate handled the
-        // exception, let the outer generator proceed normally. If
-        // context.method was "next", forget context.arg since it has been
-        // "consumed" by the delegate iterator. If context.method was
-        // "return", allow the original .return call to continue in the
-        // outer generator.
-
-        if (context.method !== "return") {
-          context.method = "next";
-          context.arg = undefined$1;
-        }
-      } else {
-        // Re-yield the result returned by the delegate method.
-        return info;
-      } // The delegate iterator is finished, so forget it and continue with
-      // the outer generator.
-
-
-      context.delegate = null;
-      return ContinueSentinel;
-    } // Define Generator.prototype.{next,throw,return} in terms of the
-    // unified ._invoke helper method.
-
-
-    defineIteratorMethods(Gp);
-    define(Gp, toStringTagSymbol, "Generator"); // A Generator should always return itself as the iterator object when the
-    // @@iterator function is called on it. Some browsers' implementations of the
-    // iterator prototype chain incorrectly implement this, causing the Generator
-    // object to not be returned from this call. This ensures that doesn't happen.
-    // See https://github.com/facebook/regenerator/issues/274 for more details.
-
-    Gp[iteratorSymbol] = function () {
-      return this;
-    };
-
-    Gp.toString = function () {
-      return "[object Generator]";
-    };
-
-    function pushTryEntry(locs) {
-      var entry = {
-        tryLoc: locs[0]
-      };
-
-      if (1 in locs) {
-        entry.catchLoc = locs[1];
-      }
-
-      if (2 in locs) {
-        entry.finallyLoc = locs[2];
-        entry.afterLoc = locs[3];
-      }
-
-      this.tryEntries.push(entry);
-    }
-
-    function resetTryEntry(entry) {
-      var record = entry.completion || {};
-      record.type = "normal";
-      delete record.arg;
-      entry.completion = record;
-    }
-
-    function Context(tryLocsList) {
-      // The root entry object (effectively a try statement without a catch
-      // or a finally block) gives us a place to store values thrown from
-      // locations where there is no enclosing try statement.
-      this.tryEntries = [{
-        tryLoc: "root"
-      }];
-      tryLocsList.forEach(pushTryEntry, this);
-      this.reset(true);
-    }
-
-    exports.keys = function (object) {
-      var keys = [];
-
-      for (var key in object) {
-        keys.push(key);
-      }
-
-      keys.reverse(); // Rather than returning an object with a next method, we keep
-      // things simple and return the next function itself.
-
-      return function next() {
-        while (keys.length) {
-          var key = keys.pop();
-
-          if (key in object) {
-            next.value = key;
-            next.done = false;
-            return next;
-          }
-        } // To avoid creating an additional object, we just hang the .value
-        // and .done properties off the next function object itself. This
-        // also ensures that the minifier will not anonymize the function.
-
-
-        next.done = true;
-        return next;
-      };
-    };
-
-    function values(iterable) {
-      if (iterable) {
-        var iteratorMethod = iterable[iteratorSymbol];
-
-        if (iteratorMethod) {
-          return iteratorMethod.call(iterable);
-        }
-
-        if (typeof iterable.next === "function") {
-          return iterable;
-        }
-
-        if (!isNaN(iterable.length)) {
-          var i = -1,
-              next = function next() {
-            while (++i < iterable.length) {
-              if (hasOwn.call(iterable, i)) {
-                next.value = iterable[i];
-                next.done = false;
-                return next;
-              }
-            }
-
-            next.value = undefined$1;
-            next.done = true;
-            return next;
-          };
-
-          return next.next = next;
-        }
-      } // Return an iterator with no values.
-
-
-      return {
-        next: doneResult
-      };
-    }
-
-    exports.values = values;
-
-    function doneResult() {
-      return {
-        value: undefined$1,
-        done: true
-      };
-    }
-
-    Context.prototype = {
-      constructor: Context,
-      reset: function reset(skipTempReset) {
-        this.prev = 0;
-        this.next = 0; // Resetting context._sent for legacy support of Babel's
-        // function.sent implementation.
-
-        this.sent = this._sent = undefined$1;
-        this.done = false;
-        this.delegate = null;
-        this.method = "next";
-        this.arg = undefined$1;
-        this.tryEntries.forEach(resetTryEntry);
-
-        if (!skipTempReset) {
-          for (var name in this) {
-            // Not sure about the optimal order of these conditions:
-            if (name.charAt(0) === "t" && hasOwn.call(this, name) && !isNaN(+name.slice(1))) {
-              this[name] = undefined$1;
-            }
-          }
-        }
-      },
-      stop: function stop() {
-        this.done = true;
-        var rootEntry = this.tryEntries[0];
-        var rootRecord = rootEntry.completion;
-
-        if (rootRecord.type === "throw") {
-          throw rootRecord.arg;
-        }
-
-        return this.rval;
-      },
-      dispatchException: function dispatchException(exception) {
-        if (this.done) {
-          throw exception;
-        }
-
-        var context = this;
-
-        function handle(loc, caught) {
-          record.type = "throw";
-          record.arg = exception;
-          context.next = loc;
-
-          if (caught) {
-            // If the dispatched exception was caught by a catch block,
-            // then let that catch block handle the exception normally.
-            context.method = "next";
-            context.arg = undefined$1;
-          }
-
-          return !!caught;
-        }
-
-        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-          var entry = this.tryEntries[i];
-          var record = entry.completion;
-
-          if (entry.tryLoc === "root") {
-            // Exception thrown outside of any try block that could handle
-            // it, so set the completion value of the entire function to
-            // throw the exception.
-            return handle("end");
-          }
-
-          if (entry.tryLoc <= this.prev) {
-            var hasCatch = hasOwn.call(entry, "catchLoc");
-            var hasFinally = hasOwn.call(entry, "finallyLoc");
-
-            if (hasCatch && hasFinally) {
-              if (this.prev < entry.catchLoc) {
-                return handle(entry.catchLoc, true);
-              } else if (this.prev < entry.finallyLoc) {
-                return handle(entry.finallyLoc);
-              }
-            } else if (hasCatch) {
-              if (this.prev < entry.catchLoc) {
-                return handle(entry.catchLoc, true);
-              }
-            } else if (hasFinally) {
-              if (this.prev < entry.finallyLoc) {
-                return handle(entry.finallyLoc);
-              }
-            } else {
-              throw new Error("try statement without catch or finally");
-            }
-          }
-        }
-      },
-      abrupt: function abrupt(type, arg) {
-        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-          var entry = this.tryEntries[i];
-
-          if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
-            var finallyEntry = entry;
-            break;
-          }
-        }
-
-        if (finallyEntry && (type === "break" || type === "continue") && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc) {
-          // Ignore the finally entry if control is not jumping to a
-          // location outside the try/catch block.
-          finallyEntry = null;
-        }
-
-        var record = finallyEntry ? finallyEntry.completion : {};
-        record.type = type;
-        record.arg = arg;
-
-        if (finallyEntry) {
-          this.method = "next";
-          this.next = finallyEntry.finallyLoc;
-          return ContinueSentinel;
-        }
-
-        return this.complete(record);
-      },
-      complete: function complete(record, afterLoc) {
-        if (record.type === "throw") {
-          throw record.arg;
-        }
-
-        if (record.type === "break" || record.type === "continue") {
-          this.next = record.arg;
-        } else if (record.type === "return") {
-          this.rval = this.arg = record.arg;
-          this.method = "return";
-          this.next = "end";
-        } else if (record.type === "normal" && afterLoc) {
-          this.next = afterLoc;
-        }
-
-        return ContinueSentinel;
-      },
-      finish: function finish(finallyLoc) {
-        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-          var entry = this.tryEntries[i];
-
-          if (entry.finallyLoc === finallyLoc) {
-            this.complete(entry.completion, entry.afterLoc);
-            resetTryEntry(entry);
-            return ContinueSentinel;
-          }
-        }
-      },
-      "catch": function _catch(tryLoc) {
-        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-          var entry = this.tryEntries[i];
-
-          if (entry.tryLoc === tryLoc) {
-            var record = entry.completion;
-
-            if (record.type === "throw") {
-              var thrown = record.arg;
-              resetTryEntry(entry);
-            }
-
-            return thrown;
-          }
-        } // The context.catch method must only be called with a location
-        // argument that corresponds to a known catch block.
-
-
-        throw new Error("illegal catch attempt");
-      },
-      delegateYield: function delegateYield(iterable, resultName, nextLoc) {
-        this.delegate = {
-          iterator: values(iterable),
-          resultName: resultName,
-          nextLoc: nextLoc
-        };
-
-        if (this.method === "next") {
-          // Deliberately forget the last sent value so that we don't
-          // accidentally pass it on to the delegate.
-          this.arg = undefined$1;
-        }
-
-        return ContinueSentinel;
-      }
-    }; // Regardless of whether this script is executing as a CommonJS module
-    // or not, return the runtime object so that we can declare the variable
-    // regeneratorRuntime in the outer scope, which allows this module to be
-    // injected easily by `bin/regenerator --include-runtime script.js`.
-
-    return exports;
-  }( // If this script is executing as a CommonJS module, use module.exports
-  // as the regeneratorRuntime namespace. Otherwise create a new empty
-  // object. Either way, the resulting object will be used to initialize
-  // the regeneratorRuntime variable at the top of this file.
-   module.exports );
-
-  try {
-    regeneratorRuntime = runtime;
-  } catch (accidentalStrictMode) {
-    // This module should not be running in strict mode, so the above
-    // assignment should always work unless something is misconfigured. Just
-    // in case runtime.js accidentally runs in strict mode, we can escape
-    // strict mode using a global Function call. This could conceivably fail
-    // if a Content Security Policy forbids using Function, but in that case
-    // the proper solution is to fix the accidental strict mode problem. If
-    // you've misconfigured your bundler to force strict mode and applied a
-    // CSP to forbid Function, and you're not willing to fix either of those
-    // problems, please detail your unique predicament in a GitHub issue.
-    Function("r", "regeneratorRuntime = r")(runtime);
-  }
-});
 
 function noop() {}
 
@@ -3199,22 +2451,22 @@ class App extends SvelteComponentDev {
 var ignore = [];
 var components = [{
   js: function js() {
-    return import('./index.0368473e.js');
+    return import('./index.2bdf165b.js');
   },
   css: "__SAPPER_CSS_PLACEHOLDER:index.svelte__"
 }, {
   js: function js() {
-    return import('./about.93ddbdd3.js');
+    return import('./about.6256b7c5.js');
   },
   css: "__SAPPER_CSS_PLACEHOLDER:about.svelte__"
 }, {
   js: function js() {
-    return import('./usage.7552dbac.js');
+    return import('./usage.83cd4619.js');
   },
   css: "__SAPPER_CSS_PLACEHOLDER:usage.svelte__"
 }, {
   js: function js() {
-    return import('./repl.1009a975.js');
+    return import('./repl.7f9d4246.js');
   },
   css: "__SAPPER_CSS_PLACEHOLDER:repl.svelte__"
 }];
@@ -3291,11 +2543,152 @@ function __awaiter(thisArg, _arguments, P, generator) {
   });
 }
 
-function _goto(href) {
-  var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-    noscroll: false,
-    replaceState: false
-  };
+function __generator(thisArg, body) {
+  var _ = {
+    label: 0,
+    sent: function sent() {
+      if (t[0] & 1) throw t[1];
+      return t[1];
+    },
+    trys: [],
+    ops: []
+  },
+      f,
+      y,
+      t,
+      g;
+  return g = {
+    next: verb(0),
+    "throw": verb(1),
+    "return": verb(2)
+  }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
+    return this;
+  }), g;
+
+  function verb(n) {
+    return function (v) {
+      return step([n, v]);
+    };
+  }
+
+  function step(op) {
+    if (f) throw new TypeError("Generator is already executing.");
+
+    while (_) {
+      try {
+        if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+        if (y = 0, t) op = [op[0] & 2, t.value];
+
+        switch (op[0]) {
+          case 0:
+          case 1:
+            t = op;
+            break;
+
+          case 4:
+            _.label++;
+            return {
+              value: op[1],
+              done: false
+            };
+
+          case 5:
+            _.label++;
+            y = op[1];
+            op = [0];
+            continue;
+
+          case 7:
+            op = _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+
+          default:
+            if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+              _ = 0;
+              continue;
+            }
+
+            if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+              _.label = op[1];
+              break;
+            }
+
+            if (op[0] === 6 && _.label < t[1]) {
+              _.label = t[1];
+              t = op;
+              break;
+            }
+
+            if (t && _.label < t[2]) {
+              _.label = t[2];
+
+              _.ops.push(op);
+
+              break;
+            }
+
+            if (t[2]) _.ops.pop();
+
+            _.trys.pop();
+
+            continue;
+        }
+
+        op = body.call(thisArg, _);
+      } catch (e) {
+        op = [6, e];
+        y = 0;
+      } finally {
+        f = t = 0;
+      }
+    }
+
+    if (op[0] & 5) throw op[1];
+    return {
+      value: op[0] ? op[1] : void 0,
+      done: true
+    };
+  }
+}
+
+function __read(o, n) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator];
+  if (!m) return o;
+  var i = m.call(o),
+      r,
+      ar = [],
+      e;
+
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
+      ar.push(r.value);
+    }
+  } catch (error) {
+    e = {
+      error: error
+    };
+  } finally {
+    try {
+      if (r && !r.done && (m = i["return"])) m.call(i);
+    } finally {
+      if (e) throw e.error;
+    }
+  }
+
+  return ar;
+}
+
+function _goto(href, opts) {
+  if (opts === void 0) {
+    opts = {
+      noscroll: false,
+      replaceState: false
+    };
+  }
+
   var target = select_target(new URL(href, document.baseURI));
 
   if (target) {
@@ -3357,68 +2750,62 @@ var stores = {
 var $session;
 var session_dirty;
 stores.session.subscribe(function (value) {
-  return __awaiter(void 0, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var dest, token, _yield$hydrate_target, redirect, props, branch;
+  return __awaiter(void 0, void 0, void 0, function () {
+    var dest, token, _a, redirect, props, branch;
 
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            $session = value;
+    return __generator(this, function (_b) {
+      switch (_b.label) {
+        case 0:
+          $session = value;
+          if (!ready) return [2
+          /*return*/
+          ];
+          session_dirty = true;
+          dest = select_target(new URL(location.href));
+          token = current_token = {};
+          return [4
+          /*yield*/
+          , hydrate_target(dest)];
 
-            if (ready) {
-              _context.next = 3;
-              break;
-            }
+        case 1:
+          _a = _b.sent(), redirect = _a.redirect, props = _a.props, branch = _a.branch;
+          if (token !== current_token) return [2
+          /*return*/
+          ]; // a secondary navigation happened while we were loading
 
-            return _context.abrupt("return");
+          if (!redirect) return [3
+          /*break*/
+          , 3];
+          return [4
+          /*yield*/
+          , _goto(redirect.location, {
+            replaceState: true
+          })];
 
-          case 3:
-            session_dirty = true;
-            dest = select_target(new URL(location.href));
-            token = current_token = {};
-            _context.next = 8;
-            return hydrate_target(dest);
+        case 2:
+          _b.sent();
 
-          case 8:
-            _yield$hydrate_target = _context.sent;
-            redirect = _yield$hydrate_target.redirect;
-            props = _yield$hydrate_target.props;
-            branch = _yield$hydrate_target.branch;
+          return [3
+          /*break*/
+          , 5];
 
-            if (!(token !== current_token)) {
-              _context.next = 14;
-              break;
-            }
+        case 3:
+          return [4
+          /*yield*/
+          , render(branch, props, dest.page)];
 
-            return _context.abrupt("return");
+        case 4:
+          _b.sent();
 
-          case 14:
-            if (!redirect) {
-              _context.next = 19;
-              break;
-            }
+          _b.label = 5;
 
-            _context.next = 17;
-            return _goto(redirect.location, {
-              replaceState: true
-            });
-
-          case 17:
-            _context.next = 21;
-            break;
-
-          case 19:
-            _context.next = 21;
-            return render(branch, props, dest.page);
-
-          case 21:
-          case "end":
-            return _context.stop();
-        }
+        case 5:
+          return [2
+          /*return*/
+          ];
       }
-    }, _callee);
-  }));
+    });
+  });
 });
 var prefetching = null;
 
@@ -3460,11 +2847,10 @@ function extract_query(search) {
 
   if (search.length > 0) {
     search.slice(1).split('&').forEach(function (searchParam) {
-      var _$exec = /([^=]*)(?:=(.*))?/.exec(decodeURIComponent(searchParam.replace(/\+/g, ' '))),
-          _$exec2 = _slicedToArray(_$exec, 3),
-          key = _$exec2[1],
-          _$exec2$ = _$exec2[2],
-          value = _$exec2$ === void 0 ? '' : _$exec2$;
+      var _a = __read(/([^=]*)(?:=(.*))?/.exec(decodeURIComponent(searchParam.replace(/\+/g, ' '))), 3),
+          key = _a[1],
+          _b = _a[2],
+          value = _b === void 0 ? '' : _b;
 
       if (typeof query[key] === 'string') query[key] = [query[key]];
       if (_typeof(query[key]) === 'object') query[key].push(value);else query[key] = value;
@@ -3513,10 +2899,9 @@ function select_target(url) {
 }
 
 function handle_error(url) {
-  var _location = location,
-      host = _location.host,
-      pathname = _location.pathname,
-      search = _location.search;
+  var host = location.host,
+      pathname = location.pathname,
+      search = location.search;
   var session = initial_data.session,
       preloaded = initial_data.preloaded,
       status = initial_data.status,
@@ -3559,155 +2944,151 @@ function scroll_state() {
 }
 
 function navigate(dest, id, noscroll, hash) {
-  return __awaiter(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-    var current_scroll, loaded, token, loaded_result, redirect, props, branch, scroll, deep_linked;
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            if (id) {
-              // popstate or initial navigation
-              cid = id;
-            } else {
-              current_scroll = scroll_state(); // clicked on a link. preserve scroll state
-
-              scroll_history[cid] = current_scroll;
-              id = cid = ++uid;
-              scroll_history[cid] = noscroll ? current_scroll : {
-                x: 0,
-                y: 0
-              };
-            }
-
+  return __awaiter(this, void 0, void 0, function () {
+    var current_scroll, loaded, token, loaded_result, redirect, props, branch, scroll_1, deep_linked;
+    return __generator(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          if (id) {
+            // popstate or initial navigation
             cid = id;
-            if (root_component) stores.preloading.set(true);
-            loaded = prefetching && prefetching.href === dest.href ? prefetching.promise : hydrate_target(dest);
-            prefetching = null;
-            token = current_token = {};
-            _context2.next = 8;
-            return loaded;
+          } else {
+            current_scroll = scroll_state(); // clicked on a link. preserve scroll state
 
-          case 8:
-            loaded_result = _context2.sent;
-            redirect = loaded_result.redirect;
+            scroll_history[cid] = current_scroll;
+            id = cid = ++uid;
+            scroll_history[cid] = noscroll ? current_scroll : {
+              x: 0,
+              y: 0
+            };
+          }
 
-            if (!(token !== current_token)) {
-              _context2.next = 12;
-              break;
-            }
+          cid = id;
+          if (root_component) stores.preloading.set(true);
+          loaded = prefetching && prefetching.href === dest.href ? prefetching.promise : hydrate_target(dest);
+          prefetching = null;
+          token = current_token = {};
+          return [4
+          /*yield*/
+          , loaded];
 
-            return _context2.abrupt("return");
+        case 1:
+          loaded_result = _a.sent();
+          redirect = loaded_result.redirect;
+          if (token !== current_token) return [2
+          /*return*/
+          ]; // a secondary navigation happened while we were loading
 
-          case 12:
-            if (!redirect) {
-              _context2.next = 17;
-              break;
-            }
+          if (!redirect) return [3
+          /*break*/
+          , 3];
+          return [4
+          /*yield*/
+          , _goto(redirect.location, {
+            replaceState: true
+          })];
 
-            _context2.next = 15;
-            return _goto(redirect.location, {
-              replaceState: true
-            });
+        case 2:
+          _a.sent();
 
-          case 15:
-            _context2.next = 20;
-            break;
+          return [3
+          /*break*/
+          , 5];
 
-          case 17:
-            props = loaded_result.props, branch = loaded_result.branch;
-            _context2.next = 20;
-            return render(branch, props, dest.page);
+        case 3:
+          props = loaded_result.props, branch = loaded_result.branch;
+          return [4
+          /*yield*/
+          , render(branch, props, dest.page)];
 
-          case 20:
-            if (document.activeElement && document.activeElement instanceof HTMLElement) document.activeElement.blur();
+        case 4:
+          _a.sent();
 
-            if (!noscroll) {
-              scroll = scroll_history[id];
+          _a.label = 5;
 
-              if (hash) {
-                // scroll is an element id (from a hash), we need to compute y.
-                deep_linked = document.getElementById(hash.slice(1));
+        case 5:
+          if (document.activeElement && document.activeElement instanceof HTMLElement) document.activeElement.blur();
 
-                if (deep_linked) {
-                  scroll = {
-                    x: 0,
-                    y: deep_linked.getBoundingClientRect().top + scrollY
-                  };
-                }
+          if (!noscroll) {
+            scroll_1 = scroll_history[id];
+
+            if (hash) {
+              deep_linked = document.getElementById(hash.slice(1));
+
+              if (deep_linked) {
+                scroll_1 = {
+                  x: 0,
+                  y: deep_linked.getBoundingClientRect().top + scrollY
+                };
               }
-
-              scroll_history[cid] = scroll;
-
-              if (scroll) {
-                redirect ? scrollTo(0, 0) : scrollTo(scroll.x, scroll.y);
-              }
             }
 
-          case 22:
-          case "end":
-            return _context2.stop();
-        }
+            scroll_history[cid] = scroll_1;
+            if (scroll_1) scrollTo(scroll_1.x, scroll_1.y);
+          }
+
+          return [2
+          /*return*/
+          ];
       }
-    }, _callee2);
-  }));
+    });
+  });
 }
 
 function render(branch, props, page) {
-  return __awaiter(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            stores.page.set(page);
-            stores.preloading.set(false);
+  return __awaiter(this, void 0, void 0, function () {
+    var _a, _b;
 
-            if (!root_component) {
-              _context3.next = 6;
-              break;
-            }
+    return __generator(this, function (_c) {
+      switch (_c.label) {
+        case 0:
+          stores.page.set(page);
+          stores.preloading.set(false);
+          if (!root_component) return [3
+          /*break*/
+          , 1];
+          root_component.$set(props);
+          return [3
+          /*break*/
+          , 3];
 
-            root_component.$set(props);
-            _context3.next = 13;
-            break;
+        case 1:
+          props.stores = {
+            page: {
+              subscribe: stores.page.subscribe
+            },
+            preloading: {
+              subscribe: stores.preloading.subscribe
+            },
+            session: stores.session
+          };
+          _a = props;
+          _b = {};
+          return [4
+          /*yield*/
+          , root_preloaded];
 
-          case 6:
-            props.stores = {
-              page: {
-                subscribe: stores.page.subscribe
-              },
-              preloading: {
-                subscribe: stores.preloading.subscribe
-              },
-              session: stores.session
-            };
-            _context3.next = 9;
-            return root_preloaded;
+        case 2:
+          _a.level0 = (_b.props = _c.sent(), _b);
+          props.notify = stores.page.notify;
+          root_component = new App({
+            target: target,
+            props: props,
+            hydrate: true
+          });
+          _c.label = 3;
 
-          case 9:
-            _context3.t0 = _context3.sent;
-            props.level0 = {
-              props: _context3.t0
-            };
-            props.notify = stores.page.notify;
-            root_component = new App({
-              target: target,
-              props: props,
-              hydrate: true
-            });
-
-          case 13:
-            current_branch = branch;
-            current_query = JSON.stringify(page.query);
-            ready = true;
-            session_dirty = false;
-
-          case 17:
-          case "end":
-            return _context3.stop();
-        }
+        case 3:
+          current_branch = branch;
+          current_query = JSON.stringify(page.query);
+          ready = true;
+          session_dirty = false;
+          return [2
+          /*return*/
+          ];
       }
-    }, _callee3);
-  }));
+    });
+  });
 }
 
 function part_changed(i, segment, match, stringified_query) {
@@ -3727,194 +3108,186 @@ function part_changed(i, segment, match, stringified_query) {
 }
 
 function hydrate_target(dest) {
-  return __awaiter(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+  return __awaiter(this, void 0, void 0, function () {
+    var route, page, segments, _redirect, props, preload_context, root_preload, branch, l, stringified_query_1, match_1, segment_dirty_1, error_1;
+
     var _this = this;
 
-    var route, page, segments, _redirect, props, preload_context, root_preload, branch, l, stringified_query, match, segment_dirty;
-
-    return regeneratorRuntime.wrap(function _callee5$(_context5) {
-      while (1) {
-        switch (_context5.prev = _context5.next) {
-          case 0:
-            route = dest.route, page = dest.page;
-            segments = page.path.split('/').filter(Boolean);
-            _redirect = null;
-            props = {
-              error: null,
-              status: 200,
-              segments: [segments[0]]
-            };
-            preload_context = {
-              fetch: function (_fetch) {
-                function fetch(_x, _x2) {
-                  return _fetch.apply(this, arguments);
-                }
-
-                fetch.toString = function () {
-                  return _fetch.toString();
-                };
-
-                return fetch;
-              }(function (url, opts) {
-                return fetch(url, opts);
-              }),
-              redirect: function redirect(statusCode, location) {
-                if (_redirect && (_redirect.statusCode !== statusCode || _redirect.location !== location)) {
-                  throw new Error("Conflicting redirects");
-                }
-
-                _redirect = {
-                  statusCode: statusCode,
-                  location: location
-                };
-              },
-              error: function error(status, _error) {
-                props.error = typeof _error === 'string' ? new Error(_error) : _error;
-                props.status = status;
+    return __generator(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          route = dest.route, page = dest.page;
+          segments = page.path.split('/').filter(Boolean);
+          _redirect = null;
+          props = {
+            error: null,
+            status: 200,
+            segments: [segments[0]]
+          };
+          preload_context = {
+            fetch: function (_fetch) {
+              function fetch(_x, _x2) {
+                return _fetch.apply(this, arguments);
               }
-            };
 
-            if (!root_preloaded) {
-              root_preload = undefined || function () {};
+              fetch.toString = function () {
+                return _fetch.toString();
+              };
 
-              root_preloaded = initial_data.preloaded[0] || root_preload.call(preload_context, {
-                host: page.host,
-                path: page.path,
-                query: page.query,
-                params: {}
-              }, $session);
+              return fetch;
+            }(function (url, opts) {
+              return fetch(url, opts);
+            }),
+            redirect: function redirect(statusCode, location) {
+              if (_redirect && (_redirect.statusCode !== statusCode || _redirect.location !== location)) {
+                throw new Error("Conflicting redirects");
+              }
+
+              _redirect = {
+                statusCode: statusCode,
+                location: location
+              };
+            },
+            error: function error(status, _error) {
+              props.error = typeof _error === 'string' ? new Error(_error) : _error;
+              props.status = status;
             }
+          };
 
-            l = 1;
-            _context5.prev = 7;
-            stringified_query = JSON.stringify(page.query);
-            match = route.pattern.exec(page.path);
-            segment_dirty = false;
-            _context5.next = 13;
-            return Promise.all(route.parts.map(function (part, i) {
-              return __awaiter(_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-                var segment, j, _yield$load_component, component, preload, preloaded;
+          if (!root_preloaded) {
+            root_preload = undefined || function () {};
 
-                return regeneratorRuntime.wrap(function _callee4$(_context4) {
-                  while (1) {
-                    switch (_context4.prev = _context4.next) {
-                      case 0:
-                        segment = segments[i];
-                        if (part_changed(i, segment, match, stringified_query)) segment_dirty = true;
-                        props.segments[l] = segments[i + 1]; // TODO make this less confusing
+            root_preloaded = initial_data.preloaded[0] || root_preload.call(preload_context, {
+              host: page.host,
+              path: page.path,
+              query: page.query,
+              params: {}
+            }, $session);
+          }
 
-                        if (part) {
-                          _context4.next = 5;
-                          break;
-                        }
+          l = 1;
+          _a.label = 1;
 
-                        return _context4.abrupt("return", {
-                          segment: segment
-                        });
+        case 1:
+          _a.trys.push([1, 3,, 4]);
 
-                      case 5:
-                        j = l++;
+          stringified_query_1 = JSON.stringify(page.query);
+          match_1 = route.pattern.exec(page.path);
+          segment_dirty_1 = false;
+          return [4
+          /*yield*/
+          , Promise.all(route.parts.map(function (part, i) {
+            return __awaiter(_this, void 0, void 0, function () {
+              var segment, j, _a, component, preload, preloaded, _b;
 
-                        if (!(!session_dirty && !segment_dirty && current_branch[i] && current_branch[i].part === part.i)) {
-                          _context4.next = 8;
-                          break;
-                        }
+              return __generator(this, function (_c) {
+                switch (_c.label) {
+                  case 0:
+                    segment = segments[i];
+                    if (part_changed(i, segment, match_1, stringified_query_1)) segment_dirty_1 = true;
+                    props.segments[l] = segments[i + 1]; // TODO make this less confusing
 
-                        return _context4.abrupt("return", current_branch[i]);
+                    if (!part) return [2
+                    /*return*/
+                    , {
+                      segment: segment
+                    }];
+                    j = l++;
 
-                      case 8:
-                        segment_dirty = false;
-                        _context4.next = 11;
-                        return load_component(components[part.i]);
-
-                      case 11:
-                        _yield$load_component = _context4.sent;
-                        component = _yield$load_component["default"];
-                        preload = _yield$load_component.preload;
-
-                        if (!(ready || !initial_data.preloaded[i + 1])) {
-                          _context4.next = 25;
-                          break;
-                        }
-
-                        if (!preload) {
-                          _context4.next = 21;
-                          break;
-                        }
-
-                        _context4.next = 18;
-                        return preload.call(preload_context, {
-                          host: page.host,
-                          path: page.path,
-                          query: page.query,
-                          params: part.params ? part.params(dest.match) : {}
-                        }, $session);
-
-                      case 18:
-                        _context4.t0 = _context4.sent;
-                        _context4.next = 22;
-                        break;
-
-                      case 21:
-                        _context4.t0 = {};
-
-                      case 22:
-                        preloaded = _context4.t0;
-                        _context4.next = 26;
-                        break;
-
-                      case 25:
-                        preloaded = initial_data.preloaded[i + 1];
-
-                      case 26:
-                        return _context4.abrupt("return", props["level".concat(j)] = {
-                          component: component,
-                          props: preloaded,
-                          segment: segment,
-                          match: match,
-                          part: part.i
-                        });
-
-                      case 27:
-                      case "end":
-                        return _context4.stop();
+                    if (!session_dirty && !segment_dirty_1 && current_branch[i] && current_branch[i].part === part.i) {
+                      return [2
+                      /*return*/
+                      , current_branch[i]];
                     }
-                  }
-                }, _callee4);
-              }));
-            }));
 
-          case 13:
-            branch = _context5.sent;
-            _context5.next = 21;
-            break;
+                    segment_dirty_1 = false;
+                    return [4
+                    /*yield*/
+                    , load_component(components[part.i])];
 
-          case 16:
-            _context5.prev = 16;
-            _context5.t0 = _context5["catch"](7);
-            props.error = _context5.t0;
-            props.status = 500;
-            branch = [];
+                  case 1:
+                    _a = _c.sent(), component = _a["default"], preload = _a.preload;
+                    if (!(ready || !initial_data.preloaded[i + 1])) return [3
+                    /*break*/
+                    , 5];
+                    if (!preload) return [3
+                    /*break*/
+                    , 3];
+                    return [4
+                    /*yield*/
+                    , preload.call(preload_context, {
+                      host: page.host,
+                      path: page.path,
+                      query: page.query,
+                      params: part.params ? part.params(dest.match) : {}
+                    }, $session)];
 
-          case 21:
-            return _context5.abrupt("return", {
-              redirect: _redirect,
-              props: props,
-              branch: branch
+                  case 2:
+                    _b = _c.sent();
+                    return [3
+                    /*break*/
+                    , 4];
+
+                  case 3:
+                    _b = {};
+                    _c.label = 4;
+
+                  case 4:
+                    preloaded = _b;
+                    return [3
+                    /*break*/
+                    , 6];
+
+                  case 5:
+                    preloaded = initial_data.preloaded[i + 1];
+                    _c.label = 6;
+
+                  case 6:
+                    return [2
+                    /*return*/
+                    , props["level" + j] = {
+                      component: component,
+                      props: preloaded,
+                      segment: segment,
+                      match: match_1,
+                      part: part.i
+                    }];
+                }
+              });
             });
+          }))];
 
-          case 22:
-          case "end":
-            return _context5.stop();
-        }
+        case 2:
+          branch = _a.sent();
+          return [3
+          /*break*/
+          , 4];
+
+        case 3:
+          error_1 = _a.sent();
+          props.error = error_1;
+          props.status = 500;
+          branch = [];
+          return [3
+          /*break*/
+          , 4];
+
+        case 4:
+          return [2
+          /*return*/
+          , {
+            redirect: _redirect,
+            props: props,
+            branch: branch
+          }];
       }
-    }, _callee5, null, [[7, 16]]);
-  }));
+    });
+  });
 }
 
 function load_css(chunk) {
-  var href = "client/".concat(chunk);
-  if (document.querySelector("link[href=\"".concat(href, "\"]"))) return;
+  var href = "client/" + chunk;
+  if (document.querySelector("link[href=\"" + href + "\"]")) return;
   return new Promise(function (fulfil, reject) {
     var link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -3974,9 +3347,8 @@ function start(opts) {
   addEventListener('touchstart', trigger_prefetch);
   addEventListener('mousemove', handle_mousemove);
   return Promise.resolve().then(function () {
-    var _location2 = location,
-        hash = _location2.hash,
-        href = _location2.href;
+    var hash = location.hash,
+        href = location.href;
 
     _history.replaceState({
       id: uid
@@ -4008,7 +3380,7 @@ function handle_click(event) {
   // Adapted from https://github.com/visionmedia/page.js
   // MIT license https://github.com/visionmedia/page.js#license
   if (which(event) !== 1) return;
-  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  if (event.metaKey || event.ctrlKey || event.shiftKey) return;
   if (event.defaultPrevented) return;
   var a = find_anchor(event.target);
   if (!a) return;
@@ -4063,11 +3435,10 @@ function handle_popstate(event) {
 
   if (event.state) {
     var url = new URL(location.href);
+    var target = select_target(url);
 
-    var _target = select_target(url);
-
-    if (_target) {
-      navigate(_target, event.state.id);
+    if (target) {
+      navigate(target, event.state.id);
     } else {
       // eslint-disable-next-line
       location.href = location.href; // nosonar
@@ -4098,4 +3469,4 @@ start({
   target: document.querySelector('#sapper')
 });
 
-export { is_function as $, _createSuper as A, _classCallCheck as B, _createClass as C, _assertThisInitialized as D, _slicedToArray as E, _toConsumableArray as F, _asyncToGenerator as G, _createForOfIteratorHelper as H, commonjsGlobal as I, _defineProperty as J, globals as K, onMount as L, onDestroy as M, svg_element as N, binding_callbacks as O, set_style as P, listen_dev as Q, empty as R, SvelteComponentDev as S, prevent_default as T, run_all as U, stores$1 as V, validate_store as W, component_subscribe as X, prop_dev as Y, bind as Z, _typeof as _, space as a, add_flush_callback as a0, detach_dev as b, create_component as c, dispatch_dev as d, element as e, claim_space as f, claim_element as g, children as h, init as i, claim_text as j, claim_component as k, add_location as l, attr_dev as m, insert_dev as n, append_dev as o, mount_component as p, query_selector_all as q, noop as r, safe_not_equal as s, text as t, transition_in as u, validate_slots as v, transition_out as w, destroy_component as x, createCommonjsModule as y, _inherits as z };
+export { _classCallCheck as A, _createClass as B, _assertThisInitialized as C, _slicedToArray as D, _toConsumableArray as E, _asyncToGenerator as F, _createForOfIteratorHelper as G, _defineProperty as H, globals as I, onMount as J, onDestroy as K, svg_element as L, binding_callbacks as M, set_style as N, listen_dev as O, empty as P, prevent_default as Q, run_all as R, SvelteComponentDev as S, stores$1 as T, validate_store as U, component_subscribe as V, prop_dev as W, bind as X, is_function as Y, add_flush_callback as Z, _typeof as _, space as a, detach_dev as b, create_component as c, dispatch_dev as d, element as e, claim_space as f, claim_element as g, children as h, init as i, claim_text as j, claim_component as k, add_location as l, attr_dev as m, insert_dev as n, append_dev as o, mount_component as p, query_selector_all as q, noop as r, safe_not_equal as s, text as t, transition_in as u, validate_slots as v, transition_out as w, destroy_component as x, _inherits as y, _createSuper as z };
