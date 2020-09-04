@@ -25,7 +25,7 @@ import 'core-js/modules/web.dom-collections.for-each';
 import 'core-js/modules/web.dom-collections.iterator';
 import 'core-js/modules/web.timers';
 import 'core-js/modules/web.url';
-import { E as _toConsumableArray, S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, T as stores$1, U as validate_store, V as component_subscribe, J as onMount, K as onDestroy, v as validate_slots, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, O as listen_dev, W as prop_dev, M as binding_callbacks, X as bind, a as space, t as text, c as create_component, L as svg_element, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, N as set_style, o as append_dev, p as mount_component, Y as is_function, Q as prevent_default, Z as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, R as run_all, I as globals } from './client.eeaf15f0.js';
+import { E as _toConsumableArray, S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, T as stores$1, U as validate_store, V as component_subscribe, J as onMount, K as onDestroy, v as validate_slots, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, O as listen_dev, W as prop_dev, M as binding_callbacks, X as bind, a as space, t as text, c as create_component, L as svg_element, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, N as set_style, o as append_dev, p as mount_component, Y as is_function, Q as prevent_default, Z as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, R as run_all, I as globals } from './client.f8fd5cbb.js';
 import 'core-js/modules/es.array.concat';
 import 'core-js/modules/es.array.fill';
 import 'core-js/modules/es.array.from';
@@ -78,7 +78,7 @@ import 'core-js/modules/es.symbol.to-string-tag';
 import 'core-js/modules/es.json.to-string-tag';
 import 'core-js/modules/es.math.to-string-tag';
 import 'core-js/modules/es.object.get-prototype-of';
-import { c as createCommonjsModule, u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.c3813448.js';
+import { c as createCommonjsModule, u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.20cb8292.js';
 import 'core-js/modules/es.weak-map';
 import 'core-js/modules/es.string.trim';
 import 'core-js/modules/es.regexp.constructor';
@@ -219,36 +219,36 @@ function create_fragment(ctx) {
 	let t1;
 	let a0_href_value;
 	let t2;
-	let div8;
+	let div11;
 	let div1;
 	let t3;
-	let div7;
-	let div3;
+	let div10;
+	let div6;
 	let markmap;
 	let updating_el;
 	let updating_onReset;
 	let updating_onZoomIn;
 	let updating_onZoomOut;
 	let t4;
+	let div5;
 	let div2;
 	let svg0;
-	let circle0;
 	let path0;
 	let t5;
+	let div3;
 	let svg1;
-	let circle1;
 	let path1;
 	let t6;
+	let div4;
 	let svg2;
-	let circle2;
 	let path2;
 	let t7;
-	let div6;
-	let div4;
+	let div9;
+	let div7;
 	let a1;
 	let t8;
 	let t9;
-	let div5;
+	let div8;
 	let a2;
 	let t10;
 	let t11;
@@ -306,33 +306,33 @@ function create_fragment(ctx) {
 			a0 = element("a");
 			t1 = text("New feature: load markmap from Gist!");
 			t2 = space();
-			div8 = element("div");
+			div11 = element("div");
 			div1 = element("div");
 			if (if_block) if_block.c();
 			t3 = space();
-			div7 = element("div");
-			div3 = element("div");
+			div10 = element("div");
+			div6 = element("div");
 			create_component(markmap.$$.fragment);
 			t4 = space();
+			div5 = element("div");
 			div2 = element("div");
 			svg0 = svg_element("svg");
-			circle0 = svg_element("circle");
 			path0 = svg_element("path");
 			t5 = space();
+			div3 = element("div");
 			svg1 = svg_element("svg");
-			circle1 = svg_element("circle");
 			path1 = svg_element("path");
 			t6 = space();
+			div4 = element("div");
 			svg2 = svg_element("svg");
-			circle2 = svg_element("circle");
 			path2 = svg_element("path");
 			t7 = space();
-			div6 = element("div");
-			div4 = element("div");
+			div9 = element("div");
+			div7 = element("div");
 			a1 = element("a");
 			t8 = text("Download as interactive HTML");
 			t9 = space();
-			div5 = element("div");
+			div8 = element("div");
 			a2 = element("a");
 			t10 = text("Download as SVG");
 			t11 = space();
@@ -352,39 +352,25 @@ function create_fragment(ctx) {
 			a0_nodes.forEach(detach_dev);
 			div0_nodes.forEach(detach_dev);
 			t2 = claim_space(nodes);
-			div8 = claim_element(nodes, "DIV", { class: true });
-			var div8_nodes = children(div8);
-			div1 = claim_element(div8_nodes, "DIV", { class: true });
+			div11 = claim_element(nodes, "DIV", { class: true });
+			var div11_nodes = children(div11);
+			div1 = claim_element(div11_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 			if (if_block) if_block.l(div1_nodes);
 			div1_nodes.forEach(detach_dev);
-			t3 = claim_space(div8_nodes);
-			div7 = claim_element(div8_nodes, "DIV", { class: true });
-			var div7_nodes = children(div7);
-			div3 = claim_element(div7_nodes, "DIV", { class: true });
-			var div3_nodes = children(div3);
-			claim_component(markmap.$$.fragment, div3_nodes);
-			t4 = claim_space(div3_nodes);
-			div2 = claim_element(div3_nodes, "DIV", { class: true });
+			t3 = claim_space(div11_nodes);
+			div10 = claim_element(div11_nodes, "DIV", { class: true });
+			var div10_nodes = children(div10);
+			div6 = claim_element(div10_nodes, "DIV", { class: true });
+			var div6_nodes = children(div6);
+			claim_component(markmap.$$.fragment, div6_nodes);
+			t4 = claim_space(div6_nodes);
+			div5 = claim_element(div6_nodes, "DIV", { class: true });
+			var div5_nodes = children(div5);
+			div2 = claim_element(div5_nodes, "DIV", { title: true });
 			var div2_nodes = children(div2);
 			svg0 = claim_element(div2_nodes, "svg", { width: true, height: true, viewBox: true }, 1);
 			var svg0_nodes = children(svg0);
-
-			circle0 = claim_element(
-				svg0_nodes,
-				"circle",
-				{
-					cx: true,
-					cy: true,
-					r: true,
-					fill: true,
-					"stroke-width": true,
-					stroke: true
-				},
-				1
-			);
-
-			children(circle0).forEach(detach_dev);
 
 			path0 = claim_element(
 				svg0_nodes,
@@ -400,25 +386,12 @@ function create_fragment(ctx) {
 
 			children(path0).forEach(detach_dev);
 			svg0_nodes.forEach(detach_dev);
-			t5 = claim_space(div2_nodes);
-			svg1 = claim_element(div2_nodes, "svg", { width: true, height: true, viewBox: true }, 1);
+			div2_nodes.forEach(detach_dev);
+			t5 = claim_space(div5_nodes);
+			div3 = claim_element(div5_nodes, "DIV", { title: true });
+			var div3_nodes = children(div3);
+			svg1 = claim_element(div3_nodes, "svg", { width: true, height: true, viewBox: true }, 1);
 			var svg1_nodes = children(svg1);
-
-			circle1 = claim_element(
-				svg1_nodes,
-				"circle",
-				{
-					cx: true,
-					cy: true,
-					r: true,
-					fill: true,
-					"stroke-width": true,
-					stroke: true
-				},
-				1
-			);
-
-			children(circle1).forEach(detach_dev);
 
 			path1 = claim_element(
 				svg1_nodes,
@@ -434,25 +407,12 @@ function create_fragment(ctx) {
 
 			children(path1).forEach(detach_dev);
 			svg1_nodes.forEach(detach_dev);
-			t6 = claim_space(div2_nodes);
-			svg2 = claim_element(div2_nodes, "svg", { width: true, height: true, viewBox: true }, 1);
+			div3_nodes.forEach(detach_dev);
+			t6 = claim_space(div5_nodes);
+			div4 = claim_element(div5_nodes, "DIV", { title: true });
+			var div4_nodes = children(div4);
+			svg2 = claim_element(div4_nodes, "svg", { width: true, height: true, viewBox: true }, 1);
 			var svg2_nodes = children(svg2);
-
-			circle2 = claim_element(
-				svg2_nodes,
-				"circle",
-				{
-					cx: true,
-					cy: true,
-					r: true,
-					fill: true,
-					"stroke-width": true,
-					stroke: true
-				},
-				1
-			);
-
-			children(circle2).forEach(detach_dev);
 
 			path2 = claim_element(
 				svg2_nodes,
@@ -468,34 +428,35 @@ function create_fragment(ctx) {
 
 			children(path2).forEach(detach_dev);
 			svg2_nodes.forEach(detach_dev);
-			div2_nodes.forEach(detach_dev);
-			div3_nodes.forEach(detach_dev);
-			t7 = claim_space(div7_nodes);
-			div6 = claim_element(div7_nodes, "DIV", {});
-			var div6_nodes = children(div6);
-			div4 = claim_element(div6_nodes, "DIV", { class: true });
-			var div4_nodes = children(div4);
-			a1 = claim_element(div4_nodes, "A", {});
+			div4_nodes.forEach(detach_dev);
+			div5_nodes.forEach(detach_dev);
+			div6_nodes.forEach(detach_dev);
+			t7 = claim_space(div10_nodes);
+			div9 = claim_element(div10_nodes, "DIV", {});
+			var div9_nodes = children(div9);
+			div7 = claim_element(div9_nodes, "DIV", { class: true });
+			var div7_nodes = children(div7);
+			a1 = claim_element(div7_nodes, "A", {});
 			var a1_nodes = children(a1);
 			t8 = claim_text(a1_nodes, "Download as interactive HTML");
 			a1_nodes.forEach(detach_dev);
-			div4_nodes.forEach(detach_dev);
-			t9 = claim_space(div6_nodes);
-			div5 = claim_element(div6_nodes, "DIV", { class: true, title: true });
-			var div5_nodes = children(div5);
-			a2 = claim_element(div5_nodes, "A", {});
+			div7_nodes.forEach(detach_dev);
+			t9 = claim_space(div9_nodes);
+			div8 = claim_element(div9_nodes, "DIV", { class: true, title: true });
+			var div8_nodes = children(div8);
+			a2 = claim_element(div8_nodes, "A", {});
 			var a2_nodes = children(a2);
 			t10 = claim_text(a2_nodes, "Download as SVG");
 			a2_nodes.forEach(detach_dev);
-			t11 = claim_space(div5_nodes);
-			span = claim_element(div5_nodes, "SPAN", { class: true });
+			t11 = claim_space(div8_nodes);
+			span = claim_element(div8_nodes, "SPAN", { class: true });
 			var span_nodes = children(span);
 			t12 = claim_text(span_nodes, "⚠️");
 			span_nodes.forEach(detach_dev);
-			div5_nodes.forEach(detach_dev);
-			div6_nodes.forEach(detach_dev);
-			div7_nodes.forEach(detach_dev);
 			div8_nodes.forEach(detach_dev);
+			div9_nodes.forEach(detach_dev);
+			div10_nodes.forEach(detach_dev);
+			div11_nodes.forEach(detach_dev);
 			this.h();
 		},
 		h: function hydrate() {
@@ -509,72 +470,57 @@ function create_fragment(ctx) {
 			add_location(div0, file, 104, 0, 2585);
 			attr_dev(div1, "class", "flex-1 min-w-0 border border-gray-300");
 			add_location(div1, file, 108, 2, 2847);
-			attr_dev(circle0, "cx", "10");
-			attr_dev(circle0, "cy", "10");
-			attr_dev(circle0, "r", "9");
-			attr_dev(circle0, "fill", "none");
-			attr_dev(circle0, "stroke-width", "0.5");
-			attr_dev(circle0, "stroke", "currentColor");
-			add_location(circle0, file, 124, 10, 3445);
 			attr_dev(path0, "fill", "none");
-			attr_dev(path0, "stroke-width", "1");
+			attr_dev(path0, "stroke-width", "2");
 			attr_dev(path0, "stroke", "currentColor");
 			attr_dev(path0, "d", "M10 6 v8 M6 10 h8");
-			add_location(path0, file, 125, 10, 3541);
+			add_location(path0, file, 125, 12, 3479);
 			attr_dev(svg0, "width", "20");
 			attr_dev(svg0, "height", "20");
 			attr_dev(svg0, "viewBox", "0 0 20 20");
-			add_location(svg0, file, 123, 8, 3366);
-			attr_dev(circle1, "cx", "10");
-			attr_dev(circle1, "cy", "10");
-			attr_dev(circle1, "r", "9");
-			attr_dev(circle1, "fill", "none");
-			attr_dev(circle1, "stroke-width", "0.5");
-			attr_dev(circle1, "stroke", "currentColor");
-			add_location(circle1, file, 133, 10, 3784);
+			add_location(svg0, file, 124, 10, 3398);
+			attr_dev(div2, "title", "Zoom in");
+			add_location(div2, file, 123, 8, 3366);
 			attr_dev(path1, "fill", "none");
-			attr_dev(path1, "stroke-width", "1");
+			attr_dev(path1, "stroke-width", "2");
 			attr_dev(path1, "stroke", "currentColor");
 			attr_dev(path1, "d", "M6 10 h8");
-			add_location(path1, file, 134, 10, 3880);
+			add_location(path1, file, 135, 12, 3784);
 			attr_dev(svg1, "width", "20");
 			attr_dev(svg1, "height", "20");
 			attr_dev(svg1, "viewBox", "0 0 20 20");
-			add_location(svg1, file, 132, 8, 3704);
-			attr_dev(circle2, "cx", "10");
-			attr_dev(circle2, "cy", "10");
-			attr_dev(circle2, "r", "9");
-			attr_dev(circle2, "fill", "none");
-			attr_dev(circle2, "stroke-width", "0.5");
-			attr_dev(circle2, "stroke", "currentColor");
-			add_location(circle2, file, 142, 10, 4112);
+			add_location(svg1, file, 134, 10, 3702);
+			attr_dev(div3, "title", "Zoom out");
+			add_location(div3, file, 133, 8, 3669);
 			attr_dev(path2, "fill", "none");
-			attr_dev(path2, "stroke-width", "1");
+			attr_dev(path2, "stroke-width", "2");
 			attr_dev(path2, "stroke", "currentColor");
 			attr_dev(path2, "d", "M5 9 v-3 h3 M5 11 v3 h3 M15 9 v-3 h-3 M15 11 v3 h-3");
-			add_location(path2, file, 143, 10, 4208);
+			add_location(path2, file, 145, 12, 4085);
 			attr_dev(svg2, "width", "20");
 			attr_dev(svg2, "height", "20");
 			attr_dev(svg2, "viewBox", "0 0 20 20");
-			add_location(svg2, file, 141, 8, 4034);
-			attr_dev(div2, "class", "buttons absolute right-0 bottom-0 mr-2 mb-2");
-			add_location(div2, file, 122, 6, 3300);
-			attr_dev(div3, "class", "markmap-wrapper flex-1");
-			add_location(div3, file, 114, 4, 3084);
-			add_location(a1, file, 154, 8, 4482);
-			attr_dev(div4, "class", "inline-block px-4 py-2");
-			add_location(div4, file, 153, 6, 4437);
-			add_location(a2, file, 157, 8, 4679);
+			add_location(svg2, file, 144, 10, 4005);
+			attr_dev(div4, "title", "Fit window size");
+			add_location(div4, file, 143, 8, 3965);
+			attr_dev(div5, "class", "buttons absolute right-0 bottom-0 mr-2 mb-2");
+			add_location(div5, file, 122, 6, 3300);
+			attr_dev(div6, "class", "markmap-wrapper flex-1");
+			add_location(div6, file, 114, 4, 3084);
+			add_location(a1, file, 157, 8, 4386);
+			attr_dev(div7, "class", "inline-block px-4 py-2");
+			add_location(div7, file, 156, 6, 4341);
+			add_location(a2, file, 160, 8, 4583);
 			attr_dev(span, "class", "text-red-500");
-			add_location(span, file, 158, 8, 4750);
-			attr_dev(div5, "class", "inline-block px-4 py-2");
-			attr_dev(div5, "title", "SVG does not work well with PrismJS and MathJax");
-			add_location(div5, file, 156, 6, 4578);
-			add_location(div6, file, 152, 4, 4425);
-			attr_dev(div7, "class", "flex-1 min-w-0 flex flex-col");
-			add_location(div7, file, 113, 2, 3037);
-			attr_dev(div8, "class", "repl");
-			add_location(div8, file, 107, 0, 2826);
+			add_location(span, file, 161, 8, 4654);
+			attr_dev(div8, "class", "inline-block px-4 py-2");
+			attr_dev(div8, "title", "SVG does not work well with PrismJS and MathJax");
+			add_location(div8, file, 159, 6, 4482);
+			add_location(div9, file, 155, 4, 4329);
+			attr_dev(div10, "class", "flex-1 min-w-0 flex flex-col");
+			add_location(div10, file, 113, 2, 3037);
+			attr_dev(div11, "class", "repl");
+			add_location(div11, file, 107, 0, 2826);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, t0, anchor);
@@ -582,38 +528,38 @@ function create_fragment(ctx) {
 			append_dev(div0, a0);
 			append_dev(a0, t1);
 			insert_dev(target, t2, anchor);
-			insert_dev(target, div8, anchor);
-			append_dev(div8, div1);
+			insert_dev(target, div11, anchor);
+			append_dev(div11, div1);
 			if (if_block) if_block.m(div1, null);
 			/*div1_binding*/ ctx[12](div1);
-			append_dev(div8, t3);
-			append_dev(div8, div7);
-			append_dev(div7, div3);
-			mount_component(markmap, div3, null);
-			append_dev(div3, t4);
-			append_dev(div3, div2);
-			append_dev(div2, svg0);
-			append_dev(svg0, circle0);
-			append_dev(svg0, path0);
-			append_dev(div2, t5);
-			append_dev(div2, svg1);
-			append_dev(svg1, circle1);
-			append_dev(svg1, path1);
-			append_dev(div2, t6);
-			append_dev(div2, svg2);
-			append_dev(svg2, circle2);
-			append_dev(svg2, path2);
-			append_dev(div7, t7);
-			append_dev(div7, div6);
-			append_dev(div6, div4);
-			append_dev(div4, a1);
-			append_dev(a1, t8);
-			append_dev(div6, t9);
+			append_dev(div11, t3);
+			append_dev(div11, div10);
+			append_dev(div10, div6);
+			mount_component(markmap, div6, null);
+			append_dev(div6, t4);
 			append_dev(div6, div5);
-			append_dev(div5, a2);
+			append_dev(div5, div2);
+			append_dev(div2, svg0);
+			append_dev(svg0, path0);
+			append_dev(div5, t5);
+			append_dev(div5, div3);
+			append_dev(div3, svg1);
+			append_dev(svg1, path1);
+			append_dev(div5, t6);
+			append_dev(div5, div4);
+			append_dev(div4, svg2);
+			append_dev(svg2, path2);
+			append_dev(div10, t7);
+			append_dev(div10, div9);
+			append_dev(div9, div7);
+			append_dev(div7, a1);
+			append_dev(a1, t8);
+			append_dev(div9, t9);
+			append_dev(div9, div8);
+			append_dev(div8, a2);
 			append_dev(a2, t10);
-			append_dev(div5, t11);
-			append_dev(div5, span);
+			append_dev(div8, t11);
+			append_dev(div8, span);
 			append_dev(span, t12);
 			current = true;
 
@@ -719,7 +665,7 @@ function create_fragment(ctx) {
 			if (detaching) detach_dev(t0);
 			if (detaching) detach_dev(div0);
 			if (detaching) detach_dev(t2);
-			if (detaching) detach_dev(div8);
+			if (detaching) detach_dev(div11);
 			if (if_block) if_block.d();
 			/*div1_binding*/ ctx[12](null);
 			destroy_component(markmap);
@@ -827,7 +773,7 @@ function instance($$self, $$props, $$invalidate) {
 	onMount(async () => {
 		onHashChange();
 		window.addEventListener("hashchange", onHashChange);
-		const { default: CodeMirror } = await import('./codemirror.e986e55a.js');
+		const { default: CodeMirror } = await import('./codemirror.dcf2345f.js');
 
 		$$invalidate(2, cm = CodeMirror(editorEl, {
 			lineNumbers: true,
