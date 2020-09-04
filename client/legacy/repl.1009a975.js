@@ -22,7 +22,7 @@ import 'core-js/modules/web.dom-collections.for-each';
 import 'core-js/modules/web.dom-collections.iterator';
 import 'core-js/modules/web.timers';
 import 'core-js/modules/web.url';
-import { y as createCommonjsModule, F as _toConsumableArray, S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, L as onMount, M as onDestroy, v as validate_slots, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, Q as listen_dev, V as prop_dev, O as binding_callbacks, W as bind, a as space, t as text, c as create_component, N as svg_element, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, P as set_style, o as append_dev, p as mount_component, X as is_function, T as prevent_default, Y as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, U as run_all, K as globals } from './client.9dcf0744.js';
+import { y as createCommonjsModule, F as _toConsumableArray, S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, V as stores$1, W as validate_store, X as component_subscribe, L as onMount, M as onDestroy, v as validate_slots, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, Q as listen_dev, Y as prop_dev, O as binding_callbacks, Z as bind, a as space, t as text, c as create_component, N as svg_element, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, P as set_style, o as append_dev, p as mount_component, $ as is_function, T as prevent_default, a0 as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, U as run_all, K as globals } from './client.3eacca72.js';
 import 'core-js/modules/es.symbol';
 import 'core-js/modules/es.symbol.description';
 import 'core-js/modules/es.symbol.async-iterator';
@@ -53,7 +53,7 @@ import 'core-js/modules/es.array.find';
 import 'core-js/modules/es.function.bind';
 import 'core-js/modules/es.object.get-own-property-descriptor';
 import 'core-js/modules/es.weak-map';
-import { u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.9e51e019.js';
+import { u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.2459e777.js';
 import 'core-js/modules/es.array.sort';
 import 'core-js/modules/es.string.trim';
 import 'core-js/modules/es.regexp.constructor';
@@ -160,7 +160,7 @@ var template_1 = createCommonjsModule(function (module, exports) {
 const { document: document_1 } = globals;
 const file = "src/routes/repl.svelte";
 
-// (111:4) {#if !cm}
+// (110:4) {#if !cm}
 function create_if_block(ctx) {
 	let textarea;
 	let mounted;
@@ -179,13 +179,13 @@ function create_if_block(ctx) {
 		h: function hydrate() {
 			attr_dev(textarea, "class", "w-full h-full p-1");
 			textarea.value = /*content*/ ctx[3];
-			add_location(textarea, file, 111, 4, 2962);
+			add_location(textarea, file, 110, 4, 2938);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, textarea, anchor);
 
 			if (!mounted) {
-				dispose = listen_dev(textarea, "input", /*handleInput*/ ctx[10], false, false, false);
+				dispose = listen_dev(textarea, "input", /*handleInput*/ ctx[11], false, false, false);
 				mounted = true;
 			}
 		},
@@ -205,7 +205,7 @@ function create_if_block(ctx) {
 		block,
 		id: create_if_block.name,
 		type: "if",
-		source: "(111:4) {#if !cm}",
+		source: "(110:4) {#if !cm}",
 		ctx
 	});
 
@@ -260,19 +260,19 @@ function create_fragment(ctx) {
 	let if_block = !/*cm*/ ctx[2] && create_if_block(ctx);
 
 	function markmap_el_binding(value) {
-		/*markmap_el_binding*/ ctx[12].call(null, value);
+		/*markmap_el_binding*/ ctx[13].call(null, value);
 	}
 
 	function markmap_onReset_binding(value) {
-		/*markmap_onReset_binding*/ ctx[13].call(null, value);
+		/*markmap_onReset_binding*/ ctx[14].call(null, value);
 	}
 
 	function markmap_onZoomIn_binding(value) {
-		/*markmap_onZoomIn_binding*/ ctx[14].call(null, value);
+		/*markmap_onZoomIn_binding*/ ctx[15].call(null, value);
 	}
 
 	function markmap_onZoomOut_binding(value) {
-		/*markmap_onZoomOut_binding*/ ctx[15].call(null, value);
+		/*markmap_onZoomOut_binding*/ ctx[16].call(null, value);
 	}
 
 	let markmap_props = { content: /*content*/ ctx[3] };
@@ -501,80 +501,80 @@ function create_fragment(ctx) {
 		h: function hydrate() {
 			document_1.title = "Try Markmap";
 			attr_dev(a0, "class", "inline-block text-sm text-orange-600 underline");
-			attr_dev(a0, "href", a0_href_value = `${/*pageUrl*/ ctx[7]}#?file=gist.md`);
-			add_location(a0, file, 106, 2, 2681);
+			attr_dev(a0, "href", a0_href_value = `${/*$page*/ ctx[7].path}#?file=gist.md`);
+			add_location(a0, file, 105, 2, 2654);
 			attr_dev(div0, "class", "fixed z-10 hidden md:block");
 			set_style(div0, "top", "15px");
 			set_style(div0, "left", "50%");
-			add_location(div0, file, 105, 0, 2612);
+			add_location(div0, file, 104, 0, 2585);
 			attr_dev(div1, "class", "flex-1 min-w-0 border border-gray-300");
-			add_location(div1, file, 109, 2, 2871);
+			add_location(div1, file, 108, 2, 2847);
 			attr_dev(circle0, "cx", "10");
 			attr_dev(circle0, "cy", "10");
 			attr_dev(circle0, "r", "9");
 			attr_dev(circle0, "fill", "none");
 			attr_dev(circle0, "stroke-width", "0.5");
 			attr_dev(circle0, "stroke", "currentColor");
-			add_location(circle0, file, 125, 10, 3469);
+			add_location(circle0, file, 124, 10, 3445);
 			attr_dev(path0, "fill", "none");
 			attr_dev(path0, "stroke-width", "1");
 			attr_dev(path0, "stroke", "currentColor");
 			attr_dev(path0, "d", "M10 6 v8 M6 10 h8");
-			add_location(path0, file, 126, 10, 3565);
+			add_location(path0, file, 125, 10, 3541);
 			attr_dev(svg0, "width", "20");
 			attr_dev(svg0, "height", "20");
 			attr_dev(svg0, "viewBox", "0 0 20 20");
-			add_location(svg0, file, 124, 8, 3390);
+			add_location(svg0, file, 123, 8, 3366);
 			attr_dev(circle1, "cx", "10");
 			attr_dev(circle1, "cy", "10");
 			attr_dev(circle1, "r", "9");
 			attr_dev(circle1, "fill", "none");
 			attr_dev(circle1, "stroke-width", "0.5");
 			attr_dev(circle1, "stroke", "currentColor");
-			add_location(circle1, file, 134, 10, 3808);
+			add_location(circle1, file, 133, 10, 3784);
 			attr_dev(path1, "fill", "none");
 			attr_dev(path1, "stroke-width", "1");
 			attr_dev(path1, "stroke", "currentColor");
 			attr_dev(path1, "d", "M6 10 h8");
-			add_location(path1, file, 135, 10, 3904);
+			add_location(path1, file, 134, 10, 3880);
 			attr_dev(svg1, "width", "20");
 			attr_dev(svg1, "height", "20");
 			attr_dev(svg1, "viewBox", "0 0 20 20");
-			add_location(svg1, file, 133, 8, 3728);
+			add_location(svg1, file, 132, 8, 3704);
 			attr_dev(circle2, "cx", "10");
 			attr_dev(circle2, "cy", "10");
 			attr_dev(circle2, "r", "9");
 			attr_dev(circle2, "fill", "none");
 			attr_dev(circle2, "stroke-width", "0.5");
 			attr_dev(circle2, "stroke", "currentColor");
-			add_location(circle2, file, 143, 10, 4136);
+			add_location(circle2, file, 142, 10, 4112);
 			attr_dev(path2, "fill", "none");
 			attr_dev(path2, "stroke-width", "1");
 			attr_dev(path2, "stroke", "currentColor");
 			attr_dev(path2, "d", "M5 9 v-3 h3 M5 11 v3 h3 M15 9 v-3 h-3 M15 11 v3 h-3");
-			add_location(path2, file, 144, 10, 4232);
+			add_location(path2, file, 143, 10, 4208);
 			attr_dev(svg2, "width", "20");
 			attr_dev(svg2, "height", "20");
 			attr_dev(svg2, "viewBox", "0 0 20 20");
-			add_location(svg2, file, 142, 8, 4058);
+			add_location(svg2, file, 141, 8, 4034);
 			attr_dev(div2, "class", "buttons absolute right-0 bottom-0 mr-2 mb-2");
-			add_location(div2, file, 123, 6, 3324);
+			add_location(div2, file, 122, 6, 3300);
 			attr_dev(div3, "class", "markmap-wrapper flex-1");
-			add_location(div3, file, 115, 4, 3108);
-			add_location(a1, file, 155, 8, 4506);
+			add_location(div3, file, 114, 4, 3084);
+			add_location(a1, file, 154, 8, 4482);
 			attr_dev(div4, "class", "inline-block px-4 py-2");
-			add_location(div4, file, 154, 6, 4461);
-			add_location(a2, file, 158, 8, 4703);
+			add_location(div4, file, 153, 6, 4437);
+			add_location(a2, file, 157, 8, 4679);
 			attr_dev(span, "class", "text-red-500");
-			add_location(span, file, 159, 8, 4774);
+			add_location(span, file, 158, 8, 4750);
 			attr_dev(div5, "class", "inline-block px-4 py-2");
 			attr_dev(div5, "title", "SVG does not work well with PrismJS and MathJax");
-			add_location(div5, file, 157, 6, 4602);
-			add_location(div6, file, 153, 4, 4449);
+			add_location(div5, file, 156, 6, 4578);
+			add_location(div6, file, 152, 4, 4425);
 			attr_dev(div7, "class", "flex-1 min-w-0 flex flex-col");
-			add_location(div7, file, 114, 2, 3061);
+			add_location(div7, file, 113, 2, 3037);
 			attr_dev(div8, "class", "repl");
-			add_location(div8, file, 108, 0, 2850);
+			add_location(div8, file, 107, 0, 2826);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, t0, anchor);
@@ -585,7 +585,7 @@ function create_fragment(ctx) {
 			insert_dev(target, div8, anchor);
 			append_dev(div8, div1);
 			if (if_block) if_block.m(div1, null);
-			/*div1_binding*/ ctx[11](div1);
+			/*div1_binding*/ ctx[12](div1);
 			append_dev(div8, t3);
 			append_dev(div8, div7);
 			append_dev(div7, div3);
@@ -650,8 +650,8 @@ function create_fragment(ctx) {
 						false,
 						false
 					),
-					listen_dev(a1, "click", prevent_default(/*onDownloadHTML*/ ctx[9]), false, true, false),
-					listen_dev(a2, "click", prevent_default(/*onDownloadSVG*/ ctx[8]), false, true, false)
+					listen_dev(a1, "click", prevent_default(/*onDownloadHTML*/ ctx[10]), false, true, false),
+					listen_dev(a2, "click", prevent_default(/*onDownloadSVG*/ ctx[9]), false, true, false)
 				];
 
 				mounted = true;
@@ -660,7 +660,7 @@ function create_fragment(ctx) {
 		p: function update(new_ctx, [dirty]) {
 			ctx = new_ctx;
 
-			if (!current || dirty & /*pageUrl*/ 128 && a0_href_value !== (a0_href_value = `${/*pageUrl*/ ctx[7]}#?file=gist.md`)) {
+			if (!current || dirty & /*$page*/ 128 && a0_href_value !== (a0_href_value = `${/*$page*/ ctx[7].path}#?file=gist.md`)) {
 				attr_dev(a0, "href", a0_href_value);
 			}
 
@@ -721,7 +721,7 @@ function create_fragment(ctx) {
 			if (detaching) detach_dev(t2);
 			if (detaching) detach_dev(div8);
 			if (if_block) if_block.d();
-			/*div1_binding*/ ctx[11](null);
+			/*div1_binding*/ ctx[12](null);
 			destroy_component(markmap);
 			mounted = false;
 			run_all(dispose);
@@ -772,6 +772,7 @@ function onClickNewFeature() {
 }
 
 function instance($$self, $$props, $$invalidate) {
+	let $page;
 	let editorEl;
 	let svgEl;
 	let cm;
@@ -779,7 +780,9 @@ function instance($$self, $$props, $$invalidate) {
 	let onReset;
 	let onZoomIn;
 	let onZoomOut;
-	let pageUrl;
+	const { page } = stores$1();
+	validate_store(page, "page");
+	component_subscribe($$self, page, value => $$invalidate(7, $page = value));
 
 	function onDownloadSVG() {
 		const svgHtml = svgEl.outerHTML.replace(/<br>/g, "<br/>");
@@ -822,11 +825,9 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	onMount(async () => {
-		const { origin, pathname } = window.location;
-		$$invalidate(7, pageUrl = origin + pathname);
 		onHashChange();
 		window.addEventListener("hashchange", onHashChange);
-		const { default: CodeMirror } = await import('./codemirror.ad0bbb6c.js');
+		const { default: CodeMirror } = await import('./codemirror.ad30d258.js');
 
 		$$invalidate(2, cm = CodeMirror(editorEl, {
 			lineNumbers: true,
@@ -880,6 +881,7 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$capture_state = () => ({
 		onMount,
 		onDestroy,
+		stores: stores$1,
 		debounce: lodash_debounce,
 		transform: transform_1.transform,
 		fillTemplate: template_1.fillTemplate,
@@ -891,7 +893,7 @@ function instance($$self, $$props, $$invalidate) {
 		onReset,
 		onZoomIn,
 		onZoomOut,
-		pageUrl,
+		page,
 		download,
 		onDownloadSVG,
 		onDownloadHTML,
@@ -900,7 +902,8 @@ function instance($$self, $$props, $$invalidate) {
 		onHashChange,
 		update,
 		onClickNewFeature,
-		handleInput
+		handleInput,
+		$page
 	});
 
 	$$self.$inject_state = $$props => {
@@ -911,7 +914,6 @@ function instance($$self, $$props, $$invalidate) {
 		if ("onReset" in $$props) $$invalidate(4, onReset = $$props.onReset);
 		if ("onZoomIn" in $$props) $$invalidate(5, onZoomIn = $$props.onZoomIn);
 		if ("onZoomOut" in $$props) $$invalidate(6, onZoomOut = $$props.onZoomOut);
-		if ("pageUrl" in $$props) $$invalidate(7, pageUrl = $$props.pageUrl);
 		if ("lastSession" in $$props) lastSession = $$props.lastSession;
 	};
 
@@ -927,7 +929,8 @@ function instance($$self, $$props, $$invalidate) {
 		onReset,
 		onZoomIn,
 		onZoomOut,
-		pageUrl,
+		$page,
+		page,
 		onDownloadSVG,
 		onDownloadHTML,
 		handleInput,
