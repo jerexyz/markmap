@@ -25,7 +25,7 @@ import 'core-js/modules/web.dom-collections.for-each';
 import 'core-js/modules/web.dom-collections.iterator';
 import 'core-js/modules/web.timers';
 import 'core-js/modules/web.url';
-import './client.f8fd5cbb.js';
+import './client.c5686339.js';
 import 'core-js/modules/es.array.concat';
 import 'core-js/modules/es.array.fill';
 import 'core-js/modules/es.array.from';
