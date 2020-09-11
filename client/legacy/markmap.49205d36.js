@@ -1,112 +1,1438 @@
-import 'core-js/modules/es.regexp.exec';
-import 'core-js/modules/es.string.replace';
-import 'core-js/modules/es.symbol';
-import 'core-js/modules/es.symbol.description';
-import 'core-js/modules/es.symbol.iterator';
-import 'core-js/modules/es.array.filter';
-import 'core-js/modules/es.array.for-each';
-import 'core-js/modules/es.array.iterator';
-import 'core-js/modules/es.array.map';
-import 'core-js/modules/es.array.reduce';
-import 'core-js/modules/es.array.slice';
-import 'core-js/modules/es.date.to-string';
-import 'core-js/modules/es.function.name';
-import 'core-js/modules/es.object.create';
-import 'core-js/modules/es.object.to-string';
-import 'core-js/modules/es.promise';
-import 'core-js/modules/es.regexp.to-string';
-import 'core-js/modules/es.string.iterator';
-import 'core-js/modules/es.string.match';
-import 'core-js/modules/es.string.split';
-import 'core-js/modules/web.dom-collections.for-each';
-import 'core-js/modules/web.dom-collections.iterator';
-import 'core-js/modules/web.timers';
-import { _ as _typeof, y as _inherits, z as _createSuper, A as _classCallCheck, B as _createClass, C as _assertThisInitialized, D as _slicedToArray, E as _toConsumableArray, F as _asyncToGenerator, G as _createForOfIteratorHelper, H as _defineProperty, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, I as globals, J as onMount, K as onDestroy, v as validate_slots, L as svg_element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, M as binding_callbacks } from './client.77f152cb.js';
-import 'core-js/modules/es.array.concat';
-import 'core-js/modules/es.array.fill';
-import 'core-js/modules/es.array.from';
-import 'core-js/modules/es.array.index-of';
-import 'core-js/modules/es.array.join';
-import 'core-js/modules/es.array.splice';
-import 'core-js/modules/es.object.assign';
-import 'core-js/modules/es.object.keys';
-import 'core-js/modules/es.parse-int';
-import 'core-js/modules/es.array.is-array';
-import 'core-js/modules/es.symbol.async-iterator';
-import 'core-js/modules/es.object.define-property';
-import 'core-js/modules/es.object.get-own-property-descriptor';
-import 'core-js/modules/es.object.set-prototype-of';
-import 'core-js/modules/es.array.reverse';
-import 'core-js/modules/es.array-buffer.slice';
-import 'core-js/modules/es.typed-array.copy-within';
-import 'core-js/modules/es.typed-array.every';
-import 'core-js/modules/es.typed-array.fill';
-import 'core-js/modules/es.typed-array.filter';
-import 'core-js/modules/es.typed-array.find';
-import 'core-js/modules/es.typed-array.find-index';
-import 'core-js/modules/es.typed-array.for-each';
-import 'core-js/modules/es.typed-array.includes';
-import 'core-js/modules/es.typed-array.index-of';
-import 'core-js/modules/es.typed-array.iterator';
-import 'core-js/modules/es.typed-array.join';
-import 'core-js/modules/es.typed-array.last-index-of';
-import 'core-js/modules/es.typed-array.map';
-import 'core-js/modules/es.typed-array.reduce';
-import 'core-js/modules/es.typed-array.reduce-right';
-import 'core-js/modules/es.typed-array.reverse';
-import 'core-js/modules/es.typed-array.set';
-import 'core-js/modules/es.typed-array.slice';
-import 'core-js/modules/es.typed-array.some';
-import 'core-js/modules/es.typed-array.sort';
-import 'core-js/modules/es.typed-array.subarray';
-import 'core-js/modules/es.typed-array.to-locale-string';
-import 'core-js/modules/es.typed-array.to-string';
-import 'core-js/modules/es.array.sort';
-import 'core-js/modules/es.function.bind';
-import 'core-js/modules/es.date.to-iso-string';
-import 'core-js/modules/es.array.find';
-import 'core-js/modules/es.symbol.to-string-tag';
-import 'core-js/modules/es.json.to-string-tag';
-import 'core-js/modules/es.math.to-string-tag';
-import 'core-js/modules/es.object.get-prototype-of';
-import 'core-js/modules/es.weak-map';
-import 'core-js/modules/es.string.trim';
-import 'core-js/modules/es.regexp.constructor';
-import 'core-js/modules/es.array-buffer.constructor';
-import 'core-js/modules/es.array-buffer.is-view';
-import 'core-js/modules/es.data-view';
-import 'core-js/modules/es.array.every';
-import 'core-js/modules/es.typed-array.float32-array';
-import 'core-js/modules/es.number.constructor';
-import 'core-js/modules/es.number.to-fixed';
-import 'core-js/modules/es.number.to-precision';
-import 'core-js/modules/es.math.sign';
-import 'core-js/modules/es.math.log10';
-import 'core-js/modules/es.math.log2';
-import 'core-js/modules/es.math.expm1';
-import 'core-js/modules/es.math.log1p';
-import 'core-js/modules/es.object.freeze';
-import 'core-js/modules/es.array.flat-map';
-import 'core-js/modules/es.array.unscopables.flat-map';
-import 'core-js/modules/es.object.entries';
-import 'core-js/modules/es.array.includes';
-import 'core-js/modules/es.string.ends-with';
+import { y as defineWellKnownSymbol, _ as _export, z as isArray, A as global_1, B as setSpecies, C as toInteger, D as toLength, E as anInstance, F as descriptors, G as redefineAll, H as fails, I as createNonEnumerableProperty, J as objectSetPrototypeOf, K as objectGetPrototypeOf, L as setToStringTag, M as objectGetOwnPropertyNames, N as internalState, O as arrayFill, P as objectDefineProperty, Q as anObject, R as toAbsoluteIndex, T as speciesConstructor, U as arrayMethodIsStrict, V as arrayMethodUsesToLength, W as arrayIteration, X as requireObjectCoercible, Y as notARegexp, Z as correctIsRegexpLogic, $ as addToUnscopables, a0 as arrayIncludes, a1 as toIndexedObject, a2 as arrayReduce, a3 as toObject, a4 as wellKnownSymbol, a5 as es_array_iterator, a6 as uid, a7 as classof, a8 as has$1, a9 as isObject$1, aa as redefine, ab as checkCorrectnessOfIteration, ac as getIteratorMethod, ad as isArrayIteratorMethod, ae as functionBindContext, af as createCommonjsModule, ag as objectGetOwnPropertyDescriptor, ah as objectCreate, ai as inheritIfRequired, aj as toPrimitive, ak as _typeof, al as createPropertyDescriptor, am as aFunction, an as classofRaw, ao as isForced_1, ap as stringTrim, aq as stringRepeat, ar as internalMetadata, as as freezing, at as _inherits, au as _createSuper, av as _classCallCheck, aw as _createClass, ax as _assertThisInitialized, ay as _slicedToArray, az as arraySpeciesCreate, aA as _toConsumableArray, aB as objectKeys, aC as objectPropertyIsEnumerable, aD as _asyncToGenerator, aE as _createForOfIteratorHelper, aF as commonjsGlobal, aG as _defineProperty, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, aH as globals, v as validate_slots, aI as onMount, aJ as onDestroy, aK as svg_element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, aL as binding_callbacks } from './client.7c9b7095.js';
 
-var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+// https://tc39.github.io/ecma262/#sec-symbol.asynciterator
 
-function createCommonjsModule(fn, basedir, module) {
-	return module = {
-	  path: basedir,
-	  exports: {},
-	  require: function (path, base) {
-      return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+defineWellKnownSymbol('asyncIterator');
+
+var nativeReverse = [].reverse;
+var test = [1, 2]; // `Array.prototype.reverse` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.reverse
+// fix for Safari 12.0 bug
+// https://bugs.webkit.org/show_bug.cgi?id=188794
+
+_export({
+  target: 'Array',
+  proto: true,
+  forced: String(test) === String(test.reverse())
+}, {
+  reverse: function reverse() {
+    // eslint-disable-next-line no-self-assign
+    if (isArray(this)) this.length = this.length;
+    return nativeReverse.call(this);
+  }
+});
+
+var ARRAY_BUFFER = 'ArrayBuffer';
+var ArrayBuffer$1 = arrayBuffer[ARRAY_BUFFER];
+var NativeArrayBuffer = global_1[ARRAY_BUFFER]; // `ArrayBuffer` constructor
+// https://tc39.github.io/ecma262/#sec-arraybuffer-constructor
+
+_export({
+  global: true,
+  forced: NativeArrayBuffer !== ArrayBuffer$1
+}, {
+  ArrayBuffer: ArrayBuffer$1
+});
+setSpecies(ARRAY_BUFFER);
+
+var arrayBufferNative = typeof ArrayBuffer !== 'undefined' && typeof DataView !== 'undefined';
+
+// https://tc39.github.io/ecma262/#sec-dataview-constructor
+
+_export({
+  global: true,
+  forced: !arrayBufferNative
+}, {
+  DataView: arrayBuffer.DataView
+});
+
+// https://tc39.github.io/ecma262/#sec-toindex
+
+var toIndex = function toIndex(it) {
+  if (it === undefined) return 0;
+  var number = toInteger(it);
+  var length = toLength(number);
+  if (number !== length) throw RangeError('Wrong length or index');
+  return length;
+};
+
+// IEEE754 conversions based on https://github.com/feross/ieee754
+// eslint-disable-next-line no-shadow-restricted-names
+var Infinity$1 = 1 / 0;
+var abs = Math.abs;
+var pow = Math.pow;
+var floor = Math.floor;
+var log = Math.log;
+var LN2 = Math.LN2;
+
+var pack = function pack(number, mantissaLength, bytes) {
+  var buffer = new Array(bytes);
+  var exponentLength = bytes * 8 - mantissaLength - 1;
+  var eMax = (1 << exponentLength) - 1;
+  var eBias = eMax >> 1;
+  var rt = mantissaLength === 23 ? pow(2, -24) - pow(2, -77) : 0;
+  var sign = number < 0 || number === 0 && 1 / number < 0 ? 1 : 0;
+  var index = 0;
+  var exponent, mantissa, c;
+  number = abs(number); // eslint-disable-next-line no-self-compare
+
+  if (number != number || number === Infinity$1) {
+    // eslint-disable-next-line no-self-compare
+    mantissa = number != number ? 1 : 0;
+    exponent = eMax;
+  } else {
+    exponent = floor(log(number) / LN2);
+
+    if (number * (c = pow(2, -exponent)) < 1) {
+      exponent--;
+      c *= 2;
     }
-	}, fn(module, module.exports), module.exports;
+
+    if (exponent + eBias >= 1) {
+      number += rt / c;
+    } else {
+      number += rt * pow(2, 1 - eBias);
+    }
+
+    if (number * c >= 2) {
+      exponent++;
+      c /= 2;
+    }
+
+    if (exponent + eBias >= eMax) {
+      mantissa = 0;
+      exponent = eMax;
+    } else if (exponent + eBias >= 1) {
+      mantissa = (number * c - 1) * pow(2, mantissaLength);
+      exponent = exponent + eBias;
+    } else {
+      mantissa = number * pow(2, eBias - 1) * pow(2, mantissaLength);
+      exponent = 0;
+    }
+  }
+
+  for (; mantissaLength >= 8; buffer[index++] = mantissa & 255, mantissa /= 256, mantissaLength -= 8) {
+  }
+
+  exponent = exponent << mantissaLength | mantissa;
+  exponentLength += mantissaLength;
+
+  for (; exponentLength > 0; buffer[index++] = exponent & 255, exponent /= 256, exponentLength -= 8) {
+  }
+
+  buffer[--index] |= sign * 128;
+  return buffer;
+};
+
+var unpack = function unpack(buffer, mantissaLength) {
+  var bytes = buffer.length;
+  var exponentLength = bytes * 8 - mantissaLength - 1;
+  var eMax = (1 << exponentLength) - 1;
+  var eBias = eMax >> 1;
+  var nBits = exponentLength - 7;
+  var index = bytes - 1;
+  var sign = buffer[index--];
+  var exponent = sign & 127;
+  var mantissa;
+  sign >>= 7;
+
+  for (; nBits > 0; exponent = exponent * 256 + buffer[index], index--, nBits -= 8) {
+  }
+
+  mantissa = exponent & (1 << -nBits) - 1;
+  exponent >>= -nBits;
+  nBits += mantissaLength;
+
+  for (; nBits > 0; mantissa = mantissa * 256 + buffer[index], index--, nBits -= 8) {
+  }
+
+  if (exponent === 0) {
+    exponent = 1 - eBias;
+  } else if (exponent === eMax) {
+    return mantissa ? NaN : sign ? -Infinity$1 : Infinity$1;
+  } else {
+    mantissa = mantissa + pow(2, mantissaLength);
+    exponent = exponent - eBias;
+  }
+
+  return (sign ? -1 : 1) * mantissa * pow(2, exponent - mantissaLength);
+};
+
+var ieee754 = {
+  pack: pack,
+  unpack: unpack
+};
+
+var getOwnPropertyNames = objectGetOwnPropertyNames.f;
+var defineProperty = objectDefineProperty.f;
+var getInternalState = internalState.get;
+var setInternalState = internalState.set;
+var ARRAY_BUFFER$1 = 'ArrayBuffer';
+var DATA_VIEW = 'DataView';
+var PROTOTYPE = 'prototype';
+var WRONG_LENGTH = 'Wrong length';
+var WRONG_INDEX = 'Wrong index';
+var NativeArrayBuffer$1 = global_1[ARRAY_BUFFER$1];
+var $ArrayBuffer = NativeArrayBuffer$1;
+var $DataView = global_1[DATA_VIEW];
+var $DataViewPrototype = $DataView && $DataView[PROTOTYPE];
+var ObjectPrototype = Object.prototype;
+var RangeError$1 = global_1.RangeError;
+var packIEEE754 = ieee754.pack;
+var unpackIEEE754 = ieee754.unpack;
+
+var packInt8 = function packInt8(number) {
+  return [number & 0xFF];
+};
+
+var packInt16 = function packInt16(number) {
+  return [number & 0xFF, number >> 8 & 0xFF];
+};
+
+var packInt32 = function packInt32(number) {
+  return [number & 0xFF, number >> 8 & 0xFF, number >> 16 & 0xFF, number >> 24 & 0xFF];
+};
+
+var unpackInt32 = function unpackInt32(buffer) {
+  return buffer[3] << 24 | buffer[2] << 16 | buffer[1] << 8 | buffer[0];
+};
+
+var packFloat32 = function packFloat32(number) {
+  return packIEEE754(number, 23, 4);
+};
+
+var packFloat64 = function packFloat64(number) {
+  return packIEEE754(number, 52, 8);
+};
+
+var addGetter = function addGetter(Constructor, key) {
+  defineProperty(Constructor[PROTOTYPE], key, {
+    get: function get() {
+      return getInternalState(this)[key];
+    }
+  });
+};
+
+var get = function get(view, count, index, isLittleEndian) {
+  var intIndex = toIndex(index);
+  var store = getInternalState(view);
+  if (intIndex + count > store.byteLength) throw RangeError$1(WRONG_INDEX);
+  var bytes = getInternalState(store.buffer).bytes;
+  var start = intIndex + store.byteOffset;
+  var pack = bytes.slice(start, start + count);
+  return isLittleEndian ? pack : pack.reverse();
+};
+
+var set = function set(view, count, index, conversion, value, isLittleEndian) {
+  var intIndex = toIndex(index);
+  var store = getInternalState(view);
+  if (intIndex + count > store.byteLength) throw RangeError$1(WRONG_INDEX);
+  var bytes = getInternalState(store.buffer).bytes;
+  var start = intIndex + store.byteOffset;
+  var pack = conversion(+value);
+
+  for (var i = 0; i < count; i++) {
+    bytes[start + i] = pack[isLittleEndian ? i : count - i - 1];
+  }
+};
+
+if (!arrayBufferNative) {
+  $ArrayBuffer = function ArrayBuffer(length) {
+    anInstance(this, $ArrayBuffer, ARRAY_BUFFER$1);
+    var byteLength = toIndex(length);
+    setInternalState(this, {
+      bytes: arrayFill.call(new Array(byteLength), 0),
+      byteLength: byteLength
+    });
+    if (!descriptors) this.byteLength = byteLength;
+  };
+
+  $DataView = function DataView(buffer, byteOffset, byteLength) {
+    anInstance(this, $DataView, DATA_VIEW);
+    anInstance(buffer, $ArrayBuffer, DATA_VIEW);
+    var bufferLength = getInternalState(buffer).byteLength;
+    var offset = toInteger(byteOffset);
+    if (offset < 0 || offset > bufferLength) throw RangeError$1('Wrong offset');
+    byteLength = byteLength === undefined ? bufferLength - offset : toLength(byteLength);
+    if (offset + byteLength > bufferLength) throw RangeError$1(WRONG_LENGTH);
+    setInternalState(this, {
+      buffer: buffer,
+      byteLength: byteLength,
+      byteOffset: offset
+    });
+
+    if (!descriptors) {
+      this.buffer = buffer;
+      this.byteLength = byteLength;
+      this.byteOffset = offset;
+    }
+  };
+
+  if (descriptors) {
+    addGetter($ArrayBuffer, 'byteLength');
+    addGetter($DataView, 'buffer');
+    addGetter($DataView, 'byteLength');
+    addGetter($DataView, 'byteOffset');
+  }
+
+  redefineAll($DataView[PROTOTYPE], {
+    getInt8: function getInt8(byteOffset) {
+      return get(this, 1, byteOffset)[0] << 24 >> 24;
+    },
+    getUint8: function getUint8(byteOffset) {
+      return get(this, 1, byteOffset)[0];
+    },
+    getInt16: function getInt16(byteOffset
+    /* , littleEndian */
+    ) {
+      var bytes = get(this, 2, byteOffset, arguments.length > 1 ? arguments[1] : undefined);
+      return (bytes[1] << 8 | bytes[0]) << 16 >> 16;
+    },
+    getUint16: function getUint16(byteOffset
+    /* , littleEndian */
+    ) {
+      var bytes = get(this, 2, byteOffset, arguments.length > 1 ? arguments[1] : undefined);
+      return bytes[1] << 8 | bytes[0];
+    },
+    getInt32: function getInt32(byteOffset
+    /* , littleEndian */
+    ) {
+      return unpackInt32(get(this, 4, byteOffset, arguments.length > 1 ? arguments[1] : undefined));
+    },
+    getUint32: function getUint32(byteOffset
+    /* , littleEndian */
+    ) {
+      return unpackInt32(get(this, 4, byteOffset, arguments.length > 1 ? arguments[1] : undefined)) >>> 0;
+    },
+    getFloat32: function getFloat32(byteOffset
+    /* , littleEndian */
+    ) {
+      return unpackIEEE754(get(this, 4, byteOffset, arguments.length > 1 ? arguments[1] : undefined), 23);
+    },
+    getFloat64: function getFloat64(byteOffset
+    /* , littleEndian */
+    ) {
+      return unpackIEEE754(get(this, 8, byteOffset, arguments.length > 1 ? arguments[1] : undefined), 52);
+    },
+    setInt8: function setInt8(byteOffset, value) {
+      set(this, 1, byteOffset, packInt8, value);
+    },
+    setUint8: function setUint8(byteOffset, value) {
+      set(this, 1, byteOffset, packInt8, value);
+    },
+    setInt16: function setInt16(byteOffset, value
+    /* , littleEndian */
+    ) {
+      set(this, 2, byteOffset, packInt16, value, arguments.length > 2 ? arguments[2] : undefined);
+    },
+    setUint16: function setUint16(byteOffset, value
+    /* , littleEndian */
+    ) {
+      set(this, 2, byteOffset, packInt16, value, arguments.length > 2 ? arguments[2] : undefined);
+    },
+    setInt32: function setInt32(byteOffset, value
+    /* , littleEndian */
+    ) {
+      set(this, 4, byteOffset, packInt32, value, arguments.length > 2 ? arguments[2] : undefined);
+    },
+    setUint32: function setUint32(byteOffset, value
+    /* , littleEndian */
+    ) {
+      set(this, 4, byteOffset, packInt32, value, arguments.length > 2 ? arguments[2] : undefined);
+    },
+    setFloat32: function setFloat32(byteOffset, value
+    /* , littleEndian */
+    ) {
+      set(this, 4, byteOffset, packFloat32, value, arguments.length > 2 ? arguments[2] : undefined);
+    },
+    setFloat64: function setFloat64(byteOffset, value
+    /* , littleEndian */
+    ) {
+      set(this, 8, byteOffset, packFloat64, value, arguments.length > 2 ? arguments[2] : undefined);
+    }
+  });
+} else {
+  if (!fails(function () {
+    NativeArrayBuffer$1(1);
+  }) || !fails(function () {
+    new NativeArrayBuffer$1(-1); // eslint-disable-line no-new
+  }) || fails(function () {
+    new NativeArrayBuffer$1(); // eslint-disable-line no-new
+
+    new NativeArrayBuffer$1(1.5); // eslint-disable-line no-new
+
+    new NativeArrayBuffer$1(NaN); // eslint-disable-line no-new
+
+    return NativeArrayBuffer$1.name != ARRAY_BUFFER$1;
+  })) {
+    $ArrayBuffer = function ArrayBuffer(length) {
+      anInstance(this, $ArrayBuffer);
+      return new NativeArrayBuffer$1(toIndex(length));
+    };
+
+    var ArrayBufferPrototype = $ArrayBuffer[PROTOTYPE] = NativeArrayBuffer$1[PROTOTYPE];
+
+    for (var keys = getOwnPropertyNames(NativeArrayBuffer$1), j = 0, key; keys.length > j;) {
+      if (!((key = keys[j++]) in $ArrayBuffer)) {
+        createNonEnumerableProperty($ArrayBuffer, key, NativeArrayBuffer$1[key]);
+      }
+    }
+
+    ArrayBufferPrototype.constructor = $ArrayBuffer;
+  } // WebKit bug - the same parent prototype for typed arrays and data view
+
+
+  if (objectSetPrototypeOf && objectGetPrototypeOf($DataViewPrototype) !== ObjectPrototype) {
+    objectSetPrototypeOf($DataViewPrototype, ObjectPrototype);
+  } // iOS Safari 7.x bug
+
+
+  var testView = new $DataView(new $ArrayBuffer(2));
+  var nativeSetInt8 = $DataViewPrototype.setInt8;
+  testView.setInt8(0, 2147483648);
+  testView.setInt8(1, 2147483649);
+  if (testView.getInt8(0) || !testView.getInt8(1)) redefineAll($DataViewPrototype, {
+    setInt8: function setInt8(byteOffset, value) {
+      nativeSetInt8.call(this, byteOffset, value << 24 >> 24);
+    },
+    setUint8: function setUint8(byteOffset, value) {
+      nativeSetInt8.call(this, byteOffset, value << 24 >> 24);
+    }
+  }, {
+    unsafe: true
+  });
 }
 
-function commonjsRequire () {
-	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
+setToStringTag($ArrayBuffer, ARRAY_BUFFER$1);
+setToStringTag($DataView, DATA_VIEW);
+var arrayBuffer = {
+  ArrayBuffer: $ArrayBuffer,
+  DataView: $DataView
+};
+
+var ArrayBuffer$2 = arrayBuffer.ArrayBuffer;
+var DataView$1 = arrayBuffer.DataView;
+var nativeArrayBufferSlice = ArrayBuffer$2.prototype.slice;
+var INCORRECT_SLICE = fails(function () {
+  return !new ArrayBuffer$2(2).slice(1, undefined).byteLength;
+}); // `ArrayBuffer.prototype.slice` method
+// https://tc39.github.io/ecma262/#sec-arraybuffer.prototype.slice
+
+_export({
+  target: 'ArrayBuffer',
+  proto: true,
+  unsafe: true,
+  forced: INCORRECT_SLICE
+}, {
+  slice: function slice(start, end) {
+    if (nativeArrayBufferSlice !== undefined && end === undefined) {
+      return nativeArrayBufferSlice.call(anObject(this), start); // FF fix
+    }
+
+    var length = anObject(this).byteLength;
+    var first = toAbsoluteIndex(start, length);
+    var fin = toAbsoluteIndex(end === undefined ? length : end, length);
+    var result = new (speciesConstructor(this, ArrayBuffer$2))(toLength(fin - first));
+    var viewSource = new DataView$1(this);
+    var viewTarget = new DataView$1(result);
+    var index = 0;
+
+    while (first < fin) {
+      viewTarget.setUint8(index++, viewSource.getUint8(first++));
+    }
+
+    return result;
+  }
+});
+
+// https://tc39.github.io/ecma262/#sec-typedarray-objects
+
+typedArrayConstructor('Int8', function (init) {
+  return function Int8Array(data, byteOffset, length) {
+    return init(this, data, byteOffset, length);
+  };
+});
+
+// https://tc39.github.io/ecma262/#sec-typedarray-objects
+
+typedArrayConstructor('Uint8', function (init) {
+  return function Uint8ClampedArray(data, byteOffset, length) {
+    return init(this, data, byteOffset, length);
+  };
+}, true);
+
+var $every = arrayIteration.every;
+var STRICT_METHOD = arrayMethodIsStrict('every');
+var USES_TO_LENGTH = arrayMethodUsesToLength('every'); // `Array.prototype.every` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.every
+
+_export({
+  target: 'Array',
+  proto: true,
+  forced: !STRICT_METHOD || !USES_TO_LENGTH
+}, {
+  every: function every(callbackfn
+  /* , thisArg */
+  ) {
+    return $every(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+var $every$1 = arrayIteration.every;
+var aTypedArray = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.every` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.every
+
+exportTypedArrayMethod('every', function every(callbackfn
+/* , thisArg */
+) {
+  return $every$1(aTypedArray(this), callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+});
+
+var aTypedArray$1 = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$1 = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.fill` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.fill
+// eslint-disable-next-line no-unused-vars
+
+exportTypedArrayMethod$1('fill', function fill(value
+/* , start, end */
+) {
+  return arrayFill.apply(aTypedArray$1(this), arguments);
+});
+
+var $filter = arrayIteration.filter;
+var aTypedArray$2 = arrayBufferViewCore.aTypedArray;
+var aTypedArrayConstructor = arrayBufferViewCore.aTypedArrayConstructor;
+var exportTypedArrayMethod$2 = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.filter` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.filter
+
+exportTypedArrayMethod$2('filter', function filter(callbackfn
+/* , thisArg */
+) {
+  var list = $filter(aTypedArray$2(this), callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  var C = speciesConstructor(this, this.constructor);
+  var index = 0;
+  var length = list.length;
+  var result = new (aTypedArrayConstructor(C))(length);
+
+  while (length > index) {
+    result[index] = list[index++];
+  }
+
+  return result;
+});
+
+var $find = arrayIteration.find;
+var aTypedArray$3 = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$3 = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.find` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.find
+
+exportTypedArrayMethod$3('find', function find(predicate
+/* , thisArg */
+) {
+  return $find(aTypedArray$3(this), predicate, arguments.length > 1 ? arguments[1] : undefined);
+});
+
+var $findIndex = arrayIteration.findIndex;
+var aTypedArray$4 = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$4 = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.findIndex` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.findindex
+
+exportTypedArrayMethod$4('findIndex', function findIndex(predicate
+/* , thisArg */
+) {
+  return $findIndex(aTypedArray$4(this), predicate, arguments.length > 1 ? arguments[1] : undefined);
+});
+
+var $forEach = arrayIteration.forEach;
+var aTypedArray$5 = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$5 = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.forEach` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.foreach
+
+exportTypedArrayMethod$5('forEach', function forEach(callbackfn
+/* , thisArg */
+) {
+  $forEach(aTypedArray$5(this), callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+});
+
+// https://tc39.github.io/ecma262/#sec-string.prototype.includes
+
+
+_export({
+  target: 'String',
+  proto: true,
+  forced: !correctIsRegexpLogic('includes')
+}, {
+  includes: function includes(searchString
+  /* , position = 0 */
+  ) {
+    return !!~String(requireObjectCoercible(this)).indexOf(notARegexp(searchString), arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+var $includes = arrayIncludes.includes;
+var USES_TO_LENGTH$1 = arrayMethodUsesToLength('indexOf', {
+  ACCESSORS: true,
+  1: 0
+}); // `Array.prototype.includes` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.includes
+
+_export({
+  target: 'Array',
+  proto: true,
+  forced: !USES_TO_LENGTH$1
+}, {
+  includes: function includes(el
+  /* , fromIndex = 0 */
+  ) {
+    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
+  }
+}); // https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+
+addToUnscopables('includes');
+
+var $includes$1 = arrayIncludes.includes;
+var aTypedArray$6 = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$6 = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.includes` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.includes
+
+exportTypedArrayMethod$6('includes', function includes(searchElement
+/* , fromIndex */
+) {
+  return $includes$1(aTypedArray$6(this), searchElement, arguments.length > 1 ? arguments[1] : undefined);
+});
+
+var $indexOf = arrayIncludes.indexOf;
+var aTypedArray$7 = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$7 = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.indexOf` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.indexof
+
+exportTypedArrayMethod$7('indexOf', function indexOf(searchElement
+/* , fromIndex */
+) {
+  return $indexOf(aTypedArray$7(this), searchElement, arguments.length > 1 ? arguments[1] : undefined);
+});
+
+// https://tc39.github.io/ecma262/#sec-typedarray-objects
+
+typedArrayConstructor('Uint8', function (init) {
+  return function Uint8Array(data, byteOffset, length) {
+    return init(this, data, byteOffset, length);
+  };
+});
+
+var aTypedArray$8 = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$8 = arrayBufferViewCore.exportTypedArrayMethod;
+var $join = [].join; // `%TypedArray%.prototype.join` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.join
+// eslint-disable-next-line no-unused-vars
+
+exportTypedArrayMethod$8('join', function join(separator) {
+  return $join.apply(aTypedArray$8(this), arguments);
+});
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.lastindexof
+
+_export({
+  target: 'Array',
+  proto: true,
+  forced: arrayLastIndexOf !== [].lastIndexOf
+}, {
+  lastIndexOf: arrayLastIndexOf
+});
+
+var min = Math.min;
+var nativeLastIndexOf = [].lastIndexOf;
+var NEGATIVE_ZERO = !!nativeLastIndexOf && 1 / [1].lastIndexOf(1, -0) < 0;
+var STRICT_METHOD$1 = arrayMethodIsStrict('lastIndexOf'); // For preventing possible almost infinite loop in non-standard implementations, test the forward version of the method
+
+var USES_TO_LENGTH$2 = arrayMethodUsesToLength('indexOf', {
+  ACCESSORS: true,
+  1: 0
+});
+var FORCED = NEGATIVE_ZERO || !STRICT_METHOD$1 || !USES_TO_LENGTH$2; // `Array.prototype.lastIndexOf` method implementation
+// https://tc39.github.io/ecma262/#sec-array.prototype.lastindexof
+
+var arrayLastIndexOf = FORCED ? function lastIndexOf(searchElement
+/* , fromIndex = @[*-1] */
+) {
+  // convert -0 to +0
+  if (NEGATIVE_ZERO) return nativeLastIndexOf.apply(this, arguments) || 0;
+  var O = toIndexedObject(this);
+  var length = toLength(O.length);
+  var index = length - 1;
+  if (arguments.length > 1) index = min(index, toInteger(arguments[1]));
+  if (index < 0) index = length + index;
+
+  for (; index >= 0; index--) {
+    if (index in O && O[index] === searchElement) return index || 0;
+  }
+
+  return -1;
+} : nativeLastIndexOf;
+
+var aTypedArray$9 = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$9 = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.lastIndexOf` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.lastindexof
+// eslint-disable-next-line no-unused-vars
+
+exportTypedArrayMethod$9('lastIndexOf', function lastIndexOf(searchElement
+/* , fromIndex */
+) {
+  return arrayLastIndexOf.apply(aTypedArray$9(this), arguments);
+});
+
+var $map = arrayIteration.map;
+var aTypedArray$a = arrayBufferViewCore.aTypedArray;
+var aTypedArrayConstructor$1 = arrayBufferViewCore.aTypedArrayConstructor;
+var exportTypedArrayMethod$a = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.map` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.map
+
+exportTypedArrayMethod$a('map', function map(mapfn
+/* , thisArg */
+) {
+  return $map(aTypedArray$a(this), mapfn, arguments.length > 1 ? arguments[1] : undefined, function (O, length) {
+    return new (aTypedArrayConstructor$1(speciesConstructor(O, O.constructor)))(length);
+  });
+});
+
+var $reduce = arrayReduce.left;
+var aTypedArray$b = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$b = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.reduce` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.reduce
+
+exportTypedArrayMethod$b('reduce', function reduce(callbackfn
+/* , initialValue */
+) {
+  return $reduce(aTypedArray$b(this), callbackfn, arguments.length, arguments.length > 1 ? arguments[1] : undefined);
+});
+
+var $reduceRight = arrayReduce.right;
+var aTypedArray$c = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$c = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.reduceRicht` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.reduceright
+
+exportTypedArrayMethod$c('reduceRight', function reduceRight(callbackfn
+/* , initialValue */
+) {
+  return $reduceRight(aTypedArray$c(this), callbackfn, arguments.length, arguments.length > 1 ? arguments[1] : undefined);
+});
+
+var aTypedArray$d = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$d = arrayBufferViewCore.exportTypedArrayMethod;
+var floor$1 = Math.floor; // `%TypedArray%.prototype.reverse` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.reverse
+
+exportTypedArrayMethod$d('reverse', function reverse() {
+  var that = this;
+  var length = aTypedArray$d(that).length;
+  var middle = floor$1(length / 2);
+  var index = 0;
+  var value;
+
+  while (index < middle) {
+    value = that[index];
+    that[index++] = that[--length];
+    that[length] = value;
+  }
+
+  return that;
+});
+
+var $some = arrayIteration.some;
+var aTypedArray$e = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$e = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.some` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.some
+
+exportTypedArrayMethod$e('some', function some(callbackfn
+/* , thisArg */
+) {
+  return $some(aTypedArray$e(this), callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+});
+
+var aTypedArray$f = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$f = arrayBufferViewCore.exportTypedArrayMethod;
+var $sort = [].sort; // `%TypedArray%.prototype.sort` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.sort
+
+exportTypedArrayMethod$f('sort', function sort(comparefn) {
+  return $sort.call(aTypedArray$f(this), comparefn);
+});
+
+var aTypedArray$g = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$g = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.subarray` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.subarray
+
+exportTypedArrayMethod$g('subarray', function subarray(begin, end) {
+  var O = aTypedArray$g(this);
+  var length = O.length;
+  var beginIndex = toAbsoluteIndex(begin, length);
+  return new (speciesConstructor(O, O.constructor))(O.buffer, O.byteOffset + beginIndex * O.BYTES_PER_ELEMENT, toLength((end === undefined ? length : toAbsoluteIndex(end, length)) - beginIndex));
+});
+
+var exportTypedArrayMethod$h = arrayBufferViewCore.exportTypedArrayMethod;
+var Uint8Array = global_1.Uint8Array;
+var Uint8ArrayPrototype = Uint8Array && Uint8Array.prototype || {};
+var arrayToString = [].toString;
+var arrayJoin = [].join;
+
+if (fails(function () {
+  arrayToString.call({});
+})) {
+  arrayToString = function toString() {
+    return arrayJoin.call(this);
+  };
 }
+
+var IS_NOT_ARRAY_METHOD = Uint8ArrayPrototype.toString != arrayToString; // `%TypedArray%.prototype.toString` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.tostring
+
+exportTypedArrayMethod$h('toString', arrayToString, IS_NOT_ARRAY_METHOD);
+
+var Int8Array$1 = global_1.Int8Array;
+var aTypedArray$h = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$i = arrayBufferViewCore.exportTypedArrayMethod;
+var $toLocaleString = [].toLocaleString;
+var $slice = [].slice; // iOS Safari 6.x fails here
+
+var TO_LOCALE_STRING_BUG = !!Int8Array$1 && fails(function () {
+  $toLocaleString.call(new Int8Array$1(1));
+});
+var FORCED$1 = fails(function () {
+  return [1, 2].toLocaleString() != new Int8Array$1([1, 2]).toLocaleString();
+}) || !fails(function () {
+  Int8Array$1.prototype.toLocaleString.call([1, 2]);
+}); // `%TypedArray%.prototype.toLocaleString` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.tolocalestring
+
+exportTypedArrayMethod$i('toLocaleString', function toLocaleString() {
+  return $toLocaleString.apply(TO_LOCALE_STRING_BUG ? $slice.call(aTypedArray$h(this)) : aTypedArray$h(this), arguments);
+}, FORCED$1);
+
+var aTypedArray$i = arrayBufferViewCore.aTypedArray;
+var aTypedArrayConstructor$2 = arrayBufferViewCore.aTypedArrayConstructor;
+var exportTypedArrayMethod$j = arrayBufferViewCore.exportTypedArrayMethod;
+var $slice$1 = [].slice;
+var FORCED$2 = fails(function () {
+  // eslint-disable-next-line no-undef
+  new Int8Array(1).slice();
+}); // `%TypedArray%.prototype.slice` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.slice
+
+exportTypedArrayMethod$j('slice', function slice(start, end) {
+  var list = $slice$1.call(aTypedArray$i(this), start, end);
+  var C = speciesConstructor(this, this.constructor);
+  var index = 0;
+  var length = list.length;
+  var result = new (aTypedArrayConstructor$2(C))(length);
+
+  while (length > index) {
+    result[index] = list[index++];
+  }
+
+  return result;
+}, FORCED$2);
+
+var toPositiveInteger = function toPositiveInteger(it) {
+  var result = toInteger(it);
+  if (result < 0) throw RangeError("The argument can't be less than 0");
+  return result;
+};
+
+var toOffset = function toOffset(it, BYTES) {
+  var offset = toPositiveInteger(it);
+  if (offset % BYTES) throw RangeError('Wrong offset');
+  return offset;
+};
+
+var aTypedArray$j = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$k = arrayBufferViewCore.exportTypedArrayMethod;
+var FORCED$3 = fails(function () {
+  // eslint-disable-next-line no-undef
+  new Int8Array(1).set({});
+}); // `%TypedArray%.prototype.set` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.set
+
+exportTypedArrayMethod$k('set', function set(arrayLike
+/* , offset */
+) {
+  aTypedArray$j(this);
+  var offset = toOffset(arguments.length > 1 ? arguments[1] : undefined, 1);
+  var length = this.length;
+  var src = toObject(arrayLike);
+  var len = toLength(src.length);
+  var index = 0;
+  if (len + offset > length) throw RangeError('Wrong length');
+
+  while (index < len) {
+    this[offset + index] = src[index++];
+  }
+}, FORCED$3);
+
+var ITERATOR = wellKnownSymbol('iterator');
+var Uint8Array$1 = global_1.Uint8Array;
+var arrayValues = es_array_iterator.values;
+var arrayKeys = es_array_iterator.keys;
+var arrayEntries = es_array_iterator.entries;
+var aTypedArray$k = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$l = arrayBufferViewCore.exportTypedArrayMethod;
+var nativeTypedArrayIterator = Uint8Array$1 && Uint8Array$1.prototype[ITERATOR];
+var CORRECT_ITER_NAME = !!nativeTypedArrayIterator && (nativeTypedArrayIterator.name == 'values' || nativeTypedArrayIterator.name == undefined);
+
+var typedArrayValues = function values() {
+  return arrayValues.call(aTypedArray$k(this));
+}; // `%TypedArray%.prototype.entries` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.entries
+
+
+exportTypedArrayMethod$l('entries', function entries() {
+  return arrayEntries.call(aTypedArray$k(this));
+}); // `%TypedArray%.prototype.keys` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.keys
+
+exportTypedArrayMethod$l('keys', function keys() {
+  return arrayKeys.call(aTypedArray$k(this));
+}); // `%TypedArray%.prototype.values` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.values
+
+exportTypedArrayMethod$l('values', typedArrayValues, !CORRECT_ITER_NAME); // `%TypedArray%.prototype[@@iterator]` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype-@@iterator
+
+exportTypedArrayMethod$l(ITERATOR, typedArrayValues, !CORRECT_ITER_NAME);
+
+var defineProperty$1 = objectDefineProperty.f;
+var Int8Array$2 = global_1.Int8Array;
+var Int8ArrayPrototype = Int8Array$2 && Int8Array$2.prototype;
+var Uint8ClampedArray = global_1.Uint8ClampedArray;
+var Uint8ClampedArrayPrototype = Uint8ClampedArray && Uint8ClampedArray.prototype;
+var TypedArray = Int8Array$2 && objectGetPrototypeOf(Int8Array$2);
+var TypedArrayPrototype = Int8ArrayPrototype && objectGetPrototypeOf(Int8ArrayPrototype);
+var ObjectPrototype$1 = Object.prototype;
+var isPrototypeOf = ObjectPrototype$1.isPrototypeOf;
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
+var TYPED_ARRAY_TAG = uid('TYPED_ARRAY_TAG'); // Fixing native typed arrays in Opera Presto crashes the browser, see #595
+
+var NATIVE_ARRAY_BUFFER_VIEWS = arrayBufferNative && !!objectSetPrototypeOf && classof(global_1.opera) !== 'Opera';
+var TYPED_ARRAY_TAG_REQIRED = false;
+var NAME;
+var TypedArrayConstructorsList = {
+  Int8Array: 1,
+  Uint8Array: 1,
+  Uint8ClampedArray: 1,
+  Int16Array: 2,
+  Uint16Array: 2,
+  Int32Array: 4,
+  Uint32Array: 4,
+  Float32Array: 4,
+  Float64Array: 8
+};
+
+var isView = function isView(it) {
+  var klass = classof(it);
+  return klass === 'DataView' || has$1(TypedArrayConstructorsList, klass);
+};
+
+var isTypedArray = function isTypedArray(it) {
+  return isObject$1(it) && has$1(TypedArrayConstructorsList, classof(it));
+};
+
+var aTypedArray$l = function aTypedArray(it) {
+  if (isTypedArray(it)) return it;
+  throw TypeError('Target is not a typed array');
+};
+
+var aTypedArrayConstructor$3 = function aTypedArrayConstructor(C) {
+  if (objectSetPrototypeOf) {
+    if (isPrototypeOf.call(TypedArray, C)) return C;
+  } else for (var ARRAY in TypedArrayConstructorsList) {
+    if (has$1(TypedArrayConstructorsList, NAME)) {
+      var TypedArrayConstructor = global_1[ARRAY];
+
+      if (TypedArrayConstructor && (C === TypedArrayConstructor || isPrototypeOf.call(TypedArrayConstructor, C))) {
+        return C;
+      }
+    }
+  }
+
+  throw TypeError('Target is not a typed array constructor');
+};
+
+var exportTypedArrayMethod$m = function exportTypedArrayMethod(KEY, property, forced) {
+  if (!descriptors) return;
+  if (forced) for (var ARRAY in TypedArrayConstructorsList) {
+    var TypedArrayConstructor = global_1[ARRAY];
+
+    if (TypedArrayConstructor && has$1(TypedArrayConstructor.prototype, KEY)) {
+      delete TypedArrayConstructor.prototype[KEY];
+    }
+  }
+
+  if (!TypedArrayPrototype[KEY] || forced) {
+    redefine(TypedArrayPrototype, KEY, forced ? property : NATIVE_ARRAY_BUFFER_VIEWS && Int8ArrayPrototype[KEY] || property);
+  }
+};
+
+var exportTypedArrayStaticMethod = function exportTypedArrayStaticMethod(KEY, property, forced) {
+  var ARRAY, TypedArrayConstructor;
+  if (!descriptors) return;
+
+  if (objectSetPrototypeOf) {
+    if (forced) for (ARRAY in TypedArrayConstructorsList) {
+      TypedArrayConstructor = global_1[ARRAY];
+
+      if (TypedArrayConstructor && has$1(TypedArrayConstructor, KEY)) {
+        delete TypedArrayConstructor[KEY];
+      }
+    }
+
+    if (!TypedArray[KEY] || forced) {
+      // V8 ~ Chrome 49-50 `%TypedArray%` methods are non-writable non-configurable
+      try {
+        return redefine(TypedArray, KEY, forced ? property : NATIVE_ARRAY_BUFFER_VIEWS && Int8Array$2[KEY] || property);
+      } catch (error) {
+        /* empty */
+      }
+    } else return;
+  }
+
+  for (ARRAY in TypedArrayConstructorsList) {
+    TypedArrayConstructor = global_1[ARRAY];
+
+    if (TypedArrayConstructor && (!TypedArrayConstructor[KEY] || forced)) {
+      redefine(TypedArrayConstructor, KEY, property);
+    }
+  }
+};
+
+for (NAME in TypedArrayConstructorsList) {
+  if (!global_1[NAME]) NATIVE_ARRAY_BUFFER_VIEWS = false;
+} // WebKit bug - typed arrays constructors prototype is Object.prototype
+
+
+if (!NATIVE_ARRAY_BUFFER_VIEWS || typeof TypedArray != 'function' || TypedArray === Function.prototype) {
+  // eslint-disable-next-line no-shadow
+  TypedArray = function TypedArray() {
+    throw TypeError('Incorrect invocation');
+  };
+
+  if (NATIVE_ARRAY_BUFFER_VIEWS) for (NAME in TypedArrayConstructorsList) {
+    if (global_1[NAME]) objectSetPrototypeOf(global_1[NAME], TypedArray);
+  }
+}
+
+if (!NATIVE_ARRAY_BUFFER_VIEWS || !TypedArrayPrototype || TypedArrayPrototype === ObjectPrototype$1) {
+  TypedArrayPrototype = TypedArray.prototype;
+  if (NATIVE_ARRAY_BUFFER_VIEWS) for (NAME in TypedArrayConstructorsList) {
+    if (global_1[NAME]) objectSetPrototypeOf(global_1[NAME].prototype, TypedArrayPrototype);
+  }
+} // WebKit bug - one more object in Uint8ClampedArray prototype chain
+
+
+if (NATIVE_ARRAY_BUFFER_VIEWS && objectGetPrototypeOf(Uint8ClampedArrayPrototype) !== TypedArrayPrototype) {
+  objectSetPrototypeOf(Uint8ClampedArrayPrototype, TypedArrayPrototype);
+}
+
+if (descriptors && !has$1(TypedArrayPrototype, TO_STRING_TAG)) {
+  TYPED_ARRAY_TAG_REQIRED = true;
+  defineProperty$1(TypedArrayPrototype, TO_STRING_TAG, {
+    get: function get() {
+      return isObject$1(this) ? this[TYPED_ARRAY_TAG] : undefined;
+    }
+  });
+
+  for (NAME in TypedArrayConstructorsList) {
+    if (global_1[NAME]) {
+      createNonEnumerableProperty(global_1[NAME], TYPED_ARRAY_TAG, NAME);
+    }
+  }
+}
+
+var arrayBufferViewCore = {
+  NATIVE_ARRAY_BUFFER_VIEWS: NATIVE_ARRAY_BUFFER_VIEWS,
+  TYPED_ARRAY_TAG: TYPED_ARRAY_TAG_REQIRED && TYPED_ARRAY_TAG,
+  aTypedArray: aTypedArray$l,
+  aTypedArrayConstructor: aTypedArrayConstructor$3,
+  exportTypedArrayMethod: exportTypedArrayMethod$m,
+  exportTypedArrayStaticMethod: exportTypedArrayStaticMethod,
+  isView: isView,
+  isTypedArray: isTypedArray,
+  TypedArray: TypedArray,
+  TypedArrayPrototype: TypedArrayPrototype
+};
+
+// https://tc39.github.io/ecma262/#sec-array.prototype.copywithin
+
+_export({
+  target: 'Array',
+  proto: true
+}, {
+  copyWithin: arrayCopyWithin
+}); // https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+
+addToUnscopables('copyWithin');
+
+var min$1 = Math.min; // `Array.prototype.copyWithin` method implementation
+// https://tc39.github.io/ecma262/#sec-array.prototype.copywithin
+
+var arrayCopyWithin = [].copyWithin || function copyWithin(target
+/* = 0 */
+, start
+/* = 0, end = @length */
+) {
+  var O = toObject(this);
+  var len = toLength(O.length);
+  var to = toAbsoluteIndex(target, len);
+  var from = toAbsoluteIndex(start, len);
+  var end = arguments.length > 2 ? arguments[2] : undefined;
+  var count = min$1((end === undefined ? len : toAbsoluteIndex(end, len)) - from, len - to);
+  var inc = 1;
+
+  if (from < to && to < from + count) {
+    inc = -1;
+    from += count - 1;
+    to += count - 1;
+  }
+
+  while (count-- > 0) {
+    if (from in O) O[to] = O[from];else delete O[to];
+    to += inc;
+    from += inc;
+  }
+
+  return O;
+};
+
+var aTypedArray$m = arrayBufferViewCore.aTypedArray;
+var exportTypedArrayMethod$n = arrayBufferViewCore.exportTypedArrayMethod; // `%TypedArray%.prototype.copyWithin` method
+// https://tc39.github.io/ecma262/#sec-%typedarray%.prototype.copywithin
+
+exportTypedArrayMethod$n('copyWithin', function copyWithin(target, start
+/* , end */
+) {
+  return arrayCopyWithin.call(aTypedArray$m(this), target, start, arguments.length > 2 ? arguments[2] : undefined);
+});
+
+/* eslint-disable no-new */
+
+var NATIVE_ARRAY_BUFFER_VIEWS$1 = arrayBufferViewCore.NATIVE_ARRAY_BUFFER_VIEWS;
+var ArrayBuffer$3 = global_1.ArrayBuffer;
+var Int8Array$3 = global_1.Int8Array;
+var typedArrayConstructorsRequireWrappers = !NATIVE_ARRAY_BUFFER_VIEWS$1 || !fails(function () {
+  Int8Array$3(1);
+}) || !fails(function () {
+  new Int8Array$3(-1);
+}) || !checkCorrectnessOfIteration(function (iterable) {
+  new Int8Array$3();
+  new Int8Array$3(null);
+  new Int8Array$3(1.5);
+  new Int8Array$3(iterable);
+}, true) || fails(function () {
+  // Safari (11+) bug - a reason why even Safari 13 should load a typed array polyfill
+  return new Int8Array$3(new ArrayBuffer$3(2), 1, undefined).length !== 1;
+});
+
+var aTypedArrayConstructor$4 = arrayBufferViewCore.aTypedArrayConstructor;
+
+var typedArrayFrom = function from(source
+/* , mapfn, thisArg */
+) {
+  var O = toObject(source);
+  var argumentsLength = arguments.length;
+  var mapfn = argumentsLength > 1 ? arguments[1] : undefined;
+  var mapping = mapfn !== undefined;
+  var iteratorMethod = getIteratorMethod(O);
+  var i, length, result, step, iterator, next;
+
+  if (iteratorMethod != undefined && !isArrayIteratorMethod(iteratorMethod)) {
+    iterator = iteratorMethod.call(O);
+    next = iterator.next;
+    O = [];
+
+    while (!(step = next.call(iterator)).done) {
+      O.push(step.value);
+    }
+  }
+
+  if (mapping && argumentsLength > 2) {
+    mapfn = functionBindContext(mapfn, arguments[2], 2);
+  }
+
+  length = toLength(O.length);
+  result = new (aTypedArrayConstructor$4(this))(length);
+
+  for (i = 0; length > i; i++) {
+    result[i] = mapping ? mapfn(O[i], i) : O[i];
+  }
+
+  return result;
+};
+
+var typedArrayConstructor = createCommonjsModule(function (module) {
+
+  var getOwnPropertyNames = objectGetOwnPropertyNames.f;
+  var forEach = arrayIteration.forEach;
+  var getInternalState = internalState.get;
+  var setInternalState = internalState.set;
+  var nativeDefineProperty = objectDefineProperty.f;
+  var nativeGetOwnPropertyDescriptor = objectGetOwnPropertyDescriptor.f;
+  var round = Math.round;
+  var RangeError = global_1.RangeError;
+  var ArrayBuffer = arrayBuffer.ArrayBuffer;
+  var DataView = arrayBuffer.DataView;
+  var NATIVE_ARRAY_BUFFER_VIEWS = arrayBufferViewCore.NATIVE_ARRAY_BUFFER_VIEWS;
+  var TYPED_ARRAY_TAG = arrayBufferViewCore.TYPED_ARRAY_TAG;
+  var TypedArray = arrayBufferViewCore.TypedArray;
+  var TypedArrayPrototype = arrayBufferViewCore.TypedArrayPrototype;
+  var aTypedArrayConstructor = arrayBufferViewCore.aTypedArrayConstructor;
+  var isTypedArray = arrayBufferViewCore.isTypedArray;
+  var BYTES_PER_ELEMENT = 'BYTES_PER_ELEMENT';
+  var WRONG_LENGTH = 'Wrong length';
+
+  var fromList = function fromList(C, list) {
+    var index = 0;
+    var length = list.length;
+    var result = new (aTypedArrayConstructor(C))(length);
+
+    while (length > index) {
+      result[index] = list[index++];
+    }
+
+    return result;
+  };
+
+  var addGetter = function addGetter(it, key) {
+    nativeDefineProperty(it, key, {
+      get: function get() {
+        return getInternalState(this)[key];
+      }
+    });
+  };
+
+  var isArrayBuffer = function isArrayBuffer(it) {
+    var klass;
+    return it instanceof ArrayBuffer || (klass = classof(it)) == 'ArrayBuffer' || klass == 'SharedArrayBuffer';
+  };
+
+  var isTypedArrayIndex = function isTypedArrayIndex(target, key) {
+    return isTypedArray(target) && _typeof(key) != 'symbol' && key in target && String(+key) == String(key);
+  };
+
+  var wrappedGetOwnPropertyDescriptor = function getOwnPropertyDescriptor(target, key) {
+    return isTypedArrayIndex(target, key = toPrimitive(key, true)) ? createPropertyDescriptor(2, target[key]) : nativeGetOwnPropertyDescriptor(target, key);
+  };
+
+  var wrappedDefineProperty = function defineProperty(target, key, descriptor) {
+    if (isTypedArrayIndex(target, key = toPrimitive(key, true)) && isObject$1(descriptor) && has$1(descriptor, 'value') && !has$1(descriptor, 'get') && !has$1(descriptor, 'set') // TODO: add validation descriptor w/o calling accessors
+    && !descriptor.configurable && (!has$1(descriptor, 'writable') || descriptor.writable) && (!has$1(descriptor, 'enumerable') || descriptor.enumerable)) {
+      target[key] = descriptor.value;
+      return target;
+    }
+
+    return nativeDefineProperty(target, key, descriptor);
+  };
+
+  if (descriptors) {
+    if (!NATIVE_ARRAY_BUFFER_VIEWS) {
+      objectGetOwnPropertyDescriptor.f = wrappedGetOwnPropertyDescriptor;
+      objectDefineProperty.f = wrappedDefineProperty;
+      addGetter(TypedArrayPrototype, 'buffer');
+      addGetter(TypedArrayPrototype, 'byteOffset');
+      addGetter(TypedArrayPrototype, 'byteLength');
+      addGetter(TypedArrayPrototype, 'length');
+    }
+
+    _export({
+      target: 'Object',
+      stat: true,
+      forced: !NATIVE_ARRAY_BUFFER_VIEWS
+    }, {
+      getOwnPropertyDescriptor: wrappedGetOwnPropertyDescriptor,
+      defineProperty: wrappedDefineProperty
+    });
+
+    module.exports = function (TYPE, wrapper, CLAMPED) {
+      var BYTES = TYPE.match(/\d+$/)[0] / 8;
+      var CONSTRUCTOR_NAME = TYPE + (CLAMPED ? 'Clamped' : '') + 'Array';
+      var GETTER = 'get' + TYPE;
+      var SETTER = 'set' + TYPE;
+      var NativeTypedArrayConstructor = global_1[CONSTRUCTOR_NAME];
+      var TypedArrayConstructor = NativeTypedArrayConstructor;
+      var TypedArrayConstructorPrototype = TypedArrayConstructor && TypedArrayConstructor.prototype;
+      var exported = {};
+
+      var getter = function getter(that, index) {
+        var data = getInternalState(that);
+        return data.view[GETTER](index * BYTES + data.byteOffset, true);
+      };
+
+      var setter = function setter(that, index, value) {
+        var data = getInternalState(that);
+        if (CLAMPED) value = (value = round(value)) < 0 ? 0 : value > 0xFF ? 0xFF : value & 0xFF;
+        data.view[SETTER](index * BYTES + data.byteOffset, value, true);
+      };
+
+      var addElement = function addElement(that, index) {
+        nativeDefineProperty(that, index, {
+          get: function get() {
+            return getter(this, index);
+          },
+          set: function set(value) {
+            return setter(this, index, value);
+          },
+          enumerable: true
+        });
+      };
+
+      if (!NATIVE_ARRAY_BUFFER_VIEWS) {
+        TypedArrayConstructor = wrapper(function (that, data, offset, $length) {
+          anInstance(that, TypedArrayConstructor, CONSTRUCTOR_NAME);
+          var index = 0;
+          var byteOffset = 0;
+          var buffer, byteLength, length;
+
+          if (!isObject$1(data)) {
+            length = toIndex(data);
+            byteLength = length * BYTES;
+            buffer = new ArrayBuffer(byteLength);
+          } else if (isArrayBuffer(data)) {
+            buffer = data;
+            byteOffset = toOffset(offset, BYTES);
+            var $len = data.byteLength;
+
+            if ($length === undefined) {
+              if ($len % BYTES) throw RangeError(WRONG_LENGTH);
+              byteLength = $len - byteOffset;
+              if (byteLength < 0) throw RangeError(WRONG_LENGTH);
+            } else {
+              byteLength = toLength($length) * BYTES;
+              if (byteLength + byteOffset > $len) throw RangeError(WRONG_LENGTH);
+            }
+
+            length = byteLength / BYTES;
+          } else if (isTypedArray(data)) {
+            return fromList(TypedArrayConstructor, data);
+          } else {
+            return typedArrayFrom.call(TypedArrayConstructor, data);
+          }
+
+          setInternalState(that, {
+            buffer: buffer,
+            byteOffset: byteOffset,
+            byteLength: byteLength,
+            length: length,
+            view: new DataView(buffer)
+          });
+
+          while (index < length) {
+            addElement(that, index++);
+          }
+        });
+        if (objectSetPrototypeOf) objectSetPrototypeOf(TypedArrayConstructor, TypedArray);
+        TypedArrayConstructorPrototype = TypedArrayConstructor.prototype = objectCreate(TypedArrayPrototype);
+      } else if (typedArrayConstructorsRequireWrappers) {
+        TypedArrayConstructor = wrapper(function (dummy, data, typedArrayOffset, $length) {
+          anInstance(dummy, TypedArrayConstructor, CONSTRUCTOR_NAME);
+          return inheritIfRequired(function () {
+            if (!isObject$1(data)) return new NativeTypedArrayConstructor(toIndex(data));
+            if (isArrayBuffer(data)) return $length !== undefined ? new NativeTypedArrayConstructor(data, toOffset(typedArrayOffset, BYTES), $length) : typedArrayOffset !== undefined ? new NativeTypedArrayConstructor(data, toOffset(typedArrayOffset, BYTES)) : new NativeTypedArrayConstructor(data);
+            if (isTypedArray(data)) return fromList(TypedArrayConstructor, data);
+            return typedArrayFrom.call(TypedArrayConstructor, data);
+          }(), dummy, TypedArrayConstructor);
+        });
+        if (objectSetPrototypeOf) objectSetPrototypeOf(TypedArrayConstructor, TypedArray);
+        forEach(getOwnPropertyNames(NativeTypedArrayConstructor), function (key) {
+          if (!(key in TypedArrayConstructor)) {
+            createNonEnumerableProperty(TypedArrayConstructor, key, NativeTypedArrayConstructor[key]);
+          }
+        });
+        TypedArrayConstructor.prototype = TypedArrayConstructorPrototype;
+      }
+
+      if (TypedArrayConstructorPrototype.constructor !== TypedArrayConstructor) {
+        createNonEnumerableProperty(TypedArrayConstructorPrototype, 'constructor', TypedArrayConstructor);
+      }
+
+      if (TYPED_ARRAY_TAG) {
+        createNonEnumerableProperty(TypedArrayConstructorPrototype, TYPED_ARRAY_TAG, CONSTRUCTOR_NAME);
+      }
+
+      exported[CONSTRUCTOR_NAME] = TypedArrayConstructor;
+      _export({
+        global: true,
+        forced: TypedArrayConstructor != NativeTypedArrayConstructor,
+        sham: !NATIVE_ARRAY_BUFFER_VIEWS
+      }, exported);
+
+      if (!(BYTES_PER_ELEMENT in TypedArrayConstructor)) {
+        createNonEnumerableProperty(TypedArrayConstructor, BYTES_PER_ELEMENT, BYTES);
+      }
+
+      if (!(BYTES_PER_ELEMENT in TypedArrayConstructorPrototype)) {
+        createNonEnumerableProperty(TypedArrayConstructorPrototype, BYTES_PER_ELEMENT, BYTES);
+      }
+
+      setSpecies(CONSTRUCTOR_NAME);
+    };
+  } else module.exports = function () {
+    /* empty */
+  };
+});
+
+var slice = [].slice;
+var factories = {};
+
+var construct = function construct(C, argsLength, args) {
+  if (!(argsLength in factories)) {
+    for (var list = [], i = 0; i < argsLength; i++) {
+      list[i] = 'a[' + i + ']';
+    } // eslint-disable-next-line no-new-func
+
+
+    factories[argsLength] = Function('C,a', 'return new C(' + list.join(',') + ')');
+  }
+
+  return factories[argsLength](C, args);
+}; // `Function.prototype.bind` method implementation
+// https://tc39.github.io/ecma262/#sec-function.prototype.bind
+
+
+var functionBind = Function.bind || function bind(that
+/* , ...args */
+) {
+  var fn = aFunction(this);
+  var partArgs = slice.call(arguments, 1);
+
+  var boundFunction = function bound()
+  /* args... */
+  {
+    var args = partArgs.concat(slice.call(arguments));
+    return this instanceof boundFunction ? construct(fn, args.length, args) : fn.apply(that, args);
+  };
+
+  if (isObject$1(fn.prototype)) boundFunction.prototype = fn.prototype;
+  return boundFunction;
+};
+
+// https://tc39.github.io/ecma262/#sec-function.prototype.bind
+
+_export({
+  target: 'Function',
+  proto: true
+}, {
+  bind: functionBind
+});
+
+// https://tc39.github.io/ecma262/#sec-symbol.tostringtag
+
+defineWellKnownSymbol('toStringTag');
+
+// https://tc39.github.io/ecma262/#sec-json-@@tostringtag
+
+setToStringTag(global_1.JSON, 'JSON', true);
+
+// https://tc39.github.io/ecma262/#sec-math-@@tostringtag
+
+setToStringTag(Math, 'Math', true);
 
 var runtime_1 = createCommonjsModule(function (module) {
   /**
@@ -1074,7 +2400,7 @@ function extent (values, valueof) {
 }
 
 var array = Array.prototype;
-var slice = array.slice;
+var slice$1 = array.slice;
 var map = array.map;
 
 function constant (x) {
@@ -1219,7 +2545,7 @@ function histogram () {
   };
 
   histogram.thresholds = function (_) {
-    return arguments.length ? (threshold = typeof _ === "function" ? _ : Array.isArray(_) ? constant(slice.call(_)) : constant(_), histogram) : threshold;
+    return arguments.length ? (threshold = typeof _ === "function" ? _ : Array.isArray(_) ? constant(slice$1.call(_)) : constant(_), histogram) : threshold;
   };
 
   return histogram;
@@ -1355,7 +2681,7 @@ function merge (arrays) {
   return merged;
 }
 
-function min (values, valueof) {
+function min$2 (values, valueof) {
   var n = values.length,
       i = -1,
       value,
@@ -1460,7 +2786,7 @@ function sum (values, valueof) {
 function transpose (matrix) {
   if (!(n = matrix.length)) return [];
 
-  for (var i = -1, m = min(matrix, length), transpose = new Array(m); ++i < m;) {
+  for (var i = -1, m = min$2(matrix, length), transpose = new Array(m); ++i < m;) {
     for (var j = -1, n, row = transpose[i] = new Array(n); ++j < n;) {
       row[j] = matrix[j][i];
     }
@@ -1477,7 +2803,7 @@ function zip () {
   return transpose(arguments);
 }
 
-var slice$1 = Array.prototype.slice;
+var slice$2 = Array.prototype.slice;
 
 function identity$1 (x) {
   return x;
@@ -1579,15 +2905,15 @@ function axis(orient, scale) {
   };
 
   axis.ticks = function () {
-    return tickArguments = slice$1.call(arguments), axis;
+    return tickArguments = slice$2.call(arguments), axis;
   };
 
   axis.tickArguments = function (_) {
-    return arguments.length ? (tickArguments = _ == null ? [] : slice$1.call(_), axis) : tickArguments.slice();
+    return arguments.length ? (tickArguments = _ == null ? [] : slice$2.call(_), axis) : tickArguments.slice();
   };
 
   axis.tickValues = function (_) {
-    return arguments.length ? (tickValues = _ == null ? null : slice$1.call(_), axis) : tickValues && tickValues.slice();
+    return arguments.length ? (tickValues = _ == null ? null : slice$2.call(_), axis) : tickValues && tickValues.slice();
   };
 
   axis.tickFormat = function (_) {
@@ -1667,7 +2993,7 @@ Dispatch.prototype = dispatch.prototype = {
 
     if (arguments.length < 2) {
       while (++i < n) {
-        if ((t = (typename = T[i]).type) && (t = get(_[t], typename.name))) return t;
+        if ((t = (typename = T[i]).type) && (t = get$1(_[t], typename.name))) return t;
       }
 
       return;
@@ -1678,8 +3004,8 @@ Dispatch.prototype = dispatch.prototype = {
     if (callback != null && typeof callback !== "function") throw new Error("invalid callback: " + callback);
 
     while (++i < n) {
-      if (t = (typename = T[i]).type) _[t] = set(_[t], typename.name, callback);else if (callback == null) for (t in _) {
-        _[t] = set(_[t], typename.name, null);
+      if (t = (typename = T[i]).type) _[t] = set$1(_[t], typename.name, callback);else if (callback == null) for (t in _) {
+        _[t] = set$1(_[t], typename.name, null);
       }
     }
 
@@ -1714,7 +3040,7 @@ Dispatch.prototype = dispatch.prototype = {
   }
 };
 
-function get(type, name) {
+function get$1(type, name) {
   for (var i = 0, n = type.length, c; i < n; ++i) {
     if ((c = type[i]).name === name) {
       return c.value;
@@ -1722,7 +3048,7 @@ function get(type, name) {
   }
 }
 
-function set(type, name, callback) {
+function set$1(type, name, callback) {
   for (var i = 0, n = type.length; i < n; ++i) {
     if (type[i].name === name) {
       type[i] = noop, type = type.slice(0, i).concat(type.slice(i + 1));
@@ -3599,6 +4925,17 @@ function rgbSpline(spline) {
 var rgbBasis = rgbSpline(basis$1);
 var rgbBasisClosed = rgbSpline(basisClosed);
 
+var NATIVE_ARRAY_BUFFER_VIEWS$2 = arrayBufferViewCore.NATIVE_ARRAY_BUFFER_VIEWS; // `ArrayBuffer.isView` method
+// https://tc39.github.io/ecma262/#sec-arraybuffer.isview
+
+_export({
+  target: 'ArrayBuffer',
+  stat: true,
+  forced: !NATIVE_ARRAY_BUFFER_VIEWS$2
+}, {
+  isView: arrayBufferViewCore.isView
+});
+
 function numberArray (a, b) {
   if (!b) b = [];
   var n = a ? Math.min(b.length, a.length) : 0,
@@ -4256,16 +5593,16 @@ function schedule (node, name, id, index, group, timing) {
   });
 }
 function init(node, id) {
-  var schedule = get$1(node, id);
+  var schedule = get$2(node, id);
   if (schedule.state > CREATED) throw new Error("too late; already scheduled");
   return schedule;
 }
-function set$1(node, id) {
-  var schedule = get$1(node, id);
+function set$2(node, id) {
+  var schedule = get$2(node, id);
   if (schedule.state > STARTED) throw new Error("too late; already running");
   return schedule;
 }
-function get$1(node, id) {
+function get$2(node, id) {
   var schedule = node.__transition;
   if (!schedule || !(schedule = schedule[id])) throw new Error("transition not found");
   return schedule;
@@ -4407,7 +5744,7 @@ function selection_interrupt (name) {
 function tweenRemove(id, name) {
   var tween0, tween1;
   return function () {
-    var schedule = set$1(this, id),
+    var schedule = set$2(this, id),
         tween = schedule.tween; // If this node shared tween with the previous node,
     // just assign the updated shared tween and we’re done!
     // Otherwise, copy-on-write.
@@ -4432,7 +5769,7 @@ function tweenFunction(id, name, value) {
   var tween0, tween1;
   if (typeof value !== "function") throw new Error();
   return function () {
-    var schedule = set$1(this, id),
+    var schedule = set$2(this, id),
         tween = schedule.tween; // If this node shared tween with the previous node,
     // just assign the updated shared tween and we’re done!
     // Otherwise, copy-on-write.
@@ -4462,7 +5799,7 @@ function transition_tween (name, value) {
   name += "";
 
   if (arguments.length < 2) {
-    var tween = get$1(this.node(), id).tween;
+    var tween = get$2(this.node(), id).tween;
 
     for (var i = 0, n = tween.length, t; i < n; ++i) {
       if ((t = tween[i]).name === name) {
@@ -4478,11 +5815,11 @@ function transition_tween (name, value) {
 function tweenValue(transition, name, value) {
   var id = transition._id;
   transition.each(function () {
-    var schedule = set$1(this, id);
+    var schedule = set$2(this, id);
     (schedule.value || (schedule.value = {}))[name] = value.apply(this, arguments);
   });
   return function (node) {
-    return get$1(node, id).value[name];
+    return get$2(node, id).value[name];
   };
 }
 
@@ -4616,36 +5953,36 @@ function delayConstant(id, value) {
 
 function transition_delay (value) {
   var id = this._id;
-  return arguments.length ? this.each((typeof value === "function" ? delayFunction : delayConstant)(id, value)) : get$1(this.node(), id).delay;
+  return arguments.length ? this.each((typeof value === "function" ? delayFunction : delayConstant)(id, value)) : get$2(this.node(), id).delay;
 }
 
 function durationFunction(id, value) {
   return function () {
-    set$1(this, id).duration = +value.apply(this, arguments);
+    set$2(this, id).duration = +value.apply(this, arguments);
   };
 }
 
 function durationConstant(id, value) {
   return value = +value, function () {
-    set$1(this, id).duration = value;
+    set$2(this, id).duration = value;
   };
 }
 
 function transition_duration (value) {
   var id = this._id;
-  return arguments.length ? this.each((typeof value === "function" ? durationFunction : durationConstant)(id, value)) : get$1(this.node(), id).duration;
+  return arguments.length ? this.each((typeof value === "function" ? durationFunction : durationConstant)(id, value)) : get$2(this.node(), id).duration;
 }
 
 function easeConstant(id, value) {
   if (typeof value !== "function") throw new Error();
   return function () {
-    set$1(this, id).ease = value;
+    set$2(this, id).ease = value;
   };
 }
 
 function transition_ease (value) {
   var id = this._id;
-  return arguments.length ? this.each(easeConstant(id, value)) : get$1(this.node(), id).ease;
+  return arguments.length ? this.each(easeConstant(id, value)) : get$2(this.node(), id).ease;
 }
 
 function transition_filter (match) {
@@ -4691,7 +6028,7 @@ function start(name) {
 function onFunction(id, name, listener) {
   var on0,
       on1,
-      sit = start(name) ? init : set$1;
+      sit = start(name) ? init : set$2;
   return function () {
     var schedule = sit(this, id),
         on = schedule.on; // If this node shared a dispatch with the previous node,
@@ -4705,7 +6042,7 @@ function onFunction(id, name, listener) {
 
 function transition_on (name, listener) {
   var id = this._id;
-  return arguments.length < 2 ? get$1(this.node(), id).on.on(name) : this.each(onFunction(id, name, listener));
+  return arguments.length < 2 ? get$2(this.node(), id).on.on(name) : this.each(onFunction(id, name, listener));
 }
 
 function removeFunction(id) {
@@ -4734,7 +6071,7 @@ function transition_select (select) {
       if ((node = group[i]) && (subnode = select.call(node, node.__data__, i, group))) {
         if ("__data__" in node) subnode.__data__ = node.__data__;
         subgroup[i] = subnode;
-        schedule(subgroup[i], name, id, i, subgroup, get$1(node, id));
+        schedule(subgroup[i], name, id, i, subgroup, get$2(node, id));
       }
     }
   }
@@ -4750,7 +6087,7 @@ function transition_selectAll (select) {
   for (var groups = this._groups, m = groups.length, subgroups = [], parents = [], j = 0; j < m; ++j) {
     for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) {
       if (node = group[i]) {
-        for (var children = select.call(node, node.__data__, i, group), child, inherit = get$1(node, id), k = 0, l = children.length; k < l; ++k) {
+        for (var children = select.call(node, node.__data__, i, group), child, inherit = get$2(node, id), k = 0, l = children.length; k < l; ++k) {
           if (child = children[k]) {
             schedule(child, name, id, k, children, inherit);
           }
@@ -4814,7 +6151,7 @@ function styleMaybeRemove(id, name) {
       event = "end." + key,
       remove;
   return function () {
-    var schedule = set$1(this, id),
+    var schedule = set$2(this, id),
         on = schedule.on,
         listener = schedule.value[key] == null ? remove || (remove = styleRemove$1(name)) : undefined; // If this node shared a dispatch with the previous node,
     // just assign the updated shared dispatch and we’re done!
@@ -4909,7 +6246,7 @@ function transition_transition () {
   for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) {
     for (var group = groups[j], n = group.length, node, i = 0; i < n; ++i) {
       if (node = group[i]) {
-        var inherit = get$1(node, id0);
+        var inherit = get$2(node, id0);
         schedule(node, name, id1, i, group, {
           time: inherit.time + inherit.delay + inherit.duration,
           delay: 0,
@@ -4939,7 +6276,7 @@ function transition_end () {
       }
     };
     that.each(function () {
-      var schedule = set$1(this, id),
+      var schedule = set$2(this, id),
           on = schedule.on; // If this node shared a dispatch with the previous node,
       // just assign the updated shared dispatch and we’re done!
       // Otherwise, copy-on-write.
@@ -6007,7 +7344,7 @@ function chord () {
   return chord;
 }
 
-var slice$2 = Array.prototype.slice;
+var slice$3 = Array.prototype.slice;
 
 function constant$5 (x) {
   return function () {
@@ -6158,7 +7495,7 @@ function ribbon () {
 
   function ribbon() {
     var buffer,
-        argv = slice$2.call(arguments),
+        argv = slice$3.call(arguments),
         s = source.apply(this, argv),
         t = target.apply(this, argv),
         sr = +radius.apply(this, (argv[0] = s, argv)),
@@ -6410,7 +7747,7 @@ function setMap(map, key, value) {
 function Set() {}
 
 var proto = map$1.prototype;
-Set.prototype = set$2.prototype = {
+Set.prototype = set$3.prototype = {
   constructor: Set,
   has: proto.has,
   add: function add(value) {
@@ -6426,7 +7763,7 @@ Set.prototype = set$2.prototype = {
   each: proto.each
 };
 
-function set$2(object, f) {
+function set$3(object, f) {
   var set = new Set(); // Copy constructor.
 
   if (object instanceof Set) object.each(function (value) {
@@ -6444,7 +7781,7 @@ function set$2(object, f) {
   return set;
 }
 
-function keys (map) {
+function keys$1 (map) {
   var keys = [];
 
   for (var key in map) {
@@ -6478,7 +7815,7 @@ function entries (map) {
 }
 
 var array$2 = Array.prototype;
-var slice$3 = array$2.slice;
+var slice$4 = array$2.slice;
 
 function ascending$2 (a, b) {
   return a - b;
@@ -6743,7 +8080,7 @@ function contours () {
   };
 
   contours.thresholds = function (_) {
-    return arguments.length ? (threshold = typeof _ === "function" ? _ : Array.isArray(_) ? constant$6(slice$3.call(_)) : constant$6(_), contours) : threshold;
+    return arguments.length ? (threshold = typeof _ === "function" ? _ : Array.isArray(_) ? constant$6(slice$4.call(_)) : constant$6(_), contours) : threshold;
   };
 
   contours.smooth = function (_) {
@@ -6752,6 +8089,14 @@ function contours () {
 
   return contours;
 }
+
+// https://tc39.github.io/ecma262/#sec-typedarray-objects
+
+typedArrayConstructor('Float32', function (init) {
+  return function Float32Array(data, byteOffset, length) {
+    return init(this, data, byteOffset, length);
+  };
+});
 
 // TODO Optimize edge cases.
 // TODO Optimize index calculation.
@@ -6968,7 +8313,7 @@ function density () {
   };
 
   density.thresholds = function (_) {
-    return arguments.length ? (threshold = typeof _ === "function" ? _ : Array.isArray(_) ? constant$6(slice$3.call(_)) : constant$6(_), density) : threshold;
+    return arguments.length ? (threshold = typeof _ === "function" ? _ : Array.isArray(_) ? constant$6(slice$4.call(_)) : constant$6(_), density) : threshold;
   };
 
   density.bandwidth = function (_) {
@@ -8363,6 +9708,90 @@ function y$2 (y) {
   return force;
 }
 
+var getOwnPropertyNames$1 = objectGetOwnPropertyNames.f;
+var getOwnPropertyDescriptor = objectGetOwnPropertyDescriptor.f;
+var defineProperty$2 = objectDefineProperty.f;
+var trim = stringTrim.trim;
+var NUMBER = 'Number';
+var NativeNumber = global_1[NUMBER];
+var NumberPrototype = NativeNumber.prototype; // Opera ~12 has broken Object#toString
+
+var BROKEN_CLASSOF = classofRaw(objectCreate(NumberPrototype)) == NUMBER; // `ToNumber` abstract operation
+// https://tc39.github.io/ecma262/#sec-tonumber
+
+var toNumber = function toNumber(argument) {
+  var it = toPrimitive(argument, false);
+  var first, third, radix, maxCode, digits, length, index, code;
+
+  if (typeof it == 'string' && it.length > 2) {
+    it = trim(it);
+    first = it.charCodeAt(0);
+
+    if (first === 43 || first === 45) {
+      third = it.charCodeAt(2);
+      if (third === 88 || third === 120) return NaN; // Number('+0x1') should be NaN, old V8 fix
+    } else if (first === 48) {
+      switch (it.charCodeAt(1)) {
+        case 66:
+        case 98:
+          radix = 2;
+          maxCode = 49;
+          break;
+        // fast equal of /^0b[01]+$/i
+
+        case 79:
+        case 111:
+          radix = 8;
+          maxCode = 55;
+          break;
+        // fast equal of /^0o[0-7]+$/i
+
+        default:
+          return +it;
+      }
+
+      digits = it.slice(2);
+      length = digits.length;
+
+      for (index = 0; index < length; index++) {
+        code = digits.charCodeAt(index); // parseInt parses a string to a first unavailable symbol
+        // but ToNumber should return NaN if a string contains unavailable symbols
+
+        if (code < 48 || code > maxCode) return NaN;
+      }
+
+      return parseInt(digits, radix);
+    }
+  }
+
+  return +it;
+}; // `Number` constructor
+// https://tc39.github.io/ecma262/#sec-number-constructor
+
+
+if (isForced_1(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumber('+0x1'))) {
+  var NumberWrapper = function Number(value) {
+    var it = arguments.length < 1 ? 0 : value;
+    var dummy = this;
+    return dummy instanceof NumberWrapper // check on 1..constructor(foo) case
+    && (BROKEN_CLASSOF ? fails(function () {
+      NumberPrototype.valueOf.call(dummy);
+    }) : classofRaw(dummy) != NUMBER) ? inheritIfRequired(new NativeNumber(toNumber(it)), dummy, NumberWrapper) : toNumber(it);
+  };
+
+  for (var keys$2 = descriptors ? getOwnPropertyNames$1(NativeNumber) : ( // ES3:
+  'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' + // ES2015 (in case, if modules with ES2015 Number statics required before):
+  'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' + 'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger').split(','), j$1 = 0, key$1; keys$2.length > j$1; j$1++) {
+    if (has$1(NativeNumber, key$1 = keys$2[j$1]) && !has$1(NumberWrapper, key$1)) {
+      defineProperty$2(NumberWrapper, key$1, getOwnPropertyDescriptor(NativeNumber, key$1));
+    }
+  }
+
+  NumberWrapper.prototype = NumberPrototype;
+  NumberPrototype.constructor = NumberWrapper;
+  redefine(global_1, NUMBER, NumberWrapper);
+}
+
 function formatDecimal (x) {
   return Math.abs(x = Math.round(x)) >= 1e21 ? x.toLocaleString("en").replace(/,/g, "") : x.toString(10);
 } // Computes the decimal coefficient and exponent of the specified number x with
@@ -8469,6 +9898,171 @@ function formatTrim (s) {
 
   return i0 > 0 ? s.slice(0, i0) + s.slice(i1 + 1) : s;
 }
+
+// https://tc39.github.io/ecma262/#sec-thisnumbervalue
+
+var thisNumberValue = function thisNumberValue(value) {
+  if (typeof value != 'number' && classofRaw(value) != 'Number') {
+    throw TypeError('Incorrect invocation');
+  }
+
+  return +value;
+};
+
+var nativeToFixed = 1.0.toFixed;
+var floor$2 = Math.floor;
+
+var pow$1 = function pow(x, n, acc) {
+  return n === 0 ? acc : n % 2 === 1 ? pow(x, n - 1, acc * x) : pow(x * x, n / 2, acc);
+};
+
+var log$1 = function log(x) {
+  var n = 0;
+  var x2 = x;
+
+  while (x2 >= 4096) {
+    n += 12;
+    x2 /= 4096;
+  }
+
+  while (x2 >= 2) {
+    n += 1;
+    x2 /= 2;
+  }
+
+  return n;
+};
+
+var FORCED$4 = nativeToFixed && (0.00008.toFixed(3) !== '0.000' || 0.9.toFixed(0) !== '1' || 1.255.toFixed(2) !== '1.25' || 1000000000000000128.0.toFixed(0) !== '1000000000000000128') || !fails(function () {
+  // V8 ~ Android 4.3-
+  nativeToFixed.call({});
+}); // `Number.prototype.toFixed` method
+// https://tc39.github.io/ecma262/#sec-number.prototype.tofixed
+
+_export({
+  target: 'Number',
+  proto: true,
+  forced: FORCED$4
+}, {
+  // eslint-disable-next-line max-statements
+  toFixed: function toFixed(fractionDigits) {
+    var number = thisNumberValue(this);
+    var fractDigits = toInteger(fractionDigits);
+    var data = [0, 0, 0, 0, 0, 0];
+    var sign = '';
+    var result = '0';
+    var e, z, j, k;
+
+    var multiply = function multiply(n, c) {
+      var index = -1;
+      var c2 = c;
+
+      while (++index < 6) {
+        c2 += n * data[index];
+        data[index] = c2 % 1e7;
+        c2 = floor$2(c2 / 1e7);
+      }
+    };
+
+    var divide = function divide(n) {
+      var index = 6;
+      var c = 0;
+
+      while (--index >= 0) {
+        c += data[index];
+        data[index] = floor$2(c / n);
+        c = c % n * 1e7;
+      }
+    };
+
+    var dataToString = function dataToString() {
+      var index = 6;
+      var s = '';
+
+      while (--index >= 0) {
+        if (s !== '' || index === 0 || data[index] !== 0) {
+          var t = String(data[index]);
+          s = s === '' ? t : s + stringRepeat.call('0', 7 - t.length) + t;
+        }
+      }
+
+      return s;
+    };
+
+    if (fractDigits < 0 || fractDigits > 20) throw RangeError('Incorrect fraction digits'); // eslint-disable-next-line no-self-compare
+
+    if (number != number) return 'NaN';
+    if (number <= -1e21 || number >= 1e21) return String(number);
+
+    if (number < 0) {
+      sign = '-';
+      number = -number;
+    }
+
+    if (number > 1e-21) {
+      e = log$1(number * pow$1(2, 69, 1)) - 69;
+      z = e < 0 ? number * pow$1(2, -e, 1) : number / pow$1(2, e, 1);
+      z *= 0x10000000000000;
+      e = 52 - e;
+
+      if (e > 0) {
+        multiply(0, z);
+        j = fractDigits;
+
+        while (j >= 7) {
+          multiply(1e7, 0);
+          j -= 7;
+        }
+
+        multiply(pow$1(10, j, 1), 0);
+        j = e - 1;
+
+        while (j >= 23) {
+          divide(1 << 23);
+          j -= 23;
+        }
+
+        divide(1 << j);
+        multiply(1, 1);
+        divide(2);
+        result = dataToString();
+      } else {
+        multiply(0, z);
+        multiply(1 << -e, 0);
+        result = dataToString() + stringRepeat.call('0', fractDigits);
+      }
+    }
+
+    if (fractDigits > 0) {
+      k = result.length;
+      result = sign + (k <= fractDigits ? '0.' + stringRepeat.call('0', fractDigits - k) + result : result.slice(0, k - fractDigits) + '.' + result.slice(k - fractDigits));
+    } else {
+      result = sign + result;
+    }
+
+    return result;
+  }
+});
+
+var nativeToPrecision = 1.0.toPrecision;
+var FORCED$5 = fails(function () {
+  // IE7-
+  return nativeToPrecision.call(1, undefined) !== '1';
+}) || !fails(function () {
+  // V8 ~ Android 4.3-
+  nativeToPrecision.call({});
+}); // `Number.prototype.toPrecision` method
+// https://tc39.github.io/ecma262/#sec-number.prototype.toprecision
+
+_export({
+  target: 'Number',
+  proto: true,
+  forced: FORCED$5
+}, {
+  toPrecision: function toPrecision(precision) {
+    return precision === undefined ? nativeToPrecision.call(thisNumberValue(this)) : nativeToPrecision.call(thisNumberValue(this), precision);
+  }
+});
 
 var prefixExponent;
 function formatPrefixAuto (x, p) {
@@ -8733,6 +10327,22 @@ function _add(adder, a, b) {
   adder.t = a - av + (b - bv);
 }
 
+// `Math.sign` method implementation
+// https://tc39.github.io/ecma262/#sec-math.sign
+var mathSign = Math.sign || function sign(x) {
+  // eslint-disable-next-line no-self-compare
+  return (x = +x) == 0 || x != x ? x : x < 0 ? -1 : 1;
+};
+
+// https://tc39.github.io/ecma262/#sec-math.sign
+
+_export({
+  target: 'Math',
+  stat: true
+}, {
+  sign: mathSign
+});
+
 var epsilon$2 = 1e-6;
 var epsilon2$1 = 1e-12;
 var pi$3 = Math.PI;
@@ -8741,14 +10351,14 @@ var quarterPi = pi$3 / 4;
 var tau$3 = pi$3 * 2;
 var degrees$1 = 180 / pi$3;
 var radians = pi$3 / 180;
-var abs = Math.abs;
+var abs$1 = Math.abs;
 var atan = Math.atan;
 var atan2 = Math.atan2;
 var cos$1 = Math.cos;
 var ceil = Math.ceil;
 var exp = Math.exp;
-var log = Math.log;
-var pow = Math.pow;
+var log$2 = Math.log;
+var pow$2 = Math.pow;
 var sin$1 = Math.sin;
 var sign = Math.sign || function (x) {
   return x > 0 ? 1 : x < 0 ? -1 : 0;
@@ -9025,7 +10635,7 @@ function linePoint(lambda, phi) {
         sign = delta > 0 ? 1 : -1,
         lambdai = inflection[0] * degrees$1 * sign,
         phii,
-        antimeridian = abs(delta) > 180;
+        antimeridian = abs$1(delta) > 180;
 
     if (antimeridian ^ (sign * lambda2 < lambdai && lambdai < sign * lambda)) {
       phii = inflection[1] * degrees$1;
@@ -9078,7 +10688,7 @@ function boundsLineEnd() {
 function boundsRingPoint(lambda, phi) {
   if (p0) {
     var delta = lambda - lambda2;
-    deltaSum.add(abs(delta) > 180 ? delta + (delta > 0 ? 360 : -360) : delta);
+    deltaSum.add(abs$1(delta) > 180 ? delta + (delta > 0 ? 360 : -360) : delta);
   } else {
     lambda00$1 = lambda, phi00$1 = phi;
   }
@@ -9094,7 +10704,7 @@ function boundsRingStart() {
 function boundsRingEnd() {
   boundsRingPoint(lambda00$1, phi00$1);
   areaStream.lineEnd();
-  if (abs(deltaSum) > epsilon$2) lambda0$1 = -(lambda1 = 180);
+  if (abs$1(deltaSum) > epsilon$2) lambda0$1 = -(lambda1 = 180);
   range[0] = lambda0$1, range[1] = lambda1;
   p0 = null;
 } // Finds the left-right distance between two longitudes.
@@ -9293,7 +10903,7 @@ function compose (a, b) {
 }
 
 function rotationIdentity(lambda, phi) {
-  return [abs(lambda) > pi$3 ? lambda + Math.round(-lambda / tau$3) * tau$3 : lambda, phi];
+  return [abs$1(lambda) > pi$3 ? lambda + Math.round(-lambda / tau$3) * tau$3 : lambda, phi];
 }
 
 rotationIdentity.invert = rotationIdentity;
@@ -9453,7 +11063,7 @@ function clipBuffer () {
 }
 
 function pointEqual (a, b) {
-  return abs(a[0] - b[0]) < epsilon$2 && abs(a[1] - b[1]) < epsilon$2;
+  return abs$1(a[0] - b[0]) < epsilon$2 && abs$1(a[1] - b[1]) < epsilon$2;
 }
 
 function Intersection(point, points, other, entry) {
@@ -9585,7 +11195,7 @@ function link$1(array) {
 var sum$1 = adder();
 
 function longitude(point) {
-  if (abs(point[0]) <= pi$3) return point[0];else return sign(point[0]) * ((abs(point[0]) + pi$3) % tau$3 - pi$3);
+  if (abs$1(point[0]) <= pi$3) return point[0];else return sign(point[0]) * ((abs$1(point[0]) + pi$3) % tau$3 - pi$3);
 }
 
 function polygonContains (polygon, point) {
@@ -9799,9 +11409,9 @@ function clipAntimeridianLine(stream) {
     },
     point: function point(lambda1, phi1) {
       var sign1 = lambda1 > 0 ? pi$3 : -pi$3,
-          delta = abs(lambda1 - lambda0);
+          delta = abs$1(lambda1 - lambda0);
 
-      if (abs(delta - pi$3) < epsilon$2) {
+      if (abs$1(delta - pi$3) < epsilon$2) {
         // line crosses a pole
         stream.point(lambda0, phi0 = (phi0 + phi1) / 2 > 0 ? halfPi$2 : -halfPi$2);
         stream.point(sign0, phi0);
@@ -9812,9 +11422,9 @@ function clipAntimeridianLine(stream) {
         _clean = 0;
       } else if (sign0 !== sign1 && delta >= pi$3) {
         // line crosses antimeridian
-        if (abs(lambda0 - sign0) < epsilon$2) lambda0 -= sign0 * epsilon$2; // handle degeneracies
+        if (abs$1(lambda0 - sign0) < epsilon$2) lambda0 -= sign0 * epsilon$2; // handle degeneracies
 
-        if (abs(lambda1 - sign1) < epsilon$2) lambda1 -= sign1 * epsilon$2;
+        if (abs$1(lambda1 - sign1) < epsilon$2) lambda1 -= sign1 * epsilon$2;
         phi0 = clipAntimeridianIntersect(lambda0, phi0, lambda1, phi1);
         stream.point(sign0, phi0);
         stream.lineEnd();
@@ -9840,7 +11450,7 @@ function clipAntimeridianIntersect(lambda0, phi0, lambda1, phi1) {
   var cosPhi0,
       cosPhi1,
       sinLambda0Lambda1 = sin$1(lambda0 - lambda1);
-  return abs(sinLambda0Lambda1) > epsilon$2 ? atan((sin$1(phi0) * (cosPhi1 = cos$1(phi1)) * sin$1(lambda1) - sin$1(phi1) * (cosPhi0 = cos$1(phi0)) * sin$1(lambda0)) / (cosPhi0 * cosPhi1 * sinLambda0Lambda1)) : (phi0 + phi1) / 2;
+  return abs$1(sinLambda0Lambda1) > epsilon$2 ? atan((sin$1(phi0) * (cosPhi1 = cos$1(phi1)) * sin$1(lambda1) - sin$1(phi1) * (cosPhi0 = cos$1(phi0)) * sin$1(lambda0)) / (cosPhi0 * cosPhi1 * sinLambda0Lambda1)) : (phi0 + phi1) / 2;
 }
 
 function clipAntimeridianInterpolate(from, to, direction, stream) {
@@ -9857,7 +11467,7 @@ function clipAntimeridianInterpolate(from, to, direction, stream) {
     stream.point(-pi$3, -phi);
     stream.point(-pi$3, 0);
     stream.point(-pi$3, phi);
-  } else if (abs(from[0] - to[0]) > epsilon$2) {
+  } else if (abs$1(from[0] - to[0]) > epsilon$2) {
     var lambda = from[0] < to[0] ? pi$3 : -pi$3;
     phi = direction * lambda / 2;
     stream.point(-lambda, phi);
@@ -9872,7 +11482,7 @@ function clipCircle (radius) {
   var cr = cos$1(radius),
       delta = 6 * radians,
       smallRadius = cr > 0,
-      notHemisphere = abs(cr) > epsilon$2; // TODO optimise for this common case
+      notHemisphere = abs$1(cr) > epsilon$2; // TODO optimise for this common case
 
   function interpolate(from, to, direction, stream) {
     circleStream(stream, radius, delta, direction, from, to);
@@ -10006,11 +11616,11 @@ function clipCircle (radius) {
         z;
     if (lambda1 < lambda0) z = lambda0, lambda0 = lambda1, lambda1 = z;
     var delta = lambda1 - lambda0,
-        polar = abs(delta - pi$3) < epsilon$2,
+        polar = abs$1(delta - pi$3) < epsilon$2,
         meridian = polar || delta < epsilon$2;
     if (!polar && phi1 < phi0) z = phi0, phi0 = phi1, phi1 = z; // Check that the first point is between a and b.
 
-    if (meridian ? polar ? phi0 + phi1 > 0 ^ q[1] < (abs(q[0] - lambda0) < epsilon$2 ? phi0 : phi1) : phi0 <= q[1] && q[1] <= phi1 : delta > pi$3 ^ (lambda0 <= q[0] && q[0] <= lambda1)) {
+    if (meridian ? polar ? phi0 + phi1 > 0 ^ q[1] < (abs$1(q[0] - lambda0) < epsilon$2 ? phi0 : phi1) : phi0 <= q[1] && q[1] <= phi1 : delta > pi$3 ^ (lambda0 <= q[0] && q[0] <= lambda1)) {
       var q1 = cartesianScale(u, (-w + t) / uu);
       cartesianAddInPlace(q1, A);
       return [q, spherical(q1)];
@@ -10120,7 +11730,7 @@ function clipRectangle(x0, y0, x1, y1) {
   }
 
   function corner(p, direction) {
-    return abs(p[0] - x0) < epsilon$2 ? direction > 0 ? 0 : 3 : abs(p[0] - x1) < epsilon$2 ? direction > 0 ? 2 : 1 : abs(p[1] - y0) < epsilon$2 ? direction > 0 ? 1 : 0 : direction > 0 ? 3 : 2; // abs(p[1] - y1) < epsilon
+    return abs$1(p[0] - x0) < epsilon$2 ? direction > 0 ? 0 : 3 : abs$1(p[0] - x1) < epsilon$2 ? direction > 0 ? 2 : 1 : abs$1(p[1] - y0) < epsilon$2 ? direction > 0 ? 1 : 0 : direction > 0 ? 3 : 2; // abs(p[1] - y1) < epsilon
   }
 
   function compareIntersection(a, b) {
@@ -10321,7 +11931,7 @@ function lengthPoint(lambda, phi) {
   lambda *= radians, phi *= radians;
   var sinPhi = sin$1(phi),
       cosPhi = cos$1(phi),
-      delta = abs(lambda - lambda0$2),
+      delta = abs$1(lambda - lambda0$2),
       cosDelta = cos$1(delta),
       sinDelta = sin$1(delta),
       x = cosPhi * sinDelta,
@@ -10511,9 +12121,9 @@ function graticule() {
 
   function lines() {
     return sequence(ceil(X0 / DX) * DX, X1, DX).map(X).concat(sequence(ceil(Y0 / DY) * DY, Y1, DY).map(Y)).concat(sequence(ceil(x0 / dx) * dx, x1, dx).filter(function (x) {
-      return abs(x % DX) > epsilon$2;
+      return abs$1(x % DX) > epsilon$2;
     }).map(x)).concat(sequence(ceil(y0 / dy) * dy, y1, dy).filter(function (y) {
-      return abs(y % DY) > epsilon$2;
+      return abs$1(y % DY) > epsilon$2;
     }).map(y));
   }
 
@@ -10638,7 +12248,7 @@ var areaStream$1 = {
   },
   polygonEnd: function polygonEnd() {
     areaStream$1.lineStart = areaStream$1.lineEnd = areaStream$1.point = noop$2;
-    areaSum$1.add(abs(areaRingSum$1));
+    areaSum$1.add(abs$1(areaRingSum$1));
     areaRingSum$1.reset();
   },
   result: function result() {
@@ -11102,7 +12712,7 @@ function resample$1(project, delta2) {
           c = c0 + c1,
           m = sqrt(a * a + b * b + c * c),
           phi2 = asin(c /= m),
-          lambda2 = abs(abs(c) - 1) < epsilon$2 || abs(lambda0 - lambda1) < epsilon$2 ? (lambda0 + lambda1) / 2 : atan2(b, a),
+          lambda2 = abs$1(abs$1(c) - 1) < epsilon$2 || abs$1(lambda0 - lambda1) < epsilon$2 ? (lambda0 + lambda1) / 2 : atan2(b, a),
           p = project(lambda2, phi2),
           x2 = p[0],
           y2 = p[1],
@@ -11111,7 +12721,7 @@ function resample$1(project, delta2) {
           dz = dy * dx2 - dx * dy2;
 
       if (dz * dz / d2 > delta2 // perpendicular projected distance
-      || abs((dx * dx2 + dy * dy2) / d2 - 0.5) > 0.3 // midpoint close to an end
+      || abs$1((dx * dx2 + dy * dy2) / d2 - 0.5) > 0.3 // midpoint close to an end
       || a0 * a1 + b0 * b1 + c0 * c1 < cosMinDistance) {
         // angular distance
         resampleLineTo(x0, y0, lambda0, a0, b0, c0, x2, y2, lambda2, a /= m, b /= m, c, depth, stream);
@@ -11408,7 +13018,7 @@ function conicEqualAreaRaw(y0, y1) {
   var sy0 = sin$1(y0),
       n = (sy0 + sin$1(y1)) / 2; // Are the parallels symmetrical around the Equator?
 
-  if (abs(n) < epsilon$2) return cylindricalEqualAreaRaw(y0);
+  if (abs$1(n) < epsilon$2) return cylindricalEqualAreaRaw(y0);
   var c = 1 + sy0 * (2 * n - sy0),
       r0 = sqrt(c) / n;
 
@@ -11419,7 +13029,7 @@ function conicEqualAreaRaw(y0, y1) {
 
   project.invert = function (x, y) {
     var r0y = r0 - y,
-        l = atan2(x, abs(r0y)) * sign(r0y);
+        l = atan2(x, abs$1(r0y)) * sign(r0y);
     if (r0y * n < 0) l -= pi$3 * sign(x) * sign(r0y);
     return [l / n, asin((c - (x * x + r0y * r0y) * n * n) / (2 * n))];
   };
@@ -11611,7 +13221,7 @@ function azimuthalEquidistant () {
 }
 
 function mercatorRaw(lambda, phi) {
-  return [lambda, log(tan((halfPi$2 + phi) / 2))];
+  return [lambda, log$2(tan((halfPi$2 + phi) / 2))];
 }
 
 mercatorRaw.invert = function (x, y) {
@@ -11663,8 +13273,8 @@ function tany(y) {
 
 function conicConformalRaw(y0, y1) {
   var cy0 = cos$1(y0),
-      n = y0 === y1 ? sin$1(y0) : log(cy0 / cos$1(y1)) / log(tany(y1) / tany(y0)),
-      f = cy0 * pow(tany(y0), n) / n;
+      n = y0 === y1 ? sin$1(y0) : log$2(cy0 / cos$1(y1)) / log$2(tany(y1) / tany(y0)),
+      f = cy0 * pow$2(tany(y0), n) / n;
   if (!n) return mercatorRaw;
 
   function project(x, y) {
@@ -11674,16 +13284,16 @@ function conicConformalRaw(y0, y1) {
       if (y > halfPi$2 - epsilon$2) y = halfPi$2 - epsilon$2;
     }
 
-    var r = f / pow(tany(y), n);
+    var r = f / pow$2(tany(y), n);
     return [r * sin$1(n * x), f - r * cos$1(n * x)];
   }
 
   project.invert = function (x, y) {
     var fy = f - y,
         r = sign(n) * sqrt(x * x + fy * fy),
-        l = atan2(x, abs(fy)) * sign(fy);
+        l = atan2(x, abs$1(fy)) * sign(fy);
     if (fy * n < 0) l -= pi$3 * sign(x) * sign(fy);
-    return [l / n, 2 * atan(pow(f / r, 1 / n)) - halfPi$2];
+    return [l / n, 2 * atan(pow$2(f / r, 1 / n)) - halfPi$2];
   };
 
   return project;
@@ -11704,7 +13314,7 @@ function conicEquidistantRaw(y0, y1) {
   var cy0 = cos$1(y0),
       n = y0 === y1 ? sin$1(y0) : (cy0 - cos$1(y1)) / (y1 - y0),
       g = cy0 / n + y0;
-  if (abs(n) < epsilon$2) return equirectangularRaw;
+  if (abs$1(n) < epsilon$2) return equirectangularRaw;
 
   function project(x, y) {
     var gy = g - y,
@@ -11714,7 +13324,7 @@ function conicEquidistantRaw(y0, y1) {
 
   project.invert = function (x, y) {
     var gy = g - y,
-        l = atan2(x, abs(gy)) * sign(gy);
+        l = atan2(x, abs$1(gy)) * sign(gy);
     if (gy * n < 0) l -= pi$3 * sign(x) * sign(gy);
     return [l / n, g - sign(n) * sqrt(x * x + gy * gy)];
   };
@@ -11747,7 +13357,7 @@ equalEarthRaw.invert = function (x, y) {
     fy = l * (A1 + A2 * l2 + l6 * (A3 + A4 * l2)) - y;
     fpy = A1 + 3 * A2 * l2 + l6 * (7 * A3 + 9 * A4 * l2);
     l -= delta = fy / fpy, l2 = l * l, l6 = l2 * l2 * l2;
-    if (abs(delta) < epsilon2$1) break;
+    if (abs$1(delta) < epsilon2$1) break;
   }
 
   return [M * x * (A1 + 3 * A2 * l2 + l6 * (7 * A3 + 9 * A4 * l2)) / cos$1(l), asin(sin$1(l) / M)];
@@ -11894,7 +13504,7 @@ naturalEarth1Raw.invert = function (x, y) {
     var phi2 = phi * phi,
         phi4 = phi2 * phi2;
     phi -= delta = (phi * (1.007226 + phi2 * (0.015085 + phi4 * (-0.044475 + 0.028874 * phi2 - 0.005916 * phi4))) - y) / (1.007226 + phi2 * (0.015085 * 3 + phi4 * (-0.044475 * 7 + 0.028874 * 9 * phi2 - 0.005916 * 11 * phi4)));
-  } while (abs(delta) > epsilon$2 && --i > 0);
+  } while (abs$1(delta) > epsilon$2 && --i > 0);
 
   return [x / (0.8707 + (phi2 = phi * phi) * (-0.131979 + phi2 * (-0.013791 + phi2 * phi2 * phi2 * (0.003971 - 0.001529 * phi2)))), phi];
 };
@@ -11924,7 +13534,7 @@ function stereographic () {
 }
 
 function transverseMercatorRaw(lambda, phi) {
-  return [log(tan((halfPi$2 + phi) / 2)), -lambda];
+  return [log$2(tan((halfPi$2 + phi) / 2)), -lambda];
 }
 
 transverseMercatorRaw.invert = function (x, y) {
@@ -12283,7 +13893,7 @@ Node.prototype = hierarchy.prototype = {
   copy: node_copy
 };
 
-var slice$4 = Array.prototype.slice;
+var slice$5 = Array.prototype.slice;
 function shuffle$1(array) {
   var m = array.length,
       t,
@@ -12301,7 +13911,7 @@ function shuffle$1(array) {
 
 function enclose (circles) {
   var i = 0,
-      n = (circles = shuffle$1(slice$4.call(circles))).length,
+      n = (circles = shuffle$1(slice$5.call(circles))).length,
       B = [],
       p,
       e;
@@ -13585,7 +15195,7 @@ function initInterpolator(domain, interpolator) {
 
 var array$3 = Array.prototype;
 var map$3 = array$3.map;
-var slice$5 = array$3.slice;
+var slice$6 = array$3.slice;
 
 var implicit = {
   name: "implicit"
@@ -13624,7 +15234,7 @@ function ordinal() {
   };
 
   scale.range = function (_) {
-    return arguments.length ? (range = slice$5.call(_), scale) : range.slice();
+    return arguments.length ? (range = slice$6.call(_), scale) : range.slice();
   };
 
   scale.unknown = function (_) {
@@ -13832,11 +15442,11 @@ function transformer$1() {
   };
 
   scale.range = function (_) {
-    return arguments.length ? (range = slice$5.call(_), rescale()) : range.slice();
+    return arguments.length ? (range = slice$6.call(_), rescale()) : range.slice();
   };
 
   scale.rangeRound = function (_) {
-    return range = slice$5.call(_), interpolate = interpolateRound, rescale();
+    return range = slice$6.call(_), interpolate = interpolateRound, rescale();
   };
 
   scale.clamp = function (_) {
@@ -13983,6 +15593,32 @@ function identity$7(domain) {
   domain = arguments.length ? map$3.call(domain, number$2) : [0, 1];
   return linearish(scale);
 }
+
+var log$3 = Math.log;
+var LOG10E = Math.LOG10E; // `Math.log10` method
+// https://tc39.github.io/ecma262/#sec-math.log10
+
+_export({
+  target: 'Math',
+  stat: true
+}, {
+  log10: function log10(x) {
+    return log$3(x) * LOG10E;
+  }
+});
+
+var log$4 = Math.log;
+var LN2$1 = Math.LN2; // `Math.log2` method
+// https://tc39.github.io/ecma262/#sec-math.log2
+
+_export({
+  target: 'Math',
+  stat: true
+}, {
+  log2: function log2(x) {
+    return log$4(x) / LN2$1;
+  }
+});
 
 function nice (domain, interval) {
   domain = domain.slice();
@@ -14133,16 +15769,52 @@ function loggish(transform) {
 
   return scale;
 }
-function log$1() {
+function log$5() {
   var scale = loggish(transformer$1()).domain([1, 10]);
 
   scale.copy = function () {
-    return copy(scale, log$1()).base(scale.base());
+    return copy(scale, log$5()).base(scale.base());
   };
 
   initRange.apply(scale, arguments);
   return scale;
 }
+
+var nativeExpm1 = Math.expm1;
+var exp$1 = Math.exp; // `Math.expm1` method implementation
+// https://tc39.github.io/ecma262/#sec-math.expm1
+
+var mathExpm1 = !nativeExpm1 // Old FF bug
+|| nativeExpm1(10) > 22025.465794806719 || nativeExpm1(10) < 22025.4657948067165168 // Tor Browser bug
+|| nativeExpm1(-2e-17) != -2e-17 ? function expm1(x) {
+  return (x = +x) == 0 ? x : x > -1e-6 && x < 1e-6 ? x + x * x / 2 : exp$1(x) - 1;
+} : nativeExpm1;
+
+// https://tc39.github.io/ecma262/#sec-math.expm1
+
+_export({
+  target: 'Math',
+  stat: true,
+  forced: mathExpm1 != Math.expm1
+}, {
+  expm1: mathExpm1
+});
+
+var log$6 = Math.log; // `Math.log1p` method implementation
+// https://tc39.github.io/ecma262/#sec-math.log1p
+
+var mathLog1p = Math.log1p || function log1p(x) {
+  return (x = +x) > -1e-8 && x < 1e-8 ? x - x * x / 2 : log$6(1 + x);
+};
+
+// https://tc39.github.io/ecma262/#sec-math.log1p
+
+_export({
+  target: 'Math',
+  stat: true
+}, {
+  log1p: mathLog1p
+});
 
 function transformSymlog(c) {
   return function (x) {
@@ -14204,18 +15876,18 @@ function powish(transform) {
 
   return linearish(scale);
 }
-function pow$1() {
+function pow$3() {
   var scale = powish(transformer$1());
 
   scale.copy = function () {
-    return copy(scale, pow$1()).exponent(scale.exponent());
+    return copy(scale, pow$3()).exponent(scale.exponent());
   };
 
   initRange.apply(scale, arguments);
   return scale;
 }
 function sqrt$1() {
-  return pow$1.apply(null, arguments).exponent(0.5);
+  return pow$3.apply(null, arguments).exponent(0.5);
 }
 
 function quantile() {
@@ -14258,7 +15930,7 @@ function quantile() {
   };
 
   scale.range = function (_) {
-    return arguments.length ? (range = slice$5.call(_), rescale()) : range.slice();
+    return arguments.length ? (range = slice$6.call(_), rescale()) : range.slice();
   };
 
   scale.unknown = function (_) {
@@ -14304,7 +15976,7 @@ function quantize$1() {
   };
 
   scale.range = function (_) {
-    return arguments.length ? (n = (range = slice$5.call(_)).length - 1, rescale()) : range.slice();
+    return arguments.length ? (n = (range = slice$6.call(_)).length - 1, rescale()) : range.slice();
   };
 
   scale.invertExtent = function (y) {
@@ -14338,11 +16010,11 @@ function threshold$1() {
   }
 
   scale.domain = function (_) {
-    return arguments.length ? (domain = slice$5.call(_), n = Math.min(domain.length, range.length - 1), scale) : domain.slice();
+    return arguments.length ? (domain = slice$6.call(_), n = Math.min(domain.length, range.length - 1), scale) : domain.slice();
   };
 
   scale.range = function (_) {
-    return arguments.length ? (range = slice$5.call(_), n = Math.min(domain.length, range.length - 1), scale) : range.slice();
+    return arguments.length ? (range = slice$6.call(_), n = Math.min(domain.length, range.length - 1), scale) : range.slice();
   };
 
   scale.invertExtent = function (y) {
@@ -15880,11 +17552,11 @@ function constant$b (x) {
   };
 }
 
-var abs$1 = Math.abs;
+var abs$2 = Math.abs;
 var atan2$1 = Math.atan2;
 var cos$2 = Math.cos;
 var max$2 = Math.max;
-var min$1 = Math.min;
+var min$3 = Math.min;
 var sin$2 = Math.sin;
 var sqrt$2 = Math.sqrt;
 var epsilon$3 = 1e-12;
@@ -15987,7 +17659,7 @@ function arc () {
         r1 = +outerRadius.apply(this, arguments),
         a0 = startAngle.apply(this, arguments) - halfPi$3,
         a1 = endAngle.apply(this, arguments) - halfPi$3,
-        da = abs$1(a1 - a0),
+        da = abs$2(a1 - a0),
         cw = a1 > a0;
     if (!context) context = buffer = path(); // Ensure that the outer radius is always larger than the inner radius.
 
@@ -16012,7 +17684,7 @@ function arc () {
               da1 = da,
               ap = padAngle.apply(this, arguments) / 2,
               rp = ap > epsilon$3 && (padRadius ? +padRadius.apply(this, arguments) : sqrt$2(r0 * r0 + r1 * r1)),
-              rc = min$1(abs$1(r1 - r0) / 2, +cornerRadius.apply(this, arguments)),
+              rc = min$3(abs$2(r1 - r0) / 2, +cornerRadius.apply(this, arguments)),
               rc0 = rc,
               rc1 = rc,
               t0,
@@ -16044,8 +17716,8 @@ function arc () {
                   by = y11 - oc[1],
                   kc = 1 / sin$2(acos$1((ax * bx + ay * by) / (sqrt$2(ax * ax + ay * ay) * sqrt$2(bx * bx + by * by))) / 2),
                   lc = sqrt$2(oc[0] * oc[0] + oc[1] * oc[1]);
-              rc0 = min$1(rc, (r0 - lc) / (kc - 1));
-              rc1 = min$1(rc, (r1 - lc) / (kc + 1));
+              rc0 = min$3(rc, (r0 - lc) / (kc - 1));
+              rc1 = min$3(rc, (r1 - lc) / (kc + 1));
             }
           } // Is the sector collapsed to a line?
 
@@ -16499,7 +18171,7 @@ function pointRadial (x, y) {
   return [(y = +y) * Math.cos(x -= Math.PI / 2), y * Math.sin(x)];
 }
 
-var slice$6 = Array.prototype.slice;
+var slice$7 = Array.prototype.slice;
 
 function linkSource(d) {
   return d.source;
@@ -16518,7 +18190,7 @@ function link$2(curve) {
 
   function link() {
     var buffer,
-        argv = slice$6.call(arguments),
+        argv = slice$7.call(arguments),
         s = source.apply(this, argv),
         t = target.apply(this, argv);
     if (!context) context = buffer = path();
@@ -17823,7 +19495,7 @@ function stack () {
   }
 
   stack.keys = function (_) {
-    return arguments.length ? (keys = typeof _ === "function" ? _ : constant$b(slice$6.call(_)), stack) : keys;
+    return arguments.length ? (keys = typeof _ === "function" ? _ : constant$b(slice$7.call(_)), stack) : keys;
   };
 
   stack.value = function (_) {
@@ -17831,7 +19503,7 @@ function stack () {
   };
 
   stack.order = function (_) {
-    return arguments.length ? (order = _ == null ? none$2 : typeof _ === "function" ? _ : constant$b(slice$6.call(_)), stack) : order;
+    return arguments.length ? (order = _ == null ? none$2 : typeof _ === "function" ? _ : constant$b(slice$7.call(_)), stack) : order;
   };
 
   stack.offset = function (_) {
@@ -19447,507 +21119,525 @@ function zoom () {
 }
 
 var d3 = /*#__PURE__*/Object.freeze({
-	__proto__: null,
-	version: version,
-	bisect: bisectRight,
-	bisectRight: bisectRight,
-	bisectLeft: bisectLeft,
-	ascending: ascending,
-	bisector: bisector,
-	cross: cross,
-	descending: descending,
-	deviation: deviation,
-	extent: extent,
-	histogram: histogram,
-	thresholdFreedmanDiaconis: freedmanDiaconis,
-	thresholdScott: scott,
-	thresholdSturges: thresholdSturges,
-	max: max,
-	mean: mean,
-	median: median,
-	merge: merge,
-	min: min,
-	pairs: pairs,
-	permute: permute,
-	quantile: threshold,
-	range: sequence,
-	scan: scan,
-	shuffle: shuffle,
-	sum: sum,
-	ticks: ticks,
-	tickIncrement: tickIncrement,
-	tickStep: tickStep,
-	transpose: transpose,
-	variance: variance,
-	zip: zip,
-	axisTop: axisTop,
-	axisRight: axisRight,
-	axisBottom: axisBottom,
-	axisLeft: axisLeft,
-	brush: brush,
-	brushX: brushX,
-	brushY: brushY,
-	brushSelection: brushSelection,
-	chord: chord,
-	ribbon: ribbon,
-	nest: nest,
-	set: set$2,
-	map: map$1,
-	keys: keys,
-	values: values,
-	entries: entries,
-	color: color,
-	rgb: rgb,
-	hsl: hsl,
-	lab: lab,
-	hcl: hcl,
-	lch: lch,
-	gray: gray,
-	cubehelix: cubehelix,
-	contours: contours,
-	contourDensity: density,
-	dispatch: dispatch,
-	drag: drag,
-	dragDisable: dragDisable,
-	dragEnable: yesdrag,
-	dsvFormat: dsvFormat,
-	csvParse: csvParse,
-	csvParseRows: csvParseRows,
-	csvFormat: csvFormat,
-	csvFormatBody: csvFormatBody,
-	csvFormatRows: csvFormatRows,
-	csvFormatRow: csvFormatRow,
-	csvFormatValue: csvFormatValue,
-	tsvParse: tsvParse,
-	tsvParseRows: tsvParseRows,
-	tsvFormat: tsvFormat,
-	tsvFormatBody: tsvFormatBody,
-	tsvFormatRows: tsvFormatRows,
-	tsvFormatRow: tsvFormatRow,
-	tsvFormatValue: tsvFormatValue,
-	autoType: autoType,
-	easeLinear: linear$1,
-	easeQuad: quadInOut,
-	easeQuadIn: quadIn,
-	easeQuadOut: quadOut,
-	easeQuadInOut: quadInOut,
-	easeCubic: cubicInOut,
-	easeCubicIn: cubicIn,
-	easeCubicOut: cubicOut,
-	easeCubicInOut: cubicInOut,
-	easePoly: polyInOut,
-	easePolyIn: polyIn,
-	easePolyOut: polyOut,
-	easePolyInOut: polyInOut,
-	easeSin: sinInOut,
-	easeSinIn: sinIn,
-	easeSinOut: sinOut,
-	easeSinInOut: sinInOut,
-	easeExp: expInOut,
-	easeExpIn: expIn,
-	easeExpOut: expOut,
-	easeExpInOut: expInOut,
-	easeCircle: circleInOut,
-	easeCircleIn: circleIn,
-	easeCircleOut: circleOut,
-	easeCircleInOut: circleInOut,
-	easeBounce: bounceOut,
-	easeBounceIn: bounceIn,
-	easeBounceOut: bounceOut,
-	easeBounceInOut: bounceInOut,
-	easeBack: backInOut,
-	easeBackIn: backIn,
-	easeBackOut: backOut,
-	easeBackInOut: backInOut,
-	easeElastic: elasticOut,
-	easeElasticIn: elasticIn,
-	easeElasticOut: elasticOut,
-	easeElasticInOut: elasticInOut,
-	blob: blob,
-	buffer: buffer,
-	dsv: dsv,
-	csv: csv$1,
-	tsv: tsv$1,
-	image: image,
-	json: json,
-	text: text,
-	xml: xml,
-	html: html,
-	svg: svg,
-	forceCenter: center$1,
-	forceCollide: collide,
-	forceLink: link,
-	forceManyBody: manyBody,
-	forceRadial: radial,
-	forceSimulation: simulation,
-	forceX: x$2,
-	forceY: y$2,
-	formatDefaultLocale: defaultLocale,
-	get format () { return format; },
-	get formatPrefix () { return formatPrefix; },
-	formatLocale: formatLocale,
-	formatSpecifier: formatSpecifier,
-	FormatSpecifier: FormatSpecifier,
-	precisionFixed: precisionFixed,
-	precisionPrefix: precisionPrefix,
-	precisionRound: precisionRound,
-	geoArea: area$1,
-	geoBounds: bounds,
-	geoCentroid: centroid,
-	geoCircle: circle,
-	geoClipAntimeridian: clipAntimeridian,
-	geoClipCircle: clipCircle,
-	geoClipExtent: extent$1,
-	geoClipRectangle: clipRectangle,
-	geoContains: contains$1,
-	geoDistance: distance,
-	geoGraticule: graticule,
-	geoGraticule10: graticule10,
-	geoInterpolate: interpolate$1,
-	geoLength: length$1,
-	geoPath: index$1,
-	geoAlbers: albers,
-	geoAlbersUsa: albersUsa,
-	geoAzimuthalEqualArea: azimuthalEqualArea,
-	geoAzimuthalEqualAreaRaw: azimuthalEqualAreaRaw,
-	geoAzimuthalEquidistant: azimuthalEquidistant,
-	geoAzimuthalEquidistantRaw: azimuthalEquidistantRaw,
-	geoConicConformal: conicConformal,
-	geoConicConformalRaw: conicConformalRaw,
-	geoConicEqualArea: conicEqualArea,
-	geoConicEqualAreaRaw: conicEqualAreaRaw,
-	geoConicEquidistant: conicEquidistant,
-	geoConicEquidistantRaw: conicEquidistantRaw,
-	geoEqualEarth: equalEarth,
-	geoEqualEarthRaw: equalEarthRaw,
-	geoEquirectangular: equirectangular,
-	geoEquirectangularRaw: equirectangularRaw,
-	geoGnomonic: gnomonic,
-	geoGnomonicRaw: gnomonicRaw,
-	geoIdentity: identity$5,
-	geoProjection: projection,
-	geoProjectionMutator: projectionMutator,
-	geoMercator: mercator,
-	geoMercatorRaw: mercatorRaw,
-	geoNaturalEarth1: naturalEarth1,
-	geoNaturalEarth1Raw: naturalEarth1Raw,
-	geoOrthographic: orthographic,
-	geoOrthographicRaw: orthographicRaw,
-	geoStereographic: stereographic,
-	geoStereographicRaw: stereographicRaw,
-	geoTransverseMercator: transverseMercator,
-	geoTransverseMercatorRaw: transverseMercatorRaw,
-	geoRotation: rotation,
-	geoStream: geoStream,
-	geoTransform: transform,
-	cluster: cluster,
-	hierarchy: hierarchy,
-	pack: index$2,
-	packSiblings: siblings,
-	packEnclose: enclose,
-	partition: partition,
-	stratify: stratify,
-	tree: tree,
-	treemap: index$3,
-	treemapBinary: binary,
-	treemapDice: treemapDice,
-	treemapSlice: treemapSlice,
-	treemapSliceDice: sliceDice,
-	treemapSquarify: squarify,
-	treemapResquarify: resquarify,
-	interpolate: interpolateValue,
-	interpolateArray: array$1,
-	interpolateBasis: basis$1,
-	interpolateBasisClosed: basisClosed,
-	interpolateDate: date,
-	interpolateDiscrete: discrete,
-	interpolateHue: hue$1,
-	interpolateNumber: interpolateNumber,
-	interpolateNumberArray: numberArray,
-	interpolateObject: object,
-	interpolateRound: interpolateRound,
-	interpolateString: interpolateString,
-	interpolateTransformCss: interpolateTransformCss,
-	interpolateTransformSvg: interpolateTransformSvg,
-	interpolateZoom: interpolateZoom,
-	interpolateRgb: interpolateRgb,
-	interpolateRgbBasis: rgbBasis,
-	interpolateRgbBasisClosed: rgbBasisClosed,
-	interpolateHsl: hsl$2,
-	interpolateHslLong: hslLong,
-	interpolateLab: lab$1,
-	interpolateHcl: hcl$2,
-	interpolateHclLong: hclLong,
-	interpolateCubehelix: cubehelix$2,
-	interpolateCubehelixLong: cubehelixLong,
-	piecewise: piecewise,
-	quantize: quantize,
-	path: path,
-	polygonArea: area$2,
-	polygonCentroid: centroid$1,
-	polygonHull: hull,
-	polygonContains: contains$2,
-	polygonLength: length$2,
-	quadtree: quadtree,
-	randomUniform: uniform,
-	randomNormal: normal,
-	randomLogNormal: logNormal,
-	randomBates: bates,
-	randomIrwinHall: irwinHall,
-	randomExponential: exponential$1,
-	scaleBand: band,
-	scalePoint: point$1,
-	scaleIdentity: identity$7,
-	scaleLinear: linear$2,
-	scaleLog: log$1,
-	scaleSymlog: symlog,
-	scaleOrdinal: ordinal,
-	scaleImplicit: implicit,
-	scalePow: pow$1,
-	scaleSqrt: sqrt$1,
-	scaleQuantile: quantile,
-	scaleQuantize: quantize$1,
-	scaleThreshold: threshold$1,
-	scaleTime: time,
-	scaleUtc: utcTime,
-	scaleSequential: sequential,
-	scaleSequentialLog: sequentialLog,
-	scaleSequentialPow: sequentialPow,
-	scaleSequentialSqrt: sequentialSqrt,
-	scaleSequentialSymlog: sequentialSymlog,
-	scaleSequentialQuantile: sequentialQuantile,
-	scaleDiverging: diverging,
-	scaleDivergingLog: divergingLog,
-	scaleDivergingPow: divergingPow,
-	scaleDivergingSqrt: divergingSqrt,
-	scaleDivergingSymlog: divergingSymlog,
-	tickFormat: tickFormat,
-	schemeCategory10: category10,
-	schemeAccent: Accent,
-	schemeDark2: Dark2,
-	schemePaired: Paired,
-	schemePastel1: Pastel1,
-	schemePastel2: Pastel2,
-	schemeSet1: Set1,
-	schemeSet2: Set2,
-	schemeSet3: Set3,
-	schemeTableau10: Tableau10,
-	interpolateBrBG: BrBG,
-	schemeBrBG: scheme,
-	interpolatePRGn: PRGn,
-	schemePRGn: scheme$1,
-	interpolatePiYG: PiYG,
-	schemePiYG: scheme$2,
-	interpolatePuOr: PuOr,
-	schemePuOr: scheme$3,
-	interpolateRdBu: RdBu,
-	schemeRdBu: scheme$4,
-	interpolateRdGy: RdGy,
-	schemeRdGy: scheme$5,
-	interpolateRdYlBu: RdYlBu,
-	schemeRdYlBu: scheme$6,
-	interpolateRdYlGn: RdYlGn,
-	schemeRdYlGn: scheme$7,
-	interpolateSpectral: Spectral,
-	schemeSpectral: scheme$8,
-	interpolateBuGn: BuGn,
-	schemeBuGn: scheme$9,
-	interpolateBuPu: BuPu,
-	schemeBuPu: scheme$a,
-	interpolateGnBu: GnBu,
-	schemeGnBu: scheme$b,
-	interpolateOrRd: OrRd,
-	schemeOrRd: scheme$c,
-	interpolatePuBuGn: PuBuGn,
-	schemePuBuGn: scheme$d,
-	interpolatePuBu: PuBu,
-	schemePuBu: scheme$e,
-	interpolatePuRd: PuRd,
-	schemePuRd: scheme$f,
-	interpolateRdPu: RdPu,
-	schemeRdPu: scheme$g,
-	interpolateYlGnBu: YlGnBu,
-	schemeYlGnBu: scheme$h,
-	interpolateYlGn: YlGn,
-	schemeYlGn: scheme$i,
-	interpolateYlOrBr: YlOrBr,
-	schemeYlOrBr: scheme$j,
-	interpolateYlOrRd: YlOrRd,
-	schemeYlOrRd: scheme$k,
-	interpolateBlues: Blues,
-	schemeBlues: scheme$l,
-	interpolateGreens: Greens,
-	schemeGreens: scheme$m,
-	interpolateGreys: Greys,
-	schemeGreys: scheme$n,
-	interpolatePurples: Purples,
-	schemePurples: scheme$o,
-	interpolateReds: Reds,
-	schemeReds: scheme$p,
-	interpolateOranges: Oranges,
-	schemeOranges: scheme$q,
-	interpolateCividis: cividis,
-	interpolateCubehelixDefault: cubehelix$3,
-	interpolateRainbow: rainbow,
-	interpolateWarm: warm,
-	interpolateCool: cool,
-	interpolateSinebow: sinebow,
-	interpolateTurbo: turbo,
-	interpolateViridis: viridis,
-	interpolateMagma: magma,
-	interpolateInferno: inferno,
-	interpolatePlasma: plasma,
-	create: create,
-	creator: creator,
-	local: local,
-	matcher: matcher,
-	mouse: mouse,
-	namespace: namespace,
-	namespaces: namespaces,
-	clientPoint: point,
-	select: select,
-	selectAll: selectAll,
-	selection: selection,
-	selector: selector,
-	selectorAll: selectorAll,
-	style: styleValue,
-	touch: touch,
-	touches: touches,
-	window: defaultView,
-	get event () { return event; },
-	customEvent: customEvent,
-	arc: arc,
-	area: area$3,
-	line: line,
-	pie: pie,
-	areaRadial: areaRadial,
-	radialArea: areaRadial,
-	lineRadial: lineRadial$1,
-	radialLine: lineRadial$1,
-	pointRadial: pointRadial,
-	linkHorizontal: linkHorizontal,
-	linkVertical: linkVertical,
-	linkRadial: linkRadial,
-	symbol: symbol,
-	symbols: symbols,
-	symbolCircle: circle$2,
-	symbolCross: cross$2,
-	symbolDiamond: diamond,
-	symbolSquare: square,
-	symbolStar: star,
-	symbolTriangle: triangle,
-	symbolWye: wye,
-	curveBasisClosed: basisClosed$1,
-	curveBasisOpen: basisOpen,
-	curveBasis: basis$2,
-	curveBundle: bundle,
-	curveCardinalClosed: cardinalClosed,
-	curveCardinalOpen: cardinalOpen,
-	curveCardinal: cardinal,
-	curveCatmullRomClosed: catmullRomClosed,
-	curveCatmullRomOpen: catmullRomOpen,
-	curveCatmullRom: catmullRom,
-	curveLinearClosed: linearClosed,
-	curveLinear: curveLinear,
-	curveMonotoneX: monotoneX,
-	curveMonotoneY: monotoneY,
-	curveNatural: natural,
-	curveStep: step,
-	curveStepAfter: stepAfter,
-	curveStepBefore: stepBefore,
-	stack: stack,
-	stackOffsetExpand: expand,
-	stackOffsetDiverging: diverging$1,
-	stackOffsetNone: none$1,
-	stackOffsetSilhouette: silhouette,
-	stackOffsetWiggle: wiggle,
-	stackOrderAppearance: appearance,
-	stackOrderAscending: ascending$3,
-	stackOrderDescending: descending$2,
-	stackOrderInsideOut: insideOut,
-	stackOrderNone: none$2,
-	stackOrderReverse: reverse,
-	timeInterval: newInterval,
-	timeMillisecond: millisecond,
-	timeMilliseconds: milliseconds,
-	utcMillisecond: millisecond,
-	utcMilliseconds: milliseconds,
-	timeSecond: second,
-	timeSeconds: seconds,
-	utcSecond: second,
-	utcSeconds: seconds,
-	timeMinute: minute,
-	timeMinutes: minutes,
-	timeHour: hour,
-	timeHours: hours,
-	timeDay: day,
-	timeDays: days,
-	timeWeek: sunday,
-	timeWeeks: sundays,
-	timeSunday: sunday,
-	timeSundays: sundays,
-	timeMonday: monday,
-	timeMondays: mondays,
-	timeTuesday: tuesday,
-	timeTuesdays: tuesdays,
-	timeWednesday: wednesday,
-	timeWednesdays: wednesdays,
-	timeThursday: thursday,
-	timeThursdays: thursdays,
-	timeFriday: friday,
-	timeFridays: fridays,
-	timeSaturday: saturday,
-	timeSaturdays: saturdays,
-	timeMonth: month,
-	timeMonths: months,
-	timeYear: year,
-	timeYears: years,
-	utcMinute: utcMinute,
-	utcMinutes: utcMinutes,
-	utcHour: utcHour,
-	utcHours: utcHours,
-	utcDay: utcDay,
-	utcDays: utcDays,
-	utcWeek: utcSunday,
-	utcWeeks: utcSundays,
-	utcSunday: utcSunday,
-	utcSundays: utcSundays,
-	utcMonday: utcMonday,
-	utcMondays: utcMondays,
-	utcTuesday: utcTuesday,
-	utcTuesdays: utcTuesdays,
-	utcWednesday: utcWednesday,
-	utcWednesdays: utcWednesdays,
-	utcThursday: utcThursday,
-	utcThursdays: utcThursdays,
-	utcFriday: utcFriday,
-	utcFridays: utcFridays,
-	utcSaturday: utcSaturday,
-	utcSaturdays: utcSaturdays,
-	utcMonth: utcMonth,
-	utcMonths: utcMonths,
-	utcYear: utcYear,
-	utcYears: utcYears,
-	timeFormatDefaultLocale: defaultLocale$1,
-	get timeFormat () { return timeFormat; },
-	get timeParse () { return timeParse; },
-	get utcFormat () { return utcFormat; },
-	get utcParse () { return utcParse; },
-	timeFormatLocale: formatLocale$1,
-	isoFormat: formatIso,
-	isoParse: parseIso,
-	now: now,
-	timer: timer,
-	timerFlush: timerFlush,
-	timeout: timeout$1,
-	interval: interval$1,
-	transition: transition,
-	active: active,
-	interrupt: interrupt,
-	voronoi: voronoi,
-	zoom: zoom,
-	zoomTransform: transform$1,
-	zoomIdentity: identity$9
+  __proto__: null,
+  version: version,
+  bisect: bisectRight,
+  bisectRight: bisectRight,
+  bisectLeft: bisectLeft,
+  ascending: ascending,
+  bisector: bisector,
+  cross: cross,
+  descending: descending,
+  deviation: deviation,
+  extent: extent,
+  histogram: histogram,
+  thresholdFreedmanDiaconis: freedmanDiaconis,
+  thresholdScott: scott,
+  thresholdSturges: thresholdSturges,
+  max: max,
+  mean: mean,
+  median: median,
+  merge: merge,
+  min: min$2,
+  pairs: pairs,
+  permute: permute,
+  quantile: threshold,
+  range: sequence,
+  scan: scan,
+  shuffle: shuffle,
+  sum: sum,
+  ticks: ticks,
+  tickIncrement: tickIncrement,
+  tickStep: tickStep,
+  transpose: transpose,
+  variance: variance,
+  zip: zip,
+  axisTop: axisTop,
+  axisRight: axisRight,
+  axisBottom: axisBottom,
+  axisLeft: axisLeft,
+  brush: brush,
+  brushX: brushX,
+  brushY: brushY,
+  brushSelection: brushSelection,
+  chord: chord,
+  ribbon: ribbon,
+  nest: nest,
+  set: set$3,
+  map: map$1,
+  keys: keys$1,
+  values: values,
+  entries: entries,
+  color: color,
+  rgb: rgb,
+  hsl: hsl,
+  lab: lab,
+  hcl: hcl,
+  lch: lch,
+  gray: gray,
+  cubehelix: cubehelix,
+  contours: contours,
+  contourDensity: density,
+  dispatch: dispatch,
+  drag: drag,
+  dragDisable: dragDisable,
+  dragEnable: yesdrag,
+  dsvFormat: dsvFormat,
+  csvParse: csvParse,
+  csvParseRows: csvParseRows,
+  csvFormat: csvFormat,
+  csvFormatBody: csvFormatBody,
+  csvFormatRows: csvFormatRows,
+  csvFormatRow: csvFormatRow,
+  csvFormatValue: csvFormatValue,
+  tsvParse: tsvParse,
+  tsvParseRows: tsvParseRows,
+  tsvFormat: tsvFormat,
+  tsvFormatBody: tsvFormatBody,
+  tsvFormatRows: tsvFormatRows,
+  tsvFormatRow: tsvFormatRow,
+  tsvFormatValue: tsvFormatValue,
+  autoType: autoType,
+  easeLinear: linear$1,
+  easeQuad: quadInOut,
+  easeQuadIn: quadIn,
+  easeQuadOut: quadOut,
+  easeQuadInOut: quadInOut,
+  easeCubic: cubicInOut,
+  easeCubicIn: cubicIn,
+  easeCubicOut: cubicOut,
+  easeCubicInOut: cubicInOut,
+  easePoly: polyInOut,
+  easePolyIn: polyIn,
+  easePolyOut: polyOut,
+  easePolyInOut: polyInOut,
+  easeSin: sinInOut,
+  easeSinIn: sinIn,
+  easeSinOut: sinOut,
+  easeSinInOut: sinInOut,
+  easeExp: expInOut,
+  easeExpIn: expIn,
+  easeExpOut: expOut,
+  easeExpInOut: expInOut,
+  easeCircle: circleInOut,
+  easeCircleIn: circleIn,
+  easeCircleOut: circleOut,
+  easeCircleInOut: circleInOut,
+  easeBounce: bounceOut,
+  easeBounceIn: bounceIn,
+  easeBounceOut: bounceOut,
+  easeBounceInOut: bounceInOut,
+  easeBack: backInOut,
+  easeBackIn: backIn,
+  easeBackOut: backOut,
+  easeBackInOut: backInOut,
+  easeElastic: elasticOut,
+  easeElasticIn: elasticIn,
+  easeElasticOut: elasticOut,
+  easeElasticInOut: elasticInOut,
+  blob: blob,
+  buffer: buffer,
+  dsv: dsv,
+  csv: csv$1,
+  tsv: tsv$1,
+  image: image,
+  json: json,
+  text: text,
+  xml: xml,
+  html: html,
+  svg: svg,
+  forceCenter: center$1,
+  forceCollide: collide,
+  forceLink: link,
+  forceManyBody: manyBody,
+  forceRadial: radial,
+  forceSimulation: simulation,
+  forceX: x$2,
+  forceY: y$2,
+  formatDefaultLocale: defaultLocale,
+  get format () { return format; },
+  get formatPrefix () { return formatPrefix; },
+  formatLocale: formatLocale,
+  formatSpecifier: formatSpecifier,
+  FormatSpecifier: FormatSpecifier,
+  precisionFixed: precisionFixed,
+  precisionPrefix: precisionPrefix,
+  precisionRound: precisionRound,
+  geoArea: area$1,
+  geoBounds: bounds,
+  geoCentroid: centroid,
+  geoCircle: circle,
+  geoClipAntimeridian: clipAntimeridian,
+  geoClipCircle: clipCircle,
+  geoClipExtent: extent$1,
+  geoClipRectangle: clipRectangle,
+  geoContains: contains$1,
+  geoDistance: distance,
+  geoGraticule: graticule,
+  geoGraticule10: graticule10,
+  geoInterpolate: interpolate$1,
+  geoLength: length$1,
+  geoPath: index$1,
+  geoAlbers: albers,
+  geoAlbersUsa: albersUsa,
+  geoAzimuthalEqualArea: azimuthalEqualArea,
+  geoAzimuthalEqualAreaRaw: azimuthalEqualAreaRaw,
+  geoAzimuthalEquidistant: azimuthalEquidistant,
+  geoAzimuthalEquidistantRaw: azimuthalEquidistantRaw,
+  geoConicConformal: conicConformal,
+  geoConicConformalRaw: conicConformalRaw,
+  geoConicEqualArea: conicEqualArea,
+  geoConicEqualAreaRaw: conicEqualAreaRaw,
+  geoConicEquidistant: conicEquidistant,
+  geoConicEquidistantRaw: conicEquidistantRaw,
+  geoEqualEarth: equalEarth,
+  geoEqualEarthRaw: equalEarthRaw,
+  geoEquirectangular: equirectangular,
+  geoEquirectangularRaw: equirectangularRaw,
+  geoGnomonic: gnomonic,
+  geoGnomonicRaw: gnomonicRaw,
+  geoIdentity: identity$5,
+  geoProjection: projection,
+  geoProjectionMutator: projectionMutator,
+  geoMercator: mercator,
+  geoMercatorRaw: mercatorRaw,
+  geoNaturalEarth1: naturalEarth1,
+  geoNaturalEarth1Raw: naturalEarth1Raw,
+  geoOrthographic: orthographic,
+  geoOrthographicRaw: orthographicRaw,
+  geoStereographic: stereographic,
+  geoStereographicRaw: stereographicRaw,
+  geoTransverseMercator: transverseMercator,
+  geoTransverseMercatorRaw: transverseMercatorRaw,
+  geoRotation: rotation,
+  geoStream: geoStream,
+  geoTransform: transform,
+  cluster: cluster,
+  hierarchy: hierarchy,
+  pack: index$2,
+  packSiblings: siblings,
+  packEnclose: enclose,
+  partition: partition,
+  stratify: stratify,
+  tree: tree,
+  treemap: index$3,
+  treemapBinary: binary,
+  treemapDice: treemapDice,
+  treemapSlice: treemapSlice,
+  treemapSliceDice: sliceDice,
+  treemapSquarify: squarify,
+  treemapResquarify: resquarify,
+  interpolate: interpolateValue,
+  interpolateArray: array$1,
+  interpolateBasis: basis$1,
+  interpolateBasisClosed: basisClosed,
+  interpolateDate: date,
+  interpolateDiscrete: discrete,
+  interpolateHue: hue$1,
+  interpolateNumber: interpolateNumber,
+  interpolateNumberArray: numberArray,
+  interpolateObject: object,
+  interpolateRound: interpolateRound,
+  interpolateString: interpolateString,
+  interpolateTransformCss: interpolateTransformCss,
+  interpolateTransformSvg: interpolateTransformSvg,
+  interpolateZoom: interpolateZoom,
+  interpolateRgb: interpolateRgb,
+  interpolateRgbBasis: rgbBasis,
+  interpolateRgbBasisClosed: rgbBasisClosed,
+  interpolateHsl: hsl$2,
+  interpolateHslLong: hslLong,
+  interpolateLab: lab$1,
+  interpolateHcl: hcl$2,
+  interpolateHclLong: hclLong,
+  interpolateCubehelix: cubehelix$2,
+  interpolateCubehelixLong: cubehelixLong,
+  piecewise: piecewise,
+  quantize: quantize,
+  path: path,
+  polygonArea: area$2,
+  polygonCentroid: centroid$1,
+  polygonHull: hull,
+  polygonContains: contains$2,
+  polygonLength: length$2,
+  quadtree: quadtree,
+  randomUniform: uniform,
+  randomNormal: normal,
+  randomLogNormal: logNormal,
+  randomBates: bates,
+  randomIrwinHall: irwinHall,
+  randomExponential: exponential$1,
+  scaleBand: band,
+  scalePoint: point$1,
+  scaleIdentity: identity$7,
+  scaleLinear: linear$2,
+  scaleLog: log$5,
+  scaleSymlog: symlog,
+  scaleOrdinal: ordinal,
+  scaleImplicit: implicit,
+  scalePow: pow$3,
+  scaleSqrt: sqrt$1,
+  scaleQuantile: quantile,
+  scaleQuantize: quantize$1,
+  scaleThreshold: threshold$1,
+  scaleTime: time,
+  scaleUtc: utcTime,
+  scaleSequential: sequential,
+  scaleSequentialLog: sequentialLog,
+  scaleSequentialPow: sequentialPow,
+  scaleSequentialSqrt: sequentialSqrt,
+  scaleSequentialSymlog: sequentialSymlog,
+  scaleSequentialQuantile: sequentialQuantile,
+  scaleDiverging: diverging,
+  scaleDivergingLog: divergingLog,
+  scaleDivergingPow: divergingPow,
+  scaleDivergingSqrt: divergingSqrt,
+  scaleDivergingSymlog: divergingSymlog,
+  tickFormat: tickFormat,
+  schemeCategory10: category10,
+  schemeAccent: Accent,
+  schemeDark2: Dark2,
+  schemePaired: Paired,
+  schemePastel1: Pastel1,
+  schemePastel2: Pastel2,
+  schemeSet1: Set1,
+  schemeSet2: Set2,
+  schemeSet3: Set3,
+  schemeTableau10: Tableau10,
+  interpolateBrBG: BrBG,
+  schemeBrBG: scheme,
+  interpolatePRGn: PRGn,
+  schemePRGn: scheme$1,
+  interpolatePiYG: PiYG,
+  schemePiYG: scheme$2,
+  interpolatePuOr: PuOr,
+  schemePuOr: scheme$3,
+  interpolateRdBu: RdBu,
+  schemeRdBu: scheme$4,
+  interpolateRdGy: RdGy,
+  schemeRdGy: scheme$5,
+  interpolateRdYlBu: RdYlBu,
+  schemeRdYlBu: scheme$6,
+  interpolateRdYlGn: RdYlGn,
+  schemeRdYlGn: scheme$7,
+  interpolateSpectral: Spectral,
+  schemeSpectral: scheme$8,
+  interpolateBuGn: BuGn,
+  schemeBuGn: scheme$9,
+  interpolateBuPu: BuPu,
+  schemeBuPu: scheme$a,
+  interpolateGnBu: GnBu,
+  schemeGnBu: scheme$b,
+  interpolateOrRd: OrRd,
+  schemeOrRd: scheme$c,
+  interpolatePuBuGn: PuBuGn,
+  schemePuBuGn: scheme$d,
+  interpolatePuBu: PuBu,
+  schemePuBu: scheme$e,
+  interpolatePuRd: PuRd,
+  schemePuRd: scheme$f,
+  interpolateRdPu: RdPu,
+  schemeRdPu: scheme$g,
+  interpolateYlGnBu: YlGnBu,
+  schemeYlGnBu: scheme$h,
+  interpolateYlGn: YlGn,
+  schemeYlGn: scheme$i,
+  interpolateYlOrBr: YlOrBr,
+  schemeYlOrBr: scheme$j,
+  interpolateYlOrRd: YlOrRd,
+  schemeYlOrRd: scheme$k,
+  interpolateBlues: Blues,
+  schemeBlues: scheme$l,
+  interpolateGreens: Greens,
+  schemeGreens: scheme$m,
+  interpolateGreys: Greys,
+  schemeGreys: scheme$n,
+  interpolatePurples: Purples,
+  schemePurples: scheme$o,
+  interpolateReds: Reds,
+  schemeReds: scheme$p,
+  interpolateOranges: Oranges,
+  schemeOranges: scheme$q,
+  interpolateCividis: cividis,
+  interpolateCubehelixDefault: cubehelix$3,
+  interpolateRainbow: rainbow,
+  interpolateWarm: warm,
+  interpolateCool: cool,
+  interpolateSinebow: sinebow,
+  interpolateTurbo: turbo,
+  interpolateViridis: viridis,
+  interpolateMagma: magma,
+  interpolateInferno: inferno,
+  interpolatePlasma: plasma,
+  create: create,
+  creator: creator,
+  local: local,
+  matcher: matcher,
+  mouse: mouse,
+  namespace: namespace,
+  namespaces: namespaces,
+  clientPoint: point,
+  select: select,
+  selectAll: selectAll,
+  selection: selection,
+  selector: selector,
+  selectorAll: selectorAll,
+  style: styleValue,
+  touch: touch,
+  touches: touches,
+  window: defaultView,
+  get event () { return event; },
+  customEvent: customEvent,
+  arc: arc,
+  area: area$3,
+  line: line,
+  pie: pie,
+  areaRadial: areaRadial,
+  radialArea: areaRadial,
+  lineRadial: lineRadial$1,
+  radialLine: lineRadial$1,
+  pointRadial: pointRadial,
+  linkHorizontal: linkHorizontal,
+  linkVertical: linkVertical,
+  linkRadial: linkRadial,
+  symbol: symbol,
+  symbols: symbols,
+  symbolCircle: circle$2,
+  symbolCross: cross$2,
+  symbolDiamond: diamond,
+  symbolSquare: square,
+  symbolStar: star,
+  symbolTriangle: triangle,
+  symbolWye: wye,
+  curveBasisClosed: basisClosed$1,
+  curveBasisOpen: basisOpen,
+  curveBasis: basis$2,
+  curveBundle: bundle,
+  curveCardinalClosed: cardinalClosed,
+  curveCardinalOpen: cardinalOpen,
+  curveCardinal: cardinal,
+  curveCatmullRomClosed: catmullRomClosed,
+  curveCatmullRomOpen: catmullRomOpen,
+  curveCatmullRom: catmullRom,
+  curveLinearClosed: linearClosed,
+  curveLinear: curveLinear,
+  curveMonotoneX: monotoneX,
+  curveMonotoneY: monotoneY,
+  curveNatural: natural,
+  curveStep: step,
+  curveStepAfter: stepAfter,
+  curveStepBefore: stepBefore,
+  stack: stack,
+  stackOffsetExpand: expand,
+  stackOffsetDiverging: diverging$1,
+  stackOffsetNone: none$1,
+  stackOffsetSilhouette: silhouette,
+  stackOffsetWiggle: wiggle,
+  stackOrderAppearance: appearance,
+  stackOrderAscending: ascending$3,
+  stackOrderDescending: descending$2,
+  stackOrderInsideOut: insideOut,
+  stackOrderNone: none$2,
+  stackOrderReverse: reverse,
+  timeInterval: newInterval,
+  timeMillisecond: millisecond,
+  timeMilliseconds: milliseconds,
+  utcMillisecond: millisecond,
+  utcMilliseconds: milliseconds,
+  timeSecond: second,
+  timeSeconds: seconds,
+  utcSecond: second,
+  utcSeconds: seconds,
+  timeMinute: minute,
+  timeMinutes: minutes,
+  timeHour: hour,
+  timeHours: hours,
+  timeDay: day,
+  timeDays: days,
+  timeWeek: sunday,
+  timeWeeks: sundays,
+  timeSunday: sunday,
+  timeSundays: sundays,
+  timeMonday: monday,
+  timeMondays: mondays,
+  timeTuesday: tuesday,
+  timeTuesdays: tuesdays,
+  timeWednesday: wednesday,
+  timeWednesdays: wednesdays,
+  timeThursday: thursday,
+  timeThursdays: thursdays,
+  timeFriday: friday,
+  timeFridays: fridays,
+  timeSaturday: saturday,
+  timeSaturdays: saturdays,
+  timeMonth: month,
+  timeMonths: months,
+  timeYear: year,
+  timeYears: years,
+  utcMinute: utcMinute,
+  utcMinutes: utcMinutes,
+  utcHour: utcHour,
+  utcHours: utcHours,
+  utcDay: utcDay,
+  utcDays: utcDays,
+  utcWeek: utcSunday,
+  utcWeeks: utcSundays,
+  utcSunday: utcSunday,
+  utcSundays: utcSundays,
+  utcMonday: utcMonday,
+  utcMondays: utcMondays,
+  utcTuesday: utcTuesday,
+  utcTuesdays: utcTuesdays,
+  utcWednesday: utcWednesday,
+  utcWednesdays: utcWednesdays,
+  utcThursday: utcThursday,
+  utcThursdays: utcThursdays,
+  utcFriday: utcFriday,
+  utcFridays: utcFridays,
+  utcSaturday: utcSaturday,
+  utcSaturdays: utcSaturdays,
+  utcMonth: utcMonth,
+  utcMonths: utcMonths,
+  utcYear: utcYear,
+  utcYears: utcYears,
+  timeFormatDefaultLocale: defaultLocale$1,
+  get timeFormat () { return timeFormat; },
+  get timeParse () { return timeParse; },
+  get utcFormat () { return utcFormat; },
+  get utcParse () { return utcParse; },
+  timeFormatLocale: formatLocale$1,
+  isoFormat: formatIso,
+  isoParse: parseIso,
+  now: now,
+  timer: timer,
+  timerFlush: timerFlush,
+  timeout: timeout$1,
+  interval: interval$1,
+  transition: transition,
+  active: active,
+  interrupt: interrupt,
+  voronoi: voronoi,
+  zoom: zoom,
+  zoomTransform: transform$1,
+  zoomIdentity: identity$9
+});
+
+var onFreeze = internalMetadata.onFreeze;
+var nativeFreeze = Object.freeze;
+var FAILS_ON_PRIMITIVES = fails(function () {
+  nativeFreeze(1);
+}); // `Object.freeze` method
+// https://tc39.github.io/ecma262/#sec-object.freeze
+
+_export({
+  target: 'Object',
+  stat: true,
+  forced: FAILS_ON_PRIMITIVES,
+  sham: !freezing
+}, {
+  freeze: function freeze(it) {
+    return nativeFreeze && isObject$1(it) ? nativeFreeze(onFreeze(it)) : it;
+  }
 });
 
 var version$1 = "2.1.1";
@@ -20454,9 +22144,64 @@ var updateLows = function updateLows(lowY, index, lastLows) {
 };
 
 var d3Flextree = /*#__PURE__*/Object.freeze({
-	__proto__: null,
-	flextree: flextree
+  __proto__: null,
+  flextree: flextree
 });
+
+// https://tc39.github.io/proposal-flatMap/#sec-FlattenIntoArray
+
+
+var flattenIntoArray = function flattenIntoArray(target, original, source, sourceLen, start, depth, mapper, thisArg) {
+  var targetIndex = start;
+  var sourceIndex = 0;
+  var mapFn = mapper ? functionBindContext(mapper, thisArg, 3) : false;
+  var element;
+
+  while (sourceIndex < sourceLen) {
+    if (sourceIndex in source) {
+      element = mapFn ? mapFn(source[sourceIndex], sourceIndex, original) : source[sourceIndex];
+
+      if (depth > 0 && isArray(element)) {
+        targetIndex = flattenIntoArray(target, original, element, toLength(element.length), targetIndex, depth - 1) - 1;
+      } else {
+        if (targetIndex >= 0x1FFFFFFFFFFFFF) throw TypeError('Exceed the acceptable array length');
+        target[targetIndex] = element;
+      }
+
+      targetIndex++;
+    }
+
+    sourceIndex++;
+  }
+
+  return targetIndex;
+};
+
+var flattenIntoArray_1 = flattenIntoArray;
+
+// https://github.com/tc39/proposal-flatMap
+
+
+_export({
+  target: 'Array',
+  proto: true
+}, {
+  flatMap: function flatMap(callbackfn
+  /* , thisArg */
+  ) {
+    var O = toObject(this);
+    var sourceLen = toLength(O.length);
+    var A;
+    aFunction(callbackfn);
+    A = arraySpeciesCreate(O, 0);
+    A.length = flattenIntoArray_1(A, O, O, sourceLen, 0, 1, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+    return A;
+  }
+});
+
+// in popular engines, so it's moved to a separate module
+
+addToUnscopables('flatMap');
 
 var base = createCommonjsModule(function (module, exports) {
 
@@ -20548,6 +22293,50 @@ var base = createCommonjsModule(function (module, exports) {
       });
       return nodes;
     };
+  }
+});
+
+var propertyIsEnumerable = objectPropertyIsEnumerable.f; // `Object.{ entries, values }` methods implementation
+
+var createMethod = function createMethod(TO_ENTRIES) {
+  return function (it) {
+    var O = toIndexedObject(it);
+    var keys = objectKeys(O);
+    var length = keys.length;
+    var i = 0;
+    var result = [];
+    var key;
+
+    while (length > i) {
+      key = keys[i++];
+
+      if (!descriptors || propertyIsEnumerable.call(O, key)) {
+        result.push(TO_ENTRIES ? [key, O[key]] : O[key]);
+      }
+    }
+
+    return result;
+  };
+};
+
+var objectToArray = {
+  // `Object.entries` method
+  // https://tc39.github.io/ecma262/#sec-object.entries
+  entries: createMethod(true),
+  // `Object.values` method
+  // https://tc39.github.io/ecma262/#sec-object.values
+  values: createMethod(false)
+};
+
+var $entries = objectToArray.entries; // `Object.entries` method
+// https://tc39.github.io/ecma262/#sec-object.entries
+
+_export({
+  target: 'Object',
+  stat: true
+}, {
+  entries: function entries(O) {
+    return $entries(O);
   }
 });
 
@@ -21673,12 +23462,12 @@ function debounce(func, wait, options) {
     throw new TypeError(FUNC_ERROR_TEXT);
   }
 
-  wait = toNumber(wait) || 0;
+  wait = toNumber$1(wait) || 0;
 
   if (isObject(options)) {
     leading = !!options.leading;
     maxing = 'maxWait' in options;
-    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    maxWait = maxing ? nativeMax(toNumber$1(options.maxWait) || 0, wait) : maxWait;
     trailing = 'trailing' in options ? !!options.trailing : trailing;
   }
 
@@ -21890,7 +23679,7 @@ function isSymbol(value) {
  */
 
 
-function toNumber(value) {
+function toNumber$1(value) {
   if (typeof value == 'number') {
     return value;
   }
@@ -21914,6 +23703,35 @@ function toNumber(value) {
 }
 
 var lodash_debounce = debounce;
+
+var getOwnPropertyDescriptor$1 = objectGetOwnPropertyDescriptor.f;
+var nativeEndsWith = ''.endsWith;
+var min$4 = Math.min;
+var CORRECT_IS_REGEXP_LOGIC = correctIsRegexpLogic('endsWith'); // https://github.com/zloirock/core-js/pull/702
+
+var MDN_POLYFILL_BUG =  !CORRECT_IS_REGEXP_LOGIC && !!function () {
+  var descriptor = getOwnPropertyDescriptor$1(String.prototype, 'endsWith');
+  return descriptor && !descriptor.writable;
+}(); // `String.prototype.endsWith` method
+// https://tc39.github.io/ecma262/#sec-string.prototype.endswith
+
+_export({
+  target: 'String',
+  proto: true,
+  forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGEXP_LOGIC
+}, {
+  endsWith: function endsWith(searchString
+  /* , endPosition = @length */
+  ) {
+    var that = String(requireObjectCoercible(this));
+    notARegexp(searchString);
+    var endPosition = arguments.length > 1 ? arguments[1] : undefined;
+    var len = toLength(that.length);
+    var end = endPosition === undefined ? len : min$4(toLength(endPosition), len);
+    var search = String(searchString);
+    return nativeEndsWith ? nativeEndsWith.call(that, search, end) : that.slice(end - search.length, end) === search;
+  }
+});
 
 var textarea;
 
@@ -27895,9 +29713,9 @@ Remarkable.prototype.renderInline = function (str, env) {
 };
 
 var index_browser = /*#__PURE__*/Object.freeze({
-	__proto__: null,
-	Remarkable: Remarkable,
-	utils: utils
+  __proto__: null,
+  Remarkable: Remarkable,
+  utils: utils
 });
 
 var transform_1 = createCommonjsModule(function (module, exports) {
@@ -28121,7 +29939,7 @@ var transform_1 = createCommonjsModule(function (module, exports) {
   }
 });
 
-/* src/components/markmap.svelte generated by Svelte v3.24.1 */
+/* src/components/markmap.svelte generated by Svelte v3.25.0 */
 
 const { console: console_1 } = globals;
 const file = "src/components/markmap.svelte";
@@ -28175,6 +29993,8 @@ function create_fragment(ctx) {
 const loading =  view.loadPlugins(["mathJax", "prism"]);
 
 function instance($$self, $$props, $$invalidate) {
+	let { $$slots: slots = {}, $$scope } = $$props;
+	validate_slots("Markmap", slots, []);
 	let mm;
 	let { el = null } = $$props;
 	let { content } = $$props;
@@ -28230,9 +30050,6 @@ function instance($$self, $$props, $$invalidate) {
 	Object.keys($$props).forEach(key => {
 		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<Markmap> was created with unknown prop '${key}'`);
 	});
-
-	let { $$slots = {}, $$scope } = $$props;
-	validate_slots("Markmap", $$slots, []);
 
 	function svg_binding($$value) {
 		binding_callbacks[$$value ? "unshift" : "push"](() => {
@@ -28395,4 +30212,4 @@ class Markmap_1 extends SvelteComponentDev {
 	}
 }
 
-export { Markmap_1 as M, lodash_debounce as a, commonjsGlobal as b, createCommonjsModule as c, loading as l, transform_1 as t, util as u };
+export { Markmap_1 as M, lodash_debounce as a, loading as l, transform_1 as t, util as u };

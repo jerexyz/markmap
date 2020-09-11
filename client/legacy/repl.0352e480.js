@@ -1,107 +1,6 @@
-import 'core-js/modules/es.regexp.exec';
-import 'core-js/modules/es.string.replace';
-import 'core-js/modules/es.string.search';
-import 'core-js/modules/es.symbol';
-import 'core-js/modules/es.symbol.description';
-import 'core-js/modules/es.symbol.iterator';
-import 'core-js/modules/es.array.filter';
-import 'core-js/modules/es.array.for-each';
-import 'core-js/modules/es.array.iterator';
-import 'core-js/modules/es.array.map';
-import 'core-js/modules/es.array.reduce';
-import 'core-js/modules/es.array.slice';
-import 'core-js/modules/es.array.some';
-import 'core-js/modules/es.date.to-string';
-import 'core-js/modules/es.function.name';
-import 'core-js/modules/es.object.create';
-import 'core-js/modules/es.object.to-string';
-import 'core-js/modules/es.promise';
-import 'core-js/modules/es.regexp.to-string';
-import 'core-js/modules/es.string.iterator';
-import 'core-js/modules/es.string.match';
-import 'core-js/modules/es.string.split';
-import 'core-js/modules/es.string.starts-with';
-import 'core-js/modules/web.dom-collections.for-each';
-import 'core-js/modules/web.dom-collections.iterator';
-import 'core-js/modules/web.timers';
-import 'core-js/modules/web.url';
-import { E as _toConsumableArray, S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, Z as stores$1, $ as validate_store, a0 as component_subscribe, J as onMount, K as onDestroy, v as validate_slots, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, O as listen_dev, a1 as prop_dev, M as binding_callbacks, T as bind, a as space, t as text, c as create_component, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, N as set_style, o as append_dev, p as mount_component, Q as prevent_default, U as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, R as run_all, I as globals } from './client.77f152cb.js';
-import 'core-js/modules/es.array.concat';
-import 'core-js/modules/es.array.fill';
-import 'core-js/modules/es.array.from';
-import 'core-js/modules/es.array.index-of';
-import 'core-js/modules/es.array.join';
-import 'core-js/modules/es.array.splice';
-import 'core-js/modules/es.date.now';
-import 'core-js/modules/es.map';
-import 'core-js/modules/es.object.assign';
-import 'core-js/modules/es.object.get-own-property-descriptors';
-import 'core-js/modules/es.object.keys';
-import 'core-js/modules/es.parse-int';
-import 'core-js/modules/es.set';
-import 'core-js/modules/es.string.anchor';
-import 'core-js/modules/es.array.is-array';
-import 'core-js/modules/es.symbol.async-iterator';
-import 'core-js/modules/es.object.define-property';
-import 'core-js/modules/es.object.get-own-property-descriptor';
-import 'core-js/modules/es.object.set-prototype-of';
-import 'core-js/modules/es.array.reverse';
-import 'core-js/modules/es.array-buffer.slice';
-import 'core-js/modules/es.typed-array.copy-within';
-import 'core-js/modules/es.typed-array.every';
-import 'core-js/modules/es.typed-array.fill';
-import 'core-js/modules/es.typed-array.filter';
-import 'core-js/modules/es.typed-array.find';
-import 'core-js/modules/es.typed-array.find-index';
-import 'core-js/modules/es.typed-array.for-each';
-import 'core-js/modules/es.typed-array.includes';
-import 'core-js/modules/es.typed-array.index-of';
-import 'core-js/modules/es.typed-array.iterator';
-import 'core-js/modules/es.typed-array.join';
-import 'core-js/modules/es.typed-array.last-index-of';
-import 'core-js/modules/es.typed-array.map';
-import 'core-js/modules/es.typed-array.reduce';
-import 'core-js/modules/es.typed-array.reduce-right';
-import 'core-js/modules/es.typed-array.reverse';
-import 'core-js/modules/es.typed-array.set';
-import 'core-js/modules/es.typed-array.slice';
-import 'core-js/modules/es.typed-array.some';
-import 'core-js/modules/es.typed-array.sort';
-import 'core-js/modules/es.typed-array.subarray';
-import 'core-js/modules/es.typed-array.to-locale-string';
-import 'core-js/modules/es.typed-array.to-string';
-import 'core-js/modules/es.array.sort';
-import 'core-js/modules/es.function.bind';
-import 'core-js/modules/es.date.to-iso-string';
-import 'core-js/modules/es.array.find';
-import 'core-js/modules/es.symbol.to-string-tag';
-import 'core-js/modules/es.json.to-string-tag';
-import 'core-js/modules/es.math.to-string-tag';
-import 'core-js/modules/es.object.get-prototype-of';
-import { c as createCommonjsModule, u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.df8749e4.js';
-import 'core-js/modules/es.weak-map';
-import 'core-js/modules/es.string.trim';
-import 'core-js/modules/es.regexp.constructor';
-import 'core-js/modules/es.array-buffer.constructor';
-import 'core-js/modules/es.array-buffer.is-view';
-import 'core-js/modules/es.data-view';
-import 'core-js/modules/es.array.every';
-import 'core-js/modules/es.typed-array.float32-array';
-import 'core-js/modules/es.number.constructor';
-import 'core-js/modules/es.number.to-fixed';
-import 'core-js/modules/es.number.to-precision';
-import 'core-js/modules/es.math.sign';
-import 'core-js/modules/es.math.log10';
-import 'core-js/modules/es.math.log2';
-import 'core-js/modules/es.math.expm1';
-import 'core-js/modules/es.math.log1p';
-import 'core-js/modules/es.object.freeze';
-import 'core-js/modules/es.array.flat-map';
-import 'core-js/modules/es.array.unscopables.flat-map';
-import 'core-js/modules/es.object.entries';
-import 'core-js/modules/es.array.includes';
-import 'core-js/modules/es.string.ends-with';
-import { T as Toolbar, s as subscribeHash } from './gist.3a2e6c62.js';
+import { af as createCommonjsModule, aA as _toConsumableArray, S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, aX as stores$1, aY as validate_store, aZ as component_subscribe, aI as onMount, aJ as onDestroy, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, aN as listen_dev, a_ as prop_dev, aL as binding_callbacks, aR as bind, a as space, t as text, c as create_component, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, aM as set_style, o as append_dev, p as mount_component, aP as prevent_default, aS as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, aQ as run_all, aH as globals } from './client.7c9b7095.js';
+import { u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.49205d36.js';
+import { T as Toolbar, s as subscribeHash } from './gist.01dd67a9.js';
 
 var template_1 = createCommonjsModule(function (module, exports) {
 
@@ -156,7 +55,7 @@ var template_1 = createCommonjsModule(function (module, exports) {
   }
 });
 
-/* src/routes/repl.svelte generated by Svelte v3.24.1 */
+/* src/routes/repl.svelte generated by Svelte v3.25.0 */
 
 const { document: document_1 } = globals;
 const file = "src/routes/repl.svelte";
@@ -180,7 +79,7 @@ function create_if_block(ctx) {
 		h: function hydrate() {
 			attr_dev(textarea, "class", "w-full h-full p-1");
 			textarea.value = /*content*/ ctx[3];
-			add_location(textarea, file, 87, 4, 2226);
+			add_location(textarea, file, 87, 4, 2297);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, textarea, anchor);
@@ -387,30 +286,30 @@ function create_fragment(ctx) {
 		h: function hydrate() {
 			document_1.title = "Try Markmap";
 			attr_dev(a0, "class", "inline-block text-sm text-orange-600 underline");
-			attr_dev(a0, "href", a0_href_value = `${/*$page*/ ctx[7].path}#?file=gist.md`);
+			attr_dev(a0, "href", a0_href_value = `${/*$page*/ ctx[7].path}#?gist=af76a4c245b302206b16aec503dbe07b/gist.md,gitee:a73wgucr28dhlxp91kytm57/gist.md`);
 			add_location(a0, file, 82, 2, 1942);
 			attr_dev(div0, "class", "fixed z-10 hidden md:block");
 			set_style(div0, "top", "15px");
 			set_style(div0, "left", "50%");
 			add_location(div0, file, 81, 0, 1873);
 			attr_dev(div1, "class", "flex-1 min-w-0 border border-gray-300");
-			add_location(div1, file, 85, 2, 2135);
+			add_location(div1, file, 85, 2, 2206);
 			attr_dev(div2, "class", "markmap-wrapper flex-1");
-			add_location(div2, file, 91, 4, 2372);
-			add_location(a1, file, 108, 8, 2814);
+			add_location(div2, file, 91, 4, 2443);
+			add_location(a1, file, 108, 8, 2885);
 			attr_dev(div3, "class", "inline-block px-4 py-2");
-			add_location(div3, file, 107, 6, 2769);
-			add_location(a2, file, 111, 8, 3011);
+			add_location(div3, file, 107, 6, 2840);
+			add_location(a2, file, 111, 8, 3082);
 			attr_dev(span, "class", "text-red-500");
-			add_location(span, file, 112, 8, 3082);
+			add_location(span, file, 112, 8, 3153);
 			attr_dev(div4, "class", "inline-block px-4 py-2");
 			attr_dev(div4, "title", "SVG does not work well with PrismJS and MathJax");
-			add_location(div4, file, 110, 6, 2910);
-			add_location(div5, file, 106, 4, 2757);
+			add_location(div4, file, 110, 6, 2981);
+			add_location(div5, file, 106, 4, 2828);
 			attr_dev(div6, "class", "flex-1 min-w-0 flex flex-col");
-			add_location(div6, file, 90, 2, 2325);
+			add_location(div6, file, 90, 2, 2396);
 			attr_dev(div7, "class", "repl");
-			add_location(div7, file, 84, 0, 2114);
+			add_location(div7, file, 84, 0, 2185);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, t0, anchor);
@@ -453,7 +352,7 @@ function create_fragment(ctx) {
 			}
 		},
 		p: function update(ctx, [dirty]) {
-			if (!current || dirty & /*$page*/ 128 && a0_href_value !== (a0_href_value = `${/*$page*/ ctx[7].path}#?file=gist.md`)) {
+			if (!current || dirty & /*$page*/ 128 && a0_href_value !== (a0_href_value = `${/*$page*/ ctx[7].path}#?gist=af76a4c245b302206b16aec503dbe07b/gist.md,gitee:a73wgucr28dhlxp91kytm57/gist.md`)) {
 				attr_dev(a0, "href", a0_href_value);
 			}
 
@@ -553,6 +452,8 @@ function onClickNewFeature() {
 
 function instance($$self, $$props, $$invalidate) {
 	let $page;
+	let { $$slots: slots = {}, $$scope } = $$props;
+	validate_slots("Repl", slots, []);
 	let editorEl;
 	let svgEl;
 	let cm;
@@ -598,7 +499,7 @@ function instance($$self, $$props, $$invalidate) {
 			$$invalidate(3, content = text);
 		});
 
-		const { default: CodeMirror } = await import('./codemirror.60d036fd.js');
+		const { default: CodeMirror } = await import('./codemirror.3248acf3.js');
 
 		$$invalidate(2, cm = CodeMirror(editorEl, {
 			lineNumbers: true,
@@ -623,9 +524,6 @@ function instance($$self, $$props, $$invalidate) {
 	Object.keys($$props).forEach(key => {
 		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Repl> was created with unknown prop '${key}'`);
 	});
-
-	let { $$slots = {}, $$scope } = $$props;
-	validate_slots("Repl", $$slots, []);
 
 	function div1_binding($$value) {
 		binding_callbacks[$$value ? "unshift" : "push"](() => {

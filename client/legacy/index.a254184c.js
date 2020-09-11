@@ -1,108 +1,7 @@
-import 'core-js/modules/es.regexp.exec';
-import 'core-js/modules/es.string.replace';
-import 'core-js/modules/es.string.search';
-import 'core-js/modules/es.symbol';
-import 'core-js/modules/es.symbol.description';
-import 'core-js/modules/es.symbol.iterator';
-import 'core-js/modules/es.array.filter';
-import 'core-js/modules/es.array.for-each';
-import 'core-js/modules/es.array.iterator';
-import 'core-js/modules/es.array.map';
-import 'core-js/modules/es.array.reduce';
-import 'core-js/modules/es.array.slice';
-import 'core-js/modules/es.array.some';
-import 'core-js/modules/es.date.to-string';
-import 'core-js/modules/es.function.name';
-import 'core-js/modules/es.object.create';
-import 'core-js/modules/es.object.to-string';
-import 'core-js/modules/es.promise';
-import 'core-js/modules/es.regexp.to-string';
-import 'core-js/modules/es.string.iterator';
-import 'core-js/modules/es.string.match';
-import 'core-js/modules/es.string.split';
-import 'core-js/modules/es.string.starts-with';
-import 'core-js/modules/web.dom-collections.for-each';
-import 'core-js/modules/web.dom-collections.iterator';
-import 'core-js/modules/web.timers';
-import 'core-js/modules/web.url';
-import { S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, a as space, e as element, t as text, c as create_component, q as query_selector_all, b as detach_dev, f as claim_space, g as claim_element, h as children, j as claim_text, k as claim_component, l as add_location, m as attr_dev, n as insert_dev, o as append_dev, p as mount_component, r as noop, u as transition_in, w as transition_out, x as destroy_component } from './client.77f152cb.js';
-import 'core-js/modules/es.array.concat';
-import 'core-js/modules/es.array.fill';
-import 'core-js/modules/es.array.from';
-import 'core-js/modules/es.array.index-of';
-import 'core-js/modules/es.array.join';
-import 'core-js/modules/es.array.splice';
-import 'core-js/modules/es.date.now';
-import 'core-js/modules/es.map';
-import 'core-js/modules/es.object.assign';
-import 'core-js/modules/es.object.get-own-property-descriptors';
-import 'core-js/modules/es.object.keys';
-import 'core-js/modules/es.parse-int';
-import 'core-js/modules/es.set';
-import 'core-js/modules/es.string.anchor';
-import 'core-js/modules/es.array.is-array';
-import 'core-js/modules/es.symbol.async-iterator';
-import 'core-js/modules/es.object.define-property';
-import 'core-js/modules/es.object.get-own-property-descriptor';
-import 'core-js/modules/es.object.set-prototype-of';
-import 'core-js/modules/es.array.reverse';
-import 'core-js/modules/es.array-buffer.slice';
-import 'core-js/modules/es.typed-array.copy-within';
-import 'core-js/modules/es.typed-array.every';
-import 'core-js/modules/es.typed-array.fill';
-import 'core-js/modules/es.typed-array.filter';
-import 'core-js/modules/es.typed-array.find';
-import 'core-js/modules/es.typed-array.find-index';
-import 'core-js/modules/es.typed-array.for-each';
-import 'core-js/modules/es.typed-array.includes';
-import 'core-js/modules/es.typed-array.index-of';
-import 'core-js/modules/es.typed-array.iterator';
-import 'core-js/modules/es.typed-array.join';
-import 'core-js/modules/es.typed-array.last-index-of';
-import 'core-js/modules/es.typed-array.map';
-import 'core-js/modules/es.typed-array.reduce';
-import 'core-js/modules/es.typed-array.reduce-right';
-import 'core-js/modules/es.typed-array.reverse';
-import 'core-js/modules/es.typed-array.set';
-import 'core-js/modules/es.typed-array.slice';
-import 'core-js/modules/es.typed-array.some';
-import 'core-js/modules/es.typed-array.sort';
-import 'core-js/modules/es.typed-array.subarray';
-import 'core-js/modules/es.typed-array.to-locale-string';
-import 'core-js/modules/es.typed-array.to-string';
-import 'core-js/modules/es.array.sort';
-import 'core-js/modules/es.function.bind';
-import 'core-js/modules/es.date.to-iso-string';
-import 'core-js/modules/es.array.find';
-import 'core-js/modules/es.symbol.to-string-tag';
-import 'core-js/modules/es.json.to-string-tag';
-import 'core-js/modules/es.math.to-string-tag';
-import 'core-js/modules/es.object.get-prototype-of';
-import { M as Markmap_1 } from './markmap.df8749e4.js';
-import 'core-js/modules/es.weak-map';
-import 'core-js/modules/es.string.trim';
-import 'core-js/modules/es.regexp.constructor';
-import 'core-js/modules/es.array-buffer.constructor';
-import 'core-js/modules/es.array-buffer.is-view';
-import 'core-js/modules/es.data-view';
-import 'core-js/modules/es.array.every';
-import 'core-js/modules/es.typed-array.float32-array';
-import 'core-js/modules/es.number.constructor';
-import 'core-js/modules/es.number.to-fixed';
-import 'core-js/modules/es.number.to-precision';
-import 'core-js/modules/es.math.sign';
-import 'core-js/modules/es.math.log10';
-import 'core-js/modules/es.math.log2';
-import 'core-js/modules/es.math.expm1';
-import 'core-js/modules/es.math.log1p';
-import 'core-js/modules/es.object.freeze';
-import 'core-js/modules/es.array.flat-map';
-import 'core-js/modules/es.array.unscopables.flat-map';
-import 'core-js/modules/es.object.entries';
-import 'core-js/modules/es.array.includes';
-import 'core-js/modules/es.string.ends-with';
+import { S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, a as space, e as element, t as text, c as create_component, q as query_selector_all, b as detach_dev, f as claim_space, g as claim_element, h as children, j as claim_text, k as claim_component, l as add_location, m as attr_dev, n as insert_dev, o as append_dev, p as mount_component, r as noop, u as transition_in, w as transition_out, x as destroy_component } from './client.7c9b7095.js';
+import { M as Markmap_1 } from './markmap.49205d36.js';
 
-/* src/routes/index.svelte generated by Svelte v3.24.1 */
+/* src/routes/index.svelte generated by Svelte v3.25.0 */
 const file = "src/routes/index.svelte";
 
 function create_fragment(ctx) {
@@ -331,6 +230,9 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
+	let { $$slots: slots = {}, $$scope } = $$props;
+	validate_slots("Routes", slots, []);
+
 	const content = `\
 # markmap-lib
 
@@ -346,8 +248,6 @@ function instance($$self, $$props, $$invalidate) {
 		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Routes> was created with unknown prop '${key}'`);
 	});
 
-	let { $$slots = {}, $$scope } = $$props;
-	validate_slots("Routes", $$slots, []);
 	$$self.$capture_state = () => ({ Markmap: Markmap_1, content });
 	return [content];
 }
