@@ -1,5 +1,5 @@
-import { af as createCommonjsModule, aF as commonjsGlobal, ak as _typeof } from './client.c27989bf.js';
-import './markmap.28d267d7.js';
+import { af as createCommonjsModule, aF as commonjsGlobal, ak as _typeof } from './client.f66f45d1.js';
+import './markmap.447ebcf7.js';
 
 var codemirror = createCommonjsModule(function (module, exports) {
   // CodeMirror, copyright (c) by Marijn Haverbeke and others

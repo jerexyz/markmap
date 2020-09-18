@@ -1,6 +1,6 @@
-import { af as createCommonjsModule, aA as _toConsumableArray, S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, aX as stores$1, aY as validate_store, aZ as component_subscribe, aI as onMount, aJ as onDestroy, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, aN as listen_dev, a_ as prop_dev, aL as binding_callbacks, aR as bind, a as space, t as text, c as create_component, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, aM as set_style, o as append_dev, p as mount_component, aP as prevent_default, aS as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, aQ as run_all, aH as globals } from './client.c27989bf.js';
-import { u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.28d267d7.js';
-import { T as Toolbar, s as subscribeHash } from './gist.948be383.js';
+import { af as createCommonjsModule, aA as _toConsumableArray, S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, aX as stores$1, aY as validate_store, aZ as component_subscribe, aI as onMount, aJ as onDestroy, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, aN as listen_dev, a_ as prop_dev, aL as binding_callbacks, aR as bind, a as space, t as text, c as create_component, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, aM as set_style, o as append_dev, p as mount_component, aP as prevent_default, aS as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, aQ as run_all, aH as globals } from './client.f66f45d1.js';
+import { u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.447ebcf7.js';
+import { T as Toolbar, s as subscribeHash } from './gist.87c991cc.js';
 
 var template_1 = createCommonjsModule(function (module, exports) {
 
@@ -60,7 +60,7 @@ var template_1 = createCommonjsModule(function (module, exports) {
 const { document: document_1 } = globals;
 const file = "src/routes/repl.svelte";
 
-// (90:4) {#if !cm}
+// (101:4) {#if !cm}
 function create_if_block(ctx) {
 	let textarea;
 	let mounted;
@@ -79,7 +79,7 @@ function create_if_block(ctx) {
 		h: function hydrate() {
 			attr_dev(textarea, "class", "w-full h-full p-1");
 			textarea.value = /*content*/ ctx[3];
-			add_location(textarea, file, 90, 4, 2359);
+			add_location(textarea, file, 101, 4, 2630);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, textarea, anchor);
@@ -105,7 +105,7 @@ function create_if_block(ctx) {
 		block,
 		id: create_if_block.name,
 		type: "if",
-		source: "(90:4) {#if !cm}",
+		source: "(101:4) {#if !cm}",
 		ctx
 	});
 
@@ -287,29 +287,29 @@ function create_fragment(ctx) {
 			document_1.title = "Try Markmap";
 			attr_dev(a0, "class", "inline-block text-sm text-orange-600 underline");
 			attr_dev(a0, "href", a0_href_value = `${/*$page*/ ctx[7].path}#?gist=af76a4c245b302206b16aec503dbe07b/gist.md,gitee:a73wgucr28dhlxp91kytm57/gist.md`);
-			add_location(a0, file, 85, 2, 2004);
+			add_location(a0, file, 96, 2, 2275);
 			attr_dev(div0, "class", "fixed z-10 hidden md:block");
 			set_style(div0, "top", "15px");
 			set_style(div0, "left", "50%");
-			add_location(div0, file, 84, 0, 1935);
+			add_location(div0, file, 95, 0, 2206);
 			attr_dev(div1, "class", "flex-1 min-w-0 border border-gray-300");
-			add_location(div1, file, 88, 2, 2268);
+			add_location(div1, file, 99, 2, 2539);
 			attr_dev(div2, "class", "markmap-wrapper flex-1");
-			add_location(div2, file, 94, 4, 2505);
-			add_location(a1, file, 111, 8, 2947);
+			add_location(div2, file, 105, 4, 2776);
+			add_location(a1, file, 122, 8, 3218);
 			attr_dev(div3, "class", "inline-block px-4 py-2");
-			add_location(div3, file, 110, 6, 2902);
-			add_location(a2, file, 114, 8, 3144);
+			add_location(div3, file, 121, 6, 3173);
+			add_location(a2, file, 125, 8, 3415);
 			attr_dev(span, "class", "text-red-500");
-			add_location(span, file, 115, 8, 3215);
+			add_location(span, file, 126, 8, 3486);
 			attr_dev(div4, "class", "inline-block px-4 py-2");
 			attr_dev(div4, "title", "SVG does not work well with PrismJS and MathJax");
-			add_location(div4, file, 113, 6, 3043);
-			add_location(div5, file, 109, 4, 2890);
+			add_location(div4, file, 124, 6, 3314);
+			add_location(div5, file, 120, 4, 3161);
 			attr_dev(div6, "class", "flex-1 min-w-0 flex flex-col");
-			add_location(div6, file, 93, 2, 2458);
+			add_location(div6, file, 104, 2, 2729);
 			attr_dev(div7, "class", "repl");
-			add_location(div7, file, 87, 0, 2247);
+			add_location(div7, file, 98, 0, 2518);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, t0, anchor);
@@ -499,16 +499,28 @@ function instance($$self, $$props, $$invalidate) {
 			$$invalidate(3, content = text);
 		});
 
-		const { default: CodeMirror } = await import('./codemirror.0a6ca56b.js');
+		const { default: CodeMirror } = await import('./codemirror.307263ec.js');
 
 		$$invalidate(2, cm = CodeMirror(editorEl, {
 			lineNumbers: true,
 			mode: "markdown",
 			value: content,
-			indentWithTabs: false,
 			indentUnit: 2,
 			tabSize: 2
 		}));
+
+		cm.setOption("extraKeys", {
+			Tab: cm => {
+				if (cm.somethingSelected()) {
+					cm.execCommand("indentMore");
+				} else {
+					cm.replaceSelection((" ").repeat(cm.getOption("indentUnit")));
+				}
+			},
+			"Shift-Tab": cm => {
+				cm.execCommand("indentLess");
+			}
+		});
 
 		cm.on("change", lodash_debounce(update, 500));
 	});
