@@ -1,4 +1,4 @@
-import { y as defineWellKnownSymbol, _ as _export, z as isArray, A as global_1, B as setSpecies, C as toInteger, D as toLength, E as anInstance, F as descriptors, G as redefineAll, H as fails, I as createNonEnumerableProperty, J as objectSetPrototypeOf, K as objectGetPrototypeOf, L as setToStringTag, M as objectGetOwnPropertyNames, N as internalState, O as arrayFill, P as objectDefineProperty, Q as anObject, R as toAbsoluteIndex, T as speciesConstructor, U as arrayMethodIsStrict, V as arrayMethodUsesToLength, W as arrayIteration, X as requireObjectCoercible, Y as notARegexp, Z as correctIsRegexpLogic, $ as addToUnscopables, a0 as arrayIncludes, a1 as toIndexedObject, a2 as arrayReduce, a3 as toObject, a4 as wellKnownSymbol, a5 as es_array_iterator, a6 as uid, a7 as classof, a8 as has$1, a9 as isObject$1, aa as redefine, ab as checkCorrectnessOfIteration, ac as getIteratorMethod, ad as isArrayIteratorMethod, ae as functionBindContext, af as createCommonjsModule, ag as objectGetOwnPropertyDescriptor, ah as objectCreate, ai as inheritIfRequired, aj as toPrimitive, ak as _typeof, al as createPropertyDescriptor, am as aFunction, an as classofRaw, ao as isForced_1, ap as stringTrim, aq as stringRepeat, ar as internalMetadata, as as freezing, at as _inherits, au as _createSuper, av as _classCallCheck, aw as _createClass, ax as _assertThisInitialized, ay as _slicedToArray, az as arraySpeciesCreate, aA as _toConsumableArray, aB as objectKeys, aC as objectPropertyIsEnumerable, aD as _asyncToGenerator, aE as _createForOfIteratorHelper, aF as commonjsGlobal, aG as _defineProperty, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, aH as globals, v as validate_slots, aI as onMount, aJ as onDestroy, aK as svg_element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, aL as binding_callbacks } from './client.f66f45d1.js';
+import { y as defineWellKnownSymbol, _ as _export, z as isArray, A as global_1, B as setSpecies, C as toInteger, D as toLength, E as anInstance, F as descriptors, G as redefineAll, H as fails, I as createNonEnumerableProperty, J as objectSetPrototypeOf, K as objectGetPrototypeOf, L as setToStringTag, M as objectGetOwnPropertyNames, N as internalState, O as arrayFill, P as objectDefineProperty, Q as anObject, R as toAbsoluteIndex, T as speciesConstructor, U as arrayMethodIsStrict, V as arrayMethodUsesToLength, W as arrayIteration, X as requireObjectCoercible, Y as notARegexp, Z as correctIsRegexpLogic, $ as addToUnscopables, a0 as arrayIncludes, a1 as toIndexedObject, a2 as arrayReduce, a3 as toObject, a4 as wellKnownSymbol, a5 as es_array_iterator, a6 as uid, a7 as classof, a8 as has$1, a9 as isObject$1, aa as redefine, ab as checkCorrectnessOfIteration, ac as getIteratorMethod, ad as isArrayIteratorMethod, ae as functionBindContext, af as createCommonjsModule, ag as objectGetOwnPropertyDescriptor, ah as objectCreate, ai as inheritIfRequired, aj as toPrimitive, ak as _typeof, al as createPropertyDescriptor, am as aFunction, an as classofRaw, ao as isForced_1, ap as stringTrim, aq as stringRepeat, ar as internalMetadata, as as freezing, at as _inherits, au as _createSuper, av as _classCallCheck, aw as _createClass, ax as _assertThisInitialized, ay as _slicedToArray, az as arraySpeciesCreate, aA as _toConsumableArray, aB as objectKeys, aC as objectPropertyIsEnumerable, aD as _asyncToGenerator, aE as _createForOfIteratorHelper, aF as getAugmentedNamespace, aG as commonjsGlobal, aH as _defineProperty, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, aI as globals, v as validate_slots, aJ as onMount, aK as onDestroy, aL as svg_element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, aM as binding_callbacks } from './client.2ede0c7c.js';
 
 // https://tc39.github.io/ecma262/#sec-symbol.asynciterator
 
@@ -22872,6 +22872,10 @@ var hook = createCommonjsModule(function (module, exports) {
   exports.Hook = Hook;
 });
 
+var require$$0 = /*@__PURE__*/getAugmentedNamespace(d3);
+
+var _d3Flextree = /*@__PURE__*/getAugmentedNamespace(d3Flextree);
+
 var view = createCommonjsModule(function (module, exports) {
 
   exports.__esModule = true;
@@ -22879,7 +22883,7 @@ var view = createCommonjsModule(function (module, exports) {
   exports.loadPlugins = loadPlugins;
   exports.plugins = exports.Markmap = void 0;
 
-  var d3$1 = interopRequireWildcard(d3);
+  var d3 = interopRequireWildcard(require$$0);
 
   var plugins$1 = interopRequireWildcard(plugins);
 
@@ -22913,9 +22917,9 @@ var view = createCommonjsModule(function (module, exports) {
       ['handleZoom', 'handleClick'].forEach(function (key) {
         _this[key] = _this[key].bind(_this);
       });
-      this.svg = svg.datum ? svg : d3$1.select(svg);
+      this.svg = svg.datum ? svg : d3.select(svg);
       this.styleNode = this.svg.append('style');
-      this.zoom = d3$1.zoom().on('zoom', this.handleZoom);
+      this.zoom = d3.zoom().on('zoom', this.handleZoom);
       this.options = Object.assign({
         duration: 500,
         nodeFont: '300 16px/20px sans-serif',
@@ -22928,7 +22932,7 @@ var view = createCommonjsModule(function (module, exports) {
           return function (node) {
             return colorFn(node.p.i);
           };
-        }(d3$1.scaleOrdinal(d3$1.schemeCategory10)),
+        }(d3.scaleOrdinal(d3.schemeCategory10)),
         paddingX: 8
       }, opts);
       this.state = {
@@ -22959,7 +22963,7 @@ var view = createCommonjsModule(function (module, exports) {
     }, {
       key: "handleZoom",
       value: function handleZoom() {
-        var transform = d3$1.event.transform;
+        var transform = d3.event.transform;
         this.g.attr('transform', transform);
       }
     }, {
@@ -23052,7 +23056,7 @@ var view = createCommonjsModule(function (module, exports) {
             autoFit = _this$options3.autoFit,
             color = _this$options3.color;
         var id = this.state.id;
-        var layout = (0, d3Flextree.flextree)().children(function (d) {
+        var layout = (0, _d3Flextree.flextree)().children(function (d) {
           var _d$p;
 
           return !((_d$p = d.p) == null ? void 0 : _d$p.f) && d.c;
@@ -23070,17 +23074,17 @@ var view = createCommonjsModule(function (module, exports) {
         adjustSpacing(tree, spacingHorizontal);
         var descendants = tree.descendants().reverse();
         var links = tree.links();
-        var linkShape = d3$1.linkHorizontal();
-        var minX = d3$1.min(descendants, function (d) {
+        var linkShape = d3.linkHorizontal();
+        var minX = d3.min(descendants, function (d) {
           return d.x - d.xSize / 2;
         });
-        var maxX = d3$1.max(descendants, function (d) {
+        var maxX = d3.max(descendants, function (d) {
           return d.x + d.xSize / 2;
         });
-        var minY = d3$1.min(descendants, function (d) {
+        var minY = d3.min(descendants, function (d) {
           return d.y;
         });
-        var maxY = d3$1.max(descendants, function (d) {
+        var maxY = d3.max(descendants, function (d) {
           return d.y + d.ySizeInner;
         });
         Object.assign(this.state, {
@@ -23237,7 +23241,7 @@ var view = createCommonjsModule(function (module, exports) {
         var naturalWidth = maxY - minY;
         var naturalHeight = maxX - minX;
         var scale = Math.min(offsetWidth / naturalWidth * fitRatio, offsetHeight / naturalHeight * fitRatio, 2);
-        var initialZoom = d3$1.zoomIdentity.translate((offsetWidth - naturalWidth * scale) / 2 - minY * scale, (offsetHeight - naturalHeight * scale) / 2 - minX * scale).scale(scale);
+        var initialZoom = d3.zoomIdentity.translate((offsetWidth - naturalWidth * scale) / 2 - minY * scale, (offsetHeight - naturalHeight * scale) / 2 - minX * scale).scale(scale);
         return this.transition(this.svg).call(this.zoom.transform, initialZoom).end()["catch"](util.noop);
       }
     }, {
@@ -23251,7 +23255,7 @@ var view = createCommonjsModule(function (module, exports) {
 
         var halfWidth = offsetWidth / 2;
         var halfHeight = offsetHeight / 2;
-        var transform = d3$1.zoomTransform(svgNode);
+        var transform = d3.zoomTransform(svgNode);
         var newTransform = transform.translate((halfWidth - transform.x) * (1 - scale) / transform.k, (halfHeight - transform.y) * (1 - scale) / transform.k).scale(scale);
         return this.transition(this.svg).call(this.zoom.transform, newTransform).end()["catch"](util.noop);
       }
@@ -29718,12 +29722,14 @@ var index_browser = /*#__PURE__*/Object.freeze({
   utils: utils
 });
 
+var _remarkable = /*@__PURE__*/getAugmentedNamespace(index_browser);
+
 var transform_1 = createCommonjsModule(function (module, exports) {
 
   exports.__esModule = true;
   exports.buildTree = buildTree;
   exports.transform = transform;
-  var md = new index_browser.Remarkable({
+  var md = new _remarkable.Remarkable({
     html: true
   });
   md.block.ruler.enable(['deflist']);

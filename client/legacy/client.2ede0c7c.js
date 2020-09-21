@@ -329,12 +329,27 @@ var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof win
 
 function createCommonjsModule(fn, basedir, module) {
 	return module = {
-	  path: basedir,
-	  exports: {},
-	  require: function (path, base) {
-      return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
-    }
+		path: basedir,
+		exports: {},
+		require: function (path, base) {
+			return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+		}
 	}, fn(module, module.exports), module.exports;
+}
+
+function getAugmentedNamespace(n) {
+	if (n.__esModule) return n;
+	var a = Object.defineProperty({}, '__esModule', {value: true});
+	Object.keys(n).forEach(function (k) {
+		var d = Object.getOwnPropertyDescriptor(n, k);
+		Object.defineProperty(a, k, d.get ? d : {
+			enumerable: true,
+			get: function () {
+				return n[k];
+			}
+		});
+	});
+	return a;
 }
 
 function commonjsRequire () {
@@ -9335,27 +9350,27 @@ class App extends SvelteComponentDev {
 var ignore = [];
 var components = [{
   js: function js() {
-    return import('./index.62a9d08d.js');
+    return import('./index.d7c31233.js');
   },
   css: "__SAPPER_CSS_PLACEHOLDER:index.svelte__"
 }, {
   js: function js() {
-    return import('./about.f2e08fb2.js');
+    return import('./about.783a9457.js');
   },
   css: "__SAPPER_CSS_PLACEHOLDER:about.svelte__"
 }, {
   js: function js() {
-    return import('./usage.71f919a6.js');
+    return import('./usage.c6e5cada.js');
   },
   css: "__SAPPER_CSS_PLACEHOLDER:usage.svelte__"
 }, {
   js: function js() {
-    return import('./full.671764bb.js');
+    return import('./full.81e2b189.js');
   },
   css: "__SAPPER_CSS_PLACEHOLDER:full.svelte__"
 }, {
   js: function js() {
-    return import('./repl.4634d9b0.js');
+    return import('./repl.5cd7fda0.js');
   },
   css: "__SAPPER_CSS_PLACEHOLDER:repl.svelte__"
 }];
@@ -10364,4 +10379,4 @@ start({
   target: document.querySelector('#sapper')
 });
 
-export { addToUnscopables as $, global_1 as A, setSpecies as B, toInteger as C, toLength as D, anInstance as E, descriptors as F, redefineAll as G, fails as H, createNonEnumerableProperty as I, objectSetPrototypeOf as J, objectGetPrototypeOf as K, setToStringTag as L, objectGetOwnPropertyNames as M, internalState as N, arrayFill as O, objectDefineProperty as P, anObject as Q, toAbsoluteIndex as R, SvelteComponentDev as S, speciesConstructor as T, arrayMethodIsStrict as U, arrayMethodUsesToLength as V, arrayIteration as W, requireObjectCoercible as X, notARegexp as Y, correctIsRegexpLogic as Z, _export as _, space as a, arrayIncludes as a0, toIndexedObject as a1, arrayReduce as a2, toObject as a3, wellKnownSymbol as a4, es_array_iterator as a5, uid as a6, classof as a7, has as a8, isObject as a9, _toConsumableArray as aA, objectKeys as aB, objectPropertyIsEnumerable as aC, _asyncToGenerator as aD, _createForOfIteratorHelper as aE, commonjsGlobal as aF, _defineProperty as aG, globals as aH, onMount as aI, onDestroy as aJ, svg_element as aK, binding_callbacks as aL, set_style as aM, listen_dev as aN, empty as aO, prevent_default as aP, run_all as aQ, bind$1 as aR, add_flush_callback as aS, assign as aT, exclude_internal_props as aU, _goto as aV, is_function as aW, stores$1 as aX, validate_store as aY, component_subscribe as aZ, prop_dev as a_, redefine as aa, checkCorrectnessOfIteration as ab, getIteratorMethod as ac, isArrayIteratorMethod as ad, functionBindContext as ae, createCommonjsModule as af, objectGetOwnPropertyDescriptor as ag, objectCreate as ah, inheritIfRequired as ai, toPrimitive as aj, _typeof as ak, createPropertyDescriptor as al, aFunction$1 as am, classofRaw as an, isForced_1 as ao, stringTrim as ap, stringRepeat as aq, internalMetadata as ar, freezing as as, _inherits as at, _createSuper as au, _classCallCheck as av, _createClass as aw, _assertThisInitialized as ax, _slicedToArray as ay, arraySpeciesCreate as az, detach_dev as b, create_component as c, dispatch_dev as d, element as e, claim_space as f, claim_element as g, children as h, init as i, claim_text as j, claim_component as k, add_location as l, attr_dev as m, insert_dev as n, append_dev as o, mount_component as p, query_selector_all as q, noop as r, safe_not_equal as s, text as t, transition_in as u, validate_slots as v, transition_out as w, destroy_component as x, defineWellKnownSymbol as y, isArray as z };
+export { addToUnscopables as $, global_1 as A, setSpecies as B, toInteger as C, toLength as D, anInstance as E, descriptors as F, redefineAll as G, fails as H, createNonEnumerableProperty as I, objectSetPrototypeOf as J, objectGetPrototypeOf as K, setToStringTag as L, objectGetOwnPropertyNames as M, internalState as N, arrayFill as O, objectDefineProperty as P, anObject as Q, toAbsoluteIndex as R, SvelteComponentDev as S, speciesConstructor as T, arrayMethodIsStrict as U, arrayMethodUsesToLength as V, arrayIteration as W, requireObjectCoercible as X, notARegexp as Y, correctIsRegexpLogic as Z, _export as _, space as a, prop_dev as a$, arrayIncludes as a0, toIndexedObject as a1, arrayReduce as a2, toObject as a3, wellKnownSymbol as a4, es_array_iterator as a5, uid as a6, classof as a7, has as a8, isObject as a9, _toConsumableArray as aA, objectKeys as aB, objectPropertyIsEnumerable as aC, _asyncToGenerator as aD, _createForOfIteratorHelper as aE, getAugmentedNamespace as aF, commonjsGlobal as aG, _defineProperty as aH, globals as aI, onMount as aJ, onDestroy as aK, svg_element as aL, binding_callbacks as aM, set_style as aN, listen_dev as aO, empty as aP, prevent_default as aQ, run_all as aR, bind$1 as aS, add_flush_callback as aT, assign as aU, exclude_internal_props as aV, _goto as aW, is_function as aX, stores$1 as aY, validate_store as aZ, component_subscribe as a_, redefine as aa, checkCorrectnessOfIteration as ab, getIteratorMethod as ac, isArrayIteratorMethod as ad, functionBindContext as ae, createCommonjsModule as af, objectGetOwnPropertyDescriptor as ag, objectCreate as ah, inheritIfRequired as ai, toPrimitive as aj, _typeof as ak, createPropertyDescriptor as al, aFunction$1 as am, classofRaw as an, isForced_1 as ao, stringTrim as ap, stringRepeat as aq, internalMetadata as ar, freezing as as, _inherits as at, _createSuper as au, _classCallCheck as av, _createClass as aw, _assertThisInitialized as ax, _slicedToArray as ay, arraySpeciesCreate as az, detach_dev as b, create_component as c, dispatch_dev as d, element as e, claim_space as f, claim_element as g, children as h, init as i, claim_text as j, claim_component as k, add_location as l, attr_dev as m, insert_dev as n, append_dev as o, mount_component as p, query_selector_all as q, noop as r, safe_not_equal as s, text as t, transition_in as u, validate_slots as v, transition_out as w, destroy_component as x, defineWellKnownSymbol as y, isArray as z };
