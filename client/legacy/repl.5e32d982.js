@@ -1,7 +1,8 @@
 import { l as createCommonjsModule, Q as _toConsumableArray } from './web.url.bf352adb.js';
-import { S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, U as stores$1, V as validate_store, W as component_subscribe, F as onMount, G as onDestroy, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, K as listen_dev, X as prop_dev, I as binding_callbacks, O as bind, a as space, t as text, c as create_component, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, J as set_style, o as append_dev, p as mount_component, M as prevent_default, P as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, N as run_all, E as globals } from './client.85fdf1b6.js';
-import { u as util, M as Markmap_1, l as lodash_debounce, t as transform_1 } from './markmap.c3a66d52.js';
-import { T as Toolbar, s as subscribeHash } from './gist.06041eaa.js';
+import { S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, z as stores$1, A as validate_store, B as component_subscribe, K as onMount, L as onDestroy, e as element, h as claim_element, j as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, T as listen_dev, $ as prop_dev, N as binding_callbacks, U as bind, a as space, c as create_component, t as text, q as query_selector_all, f as claim_space, g as claim_component, k as claim_text, O as set_style, o as mount_component, p as append_dev, a0 as prevent_default, V as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, Z as run_all, J as globals } from './client.d05aa350.js';
+import { u as util, M as Markmap_1, l as lodash_debounce, t as transform_1 } from './markmap.6d710269.js';
+import { H as Header, F as Footer } from './footer.033f5902.js';
+import { T as Toolbar, s as subscribeHash } from './gist.f99d4fd9.js';
 
 var template_1 = createCommonjsModule(function (module, exports) {
 
@@ -60,7 +61,7 @@ var template_1 = createCommonjsModule(function (module, exports) {
 const { document: document_1 } = globals;
 const file = "src/routes/repl.svelte";
 
-// (101:4) {#if !cm}
+// (104:4) {#if !cm}
 function create_if_block(ctx) {
 	let textarea;
 	let mounted;
@@ -79,7 +80,7 @@ function create_if_block(ctx) {
 		h: function hydrate() {
 			attr_dev(textarea, "class", "w-full h-full p-1");
 			textarea.value = /*content*/ ctx[3];
-			add_location(textarea, file, 101, 4, 2630);
+			add_location(textarea, file, 104, 4, 2762);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, textarea, anchor);
@@ -105,7 +106,7 @@ function create_if_block(ctx) {
 		block,
 		id: create_if_block.name,
 		type: "if",
-		source: "(101:4) {#if !cm}",
+		source: "(104:4) {#if !cm}",
 		ctx
 	});
 
@@ -114,14 +115,16 @@ function create_if_block(ctx) {
 
 function create_fragment(ctx) {
 	let t0;
+	let header;
+	let t1;
 	let div0;
 	let a0;
-	let t1;
-	let a0_href_value;
 	let t2;
-	let div7;
-	let div1;
+	let a0_href_value;
 	let t3;
+	let main;
+	let div1;
+	let t4;
 	let div6;
 	let div2;
 	let markmap;
@@ -129,23 +132,26 @@ function create_fragment(ctx) {
 	let updating_onReset;
 	let updating_onZoomIn;
 	let updating_onZoomOut;
-	let t4;
-	let toolbar;
 	let t5;
+	let toolbar;
+	let t6;
 	let div5;
 	let div3;
 	let a1;
-	let t6;
 	let t7;
+	let t8;
 	let div4;
 	let a2;
-	let t8;
 	let t9;
-	let span;
 	let t10;
+	let span;
+	let t11;
+	let t12;
+	let footer;
 	let current;
 	let mounted;
 	let dispose;
+	header = new Header({ $$inline: true });
 	let if_block = !/*cm*/ ctx[2] && create_if_block(ctx);
 
 	function markmap_el_binding(value) {
@@ -198,147 +204,161 @@ function create_fragment(ctx) {
 			$$inline: true
 		});
 
+	footer = new Footer({ $$inline: true });
+
 	const block = {
 		c: function create() {
 			t0 = space();
+			create_component(header.$$.fragment);
+			t1 = space();
 			div0 = element("div");
 			a0 = element("a");
-			t1 = text("New feature: load markmap from Gist!");
-			t2 = space();
-			div7 = element("div");
+			t2 = text("New feature: load markmap from Gist!");
+			t3 = space();
+			main = element("main");
 			div1 = element("div");
 			if (if_block) if_block.c();
-			t3 = space();
+			t4 = space();
 			div6 = element("div");
 			div2 = element("div");
 			create_component(markmap.$$.fragment);
-			t4 = space();
-			create_component(toolbar.$$.fragment);
 			t5 = space();
+			create_component(toolbar.$$.fragment);
+			t6 = space();
 			div5 = element("div");
 			div3 = element("div");
 			a1 = element("a");
-			t6 = text("Download as interactive HTML");
-			t7 = space();
+			t7 = text("Download as interactive HTML");
+			t8 = space();
 			div4 = element("div");
 			a2 = element("a");
-			t8 = text("Download as SVG");
-			t9 = space();
+			t9 = text("Download as SVG");
+			t10 = space();
 			span = element("span");
-			t10 = text("⚠️");
+			t11 = text("⚠️");
+			t12 = space();
+			create_component(footer.$$.fragment);
 			this.h();
 		},
 		l: function claim(nodes) {
 			const head_nodes = query_selector_all("[data-svelte=\"svelte-r18bnt\"]", document_1.head);
 			head_nodes.forEach(detach_dev);
 			t0 = claim_space(nodes);
+			claim_component(header.$$.fragment, nodes);
+			t1 = claim_space(nodes);
 			div0 = claim_element(nodes, "DIV", { class: true, style: true });
 			var div0_nodes = children(div0);
 			a0 = claim_element(div0_nodes, "A", { class: true, href: true });
 			var a0_nodes = children(a0);
-			t1 = claim_text(a0_nodes, "New feature: load markmap from Gist!");
+			t2 = claim_text(a0_nodes, "New feature: load markmap from Gist!");
 			a0_nodes.forEach(detach_dev);
 			div0_nodes.forEach(detach_dev);
-			t2 = claim_space(nodes);
-			div7 = claim_element(nodes, "DIV", { class: true });
-			var div7_nodes = children(div7);
-			div1 = claim_element(div7_nodes, "DIV", { class: true });
+			t3 = claim_space(nodes);
+			main = claim_element(nodes, "MAIN", { class: true });
+			var main_nodes = children(main);
+			div1 = claim_element(main_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 			if (if_block) if_block.l(div1_nodes);
 			div1_nodes.forEach(detach_dev);
-			t3 = claim_space(div7_nodes);
-			div6 = claim_element(div7_nodes, "DIV", { class: true });
+			t4 = claim_space(main_nodes);
+			div6 = claim_element(main_nodes, "DIV", { class: true });
 			var div6_nodes = children(div6);
 			div2 = claim_element(div6_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
 			claim_component(markmap.$$.fragment, div2_nodes);
-			t4 = claim_space(div2_nodes);
+			t5 = claim_space(div2_nodes);
 			claim_component(toolbar.$$.fragment, div2_nodes);
 			div2_nodes.forEach(detach_dev);
-			t5 = claim_space(div6_nodes);
+			t6 = claim_space(div6_nodes);
 			div5 = claim_element(div6_nodes, "DIV", {});
 			var div5_nodes = children(div5);
 			div3 = claim_element(div5_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
 			a1 = claim_element(div3_nodes, "A", {});
 			var a1_nodes = children(a1);
-			t6 = claim_text(a1_nodes, "Download as interactive HTML");
+			t7 = claim_text(a1_nodes, "Download as interactive HTML");
 			a1_nodes.forEach(detach_dev);
 			div3_nodes.forEach(detach_dev);
-			t7 = claim_space(div5_nodes);
+			t8 = claim_space(div5_nodes);
 			div4 = claim_element(div5_nodes, "DIV", { class: true, title: true });
 			var div4_nodes = children(div4);
 			a2 = claim_element(div4_nodes, "A", {});
 			var a2_nodes = children(a2);
-			t8 = claim_text(a2_nodes, "Download as SVG");
+			t9 = claim_text(a2_nodes, "Download as SVG");
 			a2_nodes.forEach(detach_dev);
-			t9 = claim_space(div4_nodes);
+			t10 = claim_space(div4_nodes);
 			span = claim_element(div4_nodes, "SPAN", { class: true });
 			var span_nodes = children(span);
-			t10 = claim_text(span_nodes, "⚠️");
+			t11 = claim_text(span_nodes, "⚠️");
 			span_nodes.forEach(detach_dev);
 			div4_nodes.forEach(detach_dev);
 			div5_nodes.forEach(detach_dev);
 			div6_nodes.forEach(detach_dev);
-			div7_nodes.forEach(detach_dev);
+			main_nodes.forEach(detach_dev);
+			t12 = claim_space(nodes);
+			claim_component(footer.$$.fragment, nodes);
 			this.h();
 		},
 		h: function hydrate() {
 			document_1.title = "Try Markmap";
 			attr_dev(a0, "class", "inline-block text-sm text-orange-600 underline");
 			attr_dev(a0, "href", a0_href_value = `${/*$page*/ ctx[7].path}#?gist=af76a4c245b302206b16aec503dbe07b/gist.md,gitee:a73wgucr28dhlxp91kytm57/gist.md`);
-			add_location(a0, file, 96, 2, 2275);
+			add_location(a0, file, 99, 2, 2386);
 			attr_dev(div0, "class", "fixed z-10 hidden md:block");
 			set_style(div0, "top", "15px");
 			set_style(div0, "left", "50%");
-			add_location(div0, file, 95, 0, 2206);
+			add_location(div0, file, 98, 0, 2317);
 			attr_dev(div1, "class", "flex-1 min-w-0 border border-gray-300");
-			add_location(div1, file, 99, 2, 2539);
+			add_location(div1, file, 102, 2, 2671);
 			attr_dev(div2, "class", "markmap-wrapper flex-1");
-			add_location(div2, file, 105, 4, 2776);
-			add_location(a1, file, 122, 8, 3218);
+			add_location(div2, file, 108, 4, 2908);
+			add_location(a1, file, 125, 8, 3350);
 			attr_dev(div3, "class", "inline-block px-4 py-2");
-			add_location(div3, file, 121, 6, 3173);
-			add_location(a2, file, 125, 8, 3415);
+			add_location(div3, file, 124, 6, 3305);
+			add_location(a2, file, 128, 8, 3547);
 			attr_dev(span, "class", "text-red-500");
-			add_location(span, file, 126, 8, 3486);
+			add_location(span, file, 129, 8, 3618);
 			attr_dev(div4, "class", "inline-block px-4 py-2");
 			attr_dev(div4, "title", "SVG does not work well with PrismJS and MathJax");
-			add_location(div4, file, 124, 6, 3314);
-			add_location(div5, file, 120, 4, 3161);
+			add_location(div4, file, 127, 6, 3446);
+			add_location(div5, file, 123, 4, 3293);
 			attr_dev(div6, "class", "flex-1 min-w-0 flex flex-col");
-			add_location(div6, file, 104, 2, 2729);
-			attr_dev(div7, "class", "repl");
-			add_location(div7, file, 98, 0, 2518);
+			add_location(div6, file, 107, 2, 2861);
+			attr_dev(main, "class", "inner lg:fs md:flex repl");
+			add_location(main, file, 101, 0, 2629);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, t0, anchor);
+			mount_component(header, target, anchor);
+			insert_dev(target, t1, anchor);
 			insert_dev(target, div0, anchor);
 			append_dev(div0, a0);
-			append_dev(a0, t1);
-			insert_dev(target, t2, anchor);
-			insert_dev(target, div7, anchor);
-			append_dev(div7, div1);
+			append_dev(a0, t2);
+			insert_dev(target, t3, anchor);
+			insert_dev(target, main, anchor);
+			append_dev(main, div1);
 			if (if_block) if_block.m(div1, null);
 			/*div1_binding*/ ctx[12](div1);
-			append_dev(div7, t3);
-			append_dev(div7, div6);
+			append_dev(main, t4);
+			append_dev(main, div6);
 			append_dev(div6, div2);
 			mount_component(markmap, div2, null);
-			append_dev(div2, t4);
+			append_dev(div2, t5);
 			mount_component(toolbar, div2, null);
-			append_dev(div6, t5);
+			append_dev(div6, t6);
 			append_dev(div6, div5);
 			append_dev(div5, div3);
 			append_dev(div3, a1);
-			append_dev(a1, t6);
-			append_dev(div5, t7);
+			append_dev(a1, t7);
+			append_dev(div5, t8);
 			append_dev(div5, div4);
 			append_dev(div4, a2);
-			append_dev(a2, t8);
-			append_dev(div4, t9);
+			append_dev(a2, t9);
+			append_dev(div4, t10);
 			append_dev(div4, span);
-			append_dev(span, t10);
+			append_dev(span, t11);
+			insert_dev(target, t12, anchor);
+			mount_component(footer, target, anchor);
 			current = true;
 
 			if (!mounted) {
@@ -405,24 +425,32 @@ function create_fragment(ctx) {
 		},
 		i: function intro(local) {
 			if (current) return;
+			transition_in(header.$$.fragment, local);
 			transition_in(markmap.$$.fragment, local);
 			transition_in(toolbar.$$.fragment, local);
+			transition_in(footer.$$.fragment, local);
 			current = true;
 		},
 		o: function outro(local) {
+			transition_out(header.$$.fragment, local);
 			transition_out(markmap.$$.fragment, local);
 			transition_out(toolbar.$$.fragment, local);
+			transition_out(footer.$$.fragment, local);
 			current = false;
 		},
 		d: function destroy(detaching) {
 			if (detaching) detach_dev(t0);
+			destroy_component(header, detaching);
+			if (detaching) detach_dev(t1);
 			if (detaching) detach_dev(div0);
-			if (detaching) detach_dev(t2);
-			if (detaching) detach_dev(div7);
+			if (detaching) detach_dev(t3);
+			if (detaching) detach_dev(main);
 			if (if_block) if_block.d();
 			/*div1_binding*/ ctx[12](null);
 			destroy_component(markmap);
 			destroy_component(toolbar);
+			if (detaching) detach_dev(t12);
+			destroy_component(footer, detaching);
 			mounted = false;
 			run_all(dispose);
 		}
@@ -499,7 +527,7 @@ function instance($$self, $$props, $$invalidate) {
 			$$invalidate(3, content = text);
 		});
 
-		const { default: CodeMirror } = await Promise.all([import('./codemirror.a2ca5285.js'), __inject_styles(["client-ff2bd8be.css","codemirror-8033c53c.css"])]).then(function(x) { return x[0]; });
+		const { default: CodeMirror } = await Promise.all([import('./codemirror.9d1394e7.js'), __inject_styles(["client-ff2bd8be.css","codemirror-8033c53c.css"])]).then(function(x) { return x[0]; });
 
 		$$invalidate(2, cm = CodeMirror(editorEl, {
 			lineNumbers: true,
@@ -576,6 +604,8 @@ function instance($$self, $$props, $$invalidate) {
 		fillTemplate: template_1.fillTemplate,
 		Markmap: Markmap_1,
 		Toolbar,
+		Header,
+		Footer,
 		subscribeHash,
 		editorEl,
 		svgEl,
