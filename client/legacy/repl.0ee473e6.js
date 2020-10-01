@@ -1,13 +1,14 @@
-import { af as createCommonjsModule, aA as _toConsumableArray, S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, aY as stores$1, aZ as validate_store, a_ as component_subscribe, aJ as onMount, aK as onDestroy, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, aO as listen_dev, a$ as prop_dev, aM as binding_callbacks, aS as bind, a as space, t as text, c as create_component, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, aN as set_style, o as append_dev, p as mount_component, aQ as prevent_default, aT as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, aR as run_all, aI as globals } from './client.2ede0c7c.js';
-import { u as util, M as Markmap_1, a as lodash_debounce, t as transform_1 } from './markmap.2eb98373.js';
-import { T as Toolbar, s as subscribeHash } from './gist.57f7ec88.js';
+import { l as createCommonjsModule, Q as _toConsumableArray } from './web.url.bf352adb.js';
+import { S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, U as stores$1, V as validate_store, W as component_subscribe, F as onMount, G as onDestroy, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, K as listen_dev, X as prop_dev, I as binding_callbacks, O as bind, a as space, t as text, c as create_component, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, J as set_style, o as append_dev, p as mount_component, M as prevent_default, P as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, N as run_all, E as globals } from './client.317fb8e7.js';
+import { u as util, M as Markmap_1, l as lodash_debounce, t as transform_1 } from './markmap.5428ef28.js';
+import { T as Toolbar, s as subscribeHash } from './gist.efb5d471.js';
 
 var template_1 = createCommonjsModule(function (module, exports) {
 
   exports.__esModule = true;
   exports.fillTemplate = fillTemplate;
   var template = "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n<title>Markmap</title>\n<style>\n* {\n  margin: 0;\n  padding: 0;\n}\n#mindmap {\n  display: block;\n  width: 100vw;\n  height: 100vh;\n}\n</style>\n<!--CSS-->\n</head>\n<body>\n<svg id=\"mindmap\"></svg>\n<!--JS-->\n</body>\n</html>\n";
-  var version = "0.8.0";
+  var version = "0.9.1";
   var baseJs = ['https://cdn.jsdelivr.net/npm/d3@5', "https://cdn.jsdelivr.net/npm/markmap-lib@".concat(version, "/dist/browser/view.min.js")].map(function (src) {
     return {
       type: 'script',
@@ -18,44 +19,43 @@ var template_1 = createCommonjsModule(function (module, exports) {
   });
 
   function fillTemplate(data, opts) {
-    var jsList = [].concat(_toConsumableArray((0, util.persistJS)(baseJs)), _toConsumableArray((0, util.persistJS)([{
+    var scripts = opts.scripts,
+        styles = opts.styles;
+
+    var cssList = _toConsumableArray(styles ? (0, util.persistCSS)(styles) : []);
+
+    var context = {
+      getMarkmap: function getMarkmap() {
+        return window.markmap;
+      },
+      data: data
+    };
+    var jsList = [].concat(_toConsumableArray((0, util.persistJS)(baseJs)), _toConsumableArray(scripts ? (0, util.persistJS)(scripts, context) : []), _toConsumableArray((0, util.persistJS)([{
       type: 'iife',
       data: {
-        fn: function fn(data, init, items, opts) {
-          var _window$markmap = window.markmap,
-              Markmap = _window$markmap.Markmap,
-              loadPlugins = _window$markmap.loadPlugins;
-          (init ? init(loadPlugins, items, opts) : Promise.resolve()).then(function () {
-            window.mm = Markmap.create('svg#mindmap', null, data);
-          });
+        fn: function fn(getMarkmap, data) {
+          var _getMarkmap = getMarkmap(),
+              Markmap = _getMarkmap.Markmap;
+
+          window.mm = Markmap.create('svg#mindmap', null, data);
         },
         getParams: function getParams(_ref) {
-          var data = _ref.data,
-              opts = _ref.opts;
-          var items = [(opts == null ? void 0 : opts.mathJax) && 'mathJax', (opts == null ? void 0 : opts.prism) && 'prism'].filter(Boolean);
-          var args = [data];
-
-          if (items.length) {
-            args.push(function (loadPlugins, items, opts) {
-              return loadPlugins(items, opts);
-            }, items, opts);
-          }
-
-          return args;
+          var getMarkmap = _ref.getMarkmap,
+              data = _ref.data;
+          return [getMarkmap, data];
         }
       }
-    }], {
-      data: data,
-      opts: opts
-    })));
-    var html = template.replace('<!--CSS-->', '').replace('<!--JS-->', function () {
+    }], context)));
+    var html = template.replace('<!--CSS-->', function () {
+      return cssList.join('');
+    }).replace('<!--JS-->', function () {
       return jsList.join('');
     });
     return html;
   }
 });
 
-/* src/routes/repl.svelte generated by Svelte v3.25.1 */
+/* src/routes/repl.svelte generated by Svelte v3.29.0 */
 
 const { document: document_1 } = globals;
 const file = "src/routes/repl.svelte";
@@ -499,7 +499,7 @@ function instance($$self, $$props, $$invalidate) {
 			$$invalidate(3, content = text);
 		});
 
-		const { default: CodeMirror } = await import('./codemirror.0ee23a5e.js');
+		const { default: CodeMirror } = await Promise.all([import('./codemirror.ca3b6f8e.js'), __inject_styles(["client-ff2bd8be.css","codemirror-8033c53c.css"])]).then(function(x) { return x[0]; });
 
 		$$invalidate(2, cm = CodeMirror(editorEl, {
 			lineNumbers: true,
@@ -646,3 +646,5 @@ class Repl extends SvelteComponentDev {
 }
 
 export default Repl;
+
+import __inject_styles from './inject_styles.22899e58.js';
