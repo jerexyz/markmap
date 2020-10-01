@@ -692,6 +692,10 @@ video {
   font-size: 4rem;
 }
 
+.leading-none {
+  line-height: 1;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }

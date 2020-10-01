@@ -1,5 +1,5 @@
 import { k as global_1, _ as _export, C as setSpecies, S as toInteger, e as toLength, u as anInstance, x as descriptors, z as redefineAll, J as fails, T as createNonEnumerableProperty, U as objectSetPrototypeOf, V as objectGetPrototypeOf, s as setToStringTag, W as objectGetOwnPropertyNames, E as internalState, D as objectDefineProperty, X as anObject, n as toAbsoluteIndex, Y as speciesConstructor, f as arrayMethodIsStrict, b as arrayMethodUsesToLength, c as arrayIteration, r as requireObjectCoercible, p as addToUnscopables, Z as arrayIncludes, G as toIndexedObject, t as toObject, w as wellKnownSymbol, $ as es_array_iterator, a0 as uid, a1 as classof, a2 as has$1, a3 as isObject$1, a4 as redefine, a5 as checkCorrectnessOfIteration, a6 as getIteratorMethod, a7 as isArrayIteratorMethod, A as functionBindContext, l as createCommonjsModule, o as objectGetOwnPropertyDescriptor, v as objectCreate, a8 as inheritIfRequired, a9 as toPrimitive, m as _typeof, aa as createPropertyDescriptor, d as aFunction, ab as classofRaw, ac as isForced_1, ad as stringTrim, ae as stringRepeat, q as internalMetadata, af as freezing, K as _inherits, L as _createSuper, N as _classCallCheck, M as _createClass, ag as _assertThisInitialized, R as _slicedToArray, j as isArray, ah as arraySpeciesCreate, Q as _toConsumableArray, ai as objectKeys, aj as objectPropertyIsEnumerable, ak as _asyncToGenerator, al as _createForOfIteratorHelper, am as getAugmentedNamespace, an as getDefaultExportFromCjs, ao as whitespaces, ap as commonjsGlobal, aq as commonjsRequire } from './web.url.bf352adb.js';
-import { y as arrayFill, z as notARegexp, A as correctIsRegexpLogic, B as arrayReduce, C as createHtml, D as stringHtmlForced, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, E as globals, v as validate_slots, F as onMount, G as onDestroy, H as svg_element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, I as binding_callbacks } from './client.317fb8e7.js';
+import { y as arrayFill, z as notARegexp, A as correctIsRegexpLogic, B as arrayReduce, C as createHtml, D as stringHtmlForced, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, E as globals, v as validate_slots, F as onMount, G as onDestroy, H as svg_element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, I as binding_callbacks } from './client.85fdf1b6.js';
 
 var ARRAY_BUFFER = 'ArrayBuffer';
 var ArrayBuffer$1 = arrayBuffer[ARRAY_BUFFER];
@@ -35880,12 +35880,13 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		l: function claim(nodes) {
-			svg = claim_element(nodes, "svg", { xmlns: true, style: true }, 1);
+			svg = claim_element(nodes, "svg", { xmlns: true, class: true, style: true }, 1);
 			children(svg).forEach(detach_dev);
 			this.h();
 		},
 		h: function hydrate() {
 			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
+			attr_dev(svg, "class", "leading-none");
 			attr_dev(svg, "style", /*style*/ ctx[1]);
 			add_location(svg, file, 82, 0, 1864);
 		},

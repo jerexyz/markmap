@@ -1,7 +1,7 @@
 import { l as createCommonjsModule, Q as _toConsumableArray } from './web.url.bf352adb.js';
-import { S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, U as stores$1, V as validate_store, W as component_subscribe, F as onMount, G as onDestroy, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, K as listen_dev, X as prop_dev, I as binding_callbacks, O as bind, a as space, t as text, c as create_component, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, J as set_style, o as append_dev, p as mount_component, M as prevent_default, P as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, N as run_all, E as globals } from './client.317fb8e7.js';
-import { u as util, M as Markmap_1, l as lodash_debounce, t as transform_1 } from './markmap.5428ef28.js';
-import { T as Toolbar, s as subscribeHash } from './gist.efb5d471.js';
+import { S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, U as stores$1, V as validate_store, W as component_subscribe, F as onMount, G as onDestroy, e as element, g as claim_element, h as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, K as listen_dev, X as prop_dev, I as binding_callbacks, O as bind, a as space, t as text, c as create_component, q as query_selector_all, f as claim_space, j as claim_text, k as claim_component, J as set_style, o as append_dev, p as mount_component, M as prevent_default, P as add_flush_callback, u as transition_in, w as transition_out, x as destroy_component, N as run_all, E as globals } from './client.85fdf1b6.js';
+import { u as util, M as Markmap_1, l as lodash_debounce, t as transform_1 } from './markmap.c3a66d52.js';
+import { T as Toolbar, s as subscribeHash } from './gist.06041eaa.js';
 
 var template_1 = createCommonjsModule(function (module, exports) {
 
@@ -499,7 +499,7 @@ function instance($$self, $$props, $$invalidate) {
 			$$invalidate(3, content = text);
 		});
 
-		const { default: CodeMirror } = await Promise.all([import('./codemirror.ca3b6f8e.js'), __inject_styles(["client-ff2bd8be.css","codemirror-8033c53c.css"])]).then(function(x) { return x[0]; });
+		const { default: CodeMirror } = await Promise.all([import('./codemirror.a2ca5285.js'), __inject_styles(["client-ff2bd8be.css","codemirror-8033c53c.css"])]).then(function(x) { return x[0]; });
 
 		$$invalidate(2, cm = CodeMirror(editorEl, {
 			lineNumbers: true,
