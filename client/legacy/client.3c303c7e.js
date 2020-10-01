@@ -3166,19 +3166,23 @@ class App extends SvelteComponentDev {
 var ignore = [];
 var components = [{
   js: function js() {
-    return Promise.all([import('./index.ca45ae81.js'), __inject_styles(["client-ff2bd8be.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./index.7a43c61a.js'), __inject_styles(["client-ff2bd8be.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./docs.1ba8a3db.js'), __inject_styles(["client-ff2bd8be.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./usage.11908bcc.js'), __inject_styles(["client-ff2bd8be.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./full.2398e60b.js'), __inject_styles(["client-ff2bd8be.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./docs.9ffe2517.js'), __inject_styles(["client-ff2bd8be.css"])]).then(function(x) { return x[0]; });
   }
 }, {
   js: function js() {
-    return Promise.all([import('./repl.5e32d982.js'), __inject_styles(["client-ff2bd8be.css"])]).then(function(x) { return x[0]; });
+    return Promise.all([import('./full.fde7e2db.js'), __inject_styles(["client-ff2bd8be.css"])]).then(function(x) { return x[0]; });
+  }
+}, {
+  js: function js() {
+    return Promise.all([import('./repl.84ed41ae.js'), __inject_styles(["client-ff2bd8be.css"])]).then(function(x) { return x[0]; });
   }
 }];
 var routes = [{
@@ -3188,22 +3192,28 @@ var routes = [{
     i: 0
   }]
 }, {
+  // usage.svelte
+  pattern: /^\/usage\/?$/,
+  parts: [{
+    i: 1
+  }]
+}, {
   // docs.svelte
   pattern: /^\/docs\/?$/,
   parts: [{
-    i: 1
+    i: 2
   }]
 }, {
   // full.svelte
   pattern: /^\/full\/?$/,
   parts: [{
-    i: 2
+    i: 3
   }]
 }, {
   // repl.svelte
   pattern: /^\/repl\/?$/,
   parts: [{
-    i: 3
+    i: 4
   }]
 }];
 
