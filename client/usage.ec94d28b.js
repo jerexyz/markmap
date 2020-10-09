@@ -1,0 +1,1 @@
+import{S as s,i as t,s as r}from"./client.aac9f63c.js";async function c(s,t){return this.redirect(301,"docs")}export default class extends s{constructor(s){super(),t(this,s,null,null,r,{})}}export{c as preload};

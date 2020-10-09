@@ -1,5 +1,49 @@
-import { k as global_1, _ as _export, C as setSpecies, S as toInteger, e as toLength, u as anInstance, x as descriptors, z as redefineAll, J as fails, T as createNonEnumerableProperty, U as objectSetPrototypeOf, V as objectGetPrototypeOf, s as setToStringTag, W as objectGetOwnPropertyNames, E as internalState, D as objectDefineProperty, X as anObject, n as toAbsoluteIndex, Y as speciesConstructor, f as arrayMethodIsStrict, b as arrayMethodUsesToLength, c as arrayIteration, r as requireObjectCoercible, p as addToUnscopables, Z as arrayIncludes, G as toIndexedObject, t as toObject, w as wellKnownSymbol, $ as es_array_iterator, a0 as uid, a1 as classof, a2 as has$1, a3 as isObject$1, a4 as redefine, a5 as checkCorrectnessOfIteration, a6 as getIteratorMethod, a7 as isArrayIteratorMethod, A as functionBindContext, l as createCommonjsModule, o as objectGetOwnPropertyDescriptor, v as objectCreate, a8 as inheritIfRequired, a9 as toPrimitive, m as _typeof, aa as createPropertyDescriptor, d as aFunction, ab as classofRaw, ac as isForced_1, ad as stringTrim, ae as stringRepeat, q as internalMetadata, af as freezing, K as _inherits, L as _createSuper, N as _classCallCheck, M as _createClass, ag as _assertThisInitialized, R as _slicedToArray, j as isArray, ah as arraySpeciesCreate, Q as _toConsumableArray, ai as objectKeys, aj as objectPropertyIsEnumerable, ak as _asyncToGenerator, al as _createForOfIteratorHelper, am as getAugmentedNamespace, an as getDefaultExportFromCjs, ao as whitespaces, ap as commonjsGlobal, aq as commonjsRequire } from './web.url.bf352adb.js';
-import { D as arrayFill, E as notARegexp, F as correctIsRegexpLogic, G as arrayReduce, H as createHtml, I as stringHtmlForced, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, J as globals, v as validate_slots, K as onMount, L as onDestroy, M as svg_element, h as claim_element, j as children, b as detach_dev, m as attr_dev, l as add_location, n as insert_dev, r as noop$4, N as binding_callbacks } from './client.3c303c7e.js';
+import { d as aFunction, S as isObject$1, _ as _export, k as global_1, C as setSpecies, T as toInteger, e as toLength, u as anInstance, x as descriptors, z as redefineAll, J as fails, U as createNonEnumerableProperty, V as objectSetPrototypeOf, W as objectGetPrototypeOf, s as setToStringTag, X as objectGetOwnPropertyNames, E as internalState, D as objectDefineProperty, Y as anObject, n as toAbsoluteIndex, Z as speciesConstructor, f as arrayMethodIsStrict, b as arrayMethodUsesToLength, c as arrayIteration, r as requireObjectCoercible, p as addToUnscopables, $ as arrayIncludes, G as toIndexedObject, t as toObject, w as wellKnownSymbol, a0 as es_array_iterator, a1 as uid, a2 as classof, a3 as has$1, a4 as redefine, a5 as checkCorrectnessOfIteration, a6 as getIteratorMethod, a7 as isArrayIteratorMethod, A as functionBindContext, l as createCommonjsModule, o as objectGetOwnPropertyDescriptor, v as objectCreate, a8 as inheritIfRequired, a9 as toPrimitive, m as _typeof, aa as createPropertyDescriptor, ab as classofRaw, ac as isForced_1, ad as stringTrim, ae as stringRepeat, q as internalMetadata, af as freezing, K as _inherits, L as _createSuper, N as _classCallCheck, M as _createClass, ag as _assertThisInitialized, R as _slicedToArray, j as isArray, ah as arraySpeciesCreate, Q as _toConsumableArray, ai as objectKeys, aj as objectPropertyIsEnumerable, ak as _asyncToGenerator, al as _createForOfIteratorHelper, am as getAugmentedNamespace, an as getDefaultExportFromCjs, ao as whitespaces, ap as commonjsGlobal, aq as commonjsRequire } from './web.url.d280cbc1.js';
+import { H as arrayFill, I as notARegexp, J as correctIsRegexpLogic, K as arrayReduce, L as createHtml, M as stringHtmlForced, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, N as globals, v as validate_slots, o as onMount, O as onDestroy, P as svg_element, k as claim_element, l as children, g as detach_dev, p as attr_dev, n as add_location, r as insert_dev, F as noop$4, b as binding_callbacks } from './client.a15f102c.js';
+
+var slice = [].slice;
+var factories = {};
+
+var construct = function construct(C, argsLength, args) {
+  if (!(argsLength in factories)) {
+    for (var list = [], i = 0; i < argsLength; i++) {
+      list[i] = 'a[' + i + ']';
+    } // eslint-disable-next-line no-new-func
+
+
+    factories[argsLength] = Function('C,a', 'return new C(' + list.join(',') + ')');
+  }
+
+  return factories[argsLength](C, args);
+}; // `Function.prototype.bind` method implementation
+// https://tc39.github.io/ecma262/#sec-function.prototype.bind
+
+
+var functionBind = Function.bind || function bind(that
+/* , ...args */
+) {
+  var fn = aFunction(this);
+  var partArgs = slice.call(arguments, 1);
+
+  var boundFunction = function bound()
+  /* args... */
+  {
+    var args = partArgs.concat(slice.call(arguments));
+    return this instanceof boundFunction ? construct(fn, args.length, args) : fn.apply(that, args);
+  };
+
+  if (isObject$1(fn.prototype)) boundFunction.prototype = fn.prototype;
+  return boundFunction;
+};
+
+// https://tc39.github.io/ecma262/#sec-function.prototype.bind
+
+_export({
+  target: 'Function',
+  proto: true
+}, {
+  bind: functionBind
+});
 
 var ARRAY_BUFFER = 'ArrayBuffer';
 var ArrayBuffer$1 = arrayBuffer[ARRAY_BUFFER];
@@ -1355,50 +1399,6 @@ var typedArrayConstructor = createCommonjsModule(function (module) {
   } else module.exports = function () {
     /* empty */
   };
-});
-
-var slice = [].slice;
-var factories = {};
-
-var construct = function construct(C, argsLength, args) {
-  if (!(argsLength in factories)) {
-    for (var list = [], i = 0; i < argsLength; i++) {
-      list[i] = 'a[' + i + ']';
-    } // eslint-disable-next-line no-new-func
-
-
-    factories[argsLength] = Function('C,a', 'return new C(' + list.join(',') + ')');
-  }
-
-  return factories[argsLength](C, args);
-}; // `Function.prototype.bind` method implementation
-// https://tc39.github.io/ecma262/#sec-function.prototype.bind
-
-
-var functionBind = Function.bind || function bind(that
-/* , ...args */
-) {
-  var fn = aFunction(this);
-  var partArgs = slice.call(arguments, 1);
-
-  var boundFunction = function bound()
-  /* args... */
-  {
-    var args = partArgs.concat(slice.call(arguments));
-    return this instanceof boundFunction ? construct(fn, args.length, args) : fn.apply(that, args);
-  };
-
-  if (isObject$1(fn.prototype)) boundFunction.prototype = fn.prototype;
-  return boundFunction;
-};
-
-// https://tc39.github.io/ecma262/#sec-function.prototype.bind
-
-_export({
-  target: 'Function',
-  proto: true
-}, {
-  bind: functionBind
 });
 
 var _typeof_1 = createCommonjsModule(function (module) {
@@ -35888,11 +35888,11 @@ function create_fragment(ctx) {
 			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
 			attr_dev(svg, "class", "leading-none");
 			attr_dev(svg, "style", /*style*/ ctx[1]);
-			add_location(svg, file, 82, 0, 1864);
+			add_location(svg, file, 82, 0, 1880);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, svg, anchor);
-			/*svg_binding*/ ctx[7](svg);
+			/*svg_binding*/ ctx[8](svg);
 		},
 		p: function update(ctx, [dirty]) {
 			if (dirty & /*style*/ 2) {
@@ -35903,7 +35903,7 @@ function create_fragment(ctx) {
 		o: noop$4,
 		d: function destroy(detaching) {
 			if (detaching) detach_dev(svg);
-			/*svg_binding*/ ctx[7](null);
+			/*svg_binding*/ ctx[8](null);
 		}
 	};
 
@@ -35928,7 +35928,7 @@ const loading =  Promise.all([
 function instance($$self, $$props, $$invalidate) {
 	let { $$slots: slots = {}, $$scope } = $$props;
 	validate_slots("Markmap", slots, []);
-	let mm;
+	let { mm } = $$props;
 	let { el = null } = $$props;
 	let { content } = $$props;
 	let { style = "" } = $$props;
@@ -35964,20 +35964,20 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	onMount(() => {
-		$$invalidate(8, mm = view.Markmap.create(el));
+		$$invalidate(2, mm = view.Markmap.create(el, options));
 		update(content);
 		window.addEventListener("resize", onResize);
 	});
 
 	onDestroy(() => {
-		$$invalidate(8, mm = null);
+		$$invalidate(2, mm = null);
 
 		{
 			window.removeEventListener("resize", onResize);
 		}
 	});
 
-	const writable_props = ["el", "content", "style", "options"];
+	const writable_props = ["mm", "el", "content", "style", "options"];
 
 	Object.keys($$props).forEach(key => {
 		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<Markmap> was created with unknown prop '${key}'`);
@@ -35991,10 +35991,11 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$props => {
+		if ("mm" in $$props) $$invalidate(2, mm = $$props.mm);
 		if ("el" in $$props) $$invalidate(0, el = $$props.el);
-		if ("content" in $$props) $$invalidate(2, content = $$props.content);
+		if ("content" in $$props) $$invalidate(3, content = $$props.content);
 		if ("style" in $$props) $$invalidate(1, style = $$props.style);
-		if ("options" in $$props) $$invalidate(3, options = $$props.options);
+		if ("options" in $$props) $$invalidate(4, options = $$props.options);
 	};
 
 	$$self.$capture_state = () => ({
@@ -36026,11 +36027,11 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	$$self.$inject_state = $$props => {
-		if ("mm" in $$props) $$invalidate(8, mm = $$props.mm);
+		if ("mm" in $$props) $$invalidate(2, mm = $$props.mm);
 		if ("el" in $$props) $$invalidate(0, el = $$props.el);
-		if ("content" in $$props) $$invalidate(2, content = $$props.content);
+		if ("content" in $$props) $$invalidate(3, content = $$props.content);
 		if ("style" in $$props) $$invalidate(1, style = $$props.style);
-		if ("options" in $$props) $$invalidate(3, options = $$props.options);
+		if ("options" in $$props) $$invalidate(4, options = $$props.options);
 		if ("promise" in $$props) promise = $$props.promise;
 		if ("cacheContent" in $$props) cacheContent = $$props.cacheContent;
 	};
@@ -36040,7 +36041,7 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*content*/ 4) {
+		if ($$self.$$.dirty & /*content*/ 8) {
 			 {
 				try {
 					update(content);
@@ -36055,12 +36056,12 @@ function instance($$self, $$props, $$invalidate) {
 			}
 		}
 
-		if ($$self.$$.dirty & /*mm, options*/ 264) {
+		if ($$self.$$.dirty & /*mm, options*/ 20) {
 			 if (mm && options) mm.setOptions(options);
 		}
 	};
 
-	return [el, style, content, options, onReset, onZoomIn, onZoomOut, svg_binding];
+	return [el, style, mm, content, options, onReset, onZoomIn, onZoomOut, svg_binding];
 }
 
 class Markmap_1 extends SvelteComponentDev {
@@ -36068,13 +36069,14 @@ class Markmap_1 extends SvelteComponentDev {
 		super(options);
 
 		init$1(this, options, instance, create_fragment, safe_not_equal, {
+			mm: 2,
 			el: 0,
-			content: 2,
+			content: 3,
 			style: 1,
-			options: 3,
-			onReset: 4,
-			onZoomIn: 5,
-			onZoomOut: 6
+			options: 4,
+			onReset: 5,
+			onZoomIn: 6,
+			onZoomOut: 7
 		});
 
 		dispatch_dev("SvelteRegisterComponent", {
@@ -36087,9 +36089,21 @@ class Markmap_1 extends SvelteComponentDev {
 		const { ctx } = this.$$;
 		const props = options.props || {};
 
-		if (/*content*/ ctx[2] === undefined && !("content" in props)) {
+		if (/*mm*/ ctx[2] === undefined && !("mm" in props)) {
+			console_1.warn("<Markmap> was created without expected prop 'mm'");
+		}
+
+		if (/*content*/ ctx[3] === undefined && !("content" in props)) {
 			console_1.warn("<Markmap> was created without expected prop 'content'");
 		}
+	}
+
+	get mm() {
+		throw new Error("<Markmap>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+	}
+
+	set mm(value) {
+		throw new Error("<Markmap>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
 	}
 
 	get el() {
@@ -36125,7 +36139,7 @@ class Markmap_1 extends SvelteComponentDev {
 	}
 
 	get onReset() {
-		return this.$$.ctx[4];
+		return this.$$.ctx[5];
 	}
 
 	set onReset(value) {
@@ -36133,7 +36147,7 @@ class Markmap_1 extends SvelteComponentDev {
 	}
 
 	get onZoomIn() {
-		return this.$$.ctx[5];
+		return this.$$.ctx[6];
 	}
 
 	set onZoomIn(value) {
@@ -36141,7 +36155,7 @@ class Markmap_1 extends SvelteComponentDev {
 	}
 
 	get onZoomOut() {
-		return this.$$.ctx[6];
+		return this.$$.ctx[7];
 	}
 
 	set onZoomOut(value) {

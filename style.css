@@ -1081,25 +1081,27 @@ svg {
     border-color: rgba(237, 242, 247, var(--border-opacity));
   }
 
+.markdown pre,
+    .markdown pre[class*="language-"] {
+      --bg-opacity: 1;
+      background-color: #f7fafc;
+      background-color: rgba(247, 250, 252, var(--bg-opacity));
+      padding: 1rem;
+      border-radius: 0.25rem;
+      overflow: auto;
+    }
+
 .markdown > code,
   .markdown :not(pre) > code {
     --bg-opacity: 1;
     background-color: #edf2f7;
     background-color: rgba(237, 242, 247, var(--bg-opacity));
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 0.25rem;
     border-radius: 0.25rem;
     --text-opacity: 1;
-    color: #4a5568;
-    color: rgba(74, 85, 104, var(--text-opacity));
-  }
-
-.markdown pre {
-    --bg-opacity: 1;
-    background-color: #edf2f7;
-    background-color: rgba(237, 242, 247, var(--bg-opacity));
-    padding: 1rem;
-    overflow: auto;
+    color: #2d3748;
+    color: rgba(45, 55, 72, var(--text-opacity));
+    font-size: 0.875rem;
   }
 
 .markdown ul {
@@ -1253,16 +1255,16 @@ svg {
 .toc a {
     display: block;
     --text-opacity: 1;
-    color: #718096;
-    color: rgba(113, 128, 150, var(--text-opacity));
+    color: #4a5568;
+    color: rgba(74, 85, 104, var(--text-opacity));
     text-decoration: none
   }
 
 .toc a:hover,
     .toc a.active {
       --text-opacity: 1;
-      color: #63b3ed;
-      color: rgba(99, 179, 237, var(--text-opacity));
+      color: #4299e1;
+      color: rgba(66, 153, 225, var(--text-opacity));
     }
 
 .toc-item {
