@@ -1,5 +1,5 @@
 import { d as aFunction, S as isObject$1, _ as _export, k as global_1, C as setSpecies, T as toInteger, e as toLength, u as anInstance, x as descriptors, z as redefineAll, J as fails, U as createNonEnumerableProperty, V as objectSetPrototypeOf, W as objectGetPrototypeOf, s as setToStringTag, X as objectGetOwnPropertyNames, E as internalState, D as objectDefineProperty, Y as anObject, n as toAbsoluteIndex, Z as speciesConstructor, f as arrayMethodIsStrict, b as arrayMethodUsesToLength, c as arrayIteration, r as requireObjectCoercible, p as addToUnscopables, $ as arrayIncludes, G as toIndexedObject, t as toObject, w as wellKnownSymbol, a0 as es_array_iterator, a1 as uid, a2 as classof, a3 as has$1, a4 as redefine, a5 as checkCorrectnessOfIteration, a6 as getIteratorMethod, a7 as isArrayIteratorMethod, A as functionBindContext, l as createCommonjsModule, o as objectGetOwnPropertyDescriptor, v as objectCreate, a8 as inheritIfRequired, a9 as toPrimitive, m as _typeof, aa as createPropertyDescriptor, ab as classofRaw, ac as isForced_1, ad as stringTrim, ae as stringRepeat, q as internalMetadata, af as freezing, K as _inherits, L as _createSuper, N as _classCallCheck, M as _createClass, ag as _assertThisInitialized, R as _slicedToArray, j as isArray, ah as arraySpeciesCreate, Q as _toConsumableArray, ai as objectKeys, aj as objectPropertyIsEnumerable, ak as _asyncToGenerator, al as _createForOfIteratorHelper, am as getAugmentedNamespace, an as getDefaultExportFromCjs, ao as whitespaces, ap as commonjsGlobal, aq as commonjsRequire } from './web.url.d280cbc1.js';
-import { H as arrayFill, I as notARegexp, J as correctIsRegexpLogic, K as arrayReduce, L as createHtml, M as stringHtmlForced, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, N as globals, v as validate_slots, o as onMount, O as onDestroy, P as svg_element, k as claim_element, l as children, g as detach_dev, p as attr_dev, n as add_location, r as insert_dev, F as noop$4, b as binding_callbacks } from './client.a15f102c.js';
+import { H as arrayFill, I as notARegexp, J as correctIsRegexpLogic, K as arrayReduce, L as createHtml, M as stringHtmlForced, S as SvelteComponentDev, i as init$1, s as safe_not_equal, d as dispatch_dev, N as globals, v as validate_slots, o as onMount, O as onDestroy, P as svg_element, k as claim_element, l as children, g as detach_dev, p as attr_dev, n as add_location, r as insert_dev, F as noop$4, b as binding_callbacks } from './client.4dfa9913.js';
 
 var slice = [].slice;
 var factories = {};
@@ -32097,7 +32097,8 @@ var prism = createCommonjsModule(function (module) {
        *
        * The following hooks will be run:
        * 1. `before-highlightall`
-       * 2. All hooks of {@link Prism.highlightElement} for each element.
+       * 2. `before-all-elements-highlight`
+       * 3. All hooks of {@link Prism.highlightElement} for each element.
        *
        * @param {ParentNode} container The root element, whose descendants that have a `.language-xxxx` class will be highlighted.
        * @param {boolean} [async=false] Whether each element is to be highlighted asynchronously using Web Workers.
@@ -32129,10 +32130,13 @@ var prism = createCommonjsModule(function (module) {
        * The following hooks will be run:
        * 1. `before-sanity-check`
        * 2. `before-highlight`
-       * 3. All hooks of {@link Prism.highlight}. These hooks will only be run by the current worker if `async` is `true`.
+       * 3. All hooks of {@link Prism.highlight}. These hooks will be run by an asynchronous worker if `async` is `true`.
        * 4. `before-insert`
        * 5. `after-highlight`
        * 6. `complete`
+       *
+       * Some the above hooks will be skipped if the element doesn't contain any text or there is no grammar loaded for
+       * the element's language.
        *
        * @param {Element} element The element containing the code.
        * It must have a class of `language-xxxx` to be processed, where `xxxx` is a valid language identifier.
@@ -33089,7 +33093,17 @@ var prism = createCommonjsModule(function (module) {
     'regex': {
       pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*]|\\.|[^/\\\[\r\n])+\/[gimyus]{0,6}(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
       lookbehind: true,
-      greedy: true
+      greedy: true,
+      inside: {
+        'regex-source': {
+          pattern: /^(\/)[\s\S]+(?=\/[a-z]*$)/,
+          lookbehind: true,
+          alias: 'language-regex',
+          inside: Prism.languages.regex
+        },
+        'regex-flags': /[a-z]+$/,
+        'regex-delimiter': /^\/|\/$/
+      }
     },
     // This must be declared before keyword because we use "function" inside the look-forward
     'function-variable': {
@@ -33362,6 +33376,7 @@ var components_1 = createCommonjsModule(function (module) {
         "title": "JavaScript",
         "require": "clike",
         "modify": "markup",
+        "optional": "regex",
         "alias": "js",
         "option": "default"
       },
@@ -33415,7 +33430,7 @@ var components_1 = createCommonjsModule(function (module) {
       "arduino": {
         "title": "Arduino",
         "require": "cpp",
-        "owner": "eisbehr-"
+        "owner": "dkern"
       },
       "arff": {
         "title": "ARFF",
@@ -33467,6 +33482,11 @@ var components_1 = createCommonjsModule(function (module) {
         },
         "owner": "RunDevelopment"
       },
+      "birb": {
+        "title": "Birb",
+        "require": "clike",
+        "owner": "Calamity210"
+      },
       "bison": {
         "title": "Bison",
         "require": "c",
@@ -33491,6 +33511,14 @@ var components_1 = createCommonjsModule(function (module) {
       "bro": {
         "title": "Bro",
         "owner": "wayward710"
+      },
+      "bsl": {
+        "title": "BSL (1C:Enterprise)",
+        "alias": "oscript",
+        "aliasTitles": {
+          "oscript": "OneScript"
+        },
+        "owner": "Diversus23"
       },
       "c": {
         "title": "C",
@@ -33955,6 +33983,11 @@ var components_1 = createCommonjsModule(function (module) {
         "title": "Mizar",
         "owner": "Golmote"
       },
+      "mongodb": {
+        "title": "MongoDB",
+        "owner": "airs0urce",
+        "require": "javascript"
+      },
       "monkey": {
         "title": "Monkey",
         "owner": "Golmote"
@@ -33978,6 +34011,11 @@ var components_1 = createCommonjsModule(function (module) {
       "nand2tetris-hdl": {
         "title": "Nand To Tetris HDL",
         "owner": "stephanmax"
+      },
+      "naniscript": {
+        "title": "Naninovel Script",
+        "owner": "Elringus",
+        "alias": "nani"
       },
       "nasm": {
         "title": "NASM",
@@ -34129,6 +34167,12 @@ var components_1 = createCommonjsModule(function (module) {
         "alias": "pbfasm",
         "owner": "HeX0R101"
       },
+      "purescript": {
+        "title": "PureScript",
+        "require": "haskell",
+        "alias": "purs",
+        "owner": "sriharshachilakapati"
+      },
       "python": {
         "title": "Python",
         "alias": "py",
@@ -34175,7 +34219,6 @@ var components_1 = createCommonjsModule(function (module) {
       },
       "regex": {
         "title": "Regex",
-        "modify": ["actionscript", "coffeescript", "flow", "javascript", "typescript", "vala"],
         "owner": "RunDevelopment"
       },
       "renpy": {
@@ -34238,6 +34281,7 @@ var components_1 = createCommonjsModule(function (module) {
       "shell-session": {
         "title": "Shell session",
         "require": "bash",
+        "alias": ["sh-session", "shellsession"],
         "owner": "RunDevelopment"
       },
       "smali": {
@@ -34252,6 +34296,14 @@ var components_1 = createCommonjsModule(function (module) {
         "title": "Smarty",
         "require": "markup-templating",
         "owner": "Golmote"
+      },
+      "sml": {
+        "title": "SML",
+        "alias": "smlnj",
+        "aliasTitles": {
+          "smlnj": "SML/NJ"
+        },
+        "owner": "RunDevelopment"
       },
       "solidity": {
         "title": "Solidity (Ethereum)",
@@ -34287,6 +34339,10 @@ var components_1 = createCommonjsModule(function (module) {
       "sql": {
         "title": "SQL",
         "owner": "multipetros"
+      },
+      "stan": {
+        "title": "Stan",
+        "owner": "RunDevelopment"
       },
       "iecst": {
         "title": "Structured Text (IEC 61131-3)",
@@ -34360,6 +34416,14 @@ var components_1 = createCommonjsModule(function (module) {
         "alias": "ts",
         "owner": "vkbansal"
       },
+      "typoscript": {
+        "title": "TypoScript",
+        "alias": "tsconfig",
+        "aliasTitles": {
+          "tsconfig": "TSConfig"
+        },
+        "owner": "dkern"
+      },
       "unrealscript": {
         "title": "UnrealScript",
         "alias": ["uscript", "uc"],
@@ -34368,6 +34432,7 @@ var components_1 = createCommonjsModule(function (module) {
       "vala": {
         "title": "Vala",
         "require": "clike",
+        "optional": "regex",
         "owner": "TemplarVolk"
       },
       "vbnet": {

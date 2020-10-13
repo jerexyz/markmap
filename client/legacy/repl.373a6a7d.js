@@ -1,8 +1,8 @@
 import { l as createCommonjsModule, Q as _toConsumableArray } from './web.url.d280cbc1.js';
-import { S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, C as stores$1, D as validate_store, E as component_subscribe, o as onMount, O as onDestroy, f as element, k as claim_element, l as children, g as detach_dev, p as attr_dev, n as add_location, r as insert_dev, V as listen_dev, $ as prop_dev, b as binding_callbacks, a as bind, c as space, e as create_component, t as text, q as query_selector_all, h as claim_space, j as claim_component, m as claim_text, Q as set_style, u as mount_component, w as append_dev, a0 as prevent_default, x as add_flush_callback, y as transition_in, z as transition_out, A as destroy_component, Z as run_all, N as globals } from './client.a15f102c.js';
-import { u as util, M as Markmap_1, l as lodash_debounce, t as transform_1 } from './markmap.baec2f42.js';
-import { H as Header, F as Footer } from './footer.f505cfe5.js';
-import { T as Toolbar, s as subscribeHash } from './gist.bcd8239b.js';
+import { S as SvelteComponentDev, i as init, d as dispatch_dev, s as safe_not_equal, v as validate_slots, C as stores$1, D as validate_store, E as component_subscribe, o as onMount, O as onDestroy, f as element, k as claim_element, l as children, g as detach_dev, p as attr_dev, n as add_location, r as insert_dev, V as listen_dev, $ as prop_dev, b as binding_callbacks, a as bind, c as space, e as create_component, t as text, q as query_selector_all, h as claim_space, j as claim_component, m as claim_text, Q as set_style, u as mount_component, w as append_dev, a0 as prevent_default, x as add_flush_callback, y as transition_in, z as transition_out, A as destroy_component, Z as run_all, N as globals } from './client.4dfa9913.js';
+import { u as util, M as Markmap_1, l as lodash_debounce, t as transform_1 } from './markmap.0423164c.js';
+import { H as Header, F as Footer } from './footer.9a1b0a65.js';
+import { T as Toolbar, s as subscribeHash } from './gist.fdc30295.js';
 
 var template_1 = createCommonjsModule(function (module, exports) {
 
@@ -61,7 +61,7 @@ var template_1 = createCommonjsModule(function (module, exports) {
 const { document: document_1 } = globals;
 const file = "src/routes/repl.svelte";
 
-// (104:4) {#if !cm}
+// (102:4) {#if !cm}
 function create_if_block(ctx) {
 	let textarea;
 	let mounted;
@@ -80,7 +80,7 @@ function create_if_block(ctx) {
 		h: function hydrate() {
 			attr_dev(textarea, "class", "w-full h-full p-1");
 			textarea.value = /*content*/ ctx[3];
-			add_location(textarea, file, 104, 4, 2762);
+			add_location(textarea, file, 102, 4, 2727);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, textarea, anchor);
@@ -106,7 +106,7 @@ function create_if_block(ctx) {
 		block,
 		id: create_if_block.name,
 		type: "if",
-		source: "(104:4) {#if !cm}",
+		source: "(102:4) {#if !cm}",
 		ctx
 	});
 
@@ -303,29 +303,29 @@ function create_fragment(ctx) {
 			document_1.title = "Try Markmap";
 			attr_dev(a0, "class", "inline-block text-sm text-orange-600 underline");
 			attr_dev(a0, "href", a0_href_value = `${/*$page*/ ctx[7].path}#?gist=af76a4c245b302206b16aec503dbe07b/gist.md,gitee:a73wgucr28dhlxp91kytm57/gist.md`);
-			add_location(a0, file, 99, 2, 2386);
+			add_location(a0, file, 97, 2, 2351);
 			attr_dev(div0, "class", "fixed z-10 hidden md:block");
 			set_style(div0, "top", "15px");
 			set_style(div0, "left", "50%");
-			add_location(div0, file, 98, 0, 2317);
+			add_location(div0, file, 96, 0, 2282);
 			attr_dev(div1, "class", "flex-1 min-w-0 border border-gray-300");
-			add_location(div1, file, 102, 2, 2671);
+			add_location(div1, file, 100, 2, 2636);
 			attr_dev(div2, "class", "markmap-wrapper flex-1");
-			add_location(div2, file, 108, 4, 2908);
-			add_location(a1, file, 125, 8, 3350);
+			add_location(div2, file, 106, 4, 2873);
+			add_location(a1, file, 123, 8, 3315);
 			attr_dev(div3, "class", "inline-block px-4 py-2");
-			add_location(div3, file, 124, 6, 3305);
-			add_location(a2, file, 128, 8, 3547);
+			add_location(div3, file, 122, 6, 3270);
+			add_location(a2, file, 126, 8, 3512);
 			attr_dev(span, "class", "text-red-500");
-			add_location(span, file, 129, 8, 3618);
+			add_location(span, file, 127, 8, 3583);
 			attr_dev(div4, "class", "inline-block px-4 py-2");
 			attr_dev(div4, "title", "SVG does not work well with PrismJS and MathJax");
-			add_location(div4, file, 127, 6, 3446);
-			add_location(div5, file, 123, 4, 3293);
+			add_location(div4, file, 125, 6, 3411);
+			add_location(div5, file, 121, 4, 3258);
 			attr_dev(div6, "class", "flex-1 min-w-0 flex flex-col");
-			add_location(div6, file, 107, 2, 2861);
+			add_location(div6, file, 105, 2, 2826);
 			attr_dev(main, "class", "inner lg:fs md:flex repl");
-			add_location(main, file, 101, 0, 2629);
+			add_location(main, file, 99, 0, 2594);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, t0, anchor);
@@ -499,13 +499,9 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	function onDownloadHTML() {
-		const root = transform_1.transform(content);
-
-		const html = template_1.fillTemplate(root, {
-			mathJax: !!svgEl.querySelector(".MathJax"),
-			prism: !!svgEl.querySelector("pre[class*=language-]")
-		});
-
+		const { root, features } = transform_1.transform(content);
+		const assets = transform_1.getUsedAssets(features);
+		const html = template_1.fillTemplate(root, assets);
 		download("markmap.html", "data:text/html;utf8," + encodeURIComponent(html));
 	}
 
@@ -527,7 +523,7 @@ function instance($$self, $$props, $$invalidate) {
 			$$invalidate(3, content = text);
 		});
 
-		const { default: CodeMirror } = await Promise.all([import('./codemirror.b541e279.js'), __inject_styles(["client-ff2bd8be.css","codemirror-8033c53c.css"])]).then(function(x) { return x[0]; });
+		const { default: CodeMirror } = await Promise.all([import('./codemirror.895e6b3d.js'), __inject_styles(["client-ff2bd8be.css","codemirror-8033c53c.css"])]).then(function(x) { return x[0]; });
 
 		$$invalidate(2, cm = CodeMirror(editorEl, {
 			lineNumbers: true,
@@ -601,6 +597,7 @@ function instance($$self, $$props, $$invalidate) {
 		stores: stores$1,
 		debounce: lodash_debounce,
 		transform: transform_1.transform,
+		getUsedAssets: transform_1.getUsedAssets,
 		fillTemplate: template_1.fillTemplate,
 		Markmap: Markmap_1,
 		Toolbar,
